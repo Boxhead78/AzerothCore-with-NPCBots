@@ -93,6 +93,7 @@ public:
             _events.ScheduleEvent(EVENT_TWISTED_REFLECTION, 33000);
             _events.ScheduleEvent(EVENT_BERSERK, 180000);
             _supremeMode = false;
+            me->setActive(true);
         }
 
         void JustRespawned() override
@@ -129,6 +130,37 @@ public:
 
         void UpdateAI(uint32 diff) override
         {
+            if (sWorld->getBoolConfig(CONFIG_WORLD_BOSS_RANDOM_SHOUTS))
+            {
+                if (_checkTimer <= diff)
+                {
+                    if (!me->IsInCombat())
+                    {
+                        uint8 randInt = urand(0, 3);
+                        switch (randInt)
+                        {
+                        case 0:
+                            Talk(SAY_INTRO);
+                            break;
+                        case 1:
+                            Talk(SAY_AGGRO);
+                            break;
+                        case 2:
+                            Talk(SAY_SURPREME);
+                            break;
+                        case 3:
+                            Talk(SAY_KILL);
+                            break;
+                        }
+                    }
+                    _checkTimer = urand(5 * MINUTE * IN_MILLISECONDS, 15 * MINUTE * IN_MILLISECONDS);
+                }
+                else
+                {
+                    _checkTimer -= diff;
+                }
+            }
+
             // Return since we have no target
             if (!UpdateVictim())
                 return;
@@ -192,6 +224,7 @@ public:
     private:
         EventMap _events;
         bool _supremeMode;
+        uint32 _checkTimer;
     };
 
     CreatureAI* GetAI(Creature* creature) const override

@@ -17,6 +17,7 @@
 
 #include "CreatureScript.h"
 #include "ScriptedCreature.h"
+#include "World.h"
 
 enum Texts
 {
@@ -46,6 +47,7 @@ struct boss_doomwalker : public ScriptedAI
     {
         _inEnrage = false;
         scheduler.CancelAll();
+        me->setActive(true);
     }
 
     void KilledUnit(Unit* victim) override
@@ -116,6 +118,37 @@ struct boss_doomwalker : public ScriptedAI
 
     void UpdateAI(uint32 diff) override
     {
+        if (sWorld->getBoolConfig(CONFIG_WORLD_BOSS_RANDOM_SHOUTS))
+        {
+            if (_checkTimer <= diff)
+            {
+                if (!me->IsInCombat())
+                {
+                    uint8 randInt = urand(0, 3);
+                    switch (randInt)
+                    {
+                    case 0:
+                        Talk(SAY_AGGRO);
+                        break;
+                    case 1:
+                        Talk(SAY_EARTHQUAKE);
+                        break;
+                    case 2:
+                        Talk(SAY_OVERRUN);
+                        break;
+                    case 3:
+                        Talk(SAY_SLAY);
+                        break;
+                    }
+                }
+                _checkTimer = urand(5 * MINUTE * IN_MILLISECONDS, 15 * MINUTE * IN_MILLISECONDS);
+            }
+            else
+            {
+                _checkTimer -= diff;
+            }
+        }
+
         if (!UpdateVictim())
             return;
 
@@ -129,6 +162,7 @@ struct boss_doomwalker : public ScriptedAI
 
 private:
     bool _inEnrage;
+    uint32 _checkTimer;
 };
 
 void AddSC_boss_doomwalker()

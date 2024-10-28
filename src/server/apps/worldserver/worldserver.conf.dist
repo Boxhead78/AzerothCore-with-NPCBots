@@ -5112,7 +5112,7 @@ Rate.Creature.Elite.BOSS.HP        = 1.0
 Rate.Creature.Elite.BOSS_HEROIC.HP = 1.0
 Rate.Creature.Elite.BOSS_RAID.HP   = 1.0
 
-#    Changed creature balance
+#    Changed creature balance (Level 1 to 40 is easier, level 41-60 more difficult, another difficulty spike from lvl 61-70 and another one from 71-80)
 Creature.NewBalance.Active = 1
 
 #    Enable or disable NPCBot mana regen cheat in raids/dungeons
@@ -5142,6 +5142,9 @@ NpcBot.Rate.ThreatTank = 1.0
 #        Default:     1
 
 Rate.Reputation.Gain.HeroicOrRaid = 1
+
+#    If set to 1, world bosses will do random shouts throughout zheir zone while outside of combat
+WorldBoss.RandomShouts.Active = 1
 
 ###################################################################################################
 #                                                                                                 #

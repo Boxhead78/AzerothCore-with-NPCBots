@@ -22,6 +22,7 @@
 #include "SpellScript.h"
 #include "SpellScriptLoader.h"
 #include "TaskScheduler.h"
+#include "World.h"
 
 enum Say
 {
@@ -73,6 +74,7 @@ public:
                         p->RemoveAurasDueToSpell(SPELL_FROST_BREATH);
                     }
                 });
+            me->setActive(true);
         }
 
         void KilledUnit(Unit* victim) override
@@ -144,6 +146,34 @@ public:
 
         void UpdateAI(uint32 diff) override
         {
+            if (sWorld->getBoolConfig(CONFIG_WORLD_BOSS_RANDOM_SHOUTS))
+            {
+                if (_checkTimer <= diff)
+                {
+                    if (!me->IsInCombat())
+                    {
+                        uint8 randInt = urand(0, 2);
+                        switch (randInt)
+                        {
+                        case 0:
+                            Talk(SAY_TELEPORT);
+                            break;
+                        case 1:
+                            Talk(SAY_AGGRO);
+                            break;
+                        case 2:
+                            Talk(SAY_KILL);
+                            break;
+                        }
+                    }
+                    _checkTimer = urand(5 * MINUTE * IN_MILLISECONDS, 15 * MINUTE * IN_MILLISECONDS);
+                }
+                else
+                {
+                    _checkTimer -= diff;
+                }
+            }
+
             if (!UpdateVictim())
             {
                 return;
@@ -154,6 +184,9 @@ public:
                 DoMeleeAttackIfReady();
             });
         }
+
+        private:
+            uint32 _checkTimer;
     };
 
     bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 /*action*/) override
