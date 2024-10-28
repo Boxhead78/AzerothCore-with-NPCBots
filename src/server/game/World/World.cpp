@@ -571,6 +571,7 @@ void World::LoadConfigSettings(bool reload)
     _rate_values[RATE_MISS_CHANCE_MULTIPLIER_TARGET_PLAYER]         = sConfigMgr->GetOption<float>("Rate.MissChanceMultiplier.TargetPlayer", 7.0f);
     _bool_configs[CONFIG_MISS_CHANCE_MULTIPLIER_ONLY_FOR_PLAYERS]   = sConfigMgr->GetOption<bool>("Rate.MissChanceMultiplier.OnlyAffectsPlayer", false);
     _bool_configs[CONFIG_NEW_BALANCE_FOR_CREATURES]                 = sConfigMgr->GetOption<bool>("Creature.NewBalance.Active", true);
+    _bool_configs[CONFIG_WORLD_BOSS_RANDOM_SHOUTS]                  = sConfigMgr->GetOption<bool>("WorldBoss.RandomShouts.Active", true);
 
     _rate_values[RATE_TALENT]                               = sConfigMgr->GetOption<float>("Rate.Talent", 1.0f);
     if (_rate_values[RATE_TALENT] < 0.0f)
