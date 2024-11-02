@@ -568,7 +568,7 @@ INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSki
 -- Riding
 DELETE FROM `npc_trainer` WHERE `ID`=450000;
 INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`) VALUES
-(450000, 33388, 900000, 762, 0, 40),
+(450000, 33388, 900000, 762, 0, 30),
 (450000, 33391, 9000000, 762, 75, 60);
 
 
