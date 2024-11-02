@@ -25,6 +25,8 @@
 #include "ScriptedCreature.h"
 #include "SpellScriptLoader.h"
 #include "icecrown_citadel.h"
+#include "PassiveAI.h"
+#include "SpellAuraEffects.h"
 
 enum Texts
 {
@@ -713,6 +715,21 @@ public:
         {
             me->RemoveAllGameObjects();
 
+            //npcbot
+            if (_trappedPlayerGUID.IsCreature())
+            {
+                if (Creature* bot = ObjectAccessor::GetCreature(*me, _trappedPlayerGUID))
+                {
+                    _trappedPlayerGUID.Clear();
+                    bot->RemoveAurasDueToSpell(SPELL_ICE_TOMB_DAMAGE);
+                    bot->RemoveAurasDueToSpell(SPELL_ASPHYXIATION);
+                    bot->RemoveAurasDueToSpell(SPELL_ICE_TOMB_UNTARGETABLE);
+                    me->DespawnOrUnsummon(5000);
+                }
+                return;
+            }
+            //end npcbot
+
             if (Player* player = ObjectAccessor::GetPlayer(*me, _trappedPlayerGUID))
             {
                 _trappedPlayerGUID.Clear();
@@ -730,6 +747,21 @@ public:
 
             if (_existenceCheckTimer <= diff)
             {
+                //npcbot
+                if (_trappedPlayerGUID.IsCreature())
+                {
+                    Creature* bot = ObjectAccessor::GetCreature(*me, _trappedPlayerGUID);
+                    if (!bot || !bot->IsAlive() || !bot->HasAura(SPELL_ICE_TOMB_DAMAGE))
+                    {
+                        JustDied(me);
+                        me->DespawnOrUnsummon();
+                        return;
+                    }
+                    _existenceCheckTimer = 1000;
+                    return;
+                }
+                //end npcbot
+
                 Player* player = ObjectAccessor::GetPlayer(*me, _trappedPlayerGUID);
                 if (!player || !player->IsAlive() || !player->HasAura(SPELL_ICE_TOMB_DAMAGE))
                 {
@@ -1050,10 +1082,6 @@ class spell_sindragosa_ice_tomb_trap : public SpellScript
 
     void FilterTargets(std::list<WorldObject*>& unitList)
     {
-            //npcbot
-            unitList.remove_if(SindragosaIceTombCheck());
-            //end npcbot
-
         unitList.remove_if(Acore::UnitAuraCheck(true, GetSpellInfo()->Id));
         _targetList.clear();
         _targetList = unitList;

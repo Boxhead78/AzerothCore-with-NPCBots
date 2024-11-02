@@ -1,6 +1,7 @@
 #ifndef _BOTCOMMON_H
 #define _BOTCOMMON_H
 
+#include "botdefine.h"
 #include "ObjectGuid.h"
 #include "SharedDefines.h"
 #include "SpellAuraDefines.h"
@@ -533,8 +534,8 @@ enum BotAIResetType
 enum BotMovementType
 {
     BOT_MOVE_POINT                      = 1,
-    //BOT_MOVE_FOLLOW
-    BOT_MOVE_CHASE
+    BOT_MOVE_CHASE,
+    BOT_MOVE_JUMP
 };
 
 enum BotCommandStates : uint32
