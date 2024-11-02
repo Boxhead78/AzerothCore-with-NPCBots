@@ -4467,16 +4467,16 @@ NpcBot.LogToDB = 1
 #    NpcBot.MaxBots
 #        Description: Maximum number of bots allowed for players per level bracket:
 #                     0-9, 10-19, 20,29, ... , 70-79, 80+.
-#        Default:     1,1,1,1,1,1,1,1,1 - (1 for all levels)
-#                     0,1,2,3,4,5,6,7,8 - (1 per 10 levels)
+#        Default:     1,1,1,1,1,1,1,1,1,1 - (1 for all levels)
+#                     0,1,2,3,4,5,6,7,8,9 - (1 per 10 levels)
 #        Max:         39
 #        Level 1-4: 0 Bots
 #        Level 5-9: 1 Bots
 #        Level 10-14: 2 Bots
 #        Level 15-59: 4 Bots
-#        Level 60-80: NpcBot.MaxBots
+#        Level 60-90: NpcBot.MaxBots
 
-NpcBot.MaxBots = 39,39,39,39,39,39,39,39,39
+NpcBot.MaxBots = 39,39,39,39,39,39,39,39,39,39
 
 #
 #    NpcBot.MaxBotsPerClass
@@ -4636,10 +4636,10 @@ NpcBot.Mult.Damage.CryptLord         = 1.0
 #        Minimum:     0.1
 #        Maximum:    10.0
 
-NpcBot.Mult.Damage.Levels  = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-NpcBot.Mult.Healing.Levels = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-NpcBot.Mult.HP.Levels      = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-NpcBot.Mult.MP.Levels      = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+NpcBot.Mult.Damage.Levels  = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+NpcBot.Mult.Healing.Levels = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+NpcBot.Mult.HP.Levels      = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+NpcBot.Mult.MP.Levels      = 1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
 
 #
 #    NpcBot.Enable.Dungeon
@@ -4933,7 +4933,7 @@ NpcBot.WanderingBots.Continents.Count.Max = 0
 #        Note2:       Classes with minimum level requirement may ignore this parameter.
 #        Default:     25,15,15,10,5,10,20,0,0
 
-NpcBot.WanderingBots.Continents.Levels = 25,15,15,10,5,10,20,0,0
+NpcBot.WanderingBots.Continents.Levels = 25,15,15,10,5,10,20,0,0,0
 
 #
 #    NpcBot.WanderingBots.Continents.Maps
