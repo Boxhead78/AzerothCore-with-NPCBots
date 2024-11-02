@@ -1,51 +1,220 @@
-INSERT INTO acore_world.player_class_stats (Class,`Level`,BaseHP,BaseMana,Strength,Agility,Stamina,Intellect,Spirit) VALUES
-	 (1, 81,24363,0,522,339,477,108,177),
-	 (1, 82,36544,0,783,508,715,162,265),
-	 (1, 83,54816,0,1174,762,1072,243,397),
-	 (1, 84,82224,0,1761,1143,1608,364,595),
-	 (1, 85,123336,0,2641,1714,2412,546,892),
-	 (2, 81,20802,13182,453,270,429,294,315),
-	 (2, 82,31203,19773,679,405,643,441,472),
-	 (2, 83,46804,29659,1018,607,964,661,708),
-	 (2, 84,70206,44488,1527,910,1446,991,1062),
-	 (2, 85,105309,66732,2290,1365,2169,1486,1593),
-	 (3, 81,21972,15138,222,543,384,270,291),
-	 (3, 82,32958,22707,333,814,576,405,436),
-	 (3, 83,49437,34060,499,1221,864,607,654),
-	 (3, 84,74155,51090,748,1831,1296,910,981),
-	 (3, 85,111232,76635,1122,2746,1944,1365,1471),
-	 (4, 81,22812,0,339,567,315,129,201),
-	 (4, 82,34218,0,508,850,472,193,301),
-	 (4, 83,51327,0,762,1275,708,289,451),
-	 (4, 84,76990,0,1143,1912,1062,433,676),
-	 (4, 85,115485,0,1714,2868,1593,649,1014),
-	 (5, 81,20880,11589,129,153,201,522,543),
-	 (5, 82,31320,17383,193,229,301,783,814),
-	 (5, 83,46980,26074,289,343,451,1174,1221),
-	 (5, 84,70470,39111,433,514,676,1761,1831),
-	 (5, 85,105705,58666,649,771,1014,2641,2746),
-	 (6, 81,24363,0,525,336,480,105,177),
-	 (6, 82,36544,0,787,504,720,157,265),
-	 (6, 83,54816,0,1180,756,1080,235,397),
-	 (6, 84,82224,0,1770,1134,1620,352,595),
-	 (6, 85,123336,0,2655,1701,2430,528,892),
-	 (7, 81,20817,13188,360,222,408,384,429),
-	 (7, 82,31225,19782,540,333,612,576,643),
-	 (7, 83,46837,29673,810,499,918,864,964),
-	 (7, 84,70255,44509,1215,748,1377,1296,1446),
-	 (7, 85,105382,66763,1822,1122,2065,1944,2169),
-	 (8, 81,20889,9804,108,129,177,543,522),
-	 (8, 82,31333,14706,162,193,265,814,783),
-	 (8, 83,46999,22059,243,289,397,1221,1174),
-	 (8, 84,70498,33088,364,433,595,1831,1761),
-	 (8, 85,105747,49632,546,649,892,2746,2641),
-	 (9, 81,21408,11568,177,201,267,477,498),
-	 (9, 82,32112,17352,265,301,400,715,747),
-	 (9, 83,48168,26028,397,451,600,1072,1120),
-	 (9, 84,72252,39042,595,676,900,1608,1680),
-	 (9, 85,108378,58563,892,1014,1350,2412,2520),
-	 (11, 81,22251,10488,267,246,294,429,477),
-	 (11, 82,33376,15732,400,369,441,643,715),
-	 (11, 83,50064,23598,600,553,661,964,1072),
-	 (11, 84,75096,35397,900,829,991,1446,1608),
-	 (11, 85,112644,53095,1350,1243,1486,2169,2412);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 81, 10151, 0, 218, 141, 199, 45, 74);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 82, 12689, 0, 273, 176, 249, 56, 93);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 83, 15861, 0, 341, 220, 311, 70, 116);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 84, 19826, 0, 426, 275, 389, 88, 145);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 85, 24783, 0, 533, 344, 486, 110, 181);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 86, 30979, 0, 666, 430, 608, 138, 226);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 87, 38724, 0, 833, 538, 760, 173, 283);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 88, 48405, 0, 1041, 673, 950, 216, 354);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 89, 60506, 0, 1301, 841, 1188, 270, 443);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 90, 75633, 0, 1626, 1051, 1485, 338, 554);
+DELETE FROM `player_class_stats` WHERE `Class`=1 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (1, 91, 94541, 0, 2033, 1314, 1856, 423, 693);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 81, 8668, 5493, 189, 113, 179, 123, 131);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 82, 10835, 6866, 236, 141, 224, 154, 164);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 83, 13544, 8583, 295, 176, 280, 193, 205);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 84, 16930, 10729, 369, 220, 350, 241, 256);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 85, 21163, 13411, 461, 275, 438, 301, 320);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 86, 26454, 16764, 576, 344, 548, 376, 400);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 87, 33068, 20955, 720, 430, 685, 470, 500);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 88, 41335, 26194, 900, 538, 856, 588, 625);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 89, 51669, 32743, 1125, 673, 1070, 735, 781);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 90, 64586, 40929, 1406, 841, 1338, 919, 976);
+DELETE FROM `player_class_stats` WHERE `Class`=2 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (2, 91, 80733, 51161, 1758, 1051, 1673, 1149, 1220);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 81, 9155, 6308, 93, 226, 160, 113, 121);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 82, 11444, 7885, 116, 283, 200, 141, 151);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 83, 14305, 9856, 145, 354, 250, 176, 189);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 84, 17881, 12320, 181, 443, 313, 220, 236);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 85, 22351, 15400, 226, 554, 391, 275, 295);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 86, 27939, 19250, 283, 693, 489, 344, 369);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 87, 34924, 24063, 354, 866, 611, 430, 461);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 88, 43655, 30079, 443, 1083, 764, 538, 576);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 89, 54569, 37599, 554, 1354, 955, 673, 720);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 90, 68211, 46999, 693, 1693, 1194, 841, 900);
+DELETE FROM `player_class_stats` WHERE `Class`=3 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (3, 91, 85264, 58749, 866, 2116, 1493, 1051, 1125);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 81, 9505, 0, 141, 236, 131, 54, 84);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 82, 11881, 0, 176, 295, 164, 68, 105);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 83, 14851, 0, 220, 369, 205, 85, 131);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 84, 18564, 0, 275, 461, 256, 106, 164);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 85, 23205, 0, 344, 576, 320, 133, 205);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 86, 29006, 0, 430, 720, 400, 166, 256);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 87, 36258, 0, 538, 900, 500, 208, 320);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 88, 45323, 0, 673, 1125, 625, 260, 400);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 89, 56654, 0, 841, 1406, 781, 325, 500);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 90, 70818, 0, 1051, 1758, 976, 406, 625);
+DELETE FROM `player_class_stats` WHERE `Class`=4 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (4, 91, 88523, 0, 1314, 2198, 1220, 508, 781);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 81, 8700, 4829, 54, 64, 84, 218, 226);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 82, 10875, 6036, 68, 80, 105, 273, 283);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 83, 13594, 7545, 85, 100, 131, 341, 354);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 84, 16993, 9431, 106, 125, 164, 426, 443);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 85, 21241, 11789, 133, 156, 205, 533, 554);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 86, 26551, 14736, 166, 195, 256, 666, 693);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 87, 33189, 18420, 208, 244, 320, 833, 866);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 88, 41486, 23025, 260, 305, 400, 1041, 1083);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 89, 51858, 28781, 325, 381, 500, 1301, 1354);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 90, 64823, 35976, 406, 476, 625, 1626, 1693);
+DELETE FROM `player_class_stats` WHERE `Class`=5 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (5, 91, 81029, 44970, 508, 595, 781, 2033, 2116);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 81, 10151, 0, 219, 140, 200, 44, 74);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 82, 12689, 0, 274, 175, 250, 55, 93);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 83, 15861, 0, 343, 219, 313, 69, 116);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 84, 19826, 0, 429, 274, 391, 86, 145);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 85, 24783, 0, 536, 343, 489, 108, 181);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 86, 30979, 0, 670, 429, 611, 135, 226);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 87, 38724, 0, 838, 536, 764, 169, 283);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 88, 48405, 0, 1048, 670, 955, 211, 354);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 89, 60506, 0, 1310, 838, 1194, 264, 443);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 90, 75633, 0, 1638, 1048, 1493, 330, 554);
+DELETE FROM `player_class_stats` WHERE `Class`=6 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (6, 91, 94541, 0, 2048, 1310, 1866, 413, 693);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 81, 8674, 5495, 150, 93, 170, 160, 179);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 82, 10843, 6869, 188, 116, 213, 200, 224);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 83, 13554, 8586, 235, 145, 266, 250, 280);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 84, 16943, 10733, 294, 181, 333, 313, 350);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 85, 21179, 13416, 368, 226, 416, 391, 438);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 86, 26474, 16770, 460, 283, 520, 489, 548);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 87, 33093, 20963, 575, 354, 650, 611, 685);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 88, 41366, 26204, 719, 443, 813, 764, 856);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 89, 51708, 32755, 899, 554, 1016, 955, 1070);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 90, 64635, 40944, 1124, 693, 1270, 1194, 1338);
+DELETE FROM `player_class_stats` WHERE `Class`=7 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (7, 91, 80794, 51180, 1405, 866, 1588, 1493, 1673);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 81, 8704, 4085, 45, 54, 74, 226, 218);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 82, 10880, 5106, 56, 68, 93, 283, 273);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 83, 13600, 6383, 70, 85, 116, 354, 341);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 84, 17000, 7979, 88, 106, 145, 443, 426);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 85, 21250, 9974, 110, 133, 181, 554, 533);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 86, 26563, 12468, 138, 166, 226, 693, 666);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 87, 33204, 15585, 173, 208, 283, 866, 833);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 88, 41505, 19481, 216, 260, 354, 1083, 1041);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 89, 51881, 24351, 270, 325, 443, 1354, 1301);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 90, 64851, 30439, 338, 406, 554, 1693, 1626);
+DELETE FROM `player_class_stats` WHERE `Class`=8 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (8, 91, 81064, 38049, 423, 508, 693, 2116, 2033);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 81, 8920, 4820, 74, 84, 111, 199, 208);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 82, 11150, 6025, 93, 105, 139, 249, 260);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 83, 13938, 7531, 116, 131, 174, 311, 325);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 84, 17423, 9414, 145, 164, 218, 389, 406);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 85, 21779, 11768, 181, 205, 273, 486, 508);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 86, 27224, 14710, 226, 256, 341, 608, 635);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 87, 34030, 18388, 283, 320, 426, 760, 794);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 88, 42538, 22985, 354, 400, 533, 950, 993);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 89, 53173, 28731, 443, 500, 666, 1188, 1241);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 90, 66466, 35914, 554, 625, 833, 1485, 1551);
+DELETE FROM `player_class_stats` WHERE `Class`=9 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (9, 91, 83083, 44893, 693, 781, 1041, 1856, 1939);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=81;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 81, 9271, 4370, 111, 103, 123, 179, 199);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=82;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 82, 11589, 5463, 139, 129, 154, 224, 249);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=83;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 83, 14486, 6829, 174, 161, 193, 280, 311);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=84;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 84, 18108, 8536, 218, 201, 241, 350, 389);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=85;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 85, 22635, 10670, 273, 251, 301, 438, 486);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=86;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 86, 28294, 13338, 341, 314, 376, 548, 608);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=87;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 87, 35368, 16673, 426, 393, 470, 685, 760);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=88;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 88, 44210, 20841, 533, 491, 588, 856, 950);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=89;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 89, 55263, 26051, 666, 614, 735, 1070, 1188);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=90;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 90, 69079, 32564, 833, 768, 919, 1338, 1485);
+DELETE FROM `player_class_stats` WHERE `Class`=11 AND `Level`=91;
+INSERT INTO `player_class_stats` (`Class`, `Level`, `BaseHP`, `BaseMana`, `Strength`, `Agility`, `Stamina`, `Intellect`, `Spirit`) VALUES (11, 91, 86349, 40705, 1041, 960, 1149, 1673, 1856);

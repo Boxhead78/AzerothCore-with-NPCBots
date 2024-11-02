@@ -1,51 +1,220 @@
-INSERT INTO acore_world.player_classlevelstats (class,`level`,basehp,basemana) VALUES
-(1,81,24363,0),
-(1,82,36544,0),
-(1,83,54816,0),
-(1,84,82225,0),
-(1,85,123337,0),
-(2,81,20802,13182),
-(2,82,31203,19773),
-(2,83,46804,29659),
-(2,84,70206,44489),
-(2,85,105310,66733),
-(3,81,21972,15138),
-(3,82,32958,22707),
-(3,83,49437,34060),
-(3,84,74155,51090),
-(3,85,111233,76636),
-(4,81,22812,0),
-(4,82,34218,0),
-(4,83,51327,0),
-(4,84,76990,0),
-(4,85,115485,0),
-(5,81,20880,11589),
-(5,82,31320,17383),
-(5,83,46980,26075),
-(5,84,70470,39112),
-(5,85,105705,58669),
-(6,81,24363,0),
-(6,82,36544,0),
-(6,83,54816,0),
-(6,84,82225,0),
-(6,85,123337,0),
-(7,81,20817,13188),
-(7,82,31225,19782),
-(7,83,46838,29673),
-(7,84,70257,44509),
-(7,85,105386,66764),
-(8,81,20889,9804),
-(8,82,31333,14706),
-(8,83,47000,22059),
-(8,84,70500,33088),
-(8,85,105750,49632),
-(9,81,21408,11568),
-(9,82,32112,17352),
-(9,83,48168,26028),
-(9,84,72252,39042),
-(9,85,108378,58563),
-(11,81,22251,10488),
-(11,82,33376,15732),
-(11,83,50064,23598),
-(11,84,75097,35397),
-(11,85,112645,53095);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 81, 10151, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 82, 12689, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 83, 15861, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 84, 19826, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 85, 24783, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 86, 30979, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 87, 38724, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 88, 48405, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 89, 60506, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 90, 75633, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=1 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (1, 91, 94541, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 81, 8668, 5493);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 82, 10835, 6866);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 83, 13544, 8583);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 84, 16930, 10729);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 85, 21163, 13411);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 86, 26454, 16764);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 87, 33068, 20955);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 88, 41335, 26194);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 89, 51669, 32743);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 90, 64586, 40929);
+DELETE FROM `player_classlevelstats` WHERE `class`=2 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (2, 91, 80733, 51161);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 81, 9155, 6308);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 82, 11444, 7885);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 83, 14305, 9856);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 84, 17881, 12320);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 85, 22351, 15400);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 86, 27939, 19250);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 87, 34924, 24063);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 88, 43655, 30079);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 89, 54569, 37599);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 90, 68211, 46999);
+DELETE FROM `player_classlevelstats` WHERE `class`=3 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (3, 91, 85264, 58749);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 81, 9505, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 82, 11881, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 83, 14851, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 84, 18564, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 85, 23205, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 86, 29006, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 87, 36258, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 88, 45323, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 89, 56654, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 90, 70818, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=4 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (4, 91, 88523, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 81, 8700, 4829);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 82, 10875, 6036);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 83, 13594, 7545);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 84, 16993, 9431);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 85, 21241, 11789);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 86, 26551, 14736);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 87, 33189, 18420);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 88, 41486, 23025);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 89, 51858, 28781);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 90, 64823, 35976);
+DELETE FROM `player_classlevelstats` WHERE `class`=5 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (5, 91, 81029, 44970);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 81, 10151, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 82, 12689, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 83, 15861, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 84, 19826, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 85, 24783, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 86, 30979, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 87, 38724, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 88, 48405, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 89, 60506, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 90, 75633, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=6 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (6, 91, 94541, 0);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 81, 8674, 5495);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 82, 10843, 6869);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 83, 13554, 8586);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 84, 16943, 10733);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 85, 21179, 13416);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 86, 26474, 16770);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 87, 33093, 20963);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 88, 41366, 26204);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 89, 51708, 32755);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 90, 64635, 40944);
+DELETE FROM `player_classlevelstats` WHERE `class`=7 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (7, 91, 80794, 51180);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 81, 8704, 4085);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 82, 10880, 5106);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 83, 13600, 6383);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 84, 17000, 7979);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 85, 21250, 9974);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 86, 26563, 12468);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 87, 33204, 15585);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 88, 41505, 19481);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 89, 51881, 24351);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 90, 64851, 30439);
+DELETE FROM `player_classlevelstats` WHERE `class`=8 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (8, 91, 81064, 38049);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 81, 8920, 4820);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 82, 11150, 6025);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 83, 13938, 7531);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 84, 17423, 9414);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 85, 21779, 11768);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 86, 27224, 14710);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 87, 34030, 18388);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 88, 42538, 22985);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 89, 53173, 28731);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 90, 66466, 35914);
+DELETE FROM `player_classlevelstats` WHERE `class`=9 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (9, 91, 83083, 44893);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=81;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 81, 9271, 4370);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=82;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 82, 11589, 5463);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=83;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 83, 14486, 6829);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=84;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 84, 18108, 8536);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=85;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 85, 22635, 10670);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=86;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 86, 28294, 13338);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=87;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 87, 35368, 16673);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=88;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 88, 44210, 20841);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=89;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 89, 55263, 26051);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=90;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 90, 69079, 32564);
+DELETE FROM `player_classlevelstats` WHERE `class`=11 AND `level`=91;
+INSERT INTO `player_classlevelstats` (`class`, `level`, `basehp`, `basemana`) VALUES (11, 91, 86349, 40705);

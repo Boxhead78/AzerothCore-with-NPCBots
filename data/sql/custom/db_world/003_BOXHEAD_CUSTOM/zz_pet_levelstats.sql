@@ -1,176 +1,770 @@
-INSERT INTO acore_world.pet_levelstats (creature_entry,`level`,hp,mana,armor,str,agi,sta,inte,spi,min_dmg,max_dmg) VALUES
-(1,81,5161,3,29352,576,474,1068,210,345,0,0),
-(1,82,5161,4,44028,864,711,1602,315,517,0,0),
-(1,83,5161,6,66042,1296,1066,2403,472,775,0,0),
-(1,84,5161,9,99063,1944,1599,3604,708,1162,0,0),
-(1,85,5161,13,148594,2916,2398,5406,1062,1743,0,0),
-(89,81,25261,10854,48444,942,270,984,450,627,3789,5304),
-(89,82,25261,16281,72666,1413,405,1476,675,940,5683,7956),
-(89,83,25261,24421,108999,2119,607,2214,1012,1410,8524,11934),
-(89,84,25261,36631,163498,3178,910,3321,1518,2115,12786,17901),
-(89,85,25261,54946,245247,4767,1365,4981,2277,3172,19179,26851),
-(329,81,8000,6846,3300,240,126,354,1212,1380,0,0),
-(329,82,8000,10269,4950,360,189,531,1818,2070,0,0),
-(329,83,8000,15403,7425,540,283,796,2727,3105,0,0),
-(329,84,8000,23104,11137,810,424,1194,4090,4657,0,0),
-(329,85,8000,34656,16705,1215,636,1791,6135,6985,0,0),
-(416,81,3867,8724,18819,891,237,354,1107,1101,915,1374),
-(416,82,3867,13086,28228,1336,355,531,1660,1651,1372,2061),
-(416,83,3867,19629,42342,2004,532,796,2490,2476,2058,3091),
-(416,84,3867,29443,63513,3006,798,1194,3735,3714,3087,4636),
-(416,85,3867,44164,95269,4509,1197,1791,5602,5571,4630,6954),
-(417,81,4787,9231,23346,942,270,984,450,627,738,1137),
-(417,82,4787,13846,35019,1413,405,1476,675,940,1107,1705),
-(417,83,4787,20769,52528,2119,607,2214,1012,1410,1660,2557),
-(417,84,4787,31153,78792,3178,910,3321,1518,2115,2490,3835),
-(417,85,4787,46729,118188,4767,1365,4981,2277,3172,3735,5752),
-(510,81,7561,8724,23346,609,477,354,1107,720,0,0),
-(510,82,7561,13086,35019,913,715,531,1660,1080,0,0),
-(510,83,7561,19629,52528,1369,1072,796,2490,1620,0,0),
-(510,84,7561,29443,78792,2053,1608,1194,3735,2430,0,0),
-(510,85,7561,44164,118188,3079,2412,1791,5602,3645,0,0),
-(575,81,7164,16488,0,579,459,270,1050,684,0,0),
-(575,82,7164,24732,0,868,688,405,1575,1026,0,0),
-(575,83,7164,37098,0,1302,1032,607,2362,1539,0,0),
-(575,84,7164,55647,0,1953,1548,910,3543,2308,0,0),
-(575,85,7164,83470,0,2929,2322,1365,5314,3462,0,0),
-(1860,81,5428,9231,48444,942,270,984,450,627,813,1242),
-(1860,82,5428,13846,72666,1413,405,1476,675,940,1219,1863),
-(1860,83,5428,20769,108999,2119,607,2214,1012,1410,1828,2794),
-(1860,84,5428,31153,163498,3178,910,3321,1518,2115,2742,4191),
-(1860,85,5428,46729,245247,4767,1365,4981,2277,3172,4113,6286),
-(1863,81,4567,9231,29118,942,270,984,450,627,1050,1572),
-(1863,82,4567,13846,43677,1413,405,1476,675,940,1575,2358),
-(1863,83,4567,20769,65515,2119,607,2214,1012,1410,2362,3537),
-(1863,84,4567,31153,98272,3178,910,3321,1518,2115,3543,5305),
-(1863,85,4567,46729,147408,4767,1365,4981,2277,3172,5314,7957),
-(3450,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(3450,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(3450,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(3450,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(3450,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(3939,81,7320,15510,30261,531,411,1083,432,438,0,0),
-(3939,82,7320,23265,45391,796,616,1624,648,657,0,0),
-(3939,83,7320,34897,68086,1194,924,2436,972,985,0,0),
-(3939,84,7320,52345,102129,1791,1386,3654,1458,1477,0,0),
-(3939,85,7320,78517,153193,2686,2079,5481,2187,2215,0,0),
-(5058,81,5161,3,29352,576,474,1068,210,345,0,0),
-(5058,82,5161,4,44028,864,711,1602,315,517,0,0),
-(5058,83,5161,6,66042,1296,1066,2403,472,775,0,0),
-(5058,84,5161,9,99063,1944,1599,3604,708,1162,0,0),
-(5058,85,5161,13,148594,2916,2398,5406,1062,1743,0,0),
-(5766,81,5161,3,29352,576,474,1068,210,345,0,0),
-(5766,82,5161,4,44028,864,711,1602,315,517,0,0),
-(5766,83,5161,6,66042,1296,1066,2403,472,775,0,0),
-(5766,84,5161,9,99063,1944,1599,3604,708,1162,0,0),
-(5766,85,5161,13,148594,2916,2398,5406,1062,1743,0,0),
-(6250,81,5161,3,29352,576,474,1068,210,345,0,0),
-(6250,82,5161,4,44028,864,711,1602,315,517,0,0),
-(6250,83,5161,6,66042,1296,1066,2403,472,775,0,0),
-(6250,84,5161,9,99063,1944,1599,3604,708,1162,0,0),
-(6250,85,5161,13,148594,2916,2398,5406,1062,1743,0,0),
-(8477,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(8477,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(8477,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(8477,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(8477,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(8996,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(8996,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(8996,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(8996,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(8996,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(10928,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(10928,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(10928,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(10928,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(10928,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(10979,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(10979,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(10979,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(10979,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(10979,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(12922,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(12922,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(12922,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(12922,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(12922,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(14385,81,4665,6558,20979,543,294,285,309,270,0,0),
-(14385,82,4665,9837,31468,814,441,427,463,405,0,0),
-(14385,83,4665,14755,47202,1221,661,640,694,607,0,0),
-(14385,84,4665,22132,70803,1831,991,960,1041,910,0,0),
-(14385,85,4665,33198,106204,2746,1486,1440,1561,1365,0,0),
-(15214,81,7320,15510,30261,531,411,1083,432,438,0,0),
-(15214,82,7320,23265,45391,796,616,1624,648,657,0,0),
-(15214,83,7320,34897,68086,1194,924,2436,972,985,0,0),
-(15214,84,7320,52345,102129,1791,1386,3654,1458,1477,0,0),
-(15214,85,7320,78517,153193,2686,2079,5481,2187,2215,0,0),
-(15352,81,8000,0,27000,783,270,486,495,1380,0,0),
-(15352,82,8000,0,40500,1174,405,729,742,2070,0,0),
-(15352,83,8000,0,60750,1761,607,1093,1113,3105,0,0),
-(15352,84,8000,0,91125,2641,910,1639,1669,4657,0,0),
-(15352,85,8000,0,136687,3961,1365,2458,2503,6985,0,0),
-(15438,81,8000,6840,3300,849,480,375,1215,1380,0,0),
-(15438,82,8000,10260,4950,1273,720,562,1822,2070,0,0),
-(15438,83,8000,15390,7425,1909,1080,843,2733,3105,0,0),
-(15438,84,8000,23085,11137,2863,1620,1264,4099,4657,0,0),
-(15438,85,8000,34627,16705,4294,2430,1896,6148,6985,0,0),
-(17252,81,5428,9231,42099,942,270,984,450,627,987,1485),
-(17252,82,5428,13846,63148,1413,405,1476,675,940,1480,2227),
-(17252,83,5428,20769,94722,2119,607,2214,1012,1410,2220,3340),
-(17252,84,5428,31153,142083,3178,910,3321,1518,2115,3330,5010),
-(17252,85,5428,46729,213124,4767,1365,4981,2277,3172,4995,7515),
-(19668,81,2937,16488,0,657,459,270,1050,684,0,0),
-(19668,82,2937,24732,0,985,688,405,1575,1026,0,0),
-(19668,83,2937,37098,0,1477,1032,607,2362,1539,0,0),
-(19668,84,2937,55647,0,2215,1548,910,3543,2308,0,0),
-(19668,85,2937,83470,0,3322,2322,1365,5314,3462,0,0),
-(22362,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(22362,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(22362,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(22362,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(22362,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(24476,81,5161,3,29352,576,474,1068,210,345,0,0),
-(24476,82,5161,4,44028,864,711,1602,315,517,0,0),
-(24476,83,5161,6,66042,1296,1066,2403,472,775,0,0),
-(24476,84,5161,9,99063,1944,1599,3604,708,1162,0,0),
-(24476,85,5161,13,148594,2916,2398,5406,1062,1743,0,0),
-(24656,81,7320,15510,30261,531,411,1083,432,438,0,0),
-(24656,82,7320,23265,45391,796,616,1624,648,657,0,0),
-(24656,83,7320,34897,68086,1194,924,2436,972,985,0,0),
-(24656,84,7320,52345,102129,1791,1386,3654,1458,1477,0,0),
-(24656,85,7320,78517,153193,2686,2079,5481,2187,2215,0,0),
-(24815,81,1314,6756,0,783,150,486,1410,1380,0,0),
-(24815,82,1314,10134,0,1174,225,729,2115,2070,0,0),
-(24815,83,1314,15201,0,1761,337,1093,3172,3105,0,0),
-(24815,84,1314,22801,0,2641,505,1639,4758,4657,0,0),
-(24815,85,1314,34201,0,3961,757,2458,7137,6985,0,0),
-(25553,81,7320,15510,30261,531,411,1083,432,438,0,0),
-(25553,82,7320,23265,45391,796,616,1624,648,657,0,0),
-(25553,83,7320,34897,68086,1194,924,2436,972,985,0,0),
-(25553,84,7320,52345,102129,1791,1386,3654,1458,1477,0,0),
-(25553,85,7320,78517,153193,2686,2079,5481,2187,2215,0,0),
-(25566,81,7320,15510,30261,531,411,1083,432,438,0,0),
-(25566,82,7320,23265,45391,796,616,1624,648,657,0,0),
-(25566,83,7320,34897,68086,1194,924,2436,972,985,0,0),
-(25566,84,7320,52345,102129,1791,1386,3654,1458,1477,0,0),
-(25566,85,7320,78517,153193,2686,2079,5481,2187,2215,0,0),
-(26101,81,1379,6840,0,546,126,366,1212,1380,0,0),
-(26101,82,1379,10260,0,819,189,549,1818,2070,0,0),
-(26101,83,1379,15390,0,1228,283,823,2727,3105,0,0),
-(26101,84,1379,23085,0,1842,424,1234,4090,4657,0,0),
-(26101,85,1379,34627,0,2763,636,1851,6135,6985,0,0),
-(26125,81,4665,6558,20979,993,741,1083,309,270,0,0),
-(26125,82,4665,9837,31468,1489,1111,1624,463,405,0,0),
-(26125,83,4665,14755,47202,2233,1666,2436,694,607,0,0),
-(26125,84,4665,22132,70803,3349,2499,3654,1041,910,0,0),
-(26125,85,4665,33198,106204,5023,3748,5481,1561,1365,0,0),
-(30230,81,4665,6558,20979,993,741,1083,309,270,0,0),
-(30230,82,4665,9837,31468,1489,1111,1624,463,405,0,0),
-(30230,83,4665,14755,47202,2233,1666,2436,694,607,0,0),
-(30230,84,4665,22132,70803,3349,2499,3654,1041,910,0,0),
-(30230,85,4665,33198,106204,5023,3748,5481,1561,1365,0,0),
-(37994,81,7561,8724,23346,609,477,354,1107,720,0,0),
-(37994,82,7561,13086,35019,913,715,531,1660,1080,0,0),
-(37994,83,7561,19629,52528,1369,1072,796,2490,1620,0,0),
-(37994,84,7561,29443,78792,2053,1608,1194,3735,2430,0,0),
-(37994,85,7561,44164,118188,3079,2412,1791,5602,3645,0,0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 81, 6451, 1, 12230, 240, 198, 445, 88, 144, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 82, 8064, 1, 15288, 300, 248, 556, 110, 180, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 83, 10080, 1, 19110, 375, 310, 695, 138, 225, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 84, 12600, 1, 23888, 469, 388, 869, 173, 281, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 85, 15750, 1, 29860, 586, 485, 1086, 216, 351, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 86, 19688, 1, 37325, 733, 606, 1358, 270, 439, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 87, 24610, 1, 46656, 916, 758, 1698, 338, 549, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 88, 30763, 1, 58320, 1145, 948, 2123, 423, 686, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 89, 38454, 1, 72900, 1431, 1185, 2654, 529, 858, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 90, 48068, 1, 91125, 1789, 1481, 3318, 661, 1073, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1, 91, 60085, 1, 113906, 2236, 1851, 4148, 826, 1341, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 81, 31576, 4523, 20185, 393, 113, 410, 188, 261, 1579, 2210);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 82, 39470, 5654, 25231, 491, 141, 513, 235, 326, 1974, 2763);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 83, 49338, 7068, 31539, 614, 176, 641, 294, 408, 2468, 3454);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 84, 61673, 8835, 39424, 768, 220, 801, 368, 510, 3085, 4318);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 85, 77091, 11044, 49280, 960, 275, 1001, 460, 638, 3856, 5398);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 86, 96364, 13805, 61600, 1200, 344, 1251, 575, 798, 4820, 6748);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 87, 120455, 17256, 77000, 1500, 430, 1564, 719, 998, 6025, 8435);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 88, 150569, 21570, 96250, 1875, 538, 1955, 899, 1248, 7531, 10544);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 89, 188211, 26963, 120313, 2344, 673, 2444, 1124, 1560, 9414, 13180);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 90, 235264, 33704, 150391, 2930, 841, 3055, 1405, 1950, 11768, 16475);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=89 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (89, 91, 294080, 42130, 187989, 3663, 1051, 3819, 1756, 2438, 14710, 20594);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 81, 10000, 2853, 1375, 100, 53, 148, 505, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 82, 12500, 3566, 1719, 125, 66, 185, 631, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 83, 15625, 4458, 2149, 156, 83, 231, 789, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 84, 19531, 5573, 2686, 195, 104, 289, 986, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 85, 24414, 6966, 3358, 244, 130, 361, 1233, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 86, 30518, 8708, 4198, 305, 163, 451, 1541, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 87, 38148, 10885, 5248, 381, 204, 564, 1926, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 88, 47685, 13606, 6560, 476, 255, 705, 2408, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 89, 59606, 17008, 8200, 595, 319, 881, 3010, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 90, 74508, 21260, 10250, 744, 399, 1101, 3763, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=329 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (329, 91, 93135, 26575, 12813, 930, 499, 1376, 4704, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 81, 4834, 3635, 7841, 371, 99, 148, 461, 459, 381, 573);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 82, 6043, 4544, 9801, 464, 124, 185, 576, 574, 476, 716);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 83, 7554, 5680, 12251, 580, 155, 231, 720, 718, 595, 895);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 84, 9443, 7100, 15314, 725, 194, 289, 900, 898, 744, 1119);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 85, 11804, 8875, 19143, 906, 243, 361, 1125, 1123, 930, 1399);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 86, 14755, 11094, 23929, 1133, 304, 451, 1406, 1404, 1163, 1749);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 87, 18444, 13868, 29911, 1416, 380, 564, 1758, 1755, 1454, 2186);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 88, 23055, 17335, 37389, 1770, 475, 705, 2198, 2194, 1818, 2733);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 89, 28819, 21669, 46736, 2213, 594, 881, 2748, 2743, 2273, 3416);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 90, 36024, 27086, 58420, 2766, 743, 1101, 3435, 3429, 2841, 4270);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=416 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (416, 91, 45030, 33858, 73025, 3458, 929, 1376, 4294, 4286, 3551, 5338);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 81, 5984, 3846, 9728, 393, 113, 410, 188, 261, 308, 474);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 82, 7480, 4808, 12160, 491, 141, 513, 235, 326, 385, 593);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 83, 9350, 6010, 15200, 614, 176, 641, 294, 408, 481, 741);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 84, 11688, 7513, 19000, 768, 220, 801, 368, 510, 601, 926);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 85, 14610, 9391, 23750, 960, 275, 1001, 460, 638, 751, 1158);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 86, 18263, 11739, 29688, 1200, 344, 1251, 575, 798, 939, 1448);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 87, 22829, 14674, 37110, 1500, 430, 1564, 719, 998, 1174, 1810);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 88, 28536, 18343, 46388, 1875, 538, 1955, 899, 1248, 1468, 2263);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 89, 35670, 22929, 57985, 2344, 673, 2444, 1124, 1560, 1835, 2829);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 90, 44588, 28661, 72481, 2930, 841, 3055, 1405, 1950, 2294, 3536);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=417 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (417, 91, 55735, 35826, 90601, 3663, 1051, 3819, 1756, 2438, 2868, 4420);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 81, 9451, 3635, 9728, 254, 199, 148, 461, 300, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 82, 11814, 4544, 12160, 318, 249, 185, 576, 375, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 83, 14768, 5680, 15200, 398, 311, 231, 720, 469, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 84, 18460, 7100, 19000, 498, 389, 289, 900, 586, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 85, 23075, 8875, 23750, 623, 486, 361, 1125, 733, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 86, 28844, 11094, 29688, 779, 608, 451, 1406, 916, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 87, 36055, 13868, 37110, 974, 760, 564, 1758, 1145, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 88, 45069, 17335, 46388, 1218, 950, 705, 2198, 1431, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 89, 56336, 21669, 57985, 1523, 1188, 881, 2748, 1789, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 90, 70420, 27086, 72481, 1904, 1485, 1101, 3435, 2236, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=510 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (510, 91, 88025, 33858, 90601, 2380, 1856, 1376, 4294, 2795, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 81, 8955, 6870, 0, 241, 191, 113, 438, 285, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 82, 11194, 8588, 0, 301, 239, 141, 548, 356, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 83, 13993, 10735, 0, 376, 299, 176, 685, 445, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 84, 17491, 13419, 0, 470, 374, 220, 856, 556, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 85, 21864, 16774, 0, 588, 468, 275, 1070, 695, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 86, 27330, 20968, 0, 735, 585, 344, 1338, 869, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 87, 34163, 26210, 0, 919, 731, 430, 1673, 1086, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 88, 42704, 32763, 0, 1149, 914, 538, 2091, 1358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 89, 53380, 40954, 0, 1436, 1143, 673, 2614, 1698, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 90, 66725, 51193, 0, 1795, 1429, 841, 3268, 2123, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=575 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (575, 91, 83406, 63991, 0, 2244, 1786, 1051, 4085, 2654, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 81, 6785, 3846, 20185, 393, 113, 410, 188, 261, 339, 518);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 82, 8481, 4808, 25231, 491, 141, 513, 235, 326, 424, 648);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 83, 10601, 6010, 31539, 614, 176, 641, 294, 408, 530, 810);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 84, 13251, 7513, 39424, 768, 220, 801, 368, 510, 663, 1013);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 85, 16564, 9391, 49280, 960, 275, 1001, 460, 638, 829, 1266);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 86, 20705, 11739, 61600, 1200, 344, 1251, 575, 798, 1036, 1583);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 87, 25881, 14674, 77000, 1500, 430, 1564, 719, 998, 1295, 1979);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 88, 32351, 18343, 96250, 1875, 538, 1955, 899, 1248, 1619, 2474);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 89, 40439, 22929, 120313, 2344, 673, 2444, 1124, 1560, 2024, 3093);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 90, 50549, 28661, 150391, 2930, 841, 3055, 1405, 1950, 2530, 3866);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1860 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1860, 91, 63186, 35826, 187989, 3663, 1051, 3819, 1756, 2438, 3163, 4833);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 81, 5709, 3846, 12133, 393, 113, 410, 188, 261, 438, 655);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 82, 7136, 4808, 15166, 491, 141, 513, 235, 326, 548, 819);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 83, 8920, 6010, 18958, 614, 176, 641, 294, 408, 685, 1024);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 84, 11150, 7513, 23698, 768, 220, 801, 368, 510, 856, 1280);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 85, 13938, 9391, 29623, 960, 275, 1001, 460, 638, 1070, 1600);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 86, 17423, 11739, 37029, 1200, 344, 1251, 575, 798, 1338, 2000);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 87, 21779, 14674, 46286, 1500, 430, 1564, 719, 998, 1673, 2500);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 88, 27224, 18343, 57858, 1875, 538, 1955, 899, 1248, 2091, 3125);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 89, 34030, 22929, 72323, 2344, 673, 2444, 1124, 1560, 2614, 3906);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 90, 42538, 28661, 90404, 2930, 841, 3055, 1405, 1950, 3268, 4883);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=1863 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (1863, 91, 53173, 35826, 113005, 3663, 1051, 3819, 1756, 2438, 4085, 6104);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3450 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3450, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 81, 9150, 6463, 12609, 221, 171, 451, 180, 183, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 82, 11438, 8079, 15761, 276, 214, 564, 225, 229, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 83, 14298, 10099, 19701, 345, 268, 705, 281, 286, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 84, 17873, 12624, 24626, 431, 335, 881, 351, 358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 85, 22341, 15780, 30783, 539, 419, 1101, 439, 448, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 86, 27926, 19725, 38479, 674, 524, 1376, 549, 560, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 87, 34908, 24656, 48099, 843, 655, 1720, 686, 700, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 88, 43635, 30820, 60124, 1054, 819, 2150, 858, 875, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 89, 54544, 38525, 75155, 1318, 1024, 2688, 1073, 1094, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 90, 68180, 48156, 93944, 1648, 1280, 3360, 1341, 1368, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=3939 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (3939, 91, 85225, 60195, 117430, 2060, 1600, 4200, 1676, 1710, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 81, 6451, 1, 12230, 240, 198, 445, 88, 144, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 82, 8064, 1, 15288, 300, 248, 556, 110, 180, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 83, 10080, 1, 19110, 375, 310, 695, 138, 225, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 84, 12600, 1, 23888, 469, 388, 869, 173, 281, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 85, 15750, 1, 29860, 586, 485, 1086, 216, 351, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 86, 19688, 1, 37325, 733, 606, 1358, 270, 439, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 87, 24610, 1, 46656, 916, 758, 1698, 338, 549, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 88, 30763, 1, 58320, 1145, 948, 2123, 423, 686, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 89, 38454, 1, 72900, 1431, 1185, 2654, 529, 858, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 90, 48068, 1, 91125, 1789, 1481, 3318, 661, 1073, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5058 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5058, 91, 60085, 1, 113906, 2236, 1851, 4148, 826, 1341, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 81, 6451, 1, 12230, 240, 198, 445, 88, 144, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 82, 8064, 1, 15288, 300, 248, 556, 110, 180, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 83, 10080, 1, 19110, 375, 310, 695, 138, 225, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 84, 12600, 1, 23888, 469, 388, 869, 173, 281, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 85, 15750, 1, 29860, 586, 485, 1086, 216, 351, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 86, 19688, 1, 37325, 733, 606, 1358, 270, 439, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 87, 24610, 1, 46656, 916, 758, 1698, 338, 549, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 88, 30763, 1, 58320, 1145, 948, 2123, 423, 686, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 89, 38454, 1, 72900, 1431, 1185, 2654, 529, 858, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 90, 48068, 1, 91125, 1789, 1481, 3318, 661, 1073, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=5766 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (5766, 91, 60085, 1, 113906, 2236, 1851, 4148, 826, 1341, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 81, 6451, 1, 12230, 240, 198, 445, 88, 144, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 82, 8064, 1, 15288, 300, 248, 556, 110, 180, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 83, 10080, 1, 19110, 375, 310, 695, 138, 225, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 84, 12600, 1, 23888, 469, 388, 869, 173, 281, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 85, 15750, 1, 29860, 586, 485, 1086, 216, 351, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 86, 19688, 1, 37325, 733, 606, 1358, 270, 439, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 87, 24610, 1, 46656, 916, 758, 1698, 338, 549, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 88, 30763, 1, 58320, 1145, 948, 2123, 423, 686, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 89, 38454, 1, 72900, 1431, 1185, 2654, 529, 858, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 90, 48068, 1, 91125, 1789, 1481, 3318, 661, 1073, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=6250 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (6250, 91, 60085, 1, 113906, 2236, 1851, 4148, 826, 1341, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8477 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8477, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=8996 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (8996, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10928 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10928, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=10979 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (10979, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=12922 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (12922, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 81, 5831, 2733, 8741, 226, 123, 119, 129, 113, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 82, 7289, 3416, 10926, 283, 154, 149, 161, 141, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 83, 9111, 4270, 13658, 354, 193, 186, 201, 176, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 84, 11389, 5338, 17073, 443, 241, 233, 251, 220, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 85, 14236, 6673, 21341, 554, 301, 291, 314, 275, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 86, 17795, 8341, 26676, 693, 376, 364, 393, 344, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 87, 22244, 10426, 33345, 866, 470, 455, 491, 430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 88, 27805, 13033, 41681, 1083, 588, 569, 614, 538, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 89, 34756, 16291, 52101, 1354, 735, 711, 768, 673, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 90, 43445, 20364, 65126, 1693, 919, 889, 960, 841, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=14385 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (14385, 91, 54306, 25455, 81408, 2116, 1149, 1111, 1200, 1051, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 81, 9150, 6463, 12609, 221, 171, 451, 180, 183, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 82, 11438, 8079, 15761, 276, 214, 564, 225, 229, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 83, 14298, 10099, 19701, 345, 268, 705, 281, 286, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 84, 17873, 12624, 24626, 431, 335, 881, 351, 358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 85, 22341, 15780, 30783, 539, 419, 1101, 439, 448, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 86, 27926, 19725, 38479, 674, 524, 1376, 549, 560, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 87, 34908, 24656, 48099, 843, 655, 1720, 686, 700, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 88, 43635, 30820, 60124, 1054, 819, 2150, 858, 875, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 89, 54544, 38525, 75155, 1318, 1024, 2688, 1073, 1094, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 90, 68180, 48156, 93944, 1648, 1280, 3360, 1341, 1368, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15214 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15214, 91, 85225, 60195, 117430, 2060, 1600, 4200, 1676, 1710, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 81, 10000, 0, 11250, 326, 113, 203, 206, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 82, 12500, 0, 14063, 408, 141, 254, 258, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 83, 15625, 0, 17579, 510, 176, 318, 323, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 84, 19531, 0, 21974, 638, 220, 398, 404, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 85, 24414, 0, 27468, 798, 275, 498, 505, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 86, 30518, 0, 34335, 998, 344, 623, 631, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 87, 38148, 0, 42919, 1248, 430, 779, 789, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 88, 47685, 0, 53649, 1560, 538, 974, 986, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 89, 59606, 0, 67061, 1950, 673, 1218, 1233, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 90, 74508, 0, 83826, 2438, 841, 1523, 1541, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15352 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15352, 91, 93135, 0, 104783, 3048, 1051, 1904, 1926, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 81, 10000, 2850, 1375, 354, 200, 156, 506, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 82, 12500, 3563, 1719, 443, 250, 195, 633, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 83, 15625, 4454, 2149, 554, 313, 244, 791, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 84, 19531, 5568, 2686, 693, 391, 305, 989, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 85, 24414, 6960, 3358, 866, 489, 381, 1236, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 86, 30518, 8700, 4198, 1083, 611, 476, 1545, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 87, 38148, 10875, 5248, 1354, 764, 595, 1931, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 88, 47685, 13594, 6560, 1693, 955, 744, 2414, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 89, 59606, 16993, 8200, 2116, 1194, 930, 3018, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 90, 74508, 21241, 10250, 2645, 1493, 1163, 3773, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=15438 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (15438, 91, 93135, 26551, 12813, 3306, 1866, 1454, 4716, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 81, 6785, 3846, 17541, 393, 113, 410, 188, 261, 411, 619);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 82, 8481, 4808, 21926, 491, 141, 513, 235, 326, 514, 774);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 83, 10601, 6010, 27408, 614, 176, 641, 294, 408, 643, 968);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 84, 13251, 7513, 34260, 768, 220, 801, 368, 510, 804, 1210);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 85, 16564, 9391, 42825, 960, 275, 1001, 460, 638, 1005, 1513);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 86, 20705, 11739, 53531, 1200, 344, 1251, 575, 798, 1256, 1891);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 87, 25881, 14674, 66914, 1500, 430, 1564, 719, 998, 1570, 2364);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 88, 32351, 18343, 83643, 1875, 538, 1955, 899, 1248, 1963, 2955);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 89, 40439, 22929, 104554, 2344, 673, 2444, 1124, 1560, 2454, 3694);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 90, 50549, 28661, 130693, 2930, 841, 3055, 1405, 1950, 3068, 4618);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=17252 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (17252, 91, 63186, 35826, 163366, 3663, 1051, 3819, 1756, 2438, 3835, 5773);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 81, 3671, 6870, 0, 274, 191, 113, 438, 285, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 82, 4589, 8588, 0, 343, 239, 141, 548, 356, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 83, 5736, 10735, 0, 429, 299, 176, 685, 445, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 84, 7170, 13419, 0, 536, 374, 220, 856, 556, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 85, 8963, 16774, 0, 670, 468, 275, 1070, 695, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 86, 11204, 20968, 0, 838, 585, 344, 1338, 869, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 87, 14005, 26210, 0, 1048, 731, 430, 1673, 1086, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 88, 17506, 32763, 0, 1310, 914, 538, 2091, 1358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 89, 21883, 40954, 0, 1638, 1143, 673, 2614, 1698, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 90, 27354, 51193, 0, 2048, 1429, 841, 3268, 2123, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=19668 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (19668, 91, 34193, 63991, 0, 2560, 1786, 1051, 4085, 2654, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=22362 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (22362, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 81, 6451, 1, 12230, 240, 198, 445, 88, 144, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 82, 8064, 1, 15288, 300, 248, 556, 110, 180, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 83, 10080, 1, 19110, 375, 310, 695, 138, 225, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 84, 12600, 1, 23888, 469, 388, 869, 173, 281, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 85, 15750, 1, 29860, 586, 485, 1086, 216, 351, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 86, 19688, 1, 37325, 733, 606, 1358, 270, 439, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 87, 24610, 1, 46656, 916, 758, 1698, 338, 549, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 88, 30763, 1, 58320, 1145, 948, 2123, 423, 686, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 89, 38454, 1, 72900, 1431, 1185, 2654, 529, 858, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 90, 48068, 1, 91125, 1789, 1481, 3318, 661, 1073, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24476 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24476, 91, 60085, 1, 113906, 2236, 1851, 4148, 826, 1341, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 81, 9150, 6463, 12609, 221, 171, 451, 180, 183, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 82, 11438, 8079, 15761, 276, 214, 564, 225, 229, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 83, 14298, 10099, 19701, 345, 268, 705, 281, 286, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 84, 17873, 12624, 24626, 431, 335, 881, 351, 358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 85, 22341, 15780, 30783, 539, 419, 1101, 439, 448, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 86, 27926, 19725, 38479, 674, 524, 1376, 549, 560, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 87, 34908, 24656, 48099, 843, 655, 1720, 686, 700, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 88, 43635, 30820, 60124, 1054, 819, 2150, 858, 875, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 89, 54544, 38525, 75155, 1318, 1024, 2688, 1073, 1094, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 90, 68180, 48156, 93944, 1648, 1280, 3360, 1341, 1368, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24656 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24656, 91, 85225, 60195, 117430, 2060, 1600, 4200, 1676, 1710, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 81, 1643, 2815, 0, 326, 63, 203, 588, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 82, 2054, 3519, 0, 408, 79, 254, 735, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 83, 2568, 4399, 0, 510, 99, 318, 919, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 84, 3210, 5499, 0, 638, 124, 398, 1149, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 85, 4013, 6874, 0, 798, 155, 498, 1436, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 86, 5016, 8593, 0, 998, 194, 623, 1795, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 87, 6270, 10741, 0, 1248, 243, 779, 2244, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 88, 7838, 13426, 0, 1560, 304, 974, 2805, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 89, 9798, 16783, 0, 1950, 380, 1218, 3506, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 90, 12248, 20979, 0, 2438, 475, 1523, 4383, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=24815 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (24815, 91, 15310, 26224, 0, 3048, 594, 1904, 5479, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 81, 9150, 6463, 12609, 221, 171, 451, 180, 183, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 82, 11438, 8079, 15761, 276, 214, 564, 225, 229, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 83, 14298, 10099, 19701, 345, 268, 705, 281, 286, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 84, 17873, 12624, 24626, 431, 335, 881, 351, 358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 85, 22341, 15780, 30783, 539, 419, 1101, 439, 448, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 86, 27926, 19725, 38479, 674, 524, 1376, 549, 560, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 87, 34908, 24656, 48099, 843, 655, 1720, 686, 700, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 88, 43635, 30820, 60124, 1054, 819, 2150, 858, 875, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 89, 54544, 38525, 75155, 1318, 1024, 2688, 1073, 1094, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 90, 68180, 48156, 93944, 1648, 1280, 3360, 1341, 1368, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25553 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25553, 91, 85225, 60195, 117430, 2060, 1600, 4200, 1676, 1710, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 81, 9150, 6463, 12609, 221, 171, 451, 180, 183, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 82, 11438, 8079, 15761, 276, 214, 564, 225, 229, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 83, 14298, 10099, 19701, 345, 268, 705, 281, 286, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 84, 17873, 12624, 24626, 431, 335, 881, 351, 358, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 85, 22341, 15780, 30783, 539, 419, 1101, 439, 448, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 86, 27926, 19725, 38479, 674, 524, 1376, 549, 560, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 87, 34908, 24656, 48099, 843, 655, 1720, 686, 700, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 88, 43635, 30820, 60124, 1054, 819, 2150, 858, 875, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 89, 54544, 38525, 75155, 1318, 1024, 2688, 1073, 1094, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 90, 68180, 48156, 93944, 1648, 1280, 3360, 1341, 1368, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=25566 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (25566, 91, 85225, 60195, 117430, 2060, 1600, 4200, 1676, 1710, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 81, 1724, 2850, 0, 228, 53, 153, 505, 575, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 82, 2155, 3563, 0, 285, 66, 191, 631, 719, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 83, 2694, 4454, 0, 356, 83, 239, 789, 899, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 84, 3368, 5568, 0, 445, 104, 299, 986, 1124, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 85, 4210, 6960, 0, 556, 130, 374, 1233, 1405, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 86, 5263, 8700, 0, 695, 163, 468, 1541, 1756, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 87, 6579, 10875, 0, 869, 204, 585, 1926, 2195, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 88, 8224, 13594, 0, 1086, 255, 731, 2408, 2744, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 89, 10280, 16993, 0, 1358, 319, 914, 3010, 3430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 90, 12850, 21241, 0, 1698, 399, 1143, 3763, 4288, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26101 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26101, 91, 16063, 26551, 0, 2123, 499, 1429, 4704, 5360, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 81, 5831, 2733, 8741, 414, 309, 451, 129, 113, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 82, 7289, 3416, 10926, 518, 386, 564, 161, 141, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 83, 9111, 4270, 13658, 648, 483, 705, 201, 176, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 84, 11389, 5338, 17073, 810, 604, 881, 251, 220, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 85, 14236, 6673, 21341, 1013, 755, 1101, 314, 275, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 86, 17795, 8341, 26676, 1266, 944, 1376, 393, 344, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 87, 22244, 10426, 33345, 1583, 1180, 1720, 491, 430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 88, 27805, 13033, 41681, 1979, 1475, 2150, 614, 538, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 89, 34756, 16291, 52101, 2474, 1844, 2688, 768, 673, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 90, 43445, 20364, 65126, 3093, 2305, 3360, 960, 841, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=26125 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (26125, 91, 54306, 25455, 81408, 3866, 2881, 4200, 1200, 1051, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 81, 5831, 2733, 8741, 414, 309, 451, 129, 113, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 82, 7289, 3416, 10926, 518, 386, 564, 161, 141, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 83, 9111, 4270, 13658, 648, 483, 705, 201, 176, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 84, 11389, 5338, 17073, 810, 604, 881, 251, 220, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 85, 14236, 6673, 21341, 1013, 755, 1101, 314, 275, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 86, 17795, 8341, 26676, 1266, 944, 1376, 393, 344, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 87, 22244, 10426, 33345, 1583, 1180, 1720, 491, 430, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 88, 27805, 13033, 41681, 1979, 1475, 2150, 614, 538, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 89, 34756, 16291, 52101, 2474, 1844, 2688, 768, 673, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 90, 43445, 20364, 65126, 3093, 2305, 3360, 960, 841, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=30230 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (30230, 91, 54306, 25455, 81408, 3866, 2881, 4200, 1200, 1051, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=81;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 81, 9451, 3635, 9728, 254, 199, 148, 461, 300, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=82;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 82, 11814, 4544, 12160, 318, 249, 185, 576, 375, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=83;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 83, 14768, 5680, 15200, 398, 311, 231, 720, 469, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=84;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 84, 18460, 7100, 19000, 498, 389, 289, 900, 586, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=85;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 85, 23075, 8875, 23750, 623, 486, 361, 1125, 733, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=86;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 86, 28844, 11094, 29688, 779, 608, 451, 1406, 916, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=87;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 87, 36055, 13868, 37110, 974, 760, 564, 1758, 1145, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=88;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 88, 45069, 17335, 46388, 1218, 950, 705, 2198, 1431, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=89;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 89, 56336, 21669, 57985, 1523, 1188, 881, 2748, 1789, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=90;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 90, 70420, 27086, 72481, 1904, 1485, 1101, 3435, 2236, 0, 0);
+DELETE FROM `pet_levelstats` WHERE `creature_entry`=37994 AND `level`=91;
+INSERT INTO `pet_levelstats` (`creature_entry`, `level`, `hp`, `mana`, `armor`, `str`, `agi`, `sta`, `inte`, `spi`, `min_dmg`, `max_dmg`) VALUES (37994, 91, 88025, 33858, 90601, 2380, 1856, 1376, 4294, 2795, 0, 0);
