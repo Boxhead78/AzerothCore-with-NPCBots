@@ -54,6 +54,13 @@ public:
                 maxPlayerLevel = 70;
             }
         }
+        else if (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_WOTLK_TIER_5))
+        {
+            if (sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL) > 80)
+            {
+                maxPlayerLevel = 80;
+            }
+        }
     }
     */
 
@@ -86,7 +93,9 @@ public:
         // Player is still in Vanilla content - give money at 60 level cap
         return ((!sIndividualProgression->hasPassedProgression(player, PROGRESSION_NAXX40) && player->GetLevel() == 60) ||
                 // Player is in TBC content - give money at 70 level cap
-                (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_TBC_TIER_5) && player->GetLevel() == 70));
+                (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_TBC_TIER_5) && player->GetLevel() == 70) ||
+                // Player is in WotLK content - give money at 80 level cap
+                (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_WOTLK_TIER_5) && player->GetLevel() == 80));
     }
 
     void OnAfterUpdateMaxHealth(Player* player, float& value) override
@@ -163,6 +172,15 @@ public:
         }
             // Player is in TBC content - do not give XP past level 70
         else if (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_TBC_TIER_5) && player->GetLevel() >= 70)
+        {
+            // Still award XP to pets - they won't be able to pass the player's level
+            Pet* pet = player->GetPet();
+            if (pet && xpSource == XPSOURCE_KILL)
+                pet->GivePetXP(player->GetGroup() ? amount / 2 : amount);
+            amount = 0;
+        }
+            // Player is in WotLK content - do not give XP past level 80
+        else if (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_CUSTOM_TIER_1) && player->GetLevel() >= 80)
         {
             // Still award XP to pets - they won't be able to pass the player's level
             Pet* pet = player->GetPet();

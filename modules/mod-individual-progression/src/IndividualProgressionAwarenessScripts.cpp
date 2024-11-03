@@ -342,6 +342,32 @@ public:
     }
 };
 
+class npc_ipp_ragefire_chasm : public CreatureScript
+{
+public:
+    npc_ipp_ragefire_chasm() : CreatureScript("npc_ipp_ragefire_chasm") { }
+
+    struct npc_ipp_ragefire_chasmAI: ScriptedAI
+    {
+        explicit npc_ipp_ragefire_chasmAI(Creature* creature) : ScriptedAI(creature) { };
+
+        bool CanBeSeen(Player const* player) override
+        {
+            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            {
+                return true;
+            }
+            Player* target = ObjectAccessor::FindConnectedPlayer(player->GetGUID());
+            return sIndividualProgression->hasPassedProgression(target, PROGRESSION_WOTLK_TIER_4);
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_ipp_ragefire_chasmAI(creature);
+    }
+};
+
 class npc_ipp_individual_progression_setter : public CreatureScript
 {
 public:
