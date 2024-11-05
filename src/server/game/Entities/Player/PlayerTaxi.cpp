@@ -39,12 +39,14 @@ void PlayerTaxi::InitTaxiNodesForLevel(uint32 race, uint32 chrClass, uint8 level
         case RACE_HUMAN:
             SetTaximaskNode(2);
             break;     // Human
+        case RACE_GOBLIN:
         case RACE_ORC:
             SetTaximaskNode(23);
             break;     // Orc
         case RACE_DWARF:
             SetTaximaskNode(6);
             break;     // Dwarf
+        case RACE_WORGEN:
         case RACE_NIGHTELF:
             SetTaximaskNode(26);
             SetTaximaskNode(27);

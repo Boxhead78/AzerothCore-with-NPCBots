@@ -496,6 +496,10 @@ public:
 
     bool CanAccountCreateCharacter(uint32 accountId, uint8 charRace, uint8 charClass) override
     {
+        if ((charRace == RACE_GOBLIN || charRace == RACE_WORGEN) && AccountMgr::GetSecurity(accountId) < SEC_GAMEMASTER)
+        {
+            return false; // Disabled until finished
+        }
         if ((!sIndividualProgression->enabled) ||
             (charRace != RACE_DRAENEI && charRace != RACE_BLOODELF && charClass != CLASS_DEATH_KNIGHT) ||
             (!sIndividualProgression->tbcRacesProgressionLevel && !sIndividualProgression->deathKnightProgressionLevel))
