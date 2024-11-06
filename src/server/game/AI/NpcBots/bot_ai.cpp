@@ -11481,7 +11481,8 @@ void bot_ai::FillKillReward(GameObject* go) const
         case 5: gold *= 0.400f; break;
         case 6: gold *= 0.550f; break;
         case 7: gold *= 0.750f; break;
-        default:gold *= 1.000f; break;
+        case 8: gold *= 1.000f; break;
+        default:gold *= 2.000f; break;
     }
 
     loot.gold = uint32(lvl * std::min<float>(std::max<float>(gold + _killsCount * gold * 0.04f - _deathsCount * gold * 0.4f, gold), gold * 10.0f));
@@ -14935,7 +14936,8 @@ void bot_ai::InitEquips(bool randEquip)
                 if (!_canEquip(proto, lslot, true))
                     return false;
 
-                if (me->GetLevel() >= DEFAULT_MAX_LEVEL && me->GetMap()->IsBattlegroundOrArena() && Rand() < 50)
+                //if (me->GetLevel() >= DEFAULT_MAX_LEVEL && me->GetMap()->IsBattlegroundOrArena() && Rand() < 50)
+                if (me->GetLevel() >= 80 && me->GetMap()->IsBattlegroundOrArena() && Rand() < 50)
                 {
                     if (Rand() < 20 && proto->ItemLevel < 245)
                         return false;

@@ -2165,7 +2165,7 @@ uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass)
         level < 60 ? _npcBotsCost / 500 :
         level < 70 ? _npcBotsCost / 150 :
         level < 80 ? _npcBotsCost / 100 :
-        level < 85 ? _npcBotsCost / 10 :
+        level < 90 ? _npcBotsCost / 10 :
         (_npcBotsCost * (level - (level % 10))) / DEFAULT_MAX_LEVEL; //50 - 100 gold
 
     switch (botclass)

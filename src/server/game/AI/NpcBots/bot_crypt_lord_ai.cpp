@@ -79,7 +79,8 @@ enum CryptLordSpecial
 
     MAX_LOCUSTS_BASE        = 20,
     MAX_LOCUSTS_70          = 30,
-    MAX_LOCUSTS_MAXLEVEL    = 40
+    MAX_LOCUSTS_80          = 40,
+    MAX_LOCUSTS_MAXLEVEL    = 50
 };
 
 static const uint32 CryptLord_spells_damage_arr[] =
@@ -382,7 +383,8 @@ public:
                 fdamage += total_ap * ap_factor;
                 if (lvl >= 70)
                     pctbonus *= 1.1f;
-                if (lvl >= DEFAULT_MAX_LEVEL)
+                //if (lvl >= DEFAULT_MAX_LEVEL)
+                if (lvl >= 80)
                     pctbonus *= 1.2f;
             }
 
@@ -771,6 +773,8 @@ public:
             uint32 max_locusts;
             if (lvl >= DEFAULT_MAX_LEVEL + BotDataMgr::GetLevelBonusForBotRank(me->GetCreatureTemplate()->rank))
                 max_locusts = MAX_LOCUSTS_MAXLEVEL;
+            else if (lvl >= 80)
+                max_locusts = MAX_LOCUSTS_80;
             else if (lvl >= 70)
                 max_locusts = MAX_LOCUSTS_70;
             else
