@@ -906,7 +906,7 @@ void AuctionHouseBot::Initialize()
                            "SELECT item FROM pickpocketing_loot_template UNION "
                            "SELECT item FROM prospecting_loot_template UNION "
                            "SELECT item FROM skinning_loot_template UNION " 
-                           "SELECT entry FROM item_template WHERE ItemLevel <= 435 AND VerfiedBuild <> 16000"; //TODO: Remove VerfiedBuild when cata items should be allowed. Keep WHERE ItemLevel <= 435 to exclude some OP items
+                           "SELECT entry FROM item_template WHERE ItemLevel <= 435 AND VerifiedBuild <> 16000"; //TODO: Remove VerfiedBuild when cata items should be allowed. Keep WHERE ItemLevel <= 435 to exclude some OP items
 
         results = WorldDatabase.Query(lootQuery);
         if (results)
