@@ -56,7 +56,9 @@ WHERE (
     NAME LIKE '%deprecated%' OR 
     NAME LIKE '%book%' OR 
     NAME LIKE '%libram%' OR 
-    NAME LIKE '%guide%'
+    NAME LIKE '%guide%' OR
+    ITEMLEVEL >= 435 OR
+    VERIFIEDBUILD = 16000
 )
 OR UPPER(NAME) LIKE '%OLD%' 
 OR UPPER(NAME) LIKE '%NPC%' 
