@@ -1394,7 +1394,7 @@ void Battleground::AddPlayer(Player* player)
 void Battleground::AddBot(Creature* bot)
 {
     ObjectGuid guid = bot->GetGUID();
-    TeamId teamId = BotDataMgr::GetTeamIdForFaction(bot->GetFaction());
+    TeamId teamId = !bot->IsFreeBot() ? bot->GetBotOwner()->GetBgTeamId() : BotDataMgr::GetTeamIdForFaction(bot->GetFaction());
 
     // Add to list/maps
     BattlegroundBot bb;
@@ -2186,6 +2186,14 @@ TeamId Battleground::GetBotTeamId(ObjectGuid guid) const
     BattlegroundBotMap::const_iterator itr = m_Bots.find(guid);
     if (itr != m_Bots.end())
         return itr->second.Team;
+    return TEAM_NEUTRAL;
+}
+
+TeamId Battleground::GetPlayerTeamId(ObjectGuid guid) const
+{
+    BattlegroundPlayerMap::const_iterator itr = m_Players.find(guid);
+    if (itr != m_Players.end())
+        return itr->second->GetTeamId();
     return TEAM_NEUTRAL;
 }
 //end npcbot

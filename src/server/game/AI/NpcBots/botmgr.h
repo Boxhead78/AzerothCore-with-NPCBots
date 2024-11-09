@@ -99,6 +99,7 @@ template<typename U>
 using BotBrackets = std::array<U, BracketsCount>;
 typedef BotBrackets<uint8> LvlBrackets;
 typedef BotBrackets<uint32> PctBrackets;
+typedef BotBrackets<uint32> ItemLvlBrackets;
 
 class AC_GAME_API BotMgr
 {
@@ -186,6 +187,7 @@ class AC_GAME_API BotMgr
         static float GetBotWandererSpeedMod();
         static float GetBotWandererXPGainMod();
         static PctBrackets GetBotWandererLevelBrackets();
+        static uint32 GetBotWandererMaxItemLevel(uint8 level);
         static float GetBotDamageModByClass(uint8 botclass);
         static float GetBotDamageModByLevel(uint8 botlevel);
         static float GetBotHealingModByLevel(uint8 botlevel);
@@ -219,6 +221,7 @@ class AC_GAME_API BotMgr
         static void OnBotOwnerEnterVehicle(Player const* passenger, Vehicle const* vehicle);
         static void OnBotOwnerExitVehicle(Player const* passenger, Vehicle const* vehicle);
         static void OnBotPartyEngage(Player const* owner);
+        static void OnBotAttackStop(Creature const* bot, Unit const* target);
         //mod hooks
         static void ApplyBotEffectMods(Unit const* caster, SpellInfo const* spellInfo, uint8 effIndex, float& value);
         static void ApplyBotThreatMods(Unit const* attacker, SpellInfo const* spellInfo, float& threat);

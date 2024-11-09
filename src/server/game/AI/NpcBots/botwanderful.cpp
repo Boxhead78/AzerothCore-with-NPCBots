@@ -202,7 +202,7 @@ void WanderNode::RemoveWP(WanderNode* wp)
         wp->UnLink(wp->GetLinks().front());
 
     if (wp->GetCreature() && wp->GetCreature()->IsInWorld())
-        wp->GetCreature()->ToTempSummon()->DespawnOrUnsummon();
+        Unit::Kill(wp->GetCreature(), wp->GetCreature());
 
     ALL_WPS_PER_AREA.at(wp->_areaId).remove(wp);
     ALL_WPS_PER_ZONE.at(wp->_zoneId).remove(wp);
@@ -243,7 +243,7 @@ WanderNode::node_lltype WanderNode::GetShortestPathLinks(WanderNode const* targe
                 break;
             }
 
-            if (link.wp->GetLinks().size() == 1 && link.wp->GetLinks().front().wp == this)
+            if (max_level_diff != BotWPLevel::BOTWP_LEVEL_ZERO && link.wp->GetLinks().size() == 1 && link.wp->GetLinks().front().wp == this)
                 continue;
 
             std::unordered_set<uint32> checked_links;

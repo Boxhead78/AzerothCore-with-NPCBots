@@ -956,6 +956,17 @@ uint32 Unit::DealDamage(Unit* attacker, Unit* victim, uint32 damage, CleanDamage
             }
         }
 
+        //npcbot
+        if (!damage && damagetype != DOT && cleanDamage && cleanDamage->absorbed_damage && victim->IsNPCBotOrPet() && attacker && victim != attacker &&
+            (attacker->IsNPCBotOrPet() || attacker->IsControlledByPlayer()))
+        {
+            if (Spell* spell = victim->m_currentSpells[CURRENT_GENERIC_SPELL])
+                if (spell->getState() == SPELL_STATE_PREPARING)
+                    if ((spell->m_spellInfo->InterruptFlags & SPELL_INTERRUPT_FLAG_ABORT_ON_DMG) != 0)
+                        victim->InterruptNonMeleeSpells(false);
+        }
+        //end npcbot
+
         // We're going to call functions which can modify content of the list during iteration over it's elements
         // Let's copy the list so we can prevent iterator invalidation
         AuraEffectList vCopyDamageCopy(victim->GetAuraEffectsByType(SPELL_AURA_SHARE_DAMAGE_PCT));
@@ -1237,6 +1248,28 @@ uint32 Unit::DealDamage(Unit* attacker, Unit* victim, uint32 damage, CleanDamage
                 }
             }
         }
+
+        //npcbot
+        if (victim->IsNPCBot() && attacker && victim != attacker && damagetype != NODAMAGE && damagetype != DOT && damage &&
+            (attacker->IsNPCBotOrPet() || attacker->IsControlledByPlayer()) &&
+            (!spellProto || !(spellProto->HasAttribute(SPELL_ATTR7_DONT_CAUSE_SPELL_PUSHBACK) || spellProto->HasAttribute(SPELL_ATTR3_TREAT_AS_PERIODIC))))
+        {
+            if (Spell* spell = victim->m_currentSpells[CURRENT_GENERIC_SPELL])
+            {
+                if (spell->getState() == SPELL_STATE_PREPARING)
+                {
+                    if (spell->m_spellInfo->InterruptFlags & SPELL_INTERRUPT_FLAG_ABORT_ON_DMG)
+                        victim->InterruptNonMeleeSpells(false);
+                    else
+                        spell->Delayed();
+                }
+            }
+
+            if (Spell* spell = victim->m_currentSpells[CURRENT_CHANNELED_SPELL])
+                if (spell->getState() == SPELL_STATE_CASTING)
+                    spell->DelayedChannel();
+        }
+        //end npcbot
 
         // last damage from duel opponent
         if (duel_hasEnded)
@@ -8213,7 +8246,12 @@ bool Unit::HandleDummyAuraProc(Unit* victim, uint32 damage, AuraEffect* triggere
                         {
                             if (!victim || !victim->IsAlive() || victim->HasSpellCooldown(20267))
                                 return false;
-                            // 2% of base mana
+
+                            auto* caster = triggeredByAura->GetBase()->GetCaster();
+                            if (!caster || !victim->IsFriendlyTo(caster))
+                                return false;
+
+                            // 2% of base health
                             basepoints0 = int32(victim->CountPctFromMaxHealth(2));
                             victim->CastCustomSpell(victim, 20267, &basepoints0, 0, 0, true, 0, triggeredByAura);
                             victim->AddSpellCooldown(20267, 0, 4 * IN_MILLISECONDS);
@@ -8223,6 +8261,10 @@ bool Unit::HandleDummyAuraProc(Unit* victim, uint32 damage, AuraEffect* triggere
                     case 20186:
                         {
                             if (!victim || !victim->IsAlive() || !victim->HasActivePowerType(POWER_MANA) || victim->HasSpellCooldown(20268))
+                                return false;
+
+                            auto* caster = triggeredByAura->GetBase()->GetCaster();
+                            if (!caster || !victim->IsFriendlyTo(caster))
                                 return false;
 
                             // 2% of base mana
@@ -11166,6 +11208,10 @@ void Unit::RemoveAllAttackers()
     while (!m_attackers.empty())
     {
         AttackerSet::iterator iter = m_attackers.begin();
+        //npcbot
+        if ((*iter)->IsNPCBotOrPet())
+            BotMgr::OnBotAttackStop((*iter)->ToCreature(), this);
+        //end npcbot
         if (!(*iter)->AttackStop())
         {
             LOG_ERROR("entities.unit", "WORLD: Unit has an attacker that isn't attacking it!");
