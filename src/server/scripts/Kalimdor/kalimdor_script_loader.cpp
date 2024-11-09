@@ -94,6 +94,11 @@ void AddSC_thousand_needles();
 void AddSC_thunder_bluff();
 void AddSC_ungoro_crater();
 void AddSC_winterspring();
+void AddSC_boss_ashcurse();
+void AddSC_boss_emberfury();
+void AddSC_boss_baron_ignatius();
+void AddSC_boss_giant_earthborer();
+void AddSC_boss_commander_vorthalax();
 
 // The name of this function should match:
 // void Add${NameOfDirectory}Scripts()
@@ -177,4 +182,9 @@ void AddKalimdorScripts()
     AddSC_thunder_bluff();
     AddSC_ungoro_crater();
     AddSC_winterspring();
+    AddSC_boss_ashcurse();
+    AddSC_boss_emberfury();
+    AddSC_boss_baron_ignatius();
+    AddSC_boss_giant_earthborer();
+    AddSC_boss_commander_vorthalax();
 }

@@ -786,6 +786,8 @@ uint32 Player::EnvironmentalDamage(EnviromentalDamage type, uint32 damage)
             absorb = dmgInfo.GetAbsorb();
             resist = dmgInfo.GetResist();
             damage = dmgInfo.GetDamage();
+            if (GetMapId() == 389 && GetMap()->IsHeroic()) //RF Special Case
+                damage *= 5;
         }
         default:
             break;

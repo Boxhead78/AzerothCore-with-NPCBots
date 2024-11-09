@@ -353,7 +353,7 @@ public:
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster())
             {
                 return true;
             }
@@ -365,6 +365,32 @@ public:
     CreatureAI* GetAI(Creature* creature) const override
     {
         return new npc_ipp_ragefire_chasmAI(creature);
+    }
+};
+
+class npc_ipp_ragefire_chasm_remove : public CreatureScript
+{
+public:
+    npc_ipp_ragefire_chasm_remove() : CreatureScript("npc_ipp_ragefire_chasm_remove") { }
+
+    struct npc_ipp_ragefire_chasm_removeAI: ScriptedAI
+    {
+        explicit npc_ipp_ragefire_chasm_removeAI(Creature* creature) : ScriptedAI(creature) { };
+
+        bool CanBeSeen(Player const* player) override
+        {
+            if (player->IsGameMaster())
+            {
+                return true;
+            }
+            Player* target = ObjectAccessor::FindConnectedPlayer(player->GetGUID());
+            return !sIndividualProgression->hasPassedProgression(target, PROGRESSION_WOTLK_TIER_4);
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_ipp_ragefire_chasm_removeAI(creature);
     }
 };
 
