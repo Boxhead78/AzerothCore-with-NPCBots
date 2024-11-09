@@ -98,7 +98,6 @@ struct boss_nalorakk : public BossAI
 
     void Reset() override
     {
-        instance->SetData(DATA_NALORAKKEVENT, NOT_STARTED);
         BossAI::Reset();
         _waveList.clear();
         _introScheduler.CancelAll();
@@ -233,7 +232,6 @@ struct boss_nalorakk : public BossAI
 
     void JustEngagedWith(Unit* who) override
     {
-        instance->SetData(DATA_NALORAKKEVENT, IN_PROGRESS);
         BossAI::JustEngagedWith(who);
         Talk(SAY_AGGRO);
         scheduler.Schedule(15s, 20s, GROUP_HUMAN, [this](TaskContext context)
