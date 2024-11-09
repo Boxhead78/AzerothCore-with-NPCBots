@@ -61,6 +61,18 @@ public:
     {
         explicit npc_ipp_tbcAI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster() || !sIndividualProgression->enabled)
@@ -86,6 +98,18 @@ public:
     struct npc_ipp_tbc_t4AI: ScriptedAI
     {
         explicit npc_ipp_tbc_t4AI(Creature* creature) : ScriptedAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
 
         bool CanBeSeen(Player const* player) override
         {
@@ -113,6 +137,18 @@ public:
     {
         explicit npc_ipp_tbc_t5AI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster() || !sIndividualProgression->enabled)
@@ -138,6 +174,18 @@ public:
     struct npc_ipp_tbc_pre_t4AI: ScriptedAI
     {
         explicit npc_ipp_tbc_pre_t4AI(Creature* creature) : ScriptedAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
 
         bool CanBeSeen(Player const* player) override
         {
@@ -165,6 +213,18 @@ public:
     {
         explicit npc_ipp_wotlkAI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster() || !sIndividualProgression->enabled)
@@ -190,6 +250,18 @@ public:
     struct npc_ipp_wotlk_ulduarAI: ScriptedAI
     {
         explicit npc_ipp_wotlk_ulduarAI(Creature* creature) : ScriptedAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
 
         bool CanBeSeen(Player const* player) override
         {
@@ -217,6 +289,18 @@ public:
     {
         explicit npc_ipp_wotlk_totcAI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster() || !sIndividualProgression->enabled)
@@ -242,6 +326,18 @@ public:
     struct npc_ipp_wotlk_iccAI: ScriptedAI
     {
         explicit npc_ipp_wotlk_iccAI(Creature* creature) : ScriptedAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
 
         bool CanBeSeen(Player const* player) override
         {
@@ -269,6 +365,18 @@ public:
     {
         explicit npc_ipp_aqAI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster() || !sIndividualProgression->enabled)
@@ -294,6 +402,18 @@ public:
     struct npc_ipp_ds2AI: ScriptedAI
     {
         explicit npc_ipp_ds2AI(Creature* creature) : ScriptedAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
 
         bool CanBeSeen(Player const* player) override
         {
@@ -325,6 +445,18 @@ public:
     {
         explicit npc_ipp_naxx40AI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster() || !sIndividualProgression->enabled)
@@ -351,6 +483,25 @@ public:
     {
         explicit npc_ipp_ragefire_chasmAI(Creature* creature) : ScriptedAI(creature) { };
 
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Überprüfen, ob das Ziel die bestimmte NPC-ID hat
+            if (target->GetTypeId() == TYPEID_UNIT && target->GetEntry() == 3986)
+            {
+                // Falls das Ziel die IGNORE_NPC_ID hat, verlässt die Methode ohne anzugreifen
+                return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
+
         bool CanBeSeen(Player const* player) override
         {
             if (player->IsGameMaster())
@@ -376,6 +527,18 @@ public:
     struct npc_ipp_ragefire_chasm_removeAI: ScriptedAI
     {
         explicit npc_ipp_ragefire_chasm_removeAI(Creature* creature) : ScriptedAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            // Standardmäßiges Angriffverhalten ausführen
+            ScriptedAI::AttackStart(target);
+        }
 
         bool CanBeSeen(Player const* player) override
         {
