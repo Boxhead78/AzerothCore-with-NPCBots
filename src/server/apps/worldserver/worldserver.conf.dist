@@ -4468,7 +4468,7 @@ NpcBot.LogToDB = 1
 #
 #    NpcBot.MaxBots
 #        Description: Maximum number of bots allowed for players per level bracket:
-#                     0-9, 10-19, 20,29, ... , 70-79, 80+.
+#                     0-9, 10-19, 20,29, ... , 70-79, 80-89, 90+.
 #        Default:     1,1,1,1,1,1,1,1,1,1 - (1 for all levels)
 #                     0,1,2,3,4,5,6,7,8,9 - (1 per 10 levels)
 #        Max:         39
@@ -4632,7 +4632,7 @@ NpcBot.Mult.Damage.CryptLord         = 1.0
 #    NpcBot.Mult.Healing.Levels
 #    NpcBot.Mult.HP.Levels
 #    NpcBot.Mult.MP.Levels
-#        Description: Multipliers for bots' damage/healing/hp/mp by level: 0-9,10-19,...,70-79,80+
+#        Description: Multipliers for bots' damage/healing/hp/mp by level: 0-9, 10-19, 20,29, ... , 70-79, 80-89, 90+.
 #                     At least 9 values required each.
 #        Default:     1.0
 #        Minimum:     0.1
@@ -4930,7 +4930,7 @@ NpcBot.WanderingBots.Continents.Count.Max = 0
 #
 #    NpcBot.WanderingBots.Continents.Levels
 #        Description: Percentage of wandering bots to spawn per level bracket:
-#                     0-9, 10-19, 20,29, ... , 70-79, 80+.
+#                     0-9, 10-19, 20,29, ... , 70-79, 80-89, 90+.
 #        Note:        Total percentage must be exactly 100.
 #        Note2:       Classes with minimum level requirement may ignore this parameter.
 #        Default:     25,15,15,10,5,10,20,0,0
@@ -4958,14 +4958,14 @@ NpcBot.WanderingBots.Continents.XPGain = 1.0
 #
 #    NpcBot.WanderingBots.MaxItemLevel.Levels
 #        Description: Maximum item ilevel to generate for wandering bots per level bracket:
-#                     0-9, 10-19, 20,29, ... , 70-79, 80+.
+#                     0-9, 10-19, 20,29, ... , 70-79, 80-89, 90+.
 #        Note:        If item generation attempt fails becuse of item ilevel restriction
 #                     the item will be generated again with this restriction ignored
-#        Example:     0,0,0,0,0,0,0,0,200 makes level 80+ wandering bots only generate
+#        Example:     0,0,0,0,0,0,0,0,200,0 makes level 80+ wandering bots only generate
 #                     items of ilevel 200 or less
-#        Default:     0,0,0,0,0,0,0,0,0
+#        Default:     0,0,0,0,0,0,0,0,0,0
 
-NpcBot.WanderingBots.MaxItemLevel.Levels = 0,0,0,0,0,0,0,0,0
+NpcBot.WanderingBots.MaxItemLevel.Levels = 0,0,0,0,0,0,0,0,0,0
 
 #
 #    NpcBot.WanderingBots.BG.Enable
