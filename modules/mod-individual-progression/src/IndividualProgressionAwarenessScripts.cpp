@@ -441,4 +441,6 @@ void AddSC_mod_individual_progression_awareness()
     new gobject_ipp_tbc();
 //    new gobject_ipp_wotlk(); // Not used yet
     new npc_ipp_individual_progression_setter();
+    new npc_ipp_ragefire_chasm();
+    new npc_ipp_ragefire_chasm_remove();
 }
