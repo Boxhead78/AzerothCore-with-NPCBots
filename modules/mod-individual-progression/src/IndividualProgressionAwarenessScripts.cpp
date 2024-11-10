@@ -1,4 +1,5 @@
 #include "IndividualProgression.h"
+#include "SmartAI.h"
 
 class gobject_ipp_wotlk : public GameObjectScript
 {
@@ -57,9 +58,9 @@ class npc_ipp_tbc : public CreatureScript
 public:
     npc_ipp_tbc() : CreatureScript("npc_ipp_tbc") { }
 
-    struct npc_ipp_tbcAI: ScriptedAI
+    struct npc_ipp_tbcAI: SmartAI
     {
-        explicit npc_ipp_tbcAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_tbcAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -70,7 +71,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -95,9 +96,9 @@ class npc_ipp_tbc_t4 : public CreatureScript
 public:
     npc_ipp_tbc_t4() : CreatureScript("npc_ipp_tbc_t4") { }
 
-    struct npc_ipp_tbc_t4AI: ScriptedAI
+    struct npc_ipp_tbc_t4AI: SmartAI
     {
-        explicit npc_ipp_tbc_t4AI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_tbc_t4AI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -108,7 +109,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -133,9 +134,9 @@ class npc_ipp_tbc_t5 : public CreatureScript
 public:
     npc_ipp_tbc_t5() : CreatureScript("npc_ipp_tbc_t5") { }
 
-    struct npc_ipp_tbc_t5AI: ScriptedAI
+    struct npc_ipp_tbc_t5AI: SmartAI
     {
-        explicit npc_ipp_tbc_t5AI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_tbc_t5AI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -146,7 +147,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -171,9 +172,9 @@ class npc_ipp_tbc_pre_t4 : public CreatureScript
 public:
     npc_ipp_tbc_pre_t4() : CreatureScript("npc_ipp_tbc_pre_t4") { }
 
-    struct npc_ipp_tbc_pre_t4AI: ScriptedAI
+    struct npc_ipp_tbc_pre_t4AI: SmartAI
     {
-        explicit npc_ipp_tbc_pre_t4AI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_tbc_pre_t4AI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -184,7 +185,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -209,9 +210,9 @@ class npc_ipp_wotlk : public CreatureScript
 public:
     npc_ipp_wotlk() : CreatureScript("npc_ipp_wotlk") { }
 
-    struct npc_ipp_wotlkAI: ScriptedAI
+    struct npc_ipp_wotlkAI: SmartAI
     {
-        explicit npc_ipp_wotlkAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_wotlkAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -222,7 +223,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -247,9 +248,9 @@ class npc_ipp_wotlk_ulduar : public CreatureScript
 public:
     npc_ipp_wotlk_ulduar() : CreatureScript("npc_ipp_wotlk_ulduar") { }
 
-    struct npc_ipp_wotlk_ulduarAI: ScriptedAI
+    struct npc_ipp_wotlk_ulduarAI: SmartAI
     {
-        explicit npc_ipp_wotlk_ulduarAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_wotlk_ulduarAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -260,7 +261,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -285,9 +286,9 @@ class npc_ipp_wotlk_totc : public CreatureScript
 public:
     npc_ipp_wotlk_totc() : CreatureScript("npc_ipp_wotlk_totc") { }
 
-    struct npc_ipp_wotlk_totcAI: ScriptedAI
+    struct npc_ipp_wotlk_totcAI: SmartAI
     {
-        explicit npc_ipp_wotlk_totcAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_wotlk_totcAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -298,7 +299,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -323,9 +324,9 @@ class npc_ipp_wotlk_icc : public CreatureScript
 public:
     npc_ipp_wotlk_icc() : CreatureScript("npc_ipp_wotlk_icc") { }
 
-    struct npc_ipp_wotlk_iccAI: ScriptedAI
+    struct npc_ipp_wotlk_iccAI: SmartAI
     {
-        explicit npc_ipp_wotlk_iccAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_wotlk_iccAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -336,7 +337,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -361,9 +362,9 @@ class npc_ipp_aq : public CreatureScript
 public:
     npc_ipp_aq() : CreatureScript("npc_ipp_aq") { }
 
-    struct npc_ipp_aqAI: ScriptedAI
+    struct npc_ipp_aqAI: SmartAI
     {
-        explicit npc_ipp_aqAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_aqAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -374,7 +375,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -399,9 +400,9 @@ class npc_ipp_ds2 : public CreatureScript
 public:
     npc_ipp_ds2() : CreatureScript("npc_ipp_ds2") { }
 
-    struct npc_ipp_ds2AI: ScriptedAI
+    struct npc_ipp_ds2AI: SmartAI
     {
-        explicit npc_ipp_ds2AI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_ds2AI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -412,7 +413,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -441,9 +442,9 @@ class npc_ipp_naxx40 : public CreatureScript
 public:
     npc_ipp_naxx40() : CreatureScript("npc_ipp_naxx40") { }
 
-    struct npc_ipp_naxx40AI: ScriptedAI
+    struct npc_ipp_naxx40AI: SmartAI
     {
-        explicit npc_ipp_naxx40AI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_naxx40AI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -454,7 +455,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -479,9 +480,9 @@ class npc_ipp_ragefire_chasm : public CreatureScript
 public:
     npc_ipp_ragefire_chasm() : CreatureScript("npc_ipp_ragefire_chasm") { }
 
-    struct npc_ipp_ragefire_chasmAI: ScriptedAI
+    struct npc_ipp_ragefire_chasmAI: SmartAI
     {
-        explicit npc_ipp_ragefire_chasmAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_ragefire_chasmAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -499,7 +500,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
@@ -524,9 +525,9 @@ class npc_ipp_ragefire_chasm_remove : public CreatureScript
 public:
     npc_ipp_ragefire_chasm_remove() : CreatureScript("npc_ipp_ragefire_chasm_remove") { }
 
-    struct npc_ipp_ragefire_chasm_removeAI: ScriptedAI
+    struct npc_ipp_ragefire_chasm_removeAI: SmartAI
     {
-        explicit npc_ipp_ragefire_chasm_removeAI(Creature* creature) : ScriptedAI(creature) { };
+        explicit npc_ipp_ragefire_chasm_removeAI(Creature* creature) : SmartAI(creature) { };
 
         void AttackStart(Unit* target) override
         {
@@ -537,7 +538,7 @@ public:
             }
 
             // Standardmäßiges Angriffverhalten ausführen
-            ScriptedAI::AttackStart(target);
+            SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
