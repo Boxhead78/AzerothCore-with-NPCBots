@@ -199,6 +199,7 @@ struct boss_giant_earthborer : public BossAI
             else if (eatCounter >= 16)
             {
                 isInMeatPhase = false;
+                eatCounter = 0;
 
                 // Nach 50 Sekunden: Boss wird aggressiv und führt `SPELL_CHARGE` auf den entferntesten Spieler aus
                 me->SetReactState(REACT_AGGRESSIVE);

@@ -218,6 +218,10 @@ public:
                     TempSummon* twilightWhelp = me->SummonCreature(NPC_TWILIGHT_WHELP, me->GetPositionX(), me->GetPositionY(), me->GetPositionZ(), me->GetOrientation(), TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 180000); // 180000 ms = 3 Minute Despawn Timer
                     twilightWhelp->CastSpell(twilightWhelp, SPELL_EGG_HATCH, true);
                     twilightWhelp->SetOrientation(frand(0.0f, M_PI));
+                    if (Unit* target = SelectTarget(SelectTargetMethod::Random, 0, 100.0f, true))
+                    {
+                        twilightWhelp->GetMotionMaster()->MoveChase(target);
+                    }
                     me->DespawnOrUnsummon();
                 }
                 else
