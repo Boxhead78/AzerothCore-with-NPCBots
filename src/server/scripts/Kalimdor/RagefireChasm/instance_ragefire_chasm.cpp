@@ -215,6 +215,20 @@ public:
             {
                 if (hatchTimer <= diff)
                 {
+                    // Give kill credit for quest
+                    Map::PlayerList const& players = map->GetPlayers();
+                    for (Map::PlayerList::const_iterator itr = players.begin(); itr != players.end(); ++itr)
+                    {
+                        if (Player* player = itr->GetSource())
+                        {
+                            if (player && player->IsAtGroupRewardDistance(me) && !player->GetCorpse() && player->GetQuestStatus(QUEST_DESTRUCTION_OF_THE_TWILIGHT_EGGS) == QUEST_STATUS_INCOMPLETE)
+                            {
+                                player->KilledMonsterCredit(NPC_TWILIGHT_EGG);
+                            }
+                        }
+                    }
+
+                    // Spawn twilight whelp
                     TempSummon* twilightWhelp = me->SummonCreature(NPC_TWILIGHT_WHELP, me->GetPositionX(), me->GetPositionY(), me->GetPositionZ(), me->GetOrientation(), TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 180000); // 180000 ms = 3 Minute Despawn Timer
                     twilightWhelp->CastSpell(twilightWhelp, SPELL_EGG_HATCH, true);
                     twilightWhelp->SetOrientation(frand(0.0f, M_PI));
