@@ -790,7 +790,8 @@ public:
         stmt->SetData(1, y);
         stmt->SetData(2, z);
         stmt->SetData(3, o);
-        stmt->SetData(4, lowguid);
+        stmt->SetData(4, 16000);
+        stmt->SetData(5, lowguid);
 
         WorldDatabase.Execute(stmt);
 
