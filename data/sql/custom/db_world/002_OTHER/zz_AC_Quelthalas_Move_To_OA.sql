@@ -4,8 +4,7 @@ SET @positionx_max = 13866.666;
 SET @positiony_min = -9566.661;
 SET @positiony_max = -4266.666;
 SET @WorldMapAreaId_list = JSON_ARRAY(462, 463, 480, 499);
-SET @Points_of_Int
-erest_list = JSON_ARRAY('Silvermoon City, Weapon Master', 'Silvermoon City, Warlock Trainers', 'Silvermoon City, Tailoring',
+SET @Points_of_Interest_list = JSON_ARRAY('Silvermoon City, Weapon Master', 'Silvermoon City, Warlock Trainers', 'Silvermoon City, Tailoring',
         'Silvermoon City, Stable Master', 'Silvermoon City, Skinning', 'Silvermoon City, Rogue Trainer',
         'Silvermoon City, Priest Trainer', 'Silvermoon City, Paladin Trainer', 'Silvermoon City, Mining',
         'Silvermoon City, Mana Loom', 'Silvermoon City, Mailbox', 'Silvermoon City, Mage Trainer',
