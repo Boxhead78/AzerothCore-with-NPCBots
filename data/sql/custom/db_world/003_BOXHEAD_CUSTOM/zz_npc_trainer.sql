@@ -1,0 +1,10 @@
+DELETE FROM `npc_trainer` WHERE `ID`=150000 AND `SpellID`=-200006;
+INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`) VALUES (150000, -200006, 0, 0, 0, 0, 0);
+DELETE FROM `npc_trainer` WHERE `ID`=150000 AND `SpellID`=-200005;
+INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`) VALUES (150000, -200005, 0, 0, 0, 0, 0);
+DELETE FROM `npc_trainer` WHERE `ID`=202010 AND `SpellID`=98576;
+INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`) VALUES (202010, 98576, 100000000, 762, 150, 60, 0);
+DELETE FROM `npc_trainer` WHERE `ID`=202011 AND `SpellID`=98576;
+INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`) VALUES (202011, 98576, 100000000, 762, 150, 60, 0);
+DELETE FROM `npc_trainer` WHERE `ID`=202012 AND `SpellID`=98576;
+INSERT INTO `npc_trainer` (`ID`, `SpellID`, `MoneyCost`, `ReqSkillLine`, `ReqSkillRank`, `ReqLevel`, `ReqSpell`) VALUES (202012, 98576, 100000000, 762, 150, 60, 0);

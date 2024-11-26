@@ -136,12 +136,14 @@ struct boss_commander_vorthalax : public BossAI
         if (Creature* vorthalaxsGuard = ObjectAccessor::GetCreature(*me, vorthalaxsGuardGUID))
         {
             vorthalaxsGuard->SetReactState(REACT_AGGRESSIVE);
+            vorthalaxsGuard->GetMotionMaster()->Clear();
             vorthalaxsGuard->AI()->AttackStart(who);
         }
 
         if (Creature* twilightOverseer = ObjectAccessor::GetCreature(*me, twilightOverseerGUID))
         {
             twilightOverseer->SetReactState(REACT_AGGRESSIVE);
+            twilightOverseer->GetMotionMaster()->Clear();
             twilightOverseer->AI()->AttackStart(who);
         }
 
@@ -289,6 +291,7 @@ struct npc_vorthalaxs_guard : public ScriptedAI
         {
             if (Creature* vorthalax = ObjectAccessor::GetCreature(*me, instance->GetGuidData(DATA_COMMANDER_VORTHALAX)))
             {
+                vorthalax->GetMotionMaster()->Clear();
                 vorthalax->AI()->AttackStart(who);
             }
         }
@@ -363,6 +366,7 @@ struct npc_twilight_overseer : public ScriptedAI
         {
             if (Creature* vorthalax = ObjectAccessor::GetCreature(*me, instance->GetGuidData(DATA_COMMANDER_VORTHALAX)))
             {
+                vorthalax->GetMotionMaster()->Clear();
                 vorthalax->AI()->AttackStart(who);
             }
         }

@@ -19,10 +19,10 @@ INSERT INTO `areatrigger_scripts` (`entry`, `ScriptName`) VALUES
 
 DELETE FROM `areatrigger_scripts` WHERE `entry` IN (5191, 5192, 5193, 5194);
 INSERT INTO `areatrigger_scripts` (`entry`, `ScriptName`) VALUES
-(5191, 'naxx_northrend_entrance'),
-(5192, 'naxx_northrend_entrance'),
-(5193, 'naxx_northrend_entrance'),
-(5194, 'naxx_northrend_entrance');
+(5191, 'naxx_entrance'),
+(5192, 'naxx_entrance'),
+(5193, 'naxx_entrance'),
+(5194, 'naxx_entrance');
 
 -- Update spawnMask of all creatures to 10man + 25man
 UPDATE `creature` SET `spawnMask` = 3 WHERE `spawnMask` = 7 AND `map` = 533;

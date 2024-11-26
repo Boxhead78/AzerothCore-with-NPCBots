@@ -2027,12 +2027,12 @@ BotAddResult BotMgr::AddBot(Creature* bot, bool costMoney)
     //}
     if (!owned && costMoney)
     {
-        uint32 cost = GetNpcBotCost(_owner->GetLevel(), bot->GetBotClass());
+        uint32 cost = GetNpcBotCost(_owner->GetLevel(), bot->GetBotClass(), _owner);
         if (!_owner->HasEnoughMoney(cost))
         {
             ChatHandler ch(_owner->GetSession());
             std::string str = bot_ai::LocalizedNpcText(GetOwner(), BOT_TEXT_HIREFAIL_COST) + " (";
-            str += GetNpcBotCostStr(_owner->GetLevel(), bot->GetBotClass());
+            str += GetNpcBotCostStr(_owner->GetLevel(), bot->GetBotClass(), _owner);
             str += ")!";
             ch.SendSysMessage(str);
             return BOT_ADD_CANT_AFFORD;
@@ -2169,7 +2169,7 @@ bool BotMgr::RemoveAllBotsFromGroup()
     return true;
 }
 
-uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass)
+uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass, Player* player)
 {
     //assuming default 1000000
     //level 1: 500  //5  silver
@@ -2190,6 +2190,9 @@ uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass)
         level < 80 ? _npcBotsCost / 100 :
         level < 90 ? _npcBotsCost / 10 :
         (_npcBotsCost * (level - (level % 10))) / DEFAULT_MAX_LEVEL; //50 - 100 gold
+
+    if (player->HasAura(98593)) // Best Deals anywhere
+        cost *= 0.9;
 
     switch (botclass)
     {
@@ -2213,11 +2216,11 @@ uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass)
     return cost;
 }
 
-std::string BotMgr::GetNpcBotCostStr(uint8 level, uint8 botclass)
+std::string BotMgr::GetNpcBotCostStr(uint8 level, uint8 botclass, Player* player)
 {
     std::ostringstream money;
 
-    if (uint32 cost = GetNpcBotCost(level, botclass))
+    if (uint32 cost = GetNpcBotCost(level, botclass, player))
     {
         uint32 gold = uint32(cost / GOLD);
         cost -= (gold * GOLD);

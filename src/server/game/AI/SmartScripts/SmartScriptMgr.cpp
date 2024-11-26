@@ -1795,6 +1795,7 @@ bool SmartAIMgr::IsEventValid(SmartScriptHolder& e)
         case SMART_ACTION_ALLOW_COMBAT_MOVEMENT:
             {
                 AC_SAI_IS_BOOLEAN_VALID(e, e.action.combatMove.move);
+                AC_SAI_IS_BOOLEAN_VALID(e, e.action.combatMove.casting);
                 break;
             }
         case SMART_ACTION_CALL_FOR_HELP:

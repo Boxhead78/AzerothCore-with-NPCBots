@@ -972,6 +972,10 @@ void SmartScript::ProcessAction(SmartScriptHolder& e, Unit* unit, uint32 var0, u
             if (!IsSmart())
                 break;
 
+            // Only set combat movement if not casting and e.action.combatMove.casting set to 1 (actionparam2)
+            if (e.action.combatMove.casting && me->HasUnitState(UNIT_STATE_CASTING) || me->GetCurrentSpell(CURRENT_CHANNELED_SPELL) || me->IsNonMeleeSpellCast(false, false, true, false, false))
+                break;
+
             bool move = e.action.combatMove.move;
             CAST_AI(SmartAI, me->AI())->SetCombatMove(move);
             LOG_DEBUG("sql.sql", "SmartScript::ProcessAction:: SMART_ACTION_ALLOW_COMBAT_MOVEMENT: Creature {} bool on = {}",

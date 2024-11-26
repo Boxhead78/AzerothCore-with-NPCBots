@@ -167,7 +167,7 @@ public:
                             continue;
 
                         std::ostringstream bclass;
-                        bclass << npcbot_count_per_class[botclass] << " " << bot_ai::LocalizedNpcText(player, textId) << " (" << BotMgr::GetNpcBotCostStr(player->GetLevel(), botclass) << ")";
+                        bclass << npcbot_count_per_class[botclass] << " " << bot_ai::LocalizedNpcText(player, textId) << " (" << BotMgr::GetNpcBotCostStr(player->GetLevel(), botclass, player) << ")";
 
                         AddGossipItemFor(player, GOSSIP_ICON_TALK, bclass.str(), HIRE_CLASS, GOSSIP_ACTION_INFO_DEF + botclass);
 
@@ -188,7 +188,7 @@ public:
 
                     uint8 botclass = action - GOSSIP_ACTION_INFO_DEF;
 
-                    uint32 cost = BotMgr::GetNpcBotCost(player->GetLevel(), botclass);
+                    uint32 cost = BotMgr::GetNpcBotCost(player->GetLevel(), botclass, player);
                     if (!player->HasEnoughMoney(cost))
                     {
                         WhisperTo(player, me, bot_ai::LocalizedNpcText(player, BOT_TEXT_HIREFAIL_COST).c_str());
@@ -296,13 +296,13 @@ public:
                     message1 << bot_ai::LocalizedNpcText(player, BOT_TEXT_BOTGIVER_WISH_TO_HIRE_) << '?';
 
                     player->PlayerTalkClass->GetGossipMenu().AddMenuItem(-1, GOSSIP_ICON_TALK, "10 Raid",
-                        HIRE_RAID_GROUP_10, GOSSIP_ACTION_INFO_DEF, message1.str(), BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE)*9, false);
+                        HIRE_RAID_GROUP_10, GOSSIP_ACTION_INFO_DEF, message1.str(), BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE, player)*9, false);
 
                     player->PlayerTalkClass->GetGossipMenu().AddMenuItem(-1, GOSSIP_ICON_TALK, "25 Raid",
-                        HIRE_RAID_GROUP_25, GOSSIP_ACTION_INFO_DEF, message1.str(), BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE)*24, false);
+                        HIRE_RAID_GROUP_25, GOSSIP_ACTION_INFO_DEF, message1.str(), BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE, player)*24, false);
 
                     player->PlayerTalkClass->GetGossipMenu().AddMenuItem(-1, GOSSIP_ICON_TALK, "40 Raid",
-                        HIRE_RAID_GROUP_40, GOSSIP_ACTION_INFO_DEF, message1.str(), BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE)*39, false);
+                        HIRE_RAID_GROUP_40, GOSSIP_ACTION_INFO_DEF, message1.str(), BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE, player)*39, false);
 
                     AddGossipItemFor(player, GOSSIP_ICON_CHAT, bot_ai::LocalizedNpcText(player, BOT_TEXT_BACK), HIRE, GOSSIP_ACTION_INFO_DEF + 1);
                 }
@@ -342,7 +342,7 @@ public:
                     else
                         break;
 
-                    uint32 botCost = BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE)* botsAmount;
+                    uint32 botCost = BotMgr::GetNpcBotCost(player->GetLevel(), BOT_CLASS_NONE, player)* botsAmount;
 
                     if (!player->HasEnoughMoney(botCost))
                     {

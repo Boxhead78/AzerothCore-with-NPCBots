@@ -19,6 +19,41 @@ public:
     }
 };
 
+class playerscript_spell_two_forms : public PlayerScript
+{
+public:
+    playerscript_spell_two_forms() : PlayerScript("playerscript_spell_two_forms") { }
+
+    uint32 _updateTimer = 0;
+
+    void OnPlayerJustDied(Player* player) override
+    {
+        if (!player)
+            return;
+
+        if (player->GetDisplayId() == 29317 || player->GetDisplayId() == 30217)
+        {
+            player->CastSpell(player, 98598, true);
+        }
+    }
+
+    void OnUpdate(Player* player, uint32 p_time) override
+    {
+        if (!player)
+            return;
+
+        _updateTimer += p_time;
+        if (_updateTimer < 1000)
+            return;
+
+        _updateTimer = 0;
+        if (player->IsInCombat() && (player->GetDisplayId() == 29317 || player->GetDisplayId() == 30217))
+        {
+            player->CastSpell(player, 98598, true);
+        }
+    }
+};
+
 class spell_rocket_barrage : public SpellScript
 {
     PrepareSpellScript(spell_rocket_barrage);
@@ -41,5 +76,6 @@ class spell_rocket_barrage : public SpellScript
 void Add_Worgoblin()
 {
     new announce();
+    new playerscript_spell_two_forms();
     RegisterSpellScript(spell_rocket_barrage);
 }

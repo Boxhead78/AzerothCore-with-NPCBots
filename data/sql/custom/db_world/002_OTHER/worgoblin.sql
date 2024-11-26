@@ -87,23 +87,6 @@ INSERT INTO `item_template` (`entry`, `class`, `subclass`, `SoundOverrideSubclas
 (49521, 4, 1, -1, 'Goblin Acolyte\'s Pants', 62621, 1, 0, 0, 1, 0, 1, 7, -1, -1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, '', 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0),
 (49522, 4, 1, -1, 'Goblin Acolyte\'s Shoes', 4143, 1, 0, 0, 1, 0, 1, 8, -1, -1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1000, 0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, '', 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0);
 
--- playercreateinfo_skills
-DELETE FROM `playercreateinfo_skills` WHERE raceMask = 2048 AND classMask = 8 AND skill = 44;
-INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES
-(2048, 8, 44, 0, 'Axes - Worgen'); -- Yes, these are hackfixes and I'm very mad about it
-
-DELETE FROM `playercreateinfo_skills` WHERE raceMask = 256 AND classMask = 8 AND skill = 54;
-INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES
-(256, 8, 54, 0, 'Maces - Goblin'); -- But right now I don't see any other way to add these.
-
-DELETE FROM `playercreateinfo_skills` WHERE raceMask = 2048 AND classMask = 0 AND skill = 789;
-INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES
-(2048, 0, 789, 0, 'Worgen - Racial'); -- And unfortunately, I really want worgen and goblins
-
-DELETE FROM `playercreateinfo_skills` WHERE raceMask = 256 AND classMask = 0 AND skill = 790;
-INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES
-(256, 0, 790, 0, 'Goblin - Racial'); -- To have their starting gear from cata, and the rogues have funky weapons
-
 DELETE FROM `spell_script_names` WHERE `spell_id` = 69041;
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (69041, 'spell_rocket_barrage');
 
@@ -157,101 +140,106 @@ DELETE FROM `playercreateinfo_action` WHERE `race` = 9 OR `race` = 12;
 INSERT INTO `playercreateinfo_action` (`race`, `class`, `button`, `action`) VALUES
 (9, 1, 72, 6603),
 (9, 1, 73, 78),
-(9, 1, 81, 69070),
-(9, 1, 82, 69041),
+(9, 1, 81, 98588),
+(9, 1, 82, 98589),
 (9, 1, 84, 6603),
 (9, 1, 96, 6603),
 (9, 3, 0, 6603),
 (9, 3, 1, 2973),
 (9, 3, 2, 75),
-(9, 3, 9, 69070),
-(9, 3, 10, 69041),
+(9, 3, 9, 98588),
+(9, 3, 10, 98589),
 (9, 4, 0, 6603),
 (9, 4, 1, 1752),
 (9, 4, 2, 2098),
 (9, 4, 3, 2764),
-(9, 4, 9, 69070),
-(9, 4, 10, 69041),
+(9, 4, 9, 98588),
+(9, 4, 10, 98589),
 (9, 5, 0, 585),
 (9, 5, 1, 2050),
-(9, 5, 9, 69070),
-(9, 5, 10, 69041),
+(9, 5, 9, 98588),
+(9, 5, 10, 98589),
 (9, 6, 0, 6603),
 (9, 6, 1, 49576),
 (9, 6, 2, 45477),
 (9, 6, 3, 45462),
 (9, 6, 4, 45902),
 (9, 6, 5, 47541),
-(9, 6, 9, 69070),
-(9, 6, 11, 69046),
-(9, 6, 10, 69041),
+(9, 6, 9, 98588),
+(9, 6, 11, 98590),
+(9, 6, 10, 98589),
 (9, 7, 0, 6603),
 (9, 7, 1, 403),
 (9, 7, 2, 331),
-(9, 7, 9, 69070),
-(9, 7, 10, 69041),
+(9, 7, 9, 98588),
+(9, 7, 10, 98589),
 (9, 8, 0, 133),
 (9, 8, 1, 168),
-(9, 8, 9, 69070),
-(9, 8, 10, 69041),
+(9, 8, 9, 98588),
+(9, 8, 10, 98589),
 (9, 9, 0, 686),
 (9, 9, 1, 687),
-(9, 9, 9, 69070),
-(9, 9, 10, 69041),
+(9, 9, 9, 98588),
+(9, 9, 10, 98589),
 (12, 1, 72, 6603),
 (12, 1, 73, 78),
 (12, 1, 84, 6603),
 (12, 1, 96, 6603),
--- (12, 1, 120, 68992), Darkflight Warrior
--- (12, 1, 120, 68996), Two Forms Warrior
--- (12, 1, 120, 87840), Running Wild Warrior
+(12, 1, 120, 98595), Darkflight Warrior
+(12, 1, 120, 98598), Two Forms Warrior
+(12, 1, 120, 98599), Feral Lunge Warrior
 (12, 3, 0, 6603),
 (12, 3, 1, 2973),
 (12, 3, 2, 75),
--- (12, 3, 120, 68992), Darkflight Hunter
--- (12, 3, 120, 68996), Two Forms Hunter
--- (12, 3, 120, 87840), Running Wild Hunter
+(12, 3, 120, 98595), Darkflight Hunter
+(12, 3, 120, 98598), Two Forms Hunter
+(12, 3, 120, 98599), Feral Lunge Hunter
 (12, 4, 0, 6603),
 (12, 4, 1, 1752),
 (12, 4, 2, 2098),
 (12, 4, 3, 2764),
--- (12, 4, 120, 68992), Darkflight Rogue
--- (12, 4, 120, 68996), Two Forms Rogue
--- (12, 4, 120, 87840), Running Wild Rogue
+(12, 4, 120, 98595), Darkflight Rogue
+(12, 4, 120, 98598), Two Forms Rogue
+(12, 4, 120, 98599), Feral Lunge Rogue
 (12, 5, 0, 585),
 (12, 5, 1, 2050),
--- (12, 5, 120, 68992), Darkflight Priest
--- (12, 5, 120, 68996), Two Forms Priest
--- (12, 5, 120, 87840), Running Wild Priest
+(12, 5, 120, 98595), Darkflight Priest
+(12, 5, 120, 98598), Two Forms Priest
+(12, 5, 120, 98599), Feral Lunge Priest
 (12, 6, 0, 6603),
 (12, 6, 1, 49576),
 (12, 6, 2, 45477),
 (12, 6, 3, 45462),
 (12, 6, 4, 45902),
 (12, 6, 5, 47541),
-(12, 6, 9, 68992),
--- (12, 6, 120, 68996), Two Forms Death Knight
--- (12, 6, 120, 87840), Running Wild Death Knight
+(12, 6, 9, 98595),
+(12, 6, 120, 98598), Two Forms Death Knight
+(12, 6, 120, 98599), Feral Lunge Death Knight
 (12, 8, 0, 133),
 (12, 8, 1, 168),
--- (12, 8, 120, 68992), Darkflight Mage
--- (12, 8, 120, 68996), Two Forms Mage
--- (12, 8, 120, 87840), Running Wild Mage
+(12, 8, 120, 98595), Darkflight Mage
+(12, 8, 120, 98598), Two Forms Mage
+(12, 8, 120, 98599), Feral Lunge Mage
 (12, 9, 0, 686),
 (12, 9, 1, 687),
--- (12, 9, 120, 68992), Darkflight Warlock
--- (12, 9, 120, 68996), Two Forms Warlock
--- (12, 9, 120, 87840), Running Wild Warlock
+(12, 9, 120, 98595), Darkflight Warlock
+(12, 9, 120, 98598), Two Forms Warlock
+(12, 9, 120, 98599), Feral Lunge Warlock
 (12, 11, 0, 5176),
 (12, 11, 1, 5185),
 (12, 11, 72, 6603),
 (12, 11, 96, 6603);
--- (12, 11, 120, 68992), Darkflight Druid
--- (12, 11, 120, 68996), Two Forms Druid
--- (12, 11, 120, 87840) Running Wild Druid
+(12, 11, 120, 98595), Darkflight Druid
+(12, 11, 120, 98598), Two Forms Druid
+(12, 11, 120, 98599) Feral Lunge Druid
 
-UPDATE `playercreateinfo_skills` SET `racemask` = `racemask`|256|2048 WHERE `skill` = 46; -- Guns
-UPDATE `playercreateinfo_skills` SET `racemask` = `racemask`|256|2048 WHERE `skill` = 173; -- Daggers
-UPDATE `playercreateinfo_skills` SET `racemask` = `racemask`|256 WHERE `skill` = 160; -- 2h-mace goblins
+DELETE FROM `playercreateinfo_skills` WHERE raceMask = 2048 AND classMask = 0 AND skill = 789;
+INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES
+(2048, 0, 789, 0, 'Worgen - Racial');
+
+DELETE FROM `playercreateinfo_skills` WHERE raceMask = 256 AND classMask = 0 AND skill = 790;
+INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES
+(256, 0, 790, 0, 'Goblin - Racial');
+
 UPDATE `playercreateinfo_skills` SET `racemask` = `racemask`|256 WHERE `skill` = 109; -- Orcish language goblins
 UPDATE `playercreateinfo_skills` SET `racemask` = `racemask`|2048 WHERE `skill` = 98; -- Common language worgen

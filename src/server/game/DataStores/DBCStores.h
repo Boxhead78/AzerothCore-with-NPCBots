@@ -41,9 +41,11 @@ enum ContentLevels : uint8
 {
     CONTENT_1_60 = 0,
     CONTENT_61_70,
-    CONTENT_71_80
+    CONTENT_71_80,
+    CONTENT_81_90
 };
 ContentLevels GetContentLevelsForMapAndZone(uint32 mapid, uint32 zoneId);
+bool IsCataclysmContent(uint32 mapid, uint32 zoneId);
 
 void Zone2MapCoordinates(float& x, float& y, uint32 zone);
 void Map2ZoneCoordinates(float& x, float& y, uint32 zone);

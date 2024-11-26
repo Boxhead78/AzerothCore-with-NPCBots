@@ -4984,6 +4984,9 @@ uint32 Player::DurabilityRepair(uint16 pos, bool cost, float discountMod, bool g
 
             costs = uint32(costs * discountMod * sWorld->getRate(RATE_REPAIRCOST));
 
+            if (HasAura(98593)) // Best Deals anywhere
+                costs *= 0.9;
+
             if (costs == 0)                                   //fix for ITEM_QUALITY_ARTIFACT
                 costs = 1;
 
@@ -5887,8 +5890,8 @@ void Player::CheckAreaExploreAndOutdoor()
 
     if (!areaEntry)
     {
-        LOG_ERROR("entities.player", "Player '{}' ({}) discovered unknown area (x: {} y: {} z: {} map: {})",
-                       GetName(), GetGUID().ToString(), GetPositionX(), GetPositionY(), GetPositionZ(), GetMapId());
+        LOG_ERROR("entities.player", "Player '{}' ({}) discovered unknown area (x: {} y: {} z: {} map: {} areaid: {})",
+                       GetName(), GetGUID().ToString(), GetPositionX(), GetPositionY(), GetPositionZ(), GetMapId(), areaId);
         return;
     }
 
@@ -12016,11 +12019,6 @@ void Player::resetSpells()
 
 void Player::LearnCustomSpells()
 {
-    if (!sWorld->getBoolConfig(CONFIG_START_CUSTOM_SPELLS))
-    {
-        return;
-    }
-
     // learn default race/class spells
     PlayerInfo const* info = sObjectMgr->GetPlayerInfo(getRace(), getClass());
     ASSERT(info);
@@ -13841,6 +13839,14 @@ bool Player::canFlyInZone(uint32 mapid, uint32 zone, SpellInfo const* bySpell)
     if (v_map == 571 && !bySpell->HasAttribute(SPELL_ATTR7_IGNORES_COLD_WEATHER_FLYING_REQUIREMENT))
     {
         if (!HasSpell(54197)) // 54197 = Cold Weather Flying
+        {
+            return false;
+        }
+    }
+
+    if ((v_map == 0 || v_map == 1))
+    {
+        if (!HasSpell(98576)) // 98576 = Flying License
         {
             return false;
         }

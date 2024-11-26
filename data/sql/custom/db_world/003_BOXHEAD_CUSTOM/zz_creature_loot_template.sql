@@ -726,6 +726,8 @@ DELETE FROM `creature_loot_template` WHERE `Entry`=500005 AND `Item`=43013 AND `
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500005, 43013, 0, 54.7, 0, 1, 0, 1, 1, 'Trash');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500005 AND `Item`=45912 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500005, 45912, 0, 0.1, 0, 1, 0, 1, 1, 'Trash');
+DELETE FROM `creature_loot_template` WHERE `Entry`=500005 AND `Item`=62806 AND `Reference`=0 AND `GroupId`=0;
+INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500005, 62806, 0, 75, 1, 1, 0, 1, 1, 'Trash');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500011 AND `Item`=26001 AND `Reference`=26001 AND `GroupId`=1;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500011, 26001, 26001, 3, 0, 1, 1, 1, 1, 'Trash');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500011 AND `Item`=26002 AND `Reference`=26002 AND `GroupId`=1;

@@ -87,6 +87,13 @@ void LoadGameObjectModelList(std::string const& dataPath)
 
         if (v1.isNaN() || v2.isNaN())
         {
+            std::string modelName(buff, name_length);
+            if (modelName.compare(0, 10, "Firelands_") == 0)
+            { // Only show in debug
+                LOG_DEBUG("maps", "Skipping model with 'Firelands_': '{}'", modelName);
+                continue;
+            }
+
             LOG_ERROR("maps", "File '{}' Model '{}' has invalid v1{} v2{} values!",
                       VMAP::GAMEOBJECT_MODELS, std::string(buff, name_length), v1.toString(), v2.toString());
             continue;

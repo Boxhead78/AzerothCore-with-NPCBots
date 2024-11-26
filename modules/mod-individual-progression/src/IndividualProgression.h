@@ -122,7 +122,15 @@ enum ProgressionAreas
     AREA_ARGENT_VALIANTS_RING = 4671,
     AREA_ARGENT_ALLIANCE_VALIANTS_RING = 4672,
     AREA_ARGENT_HORDE_VALIANTS_RING = 4673,
-    AREA_ARGENT_PAVILION = 4674
+    AREA_ARGENT_PAVILION = 4674,
+    AREA_DREADMIST_PEAK = 384,
+    AREA_FELFIRE_HILL = 434,
+    AREA_DEMON_FALL_CANYON = 435,
+    AREA_DEMON_FALL_RIDGE = 436,
+    AREA_STONEWATCH = 70,
+    AREA_STONEWATCH_TOWER = 999,
+    AREA_STONEWATCH_KEEP = 2099,
+    AREA_VUL_GOL_OGRE_MOUND = 93
 };
 
 enum ProgressionSettings
@@ -195,6 +203,11 @@ enum PvPTitles : uint32
     GENERAL                  = 26,
     WARLORD                  = 27,
     HIGH_WARLORD             = 28
+};
+
+enum ProgressionSoundEntries : uint32
+{
+    MUSIC_RAGEFIRE_CHASM_HEROIC_LIGHT = 70001
 };
 
 class IndividualProgression

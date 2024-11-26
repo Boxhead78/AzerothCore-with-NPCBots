@@ -890,6 +890,7 @@ struct SmartAction
         struct
         {
             SAIBool move;
+            SAIBool casting;
         } combatMove;
 
         struct

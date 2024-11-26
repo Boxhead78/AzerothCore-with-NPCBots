@@ -434,6 +434,52 @@ private:
     std::map<uint32, time_t> _triggerTimes;
 };
 
+
+// ######
+// ## at_twilight_zone_ragefire_chasm
+// ######
+
+enum TwilightZoneMusic
+{
+    AREA_RAGEFIRE_CHASM = 0,
+    MUSIC_RAGEFIRE_CHASM_HEROIC = 70000
+};
+
+class AreaTrigger_at_twilight_zone_ragefire_chasm : public AreaTriggerScript
+{
+public:
+    AreaTrigger_at_twilight_zone_ragefire_chasm()
+        : AreaTriggerScript("at_twilight_zone_ragefire_chasm")
+    {
+    }
+
+    bool OnTrigger(Player* player, AreaTrigger const* /*trigger*/) override
+    {
+        // Spieler ID und aktuelle Zeit abrufen
+        ObjectGuid playerId = player->GetGUID();
+        uint32 currentTime = GameTime::GetGameTime().count();
+
+        // Überprüfen, ob der Spieler schon einen Eintrag hat und die letzte Ausführung innerhalb der letzten 5 Minuten war
+        if (lastTriggerTime.find(playerId) != lastTriggerTime.end())
+        {
+            uint32 lastTime = lastTriggerTime[playerId];
+            if ((currentTime - lastTime) < 3 * MINUTE) // 300 Sekunden = 3 Minuten
+                return false; // Abbrechen, wenn der Trigger innerhalb der letzten 3 Minuten ausgelöst wurde
+        }
+
+        // Wenn genug Zeit vergangen ist, Musik abspielen und Zeitstempel aktualisieren
+        player->GetMap()->SetZoneMusic(AREA_RAGEFIRE_CHASM, MUSIC_RAGEFIRE_CHASM_HEROIC);
+        lastTriggerTime[playerId] = currentTime;
+
+        return true;
+    }
+
+private:
+    // Map zur Speicherung der letzten Trigger-Zeit pro Spieler
+    std::unordered_map<ObjectGuid, uint32> lastTriggerTime;
+};
+
+
 void AddSC_areatrigger_scripts()
 {
     // Ours

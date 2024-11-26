@@ -177,7 +177,7 @@ struct boss_baron_ignatius : public BossAI
             }
             me->GetMotionMaster()->Clear(); // Bewegungsliste zurücksetzen
             me->SetReactState(REACT_AGGRESSIVE);
-            me->GetMotionMaster()->MoveChase(me->GetVictim());
+            me->AI()->AttackStart(me->GetVictim());
         }
     }
 

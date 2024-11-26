@@ -1342,7 +1342,7 @@ struct MapEntry
     float   entrance_x;                                     // 60 entrance x coordinate (if exist single entry)
     float   entrance_y;                                     // 61 entrance y coordinate (if exist single entry)
     //uint32 TimeOfDayOverride;                             // 62 -1, 0 and 720
-    uint32  expansionID;                                    // 63 (0: Vanilla, 1:TBC, 2:WotLK)
+    uint32  expansionID;                                    // 63 (0: Vanilla, 1:TBC, 2:WotLK, 3:Cata)
     //uint32  raidOffset;                                   // 64 some kind of time?
     uint32  maxPlayers;                                     // 65 max players, fallback if not present in MapDifficulty.dbc
 

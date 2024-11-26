@@ -3988,6 +3988,7 @@ private:
 enum Mounts
 {
     SPELL_COLD_WEATHER_FLYING           = 54197,
+    SPELL_FLYING_LICENSE                = 98576,
 
     // Magic Broom
     SPELL_MAGIC_BROOM_60                = 42680,
@@ -4091,7 +4092,7 @@ public:
             // Triggered spell id dependent on riding skill and zone
             bool canFly = false;
             uint32 map = GetVirtualMapForMapAndZone(target->GetMapId(), target->GetZoneId());
-            if (map == 530 || (map == 571 && target->HasSpell(SPELL_COLD_WEATHER_FLYING)))
+            if (map == 530 || (map == 571 && target->HasSpell(SPELL_COLD_WEATHER_FLYING)) || ((map == 0 || map == 1) && target->HasSpell(SPELL_FLYING_LICENSE)))
                 canFly = true;
 
             AreaTableEntry const* area = sAreaTableStore.LookupEntry(target->GetAreaId());

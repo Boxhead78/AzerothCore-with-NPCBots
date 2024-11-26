@@ -4184,6 +4184,46 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                             m_caster->CastSpell(m_caster, 61268, true);
                             return;
                         }
+                    case 98595: // Darkflight
+                    case 98599: // Feral Lunge
+                        {
+                            if (!m_caster)
+                                return;
+
+                            if (m_caster->GetDisplayId() == 29317 || m_caster->GetDisplayId() == 30217)
+                                m_caster->CastSpell(m_caster, 98598, true);
+
+                            break;
+                        }
+                    case 98598: // Two Forms
+                        {
+                            if (!m_caster)
+                                return;
+
+                            if (m_caster->GetGender() == GENDER_FEMALE)
+                            {
+                                if (m_caster->GetDisplayId() == 29423) // Worgen Female DisplayID
+                                {
+                                    m_caster->SetDisplayId(30217); // Human Female DisplayID
+                                }
+                                else if (m_caster->GetDisplayId() == 30217) // Human Female DisplayID
+                                {
+                                    m_caster->DeMorph();
+                                }
+                            }
+                            else
+                            {
+                                if (m_caster->GetDisplayId() == 29422) // Worgen Male DisplayID
+                                {
+                                    m_caster->SetDisplayId(29317); // Human Male DisplayID
+                                }
+                                else if (m_caster->GetDisplayId() == 29317) // Human Male DisplayID
+                                {
+                                    m_caster->DeMorph();
+                                }
+                            }
+                            break;
+                        }
                 }
                 break;
             }

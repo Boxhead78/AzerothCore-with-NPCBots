@@ -386,6 +386,20 @@ public:
                     player->CastSpell(player, IPP_PHASE, false);
                 }
                 break;
+            case AREA_DREADMIST_PEAK:
+            case AREA_FELFIRE_HILL:
+            case AREA_DEMON_FALL_CANYON:
+            case AREA_DEMON_FALL_RIDGE:
+            case AREA_STONEWATCH:
+            case AREA_STONEWATCH_TOWER:
+            case AREA_STONEWATCH_KEEP:
+            case AREA_VUL_GOL_OGRE_MOUND:
+                if (sIndividualProgression->hasPassedProgression(player, PROGRESSION_WOTLK_TIER_4))
+                {
+                    player->GetMap()->SetZoneMusic(player->GetZoneId(), MUSIC_RAGEFIRE_CHASM_HEROIC_LIGHT);
+                    player->GetMap()->SetZoneWeather(player->GetZoneId(), WEATHER_STATE_MEDIUM_RAIN, 0.5f);
+                }
+                break;
             default:
                 player->RemoveAura(IPP_PHASE);
         }

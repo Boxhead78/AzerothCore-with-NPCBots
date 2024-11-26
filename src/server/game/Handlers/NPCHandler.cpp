@@ -164,7 +164,10 @@ void WorldSession::SendTrainerList(ObjectGuid guid, const std::string& strTitle)
 
         data << uint32(tSpell->spell);                      // learned spell (or cast-spell in profession case)
         data << uint8(state == TRAINER_SPELL_GREEN_DISABLED ? TRAINER_SPELL_GREEN : state);
-        data << uint32(std::floor(tSpell->spellCost * fDiscountMod));
+        if (_player->HasAura(98593)) // Best Deals anywhere
+            data << uint32(std::floor(tSpell->spellCost * fDiscountMod * 0.9));
+        else
+            data << uint32(std::floor(tSpell->spellCost * 0.9));
 
         data << uint32(primary_prof_first_rank && can_learn_primary_prof ? 1 : 0);
         // primary prof. learn confirmation dialog

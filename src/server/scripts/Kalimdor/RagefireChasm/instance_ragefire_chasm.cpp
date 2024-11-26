@@ -221,7 +221,9 @@ public:
                     {
                         if (Player* player = itr->GetSource())
                         {
-                            if (player && player->IsAtGroupRewardDistance(me) && !player->GetCorpse() && player->GetQuestStatus(QUEST_DESTRUCTION_OF_THE_TWILIGHT_EGGS) == QUEST_STATUS_INCOMPLETE)
+                            if (player && player->IsAtGroupRewardDistance(me) && !player->GetCorpse() &&
+                                (player->GetTeamId() == TEAM_HORDE && player->GetQuestStatus(QUEST_DESTRUCTION_OF_THE_TWILIGHT_EGGS_HORDE) == QUEST_STATUS_INCOMPLETE) ||
+                                (player->GetTeamId() == TEAM_ALLIANCE && player->GetQuestStatus(QUEST_DESTRUCTION_OF_THE_TWILIGHT_EGGS_ALLIANCE) == QUEST_STATUS_INCOMPLETE))
                             {
                                 player->KilledMonsterCredit(NPC_TWILIGHT_EGG);
                             }
@@ -232,9 +234,10 @@ public:
                     TempSummon* twilightWhelp = me->SummonCreature(NPC_TWILIGHT_WHELP, me->GetPositionX(), me->GetPositionY(), me->GetPositionZ(), me->GetOrientation(), TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 180000); // 180000 ms = 3 Minute Despawn Timer
                     twilightWhelp->CastSpell(twilightWhelp, SPELL_EGG_HATCH, true);
                     twilightWhelp->SetOrientation(frand(0.0f, M_PI));
-                    if (Unit* target = SelectTarget(SelectTargetMethod::Random, 0, 100.0f, true))
+                    if (Unit* target = SelectTarget(SelectTargetMethod::Random))
                     {
-                        twilightWhelp->GetMotionMaster()->MoveChase(target);
+                        twilightWhelp->GetMotionMaster()->Clear();
+                        twilightWhelp->AI()->AttackStart(target);
                     }
                     me->DespawnOrUnsummon();
                 }

@@ -7905,7 +7905,7 @@ bool bot_ai::OnGossipHello(Player* player, uint32 /*option*/)
     {
         if (IAmFree() && !IsWanderer())
         {
-            uint32 cost = BotMgr::GetNpcBotCost(player->GetLevel(), _botclass);
+            uint32 cost = BotMgr::GetNpcBotCost(player->GetLevel(), _botclass, player);
 
             int8 reason = 0;
             if (me->HasAura(BERSERK))
@@ -10472,7 +10472,7 @@ bool bot_ai::OnGossipSelect(Player* player, Creature* creature/* == me*/, uint32
                     case 3: //not enough money
                     {
                         std::string str = LocalizedNpcText(player, BOT_TEXT_HIREFAIL_COST) + " (";
-                        str += BotMgr::GetNpcBotCostStr(player->GetLevel(), _botclass);
+                        str += BotMgr::GetNpcBotCostStr(player->GetLevel(), _botclass, player);
                         str += ")!";
                         ch.SendSysMessage(str);
                         player->SendBuyError(BUY_ERR_NOT_ENOUGHT_MONEY, 0, 0, 0);

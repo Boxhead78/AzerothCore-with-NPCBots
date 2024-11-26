@@ -7123,6 +7123,8 @@ DELETE FROM `item_template_locale` WHERE `ID`=57118 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (57118, 'deDE', 'Käfigschlüssel des Schattenhammers', 'Violett und aus seltsamem Metall geformt.', 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=57119 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (57119, 'deDE', 'Enohars explosive Pfeile', NULL, 16000);
+DELETE FROM `item_template_locale` WHERE `ID`=57121 AND `locale`='deDE';
+INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (57121, 'deDE', 'Dunkler Brief', NULL, 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=57122 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (57122, 'deDE', 'James Clarks Kopf', NULL, 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=57131 AND `locale`='deDE';

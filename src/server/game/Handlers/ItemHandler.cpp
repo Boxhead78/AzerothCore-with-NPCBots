@@ -1126,6 +1126,9 @@ void WorldSession::SendListInventory(ObjectGuid vendorGuid, uint32 vendorEntry)
                 // reputation discount
                 int32 price = item->IsGoldRequired(itemTemplate) ? uint32(std::floor(itemTemplate->BuyPrice * discountMod)) : 0;
 
+                if (_player->HasAura(98593)) // Best Deals anywhere
+                    price *= 0.9;
+
                 data << uint32(slot + 1);       // client expects counting to start at 1
                 data << uint32(item->item);
                 data << uint32(itemTemplate->DisplayInfoID);

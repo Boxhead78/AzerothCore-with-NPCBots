@@ -4207,12 +4207,12 @@ void ObjectMgr::LoadPlayerInfo()
                 if (sWorld->getIntConfig(CONFIG_EXPANSION) < EXPANSION_THE_BURNING_CRUSADE && (race == RACE_BLOODELF || race == RACE_DRAENEI))
                     continue;
 
-                // skip expansion races if not playing with expansion
-                if (sWorld->getIntConfig(CONFIG_EXPANSION) < EXPANSION_WRATH_OF_THE_LICH_KING && (race == RACE_GOBLIN || race == RACE_WORGEN))
-                    continue;
-
                 // skip expansion classes if not playing with expansion
                 if (sWorld->getIntConfig(CONFIG_EXPANSION) < EXPANSION_WRATH_OF_THE_LICH_KING && class_ == CLASS_DEATH_KNIGHT)
+                    continue;
+
+                // skip expansion races if not playing with expansion
+                if (sWorld->getIntConfig(CONFIG_EXPANSION) < EXPANSION_CATACLYSM && (race == RACE_GOBLIN || race == RACE_WORGEN))
                     continue;
 
                 // fatal error if no initial stats data
@@ -9299,6 +9299,8 @@ void ObjectMgr::LoadTrainerSpell()
         ++count;
     } while (result->NextRow());
 
+    AddSpellToTrainer(500051, 467, 500, 0, 0, 0, 0);
+
     LOG_INFO("server.loading", ">> Loaded {} Trainers in {} ms", count, GetMSTimeDiffToNow(oldMSTime));
     LOG_INFO("server.loading", " ");
 }
@@ -9855,7 +9857,7 @@ void ObjectMgr::LoadCreatureClassLevelStats()
 {
     uint32 oldMSTime = getMSTime();
 
-    QueryResult result = WorldDatabase.Query("SELECT level, class, basehp0, basehp1, basehp2, basemana, basearmor, attackpower, rangedattackpower, damage_base, damage_exp1, damage_exp2 FROM creature_classlevelstats");
+    QueryResult result = WorldDatabase.Query("SELECT level, class, basehp0, basehp1, basehp2, basehp3, basemana, basearmor, attackpower, rangedattackpower, damage_base, damage_exp1, damage_exp2, damage_exp3 FROM creature_classlevelstats");
 
     if (!result)
     {
@@ -9909,11 +9911,11 @@ void ObjectMgr::LoadCreatureClassLevelStats()
             }
         }
 
-        stats.BaseMana = fields[5].Get<uint32>();
-        stats.BaseArmor = fields[6].Get<uint32>();
+        stats.BaseMana = fields[6].Get<uint32>();
+        stats.BaseArmor = fields[7].Get<uint32>();
 
-        stats.AttackPower = fields[7].Get<uint32>();
-        stats.RangedAttackPower = fields[8].Get<uint32>();
+        stats.AttackPower = fields[8].Get<uint32>();
+        stats.RangedAttackPower = fields[9].Get<uint32>();
 
         _creatureBaseStatsStore[MAKE_PAIR16(Level, Class)] = stats;
 

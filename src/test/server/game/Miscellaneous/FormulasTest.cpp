@@ -95,9 +95,10 @@ TEST(FormulasTest, BaseGain)
     EXPECT_EQ(BaseGain(50, 60, CONTENT_1_60), 354);
     EXPECT_EQ(BaseGain(65, 66, CONTENT_61_70), 588);
     EXPECT_EQ(BaseGain(79, 78, CONTENT_71_80), 917);
+    EXPECT_EQ(BaseGain(80, 89, CONTENT_81_90), 1820);
 
     // check outError() has been called after passing an invalid ContentLevels content
-    EXPECT_EQ(BaseGain(79, 1, ContentLevels(999)), 0);
+    EXPECT_EQ(BaseGain(89, 1, ContentLevels(999)), 0);
 }
 
 TEST(FormulasTest, Gain)

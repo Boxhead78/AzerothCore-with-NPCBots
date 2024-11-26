@@ -1,0 +1,6 @@
+DELETE FROM `gossip_menu_option` WHERE `MenuID`=200000 AND `OptionID`=0;
+INSERT INTO `gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionBroadcastTextID`, `OptionType`, `OptionNpcFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`, `BoxBroadcastTextID`, `VerifiedBuild`) VALUES (200000, 0, 3, 'I seek training as a druid.', 7452, 5, 16, 0, 0, 0, 0, '', 0, 0);
+DELETE FROM `gossip_menu_option` WHERE `MenuID`=200000 AND `OptionID`=1;
+INSERT INTO `gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionBroadcastTextID`, `OptionType`, `OptionNpcFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`, `BoxBroadcastTextID`, `VerifiedBuild`) VALUES (200000, 1, 0, 'I wish to unlearn my talents.', 62295, 16, 16, 4461, 0, 0, 0, '', 0, 0);
+DELETE FROM `gossip_menu_option` WHERE `MenuID`=200000 AND `OptionID`=2;
+INSERT INTO `gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionBroadcastTextID`, `OptionType`, `OptionNpcFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`, `BoxBroadcastTextID`, `VerifiedBuild`) VALUES (200000, 2, 0, 'I wish to know about Dual Talent Specialization.', 33762, 20, 1, 10371, 0, 0, 0, '', 0, 0);

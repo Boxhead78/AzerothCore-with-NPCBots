@@ -213,7 +213,8 @@ struct boss_giant_earthborer : public BossAI
                         me->GetMotionMaster()->Clear();
                         if (farthestPlayer && farthestPlayer->IsAlive())
                         {
-                            me->GetMotionMaster()->MoveChase(farthestPlayer);
+                            me->GetMotionMaster()->Clear();
+                            me->AI()->AttackStart(farthestPlayer);
                         }
                         else
                         {
@@ -244,6 +245,7 @@ struct boss_giant_earthborer : public BossAI
                     // Lässt das Earthborer-Add einen zufälligen Spieler angreifen
                     if (Unit* target = SelectTarget(SelectTargetMethod::Random))
                     {
+                        earthborer->GetMotionMaster()->Clear();
                         earthborer->AI()->AttackStart(target);
                     }
                 }
@@ -257,7 +259,8 @@ struct boss_giant_earthborer : public BossAI
         me->GetMotionMaster()->Clear();
         if (Unit* target = me->SelectNearestTarget())
         {
-            me->GetMotionMaster()->MoveChase(target);
+            me->GetMotionMaster()->Clear();
+            me->AI()->AttackStart(target);
         }
     }
 

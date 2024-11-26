@@ -264,8 +264,8 @@ class AC_GAME_API BotMgr
         bool HasBotPetType(uint32 petType) const;
         bool IsBeingResurrected(WorldObject const* corpse) const;
 
-        static uint32 GetNpcBotCost(uint8 level, uint8 botclass);
-        static std::string GetNpcBotCostStr(uint8 level, uint8 botclass);
+        static uint32 GetNpcBotCost(uint8 level, uint8 botclass, Player* player);
+        static std::string GetNpcBotCostStr(uint8 level, uint8 botclass, Player* player);
         static uint8 BotClassByClassName(std::string const& className);
         static uint8 GetBotPlayerClass(uint8 bot_class);
         static uint8 GetBotPlayerRace(uint8 bot_class, uint8 bot_race);

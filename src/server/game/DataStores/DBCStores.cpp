@@ -713,6 +713,11 @@ uint32 GetVirtualMapForMapAndZone(uint32 mapid, uint32 zoneId)
 
 ContentLevels GetContentLevelsForMapAndZone(uint32 mapid, uint32 zoneId)
 {
+    if (IsCataclysmContent(mapid, zoneId))
+    {
+        return CONTENT_81_90;
+    }
+
     mapid = GetVirtualMapForMapAndZone(mapid, zoneId);
     if (mapid < 2)
         return CONTENT_1_60;
@@ -729,6 +734,75 @@ ContentLevels GetContentLevelsForMapAndZone(uint32 mapid, uint32 zoneId)
             return CONTENT_61_70;
         case 2:
             return CONTENT_71_80;
+    }
+}
+
+bool IsCataclysmContent(uint32 mapid, uint32 zoneId)
+{
+    switch (mapid)
+    { // Original cataclysm map IDs
+        case 637:
+        case 643:
+        case 644:
+        case 645:
+        case 646:
+        case 657:
+        case 660:
+        case 662:
+        case 669:
+        case 670:
+        case 671:
+        case 674:
+        case 720:
+        case 721:
+        case 725:
+        case 726:
+        case 730:
+        case 732:
+        case 738:
+        case 739:
+        case 740:
+        case 741:
+        case 742:
+        case 743:
+        case 747:
+        case 748:
+        case 754:
+        case 755:
+        case 757:
+        case 762:
+        case 763:
+        case 765:
+        case 859:
+        case 861:
+        case 938:
+        case 939:
+        case 940:
+        case 951:
+        case 967:
+        case 977:
+        case 980:
+        case 999:
+        case 1000:
+        case 1469:
+        case 1572:
+        case 1603:
+            return true;
+    }
+
+    switch (zoneId)
+    {
+        case 616: //Hyjal
+        case 4815: //KelpThar Forest
+        case 4922: //Highlands
+        case 5034: //Uldum
+        case 5095: //Tol Barad
+        case 5144: //Simmering Expanse
+        case 5145: //Abyssal Depths
+        case 5146: //Vashjir
+        case 5389: //Tol Barad Peninsula
+        case 9548: //Havenswood
+            return true;
     }
 }
 

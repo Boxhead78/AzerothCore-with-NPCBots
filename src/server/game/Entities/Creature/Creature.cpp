@@ -1640,7 +1640,7 @@ void Creature::SelectLevel(bool changelevel)
         {
             MapEntry const* mapEntry = sMapStore.LookupEntry(GetMapId());
             //Classic Content
-            if (mapEntry->Expansion() == CONTENT_1_60)
+            if (mapEntry->Expansion() == CONTENT_1_60 && GetLevel() < 64)
             {
                 //Open World
                 if (!creatureMap->IsNonRaidDungeon() && !creatureMap->IsRaid())
@@ -1991,7 +1991,7 @@ bool Creature::LoadCreatureFromDB(ObjectGuid::LowType spawnId, Map* map, bool ad
             {
                 MapEntry const* mapEntry = sMapStore.LookupEntry(map->GetId());
                 //Classic Content
-                if (mapEntry->Expansion() == CONTENT_1_60)
+                if (mapEntry->Expansion() == CONTENT_1_60 && GetLevel() < 64)
                 {
                     //Open World
                     if (!map->IsNonRaidDungeon() && !map->IsRaid())
@@ -4348,7 +4348,7 @@ bool Creature::LoadBotCreatureFromDB(ObjectGuid::LowType spawnId, Map* map, bool
             {
                 MapEntry const* mapEntry = sMapStore.LookupEntry(map->GetId());
                 //Classic Content
-                if (mapEntry->Expansion() == CONTENT_1_60)
+                if (mapEntry->Expansion() == CONTENT_1_60 && GetLevel() < 64)
                 {
                     //Open World
                     if (!map->IsNonRaidDungeon() && !map->IsRaid())

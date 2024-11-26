@@ -1681,15 +1681,6 @@ AlwaysMaxWeaponSkill = 0
 PlayerStart.AllReputation = 0
 
 #
-#    PlayerStart.CustomSpells
-#        Description: If enabled, players will start with custom spells defined in
-#                     playercreateinfo_spell_custom table.
-#        Default:     0 - (Disabled)
-#                     1 - (Enabled)
-
-PlayerStart.CustomSpells = 0
-
-#
 #    PlayerStart.MapsExplored
 #        Description: Characters start with all maps explored.
 #        Default:     0 - (Disabled)
@@ -5116,7 +5107,7 @@ NpcBot.Premade.Enable = 0
 
 #
 #    NpcBot.Fill.Dungeon
-#        Description: Enable/Disable if LFG groups are filled by bots.
+#        Description: Enable/Disable if LFG groups are filled by bots. Note: They auto fill every five minutes: 00:00, 00:05, 00:10 ...
 #        Default:     1 - (NpcBot.Fill.Dungeon)
 
 NpcBot.Fill.Dungeon = 1

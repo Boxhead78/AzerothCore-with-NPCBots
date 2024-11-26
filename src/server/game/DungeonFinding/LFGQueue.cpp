@@ -294,18 +294,24 @@ namespace lfg
         if (numLfgGroups > 1)
             return LFG_INCOMPATIBLES_MULTIPLE_LFG_GROUPS;
 
-        // Enable to fill up dungeon group after 3 minutes of waiting
+        // Enable to fill up dungeon group with bots roughly every 6 minutes
         bool fillDungeonWithBots = false;
         if (BotMgr::FillNpcBotsDungeons())
         {
-            fillDungeonWithBots = true;
+            /* wip */
+            /*
+            // Time since 00:00 in minutes
+            time_t currTime = GameTime::GetGameTime().count();
+            struct tm* timeInfo = localtime(&currTime);
+            int currentMinute = timeInfo->tm_min;
 
-            // TODO: Fill group after x time
-            //ObjectGuid gguid = check.front();
-            //const LfgQueueData& queue = QueueDataStore[gguid];
-            //time_t currTime = GameTime::GetGameTime().count();
-            //int32 waitTimeSeconds = int32(currTime - queue.joinTime);
-            //if (waitTimeSeconds > 3 * MINUTE)
+            if (currentMinute % 6 == 0)
+            {
+                fillDungeonWithBots = true;
+            }
+            */
+
+            fillDungeonWithBots = true;
         }
 
         // Group with less that MAXGROUPSIZE members always compatible
