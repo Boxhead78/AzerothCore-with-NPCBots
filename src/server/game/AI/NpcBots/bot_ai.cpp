@@ -19262,7 +19262,7 @@ bool bot_ai::FinishTeleport(bool reset)
 
         if (master && !IAmFree() && !_equips[BOT_SLOT_CHEST])
         {
-            UnEquipAll(master->GetGUID());
+            UnEquipAll(master->GetGUID(), false);
             ApplyBotRandomEquip();
         }
         SetIsDuringTeleport(false);

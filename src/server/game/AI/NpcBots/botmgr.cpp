@@ -1974,7 +1974,7 @@ void BotMgr::RemoveBot(ObjectGuid guid, uint8 removetype)
 
     Creature* bot = itr->second;
     if (_owner == bot->GetBotOwner())
-        bot->GetBotAI()->UnEquipAll(_owner->GetGUID());
+        bot->GetBotAI()->UnEquipAll(_owner->GetGUID(), false);
     CleanupsBeforeBotDelete(guid, removetype);
 
     ////remove control bar
