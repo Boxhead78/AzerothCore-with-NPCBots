@@ -247,16 +247,14 @@ class spell_muru_darkness_aura : public AuraScript
 
     bool Validate(SpellInfo const* /*spellInfo*/) override
     {
-        return true;
-        //return ValidateSpellInfo({ SPELL_SUMMON_DARK_FIEND });
+        return ValidateSpellInfo({ SPELL_SUMMON_DARK_FIEND });
     }
 
     void OnPeriodic(AuraEffect const* aurEff)
     {
         if (aurEff->GetTickNumber() == 3)
             for (uint8 i = 0; i < 8; ++i)
-                return;
-                //GetUnitOwner()->CastSpell(GetUnitOwner(), SPELL_SUMMON_DARK_FIEND + i, true);
+                GetUnitOwner()->CastSpell(GetUnitOwner(), SPELL_SUMMON_DARK_FIEND + i, true);
     }
 
     void Register() override
@@ -271,8 +269,7 @@ class spell_entropius_void_zone_visual_aura : public AuraScript
 
     bool Validate(SpellInfo const* /*spellInfo*/) override
     {
-        return true;
-        //return ValidateSpellInfo({ SPELL_SUMMON_DARK_FIEND_ENTROPIUS });
+        return ValidateSpellInfo({ SPELL_SUMMON_DARK_FIEND_ENTROPIUS });
     }
 
     void HandleApply(AuraEffect const*  /*aurEff*/, AuraEffectHandleModes /*mode*/)
@@ -282,8 +279,7 @@ class spell_entropius_void_zone_visual_aura : public AuraScript
 
     void HandleRemove(AuraEffect const*  /*aurEff*/, AuraEffectHandleModes /*mode*/)
     {
-        return;
-        //GetUnitOwner()->CastSpell(GetUnitOwner(), SPELL_SUMMON_DARK_FIEND_ENTROPIUS, true);
+        GetUnitOwner()->CastSpell(GetUnitOwner(), SPELL_SUMMON_DARK_FIEND_ENTROPIUS, true);
     }
 
     void Register() override

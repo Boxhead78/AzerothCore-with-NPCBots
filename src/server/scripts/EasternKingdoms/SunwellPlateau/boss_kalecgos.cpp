@@ -126,7 +126,7 @@ struct boss_kalecgos : public BossAI
 
         ScheduleHealthCheckEvent(10, [&] {
             if (Creature* Sath = instance->GetCreature(DATA_SATHROVARR))
-                Sath->AI()->DoAction(ACTION_ENRAGE_OTHER);
+                //Sath->AI()->DoAction(ACTION_ENRAGE_OTHER);
             DoAction(ACTION_ENRAGE);
         });
 
@@ -406,7 +406,7 @@ struct boss_sathrovarr : public ScriptedAI
             if (me->HealthBelowPct(10))
             {
                 if (Creature* kalecgos = _instance->GetCreature(DATA_KALECGOS))
-                    kalecgos->AI()->DoAction(ACTION_ENRAGE_OTHER);
+                    //kalecgos->AI()->DoAction(ACTION_ENRAGE_OTHER);
                 DoAction(ACTION_ENRAGE);
             }
             else

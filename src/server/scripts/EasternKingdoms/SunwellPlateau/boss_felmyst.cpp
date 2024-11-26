@@ -384,7 +384,8 @@ struct npc_demonic_vapor_trail : public NullCreatureAI
     void SpellHitTarget(Unit*, SpellInfo const* spellInfo) override
     {
         if (spellInfo->Id == SPELL_DEMONIC_VAPOR)
-            me->CastSpell(me, SPELL_SUMMON_BLAZING_DEAD, true);
+            return;
+            //me->CastSpell(me, SPELL_SUMMON_BLAZING_DEAD, true);
     }
 
     void UpdateAI(uint32 diff) override

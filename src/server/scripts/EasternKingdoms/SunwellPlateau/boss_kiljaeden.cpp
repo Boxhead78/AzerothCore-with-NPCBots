@@ -190,7 +190,7 @@ struct npc_kiljaeden_controller : public NullCreatureAI
                 auto const& playerList = me->GetMap()->GetPlayers();
                 for (auto const& playerRef : playerList)
                     if (Player* player = playerRef.GetSource())
-                        if (!player->IsGameMaster() && me->GetDistance2d(player) < 60.0f && (player->IsAlive() || player->GetNpcBotsCount() > 0)))
+                        if (!player->IsGameMaster() && me->GetDistance2d(player) < 60.0f && (player->IsAlive() || player->GetNpcBotsCount() > 0))
                         {
                             context.Repeat();
                             return;
