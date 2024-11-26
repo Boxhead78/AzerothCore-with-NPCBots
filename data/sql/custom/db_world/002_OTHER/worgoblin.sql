@@ -185,27 +185,27 @@ INSERT INTO `playercreateinfo_action` (`race`, `class`, `button`, `action`) VALU
 (12, 1, 73, 78),
 (12, 1, 84, 6603),
 (12, 1, 96, 6603),
-(12, 1, 120, 98595), Darkflight Warrior
-(12, 1, 120, 98598), Two Forms Warrior
-(12, 1, 120, 98599), Feral Lunge Warrior
+(12, 1, 85, 98595), -- Darkflight Warrior
+(12, 1, 86, 98598), -- Two Forms Warrior
+(12, 1, 87, 98599), -- Feral Lunge Warrior
 (12, 3, 0, 6603),
 (12, 3, 1, 2973),
 (12, 3, 2, 75),
-(12, 3, 120, 98595), Darkflight Hunter
-(12, 3, 120, 98598), Two Forms Hunter
-(12, 3, 120, 98599), Feral Lunge Hunter
+(12, 3, 85, 98595), -- Darkflight Hunter
+(12, 3, 86, 98598), -- Two Forms Hunter
+(12, 3, 87, 98599), -- Feral Lunge Hunter
 (12, 4, 0, 6603),
 (12, 4, 1, 1752),
 (12, 4, 2, 2098),
 (12, 4, 3, 2764),
-(12, 4, 120, 98595), Darkflight Rogue
-(12, 4, 120, 98598), Two Forms Rogue
-(12, 4, 120, 98599), Feral Lunge Rogue
+(12, 4, 85, 98595), -- Darkflight Rogue
+(12, 4, 86, 98598), -- Two Forms Rogue
+(12, 4, 87, 98599), -- Feral Lunge Rogue
 (12, 5, 0, 585),
 (12, 5, 1, 2050),
-(12, 5, 120, 98595), Darkflight Priest
-(12, 5, 120, 98598), Two Forms Priest
-(12, 5, 120, 98599), Feral Lunge Priest
+(12, 5, 85, 98595), -- Darkflight Priest
+(12, 5, 86, 98598), -- Two Forms Priest
+(12, 5, 87, 98599), -- Feral Lunge Priest
 (12, 6, 0, 6603),
 (12, 6, 1, 49576),
 (12, 6, 2, 45477),
@@ -213,25 +213,26 @@ INSERT INTO `playercreateinfo_action` (`race`, `class`, `button`, `action`) VALU
 (12, 6, 4, 45902),
 (12, 6, 5, 47541),
 (12, 6, 9, 98595),
-(12, 6, 120, 98598), Two Forms Death Knight
-(12, 6, 120, 98599), Feral Lunge Death Knight
+(12, 6, 85, 98595), -- Darkflight Druid
+(12, 6, 86, 98598), -- Two Forms Death Knight
+(12, 6, 87, 98599), -- Feral Lunge Death Knight
 (12, 8, 0, 133),
 (12, 8, 1, 168),
-(12, 8, 120, 98595), Darkflight Mage
-(12, 8, 120, 98598), Two Forms Mage
-(12, 8, 120, 98599), Feral Lunge Mage
+(12, 8, 85, 98595), -- Darkflight Mage
+(12, 8, 86, 98598), -- Two Forms Mage
+(12, 8, 87, 98599), -- Feral Lunge Mage
 (12, 9, 0, 686),
 (12, 9, 1, 687),
-(12, 9, 120, 98595), Darkflight Warlock
-(12, 9, 120, 98598), Two Forms Warlock
-(12, 9, 120, 98599), Feral Lunge Warlock
+(12, 9, 85, 98595), -- Darkflight Warlock
+(12, 9, 86, 98598), -- Two Forms Warlock
+(12, 9, 87, 98599), -- Feral Lunge Warlock
 (12, 11, 0, 5176),
 (12, 11, 1, 5185),
 (12, 11, 72, 6603),
-(12, 11, 96, 6603);
-(12, 11, 120, 98595), Darkflight Druid
-(12, 11, 120, 98598), Two Forms Druid
-(12, 11, 120, 98599) Feral Lunge Druid
+(12, 11, 96, 6603),
+(12, 11, 85, 98595), -- Darkflight Druid
+(12, 11, 86, 98598), -- Two Forms Druid
+(12, 11, 87, 98599); -- Feral Lunge Druid
 
 DELETE FROM `playercreateinfo_skills` WHERE raceMask = 2048 AND classMask = 0 AND skill = 789;
 INSERT INTO `playercreateinfo_skills` (`raceMask`, `classMask`, `skill`, `rank`, `comment`) VALUES

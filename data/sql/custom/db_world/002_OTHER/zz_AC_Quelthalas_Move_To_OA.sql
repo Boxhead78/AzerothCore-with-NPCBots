@@ -174,3 +174,6 @@ WHERE
 
 DELETE FROM acore_world.areatrigger
 WHERE entry=4386;
+
+DELETE FROM acore_world.areatrigger_teleport
+WHERE ID=4386;
