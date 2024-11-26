@@ -788,6 +788,8 @@ bool IsCataclysmContent(uint32 mapid, uint32 zoneId)
         case 1572:
         case 1603:
             return true;
+        default:
+            return false;
     }
 
     switch (zoneId)
@@ -803,6 +805,8 @@ bool IsCataclysmContent(uint32 mapid, uint32 zoneId)
         case 5389: //Tol Barad Peninsula
         case 9548: //Havenswood
             return true;
+        default:
+            return false;
     }
 }
 
