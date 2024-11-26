@@ -14950,8 +14950,12 @@ bool Unit::_IsValidAttackTarget(Unit const* target, SpellInfo const* bySpell, Wo
     }
     //end npcbot
 
-    //npcbot
+    //npcbot: allow bots and their summons to ignore this rule
     if (IsNPCBotOrPet() || target->IsNPCBotOrPet())
+    {}
+    else if (GetOwnerGUID() && GetOwnerGUID().IsCreature() && sObjectMgr->GetCreatureTemplate(GetOwnerGUID().GetEntry())->IsNPCBotOrPet())
+    {}
+    else if (target->GetOwnerGUID() && target->GetOwnerGUID().IsCreature() && sObjectMgr->GetCreatureTemplate(target->GetOwnerGUID().GetEntry())->IsNPCBotOrPet())
     {}
     else
     //end npcbot
@@ -15295,7 +15299,7 @@ bool Unit::IsAlwaysVisibleFor(WorldObject const* seer) const
                     return true;
 
     //npcbot - bots are always visible for owner
-    if (GetCreator() && seer->GetGUID() == GetCreator()->GetGUID())
+    if (GetCreator() && (seer->GetGUID() == GetCreator()->GetGUID() || (seer->IsCreature() && seer->ToCreature()->GetCreator() == GetCreator())))
         return true;
     //end npcbot
 
@@ -21565,10 +21569,6 @@ bool Unit::CanSwim() const
         return false;
     if (HasUnitFlag(UNIT_FLAG_PET_IN_COMBAT))
         return true;
-    //npcbot
-    if (IsNPCBotOrPet())
-        return true;
-    //end npcbot
     return HasUnitFlag(UNIT_FLAG_RENAME | UNIT_FLAG_SWIMMING);
 }
 

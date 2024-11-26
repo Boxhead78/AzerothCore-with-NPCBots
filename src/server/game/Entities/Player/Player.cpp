@@ -83,6 +83,7 @@
 #include "World.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"
+#include "WorldState.h"
 #include <cmath>
 
 /// @todo: this import is not necessary for compilation and marked as unused by the IDE
@@ -1745,6 +1746,7 @@ void Player::RemoveFromWorld()
             m_session->DoLootRelease(lguid);
         sOutdoorPvPMgr->HandlePlayerLeaveZone(this, m_zoneUpdateId);
         sBattlefieldMgr->HandlePlayerLeaveZone(this, m_zoneUpdateId);
+        sWorldState->HandlePlayerLeaveZone(this, static_cast<WorldStateZoneId>(m_zoneUpdateId));
     }
 
     // Remove items from world before self - player must be found in Item::RemoveFromObjectUpdate
@@ -3040,8 +3042,11 @@ bool Player::addTalent(uint32 spellId, uint8 addSpecMask, uint8 oldTalentRank)
         newTalent->specMask = addSpecMask;
         newTalent->talentID = talentInfo->TalentID;
         newTalent->inSpellBook = talentInfo->addToSpellBook && !spellInfo->HasAttribute(SPELL_ATTR0_PASSIVE) && !spellInfo->HasEffect(SPELL_EFFECT_LEARN_SPELL);
-
         m_talents[spellId] = newTalent;
+
+        if (GetActiveSpecMask() & addSpecMask)
+            m_usedTalentCount += (talentPos->rank + 1) - oldTalentRank;
+
         return true;
     }
     // xinef: if current mask does not cover addMask, add it to iterator and save changes to DB
@@ -3050,6 +3055,9 @@ bool Player::addTalent(uint32 spellId, uint8 addSpecMask, uint8 oldTalentRank)
         itr->second->specMask |= addSpecMask;
         if (itr->second->State != PLAYERSPELL_NEW)
             itr->second->State = PLAYERSPELL_CHANGED;
+
+        if (GetActiveSpecMask() & addSpecMask)
+            m_usedTalentCount += (talentPos->rank + 1) - oldTalentRank;
 
         return true;
     }
@@ -7085,7 +7093,7 @@ void Player::_ApplyWeaponDamage(uint8 slot, ItemTemplate const* proto, ScalingSt
         float maxDamage = proto->Damage[i].DamageMax;
 
         // If set dpsMod in ScalingStatValue use it for min (70% from average), max (130% from average) damage
-        if (ssv)
+        if (ssv && i == 0) // scaling stats only for first damage
         {
             int32 extraDPS = ssv->getDPSMod(ScalingStatValue);
             if (extraDPS)
@@ -7100,6 +7108,8 @@ void Player::_ApplyWeaponDamage(uint8 slot, ItemTemplate const* proto, ScalingSt
 
         if (apply)
         {
+            sScriptMgr->OnApplyWeaponDamage(this, slot, proto, minDamage, maxDamage, i);
+
             if (minDamage > 0.f)
             {
                 SetBaseWeaponDamage(WeaponAttackType(attType), MINDAMAGE, minDamage, i);
@@ -14257,9 +14267,6 @@ void Player::LearnTalent(uint32 talentId, uint32 talentRank, bool command /*= fa
 
     addTalent(spellId, GetActiveSpecMask(), currentTalentRank);
 
-    // xinef: update free talent points count
-    m_usedTalentCount += talentPointsChange;
-
     if (!command)
     {
         SetFreeTalentPoints(CurTalentPoints - talentPointsChange);
@@ -15211,9 +15218,6 @@ void Player::_LoadTalents(PreparedQueryResult result)
             TalentSpellPos const* talentPos = GetTalentSpellPos(spellId);
             ASSERT(talentPos);
 
-            // xinef: increase used talent points count
-            if (GetActiveSpecMask() & specMask)
-                m_usedTalentCount += talentPos->rank + 1;
         } while (result->NextRow());
     }
 }

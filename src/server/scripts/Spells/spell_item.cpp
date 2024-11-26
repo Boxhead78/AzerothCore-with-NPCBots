@@ -2033,6 +2033,11 @@ class spell_item_noggenfogger_elixir : public SpellScript
 
     bool Load() override
     {
+        //npcbot
+        if (GetCaster()->IsNPCBot())
+            return true;
+        //end npcbot
+
         return GetCaster()->IsPlayer();
     }
 
@@ -4141,6 +4146,51 @@ class spell_item_luffa : public SpellScript
     }
 };
 
+// 23097 - Fire Reflector
+// 23131 - Frost Reflector
+// 23132 - Shadow Reflector
+class spell_item_spell_reflectors: public AuraScript
+{
+    PrepareAuraScript(spell_item_spell_reflectors);
+
+    void CalculateAmount(AuraEffect const* /*aurEff*/, int32& amount, bool& /*canBeRecalculated*/)
+    {
+        if (GetCaster()->GetLevel() > 70)
+            amount = 4;
+        else if (GetCaster()->GetLevel() > 60)
+            amount = 50;
+    }
+
+    void Register() override
+    {
+        DoEffectCalcAmount += AuraEffectCalcAmountFn(spell_item_spell_reflectors::CalculateAmount, EFFECT_0, SPELL_AURA_REFLECT_SPELLS_SCHOOL);
+    }
+};
+
+// 46273 - Multiphase Goggles
+class spell_item_multiphase_goggles : public AuraScript
+{
+    PrepareAuraScript(spell_item_multiphase_goggles);
+
+    void OnApply(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
+    {
+        if (Player* player = GetTarget()->ToPlayer())
+            player->SetFlag(PLAYER_TRACK_CREATURES, uint32(1) << (CREATURE_TYPE_GAS_CLOUD - 1));
+    }
+
+    void OnRemove(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
+    {
+        if (Player* player = GetTarget()->ToPlayer())
+            player->RemoveFlag(PLAYER_TRACK_CREATURES, uint32(1) << (CREATURE_TYPE_GAS_CLOUD - 1));
+    }
+
+    void Register() override
+    {
+        OnEffectApply += AuraEffectApplyFn(spell_item_multiphase_goggles::OnApply, EFFECT_0, SPELL_AURA_MOD_INVISIBILITY_DETECT , AURA_EFFECT_HANDLE_REAL);
+        OnEffectRemove += AuraEffectRemoveFn(spell_item_multiphase_goggles::OnRemove, EFFECT_0, SPELL_AURA_MOD_INVISIBILITY_DETECT , AURA_EFFECT_HANDLE_REAL);
+    }
+};
+
 void AddSC_item_spell_scripts()
 {
     RegisterSpellScript(spell_item_massive_seaforium_charge);
@@ -4267,4 +4317,6 @@ void AddSC_item_spell_scripts()
     RegisterSpellScript(spell_item_gor_dreks_ointment);
     RegisterSpellScript(spell_item_skyguard_blasting_charges);
     RegisterSpellScript(spell_item_luffa);
+    RegisterSpellScript(spell_item_spell_reflectors);
+    RegisterSpellScript(spell_item_multiphase_goggles);
 }

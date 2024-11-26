@@ -66,6 +66,8 @@ uint8 _rangedDpsTargetIconFlags;
 uint8 _noDpsTargetIconFlags;
 uint8 _npcBotOwnerExpireMode;
 int32 _botInfoPacketsLimit;
+uint32 _gearBankCapacity;
+uint32 _gearBankEquipmentSetsCount;
 uint32 _npcBotsCost;
 uint32 _npcBotUpdateDelayBase;
 uint32 _npcBotEngageDelayDPS_default;
@@ -73,6 +75,9 @@ uint32 _npcBotEngageDelayHeal_default;
 uint32 _npcBotOwnerExpireTime;
 uint32 _desiredWanderingBotsCountMin;
 uint32 _desiredWanderingBotsCountMax;
+uint32 _killrewardWandererMoneyBase;
+uint32 _killrewardWandererItemCount;
+uint32 _killrewardWandererItemQuality;
 uint32 _targetBGPlayersPerTeamCount_AV;
 uint32 _targetBGPlayersPerTeamCount_WS;
 uint32 _targetBGPlayersPerTeamCount_AB;
@@ -81,6 +86,10 @@ uint32 _targetBGPlayersPerTeamCount_SA;
 uint32 _targetBGPlayersPerTeamCount_IC;
 bool _enableNpcBots;
 bool _logToDB;
+bool _xpReductionBlizzlikeEnable;
+bool _xpReductionBlizzlikeGroupOnly;
+bool _moneyLootShareEnable;
+bool _moneyLootShareGroupOnly;
 bool _enableNpcBotsDungeons;
 bool _enableNpcBotsRaids;
 bool _enableNpcBotsBGs;
@@ -312,6 +321,7 @@ void BotMgr::Initialize()
     BotDataMgr::CreateWanderingBotsSortedGear();
     BotDataMgr::LoadNpcBotGroupData();
     BotDataMgr::LoadNpcBotGearStorage();
+    BotDataMgr::LoadNpcBotGearSets();
     BotDataMgr::LoadNpcBotMgrData();
     BotDataMgr::DeleteOldLogs();
 
@@ -338,6 +348,10 @@ void BotMgr::LoadConfig(bool reload)
     _basefollowdist                 = sConfigMgr->GetIntDefault("NpcBot.BaseFollowDistance", 30);
     _xpReductionAmount              = sConfigMgr->GetIntDefault("NpcBot.XpReduction.Amount", 0);
     _xpReductionStartingNumber      = sConfigMgr->GetIntDefault("NpcBot.XpReduction.StartingNumber", 2);
+    _xpReductionBlizzlikeEnable     = sConfigMgr->GetBoolDefault("NpcBot.XpReduction.Blizzlike.Enable", true);
+    _xpReductionBlizzlikeGroupOnly  = sConfigMgr->GetBoolDefault("NpcBot.XpReduction.Blizzlike.GroupOnly", false);
+    _moneyLootShareEnable           = sConfigMgr->GetBoolDefault("NpcBot.MoneyShare.Enable", false);
+    _moneyLootShareGroupOnly        = sConfigMgr->GetBoolDefault("NpcBot.MoneyShare.GroupOnly", false);
     _mountLevel60                   = sConfigMgr->GetIntDefault("NpcBot.MountLevel.60", 20);
     _mountLevel100                  = sConfigMgr->GetIntDefault("NpcBot.MountLevel.100", 40);
     _healTargetIconFlags            = sConfigMgr->GetIntDefault("NpcBot.HealTargetIconMask", 0);
@@ -398,7 +412,9 @@ void BotMgr::LoadConfig(bool reload)
     _showCloak                      = sConfigMgr->GetBoolDefault("NpcBot.EquipmentDisplay.ShowCloak", true);
     _showHelm                       = sConfigMgr->GetBoolDefault("NpcBot.EquipmentDisplay.ShowHelm", false);
     _sendEquipListItems             = sConfigMgr->GetBoolDefault("NpcBot.Gossip.ShowEquipmentListItems", false);
-    _enableBotGearBank              = sConfigMgr->GetBoolDefault("NpcBot.GearBank.Enable", false);
+    _enableBotGearBank              = sConfigMgr->GetBoolDefault("NpcBot.GearBank.Enable", true);
+    _gearBankCapacity               = sConfigMgr->GetIntDefault("NpcBot.GearBank.Capacity", 40);
+    _gearBankEquipmentSetsCount     = sConfigMgr->GetIntDefault("NpcBot.GearBank.EquipmentSets", 0);
     _transmog_enable                = sConfigMgr->GetBoolDefault("NpcBot.Transmog.Enable", false);
     _transmog_mixArmorClasses       = sConfigMgr->GetBoolDefault("NpcBot.Transmog.MixArmorClasses", false);
     _transmog_mixWeaponClasses      = sConfigMgr->GetBoolDefault("NpcBot.Transmog.MixWeaponClasses", false);
@@ -452,14 +468,17 @@ void BotMgr::LoadConfig(bool reload)
     _botStatLimits_crit             = sConfigMgr->GetFloatDefault("NpcBot.Stats.Limits.Crit", 95.0f);
     _desiredWanderingBotsCountMin   = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.Continents.Count.Min", 0);
     _desiredWanderingBotsCountMax   = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.Continents.Count.Max", 0);
+    _killrewardWandererMoneyBase    = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.KillReward.Money", 0);
+    _killrewardWandererItemCount    = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.KillReward.ItemCount", 0);
+    _killrewardWandererItemQuality  = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.KillReward.ItemQuality", int(ITEM_QUALITY_RARE));
     _mult_xpgain_wanderer           = sConfigMgr->GetFloatDefault("NpcBot.WanderingBots.Continents.XPGain", 1.0f);
     _enableWanderingBotsBG          = sConfigMgr->GetBoolDefault("NpcBot.WanderingBots.BG.Enable", false);
     _enableConfigLevelCapBG         = sConfigMgr->GetBoolDefault("NpcBot.WanderingBots.BG.CapLevel", false);
     _enableConfigLevelCapBGFirst    = sConfigMgr->GetBoolDefault("NpcBot.WanderingBots.BG.CapLevelByFirstPlayer", false);
-    _targetBGPlayersPerTeamCount_AV = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.AV", 0);
+    _targetBGPlayersPerTeamCount_AV = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.AV", 30);
     _targetBGPlayersPerTeamCount_WS = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.WS", 8);
     _targetBGPlayersPerTeamCount_AB = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.AB", 12);
-    _targetBGPlayersPerTeamCount_EY = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.EY", 0);
+    _targetBGPlayersPerTeamCount_EY = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.EY", 12);
     _targetBGPlayersPerTeamCount_SA = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.SA", 0);
     _targetBGPlayersPerTeamCount_IC = sConfigMgr->GetIntDefault("NpcBot.WanderingBots.BG.TargetTeamPlayersCount.IC", 0);
     _bothk_enable                   = sConfigMgr->GetBoolDefault("NpcBot.HK.Enable", true);
@@ -481,7 +500,7 @@ void BotMgr::LoadConfig(bool reload)
     _max_npcbots = {};
     std::string max_npcbots_by_levels = sConfigMgr->GetStringDefault("NpcBot.MaxBots", "1,1,1,1,1,1,1,1,1");
     std::vector<std::string_view> toks0 = Bcore::Tokenize(max_npcbots_by_levels, ',', false);
-    ASSERT(toks0.size() == BracketsCount, "NpcBot.MaxBots must have exactly %u values", uint32(BracketsCount));
+    ASSERT(toks0.size() == BRACKETS_COUNT, "NpcBot.MaxBots must have exactly %u values", uint32(BRACKETS_COUNT));
     for (decltype(toks0)::size_type i = 0; i != toks0.size(); ++i)
     {
         Optional<uint8> val = Bcore::StringTo<uint8>(toks0[i]);
@@ -508,7 +527,7 @@ void BotMgr::LoadConfig(bool reload)
     _mult_dmg_levels.clear();
     std::string mult_dps_by_levels = sConfigMgr->GetStringDefault("NpcBot.Mult.Damage.Levels", "1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0");
     std::vector<std::string_view> toks1 = Bcore::Tokenize(mult_dps_by_levels, ',', false);
-    ASSERT(toks1.size() >= BracketsCount, "NpcBot.Mult.Damage.Levels must have at least %u values", uint32(BracketsCount));
+    ASSERT(toks1.size() >= BRACKETS_COUNT, "NpcBot.Mult.Damage.Levels must have at least %u values", uint32(BRACKETS_COUNT));
     for (decltype(toks1)::size_type i = 0; i != toks1.size(); ++i)
     {
         Optional<float> val = Bcore::StringTo<float>(toks1[i]);
@@ -522,7 +541,7 @@ void BotMgr::LoadConfig(bool reload)
     _mult_heal_levels.clear();
     std::string mult_healing_by_levels = sConfigMgr->GetStringDefault("NpcBot.Mult.Healing.Levels", "1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0");
     std::vector<std::string_view> toks5 = Bcore::Tokenize(mult_healing_by_levels, ',', false);
-    ASSERT(toks5.size() >= BracketsCount, "NpcBot.Mult.Healing.Levels must have at least %u values", uint32(BracketsCount));
+    ASSERT(toks5.size() >= BRACKETS_COUNT, "NpcBot.Mult.Healing.Levels must have at least %u values", uint32(BRACKETS_COUNT));
     for (decltype(toks5)::size_type i = 0; i != toks5.size(); ++i)
     {
         Optional<float> val = Bcore::StringTo<float>(toks5[i]);
@@ -536,7 +555,7 @@ void BotMgr::LoadConfig(bool reload)
     _mult_hp_levels.clear();
     std::string mult_hp_by_levels = sConfigMgr->GetStringDefault("NpcBot.Mult.HP.Levels", "1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0");
     std::vector<std::string_view> toks6 = Bcore::Tokenize(mult_hp_by_levels, ',', false);
-    ASSERT(toks6.size() >= BracketsCount, "NpcBot.Mult.HP.Levels must have at least %u values", uint32(BracketsCount));
+    ASSERT(toks6.size() >= BRACKETS_COUNT, "NpcBot.Mult.HP.Levels must have at least %u values", uint32(BRACKETS_COUNT));
     for (decltype(toks6)::size_type i = 0; i != toks6.size(); ++i)
     {
         Optional<float> val = Bcore::StringTo<float>(toks6[i]);
@@ -550,7 +569,7 @@ void BotMgr::LoadConfig(bool reload)
     _mult_mp_levels.clear();
     std::string mult_mp_by_levels = sConfigMgr->GetStringDefault("NpcBot.Mult.MP.Levels", "1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0");
     std::vector<std::string_view> toks7 = Bcore::Tokenize(mult_mp_by_levels, ',', false);
-    ASSERT(toks7.size() >= BracketsCount, "NpcBot.Mult.MP.Levels must have at least %u values", uint32(BracketsCount));
+    ASSERT(toks7.size() >= BRACKETS_COUNT, "NpcBot.Mult.MP.Levels must have at least %u values", uint32(BRACKETS_COUNT));
     for (decltype(toks7)::size_type i = 0; i != toks7.size(); ++i)
     {
         Optional<float> val = Bcore::StringTo<float>(toks7[i]);
@@ -564,7 +583,7 @@ void BotMgr::LoadConfig(bool reload)
     _botwanderer_pct_level_brackets = {};
     std::string wanderers_by_levels = sConfigMgr->GetStringDefault("NpcBot.WanderingBots.Continents.Levels", "20,15,15,10,10,15,15,0,0");
     std::vector<std::string_view> toks2 = Bcore::Tokenize(wanderers_by_levels, ',', false);
-    ASSERT(toks2.size() == BracketsCount, "NpcBot.WanderingBots.Continents.Levels must have exactly %u values", uint32(BracketsCount));
+    ASSERT(toks2.size() == BRACKETS_COUNT, "NpcBot.WanderingBots.Continents.Levels must have exactly %u values", uint32(BRACKETS_COUNT));
     uint32 total_pct = 0;
     for (decltype(toks2)::size_type i = 0; i != toks2.size(); ++i)
     {
@@ -628,7 +647,7 @@ void BotMgr::LoadConfig(bool reload)
     _botwanderer_itemlvl_level_brackets = {};
     std::string itemlevel_by_levels = sConfigMgr->GetStringDefault("NpcBot.WanderingBots.MaxItemLevel.Levels", "0,0,0,0,0,0,0,0,0");
     std::vector<std::string_view> tok8 = Bcore::Tokenize(itemlevel_by_levels, ',', false);
-    ASSERT(tok8.size() == BracketsCount, "NpcBot.WanderingBots.MaxItemLevel.Levels must have exactly %u values", uint32(BracketsCount));
+    ASSERT(tok8.size() == BRACKETS_COUNT, "NpcBot.WanderingBots.MaxItemLevel.Levels must have exactly %u values", uint32(BRACKETS_COUNT));
     for (decltype(tok8)::size_type i = 0; i != tok8.size(); ++i)
     {
         Optional<uint32> val = Bcore::StringTo<uint32>(tok8[i]);
@@ -675,15 +694,23 @@ void BotMgr::LoadConfig(bool reload)
     RoundToInterval(_botRatesClassic, 0.1f, 10.f);
     RoundToInterval(_botRatesTBC, 0.1f, 10.f);
     RoundToInterval(_botRatesThreatTank, 0.1f, 10.f);
+    RoundToInterval(_killrewardWandererItemCount, uint32(0), uint32(MAX_NR_LOOT_ITEMS));
+    RoundToInterval(_killrewardWandererItemQuality, uint32(ITEM_QUALITY_POOR), uint32(ITEM_QUALITY_HEIRLOOM));
 }
 
 void BotMgr::ResolveConfigConflicts()
 {
+    if (_gearBankEquipmentSetsCount > MAX_BOT_EQUIPMENT_SETS)
+    {
+        BOT_LOG_ERROR("server.loading", "NpcBot.GearBank.EquipmentSets can't be greater than {}, reduced (was {})!", uint32(MAX_BOT_EQUIPMENT_SETS), _gearBankEquipmentSetsCount);
+        _gearBankEquipmentSetsCount = MAX_BOT_EQUIPMENT_SETS;
+    }
+
     uint8 dpsFlags = /*_tankingTargetIconFlags | _offTankingTargetIconFlags | */_dpsTargetIconFlags | _rangedDpsTargetIconFlags;
     if (uint8 interFlags = (_noDpsTargetIconFlags & dpsFlags))
     {
         _noDpsTargetIconFlags &= ~interFlags;
-        BOT_LOG_ERROR("server.loading", "BotMgr::LoadConfig: NoDPSTargetIconMask intersects with dps targets flags {:#X}! Removed, new mask: {:#X}",
+        BOT_LOG_ERROR("server.loading", "NpcBot.NoDPSTargetIconMask intersects with dps targets flags {:#X}! Removed, new mask: {:#X}",
             uint32(interFlags), uint32(_noDpsTargetIconFlags));
     }
 
@@ -1044,6 +1071,14 @@ uint8 BotMgr::GetMaxAccountBots()
 {
     return _maxAccountNpcBots;
 }
+uint32 BotMgr::GetGearBankCapacity()
+{
+    return _gearBankCapacity;
+}
+uint32 BotMgr::GetGearBankEquipmentSetsCount()
+{
+    return _gearBankEquipmentSetsCount;
+}
 uint8 BotMgr::GetHealTargetIconFlags()
 {
     return _healTargetIconFlags;
@@ -1137,6 +1172,23 @@ uint8 BotMgr::GetNpcBotXpReductionStartingNumber()
 {
     return _xpReductionStartingNumber;
 }
+bool BotMgr::GetNpcBotXpReductionBlizzlikeEnabled()
+{
+    return _xpReductionBlizzlikeEnable;
+}
+bool BotMgr::GetNpcBotXpReductionBlizzlikeGroupOnly()
+{
+    return _xpReductionBlizzlikeGroupOnly;
+}
+
+bool BotMgr::GetNpcBotMoneyShareEnabled()
+{
+    return _moneyLootShareEnable;
+}
+bool BotMgr::GetNpcBotMoneyShareGroupOnly()
+{
+    return _moneyLootShareGroupOnly;
+}
 
 uint8 BotMgr::GetNpcBotMountLevel60()
 {
@@ -1149,7 +1201,7 @@ uint8 BotMgr::GetNpcBotMountLevel100()
 
 uint8 BotMgr::GetMaxNpcBots(uint8 level)
 {
-    return _max_npcbots[std::min<size_t>(BracketsCount - 1, level / 10)];
+    return _max_npcbots[std::min<size_t>(BRACKETS_COUNT - 1, level / 10)];
 }
 
 int32 BotMgr::GetBotInfoPacketsLimit()
@@ -1218,7 +1270,7 @@ void BotMgr::Update(uint32 diff)
     //ObjectGuid guid;
     Creature* bot;
     bot_ai* ai;
-    bool partyCombat = IsPartyInCombat();
+    bool partyCombat = IsPartyInCombat(false);
     bool restrictBots = RestrictBots(_bots.begin()->second, false);
 
     _aoespots.clear();
@@ -1462,23 +1514,18 @@ bool BotMgr::RestrictBots(Creature const* bot, bool add) const
     return false;
 }
 
-bool BotMgr::IsPartyInCombat() const
+bool BotMgr::IsPartyInCombat(bool is_pvp) const
 {
-    if (_owner->IsInCombat())
-        return true;
-
-    for (BotMap::const_iterator itr = _bots.begin(); itr != _bots.end(); ++itr)
+    std::vector<Unit*> members = GetAllGroupMembers(_owner);
+    if (members.empty())
     {
-        if (!itr->second->IsInWorld())
-            continue;
-        if (itr->second->IsInCombat())
-            return true;
-        if (Unit const* pet = itr->second->GetBotsPet())
-            if (pet->IsInCombat())
-                return true;
+        members.reserve(_bots.size() + std::size_t(1));
+        members.push_back(_owner);
+        for (BotMap::const_iterator itr = _bots.begin(); itr != _bots.end(); ++itr)
+            members.push_back(itr->second);
     }
 
-    return false;
+    return std::ranges::any_of(members, [=](Unit const* unit) { return unit->IsInCombat() && (!is_pvp || unit->GetCombatTimer() > 0); });
 }
 
 bool BotMgr::HasBotClass(uint8 botclass) const
@@ -1582,6 +1629,7 @@ void BotMgr::_reviveBot(Creature* bot, WorldLocation* dest)
     bot->Motion_Initialize();
     bot->setDeathState(DeathState::Alive);
     //bot->GetBotAI()->Reset();
+    bot->RefreshSwimmingFlag();
     bot->GetBotAI()->SetShouldUpdateStats();
 
     uint8 restore_factor = (bot->IsWandererBot() || (!bot->GetBotAI()->IAmFree() && bot->GetBotOwner()->InBattleground())) ? 1 : 4;
@@ -2389,18 +2437,35 @@ uint8 BotMgr::GetBotEquipmentClass(uint8 bot_class)
     return BotMgr::GetBotPlayerClass(bot_class);
 }
 
+BotStatMods BotMgr::GetBotStatModByUnitStat(Stats stat)
+{
+    BotStatMods bot_stat;
+    switch (stat)
+    {
+        case STAT_STRENGTH:  bot_stat = BotStatMods::BOT_STAT_MOD_STRENGTH;  break;
+        case STAT_AGILITY:   bot_stat = BotStatMods::BOT_STAT_MOD_AGILITY;   break;
+        case STAT_STAMINA:   bot_stat = BotStatMods::BOT_STAT_MOD_STAMINA;   break;
+        case STAT_INTELLECT: bot_stat = BotStatMods::BOT_STAT_MOD_INTELLECT; break;
+        case STAT_SPIRIT:    bot_stat = BotStatMods::BOT_STAT_MOD_SPIRIT;    break;
+        default: //should not happen
+            bot_stat = BOT_STAT_MOD_HEALTH;
+            break;
+    }
+    return bot_stat;
+}
+
 std::string BotMgr::GetTargetIconString(uint8 icon_idx) const
 {
     std::ostringstream ss;
     ss << "|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_" << uint32(icon_idx + 1) << ":12|t";
-    if (size_t(icon_idx) < TargetIconNamesCacheSize)
+    if (size_t(icon_idx) < TARGET_ICON_NAMES_CACHE_SIZE)
         ss << _targetIconNamesCache[icon_idx];
 
     return ss.str();
 }
 void BotMgr::UpdateTargetIconName(uint8 id, std::string const& name)
 {
-    if (id >= TargetIconNamesCacheSize)
+    if (id >= TARGET_ICON_NAMES_CACHE_SIZE)
         return;
 
     _targetIconNamesCache[id] = name;
@@ -3205,7 +3270,7 @@ void BotMgr::OnBotPartyEngage(Player const* owner)
                 !player->HaveBot())
                 continue;
 
-            if (player->GetBotMgr()->IsPartyInCombat())
+            if (player->GetBotMgr()->IsPartyInCombat(false))
                 return;
 
             affectedPlayers.push_back(player);
@@ -3248,6 +3313,11 @@ float BotMgr::GetBotDamageTakenMod(Creature const* bot, bool magic)
 int32 BotMgr::GetBotStat(Creature const* bot, BotStatMods stat)
 {
     return bot->GetBotAI()->GetTotalBotStat(stat);
+}
+
+int32 BotMgr::GetBotStat(Creature const* bot, Stats stat)
+{
+    return GetBotStat(bot, GetBotStatModByUnitStat(stat));
 }
 
 float BotMgr::GetBotResilience(Creature const* botOrPet)
@@ -3602,7 +3672,19 @@ PctBrackets BotMgr::GetBotWandererLevelBrackets()
 }
 uint32 BotMgr::GetBotWandererMaxItemLevel(uint8 level)
 {
-    return _botwanderer_itemlvl_level_brackets[std::min<size_t>(BracketsCount - 1, level / 10)];
+    return _botwanderer_itemlvl_level_brackets[std::min<size_t>(BRACKETS_COUNT - 1, level / 10)];
+}
+uint32 BotMgr::GetBotWandererKillRewardMoney()
+{
+    return _killrewardWandererMoneyBase;
+}
+uint32 BotMgr::GetBotWandererKillRewardItemMaxCount()
+{
+    return _killrewardWandererItemCount;
+}
+uint32 BotMgr::GetBotWandererKillRewardItemMaxQuality()
+{
+    return _killrewardWandererItemQuality;
 }
 float BotMgr::GetBotDamageModByClass(uint8 botclass)
 {

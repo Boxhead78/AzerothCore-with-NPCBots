@@ -2,6 +2,7 @@
 #include "BattlegroundQueue.h"
 #include "bot_ai.h"
 #include "botdatamgr.h"
+#include "botgearscore.h"
 #include "botlog.h"
 #include "botmgr.h"
 #include "botspell.h"
@@ -64,6 +65,8 @@ ItemPerBotClassMap _botsWanderCreaturesSortedGear;
 
 typedef std::unordered_map<ObjectGuid /*playerGuid*/, BotBankItemContainer> BotGearStorageMap;
 BotGearStorageMap _botStoredGearMap;
+typedef std::unordered_map<ObjectGuid /*playerGuid*/, BotItemSetsArray> BotGearSetStorageMap;
+BotGearSetStorageMap _botStoredGearSetMap;
 
 static bool allBotsLoaded = false;
 
@@ -76,7 +79,32 @@ bool BotBankItemCompare::operator()(Item const* item1, Item const* item2) const
 {
     ItemTemplate const* proto1 = item1->GetTemplate();
     ItemTemplate const* proto2 = item2->GetTemplate();
-    return proto1->Name1 < proto2->Name1;
+
+    if (proto1->Class == proto2->Class)
+    {
+        if (proto1->SubClass == proto2->SubClass)
+        {
+            if (proto1->InventoryType == proto2->InventoryType)
+            {
+                if (proto1->Quality == proto2->Quality)
+                {
+                    float gs1 = CalculateItemGearScoreRaw(proto1);
+                    float gs2 = CalculateItemGearScoreRaw(proto1);
+                    if (gs1 == gs2)
+                    {
+                        if (proto1->Name1 == proto2->Name1)
+                            return item1->GetGUID().GetCounter() < item2->GetGUID().GetCounter();
+                        return proto1->Name1 < proto2->Name1;
+                    }
+                    return gs1 < gs2;
+                }
+                return proto1->Quality > proto2->Quality;
+            }
+            return proto1->InventoryType < proto2->InventoryType;
+        }
+        return proto1->SubClass < proto2->SubClass;
+    }
+    return proto1->Class < proto2->Class;
 }
 
 class BotBattlegroundEnterEvent : public BasicEvent
@@ -544,14 +572,14 @@ public:
             return false;
 
         uint32 total_bots_in_brackets = 0;
-        for (size_t k = 0; k < BracketsCount; ++k)
+        for (size_t k = 0; k < BRACKETS_COUNT; ++k)
         {
             if (!bracketPcts[k])
                 continue;
             bots_per_bracket[k] = CalculatePct(count, bracketPcts[k]);
             total_bots_in_brackets += bots_per_bracket[k];
         }
-        for (int32 j = BracketsCount - 1; j >= 0; --j)
+        for (int32 j = BRACKETS_COUNT - 1; j >= 0; --j)
         {
             if (bots_per_bracket[j])
             {
@@ -562,7 +590,7 @@ public:
 
         std::vector<uint8> brackets_shuffled;
         brackets_shuffled.reserve(count);
-        for (uint8 bracket = 0; bracket < BracketsCount; ++bracket)
+        for (uint8 bracket = 0; bracket < BRACKETS_COUNT; ++bracket)
         {
             while (bots_per_bracket[bracket])
             {
@@ -821,12 +849,15 @@ void BotDataMgr::LoadNpcBots(bool spawn)
         BOT_LOG_INFO("server.loading", ">> Bots transmog data is not loaded. Table `characters_npcbot_transmog` is empty!");
 
     //                                       0      1      2      3     4        5
-    result = CharacterDatabase.Query("SELECT entry, owner, roles, spec, faction, UNIX_TIMESTAMP(hire_time),"
+    result = CharacterDatabase.Query("SELECT entry, owner, roles, spec, faction, UNIX_TIMESTAMP(hire_time), "
     //   6          7          8          9               10          11          12         13         14
-        "equipMhEx, equipOhEx, equipRhEx, equipHead, equipShoulders, equipChest, equipWaist, equipLegs, equipFeet,"
-    //   15          16          17         18         19            20            21             22             23         24
-        "equipWrist, equipHands, equipBack, equipBody, equipFinger1, equipFinger2, equipTrinket1, equipTrinket2, equipNeck, spells_disabled FROM characters_npcbot");
+        "equipMhEx, equipOhEx, equipRhEx, equipHead, equipShoulders, equipChest, equipWaist, equipLegs, equipFeet, "
+    //   15          16          17         18         19            20            21             22             23
+        "equipWrist, equipHands, equipBack, equipBody, equipFinger1, equipFinger2, equipTrinket1, equipTrinket2, equipNeck, "
+    //   24               25
+        "spells_disabled, miscvalues FROM characters_npcbot");
 
+    std::vector<uint32> entryList;
     if (result)
     {
         uint32 botcounter = 0;
@@ -835,7 +866,7 @@ void BotDataMgr::LoadNpcBots(bool spawn)
         QueryResult infores;
         CreatureTemplate const* proto;
         NpcBotData* botData;
-        std::list<uint32> entryList;
+        entryList.reserve(result->GetRowCount());
 
         do
         {
@@ -868,6 +899,17 @@ void BotDataMgr::LoadNpcBots(bool spawn)
                     botData->disabled_spells.insert(*(Bcore::StringTo<uint32>(tok[i])));
             }
 
+            std::string miscvalues_str = field[++index].Get<std::string>();
+            if (!miscvalues_str.empty())
+            {
+                std::vector<std::string_view> tok = Bcore::Tokenize(miscvalues_str, ' ', false);
+                for (std::vector<std::string_view>::size_type i = 0; i != tok.size(); ++i)
+                {
+                    std::vector<std::string_view> tok2 = Bcore::Tokenize(tok[i], ':', false);
+                    botData->miscvalues.emplace(*(Bcore::StringTo<uint32>(tok2[0])), *(Bcore::StringTo<uint32>(tok2[1])));
+                }
+            }
+
             entryList.push_back(entry);
             _botsData[entry] = botData;
             ++datacounter;
@@ -878,9 +920,8 @@ void BotDataMgr::LoadNpcBots(bool spawn)
 
         if (spawn)
         {
-            for (std::list<uint32>::const_iterator itr = entryList.cbegin(); itr != entryList.cend(); ++itr)
+            for (uint32 entry : entryList)
             {
-                uint32 entry = *itr;
                 proto = sObjectMgr->GetCreatureTemplate(entry);
                 //                                     1     2    3           4           5           6
                 infores = WorldDatabase.Query("SELECT guid, map, position_x, position_y, position_z, orientation FROM creature WHERE id1 = {}", entry);
@@ -935,6 +976,31 @@ void BotDataMgr::LoadNpcBots(bool spawn)
     }
     else
         BOT_LOG_INFO("server.loading", ">> Loaded 0 npcbots. Table `characters_npcbot` is empty!");
+
+    std::list<uint32> invalid_ids;
+
+    auto report_inavlid_ids = [&invalid_ids](std::string_view error_msg) {
+        std::ostringstream ss;
+        ss << error_msg << " IDs: ";
+        for (uint32 bot_id : invalid_ids)
+            ss << Bcore::ToString(bot_id) << ", ";
+        ss << "\nFix your DB contents and retry";
+        ASSERT(false, ss.str().c_str());
+    };
+
+    for (CreatureDataContainer::value_type const& kv : sObjectMgr->GetAllCreatureData())
+        if (kv.second.id1 >= BOT_ENTRY_BEGIN && sObjectMgr->GetCreatureTemplate(kv.second.id1)->IsNPCBot() && std::ranges::find(entryList, kv.second.id1) == entryList.cend())
+            invalid_ids.push_back(kv.second.id1);
+
+    if (!invalid_ids.empty())
+        report_inavlid_ids("Invalid NPCBot spawns found in `creature` table having no data in `characters_npcbot` table!");
+
+    for (uint32 bot_id : entryList)
+        if (!_botsExtras.contains(bot_id))
+            invalid_ids.push_back(bot_id);
+
+    if (!invalid_ids.empty())
+        report_inavlid_ids("Invalid NPCBots found in `characters_npcbot` table having no data in `creature_template_npcbot_extras` table!");
 
     allBotsLoaded = true;
 }
@@ -1021,6 +1087,143 @@ void BotDataMgr::LoadNpcBotGearStorage()
     } while (result->NextRow());
 
     BOT_LOG_INFO("server.loading", ">> Loaded {} NPCBot stored items for {} bot owners in {} ms", count, uint32(player_guids.size()), GetMSTimeDiffToNow(oldMSTime));
+}
+
+void BotDataMgr::LoadNpcBotGearSets()
+{
+    BOT_LOG_INFO("server.loading", "Loading NPCBot item sets...");
+
+    uint32 oldMSTime = getMSTime();
+
+    static auto MAKE_PAIR64 = [](uint32 l, uint32 h) { return uint64(l | (uint64(h) << 32)); };
+    auto make_set_guid = [](uint32 plow, uint8 set_id) { return MAKE_PAIR64(plow, set_id); };
+    auto unpack_set_guid = [](uint64 set_guid) { return std::tuple(PAIR64_LOPART(set_guid), (uint8)PAIR64_HIPART(set_guid)); };
+
+    //                                                   0      1       2
+    QueryResult result = CharacterDatabase.Query("SELECT owner, set_id, set_name FROM characters_npcbot_gear_set");
+    if (!result)
+    {
+        BOT_LOG_INFO("server.loading", ">> Loaded 0 NPCBot item sets. DB table `characters_npcbot_gear_set` is empty!");
+        return;
+    }
+
+    std::set<uint32> player_guids;
+    std::set<uint64> set_guids;
+    do
+    {
+        Field* fields = result->Fetch();
+
+        uint32 player_guidlow = fields[0].Get<uint32>();
+        uint8 set_id          = fields[1].Get<uint8>();
+        std::string set_name  = fields[2].Get<std::string>();
+
+        ObjectGuid player_guid = ObjectGuid::Create<HighGuid::Player>(player_guidlow);
+
+        UpdateBotItemSet(player_guid, set_id, set_name);
+
+        player_guids.insert(player_guidlow);
+        set_guids.insert(make_set_guid(player_guidlow, set_id));
+
+    } while (result->NextRow());
+
+    //                                       0      1       2     3
+    result = CharacterDatabase.Query("SELECT owner, set_id, slot, item_id FROM characters_npcbot_gear_set_item ORDER BY owner,set_id,slot");
+
+    std::set<uint64> invalid_sets;
+    if (!result)
+        invalid_sets = set_guids;
+    else
+    {
+        do
+        {
+            Field* fields = result->Fetch();
+
+            uint32 player_guidlow = fields[0].Get<uint32>();
+            uint8 set_id          = fields[1].Get<uint8>();
+            uint8 slot            = fields[2].Get<uint8>();
+            uint32 item_id        = fields[3].Get<uint32>();
+
+            uint64 set_guid = make_set_guid(player_guidlow, set_id);
+
+            if (!player_guids.contains(player_guidlow))
+            {
+                BOT_LOG_ERROR("server.loading", "Table `characters_npcbot_gear_set_item` contains values '{} {} {}' for non-existent player {}. Removing!",
+                    uint32(set_id), uint32(slot), item_id, player_guidlow);
+                invalid_sets.insert(set_guid);
+                continue;
+            }
+
+            if (!set_guids.contains(set_guid))
+            {
+                BOT_LOG_ERROR("server.loading", "Table `characters_npcbot_gear_set_item` contains values '{} {}' for non-existent item set {} (player {}). Removing!",
+                    uint32(slot), item_id, uint32(set_id), player_guidlow);
+                invalid_sets.insert(set_guid);
+                continue;
+            }
+
+            if (set_id >= MAX_BOT_EQUIPMENT_SETS)
+            {
+                BOT_LOG_ERROR("server.loading", "Table `characters_npcbot_gear_set_item` contains invalid set id {} (player {}). Removing!",
+                    uint32(set_id), player_guidlow);
+                invalid_sets.insert(set_guid);
+                continue;
+            }
+
+            if (slot >= BOT_INVENTORY_SIZE)
+            {
+                BOT_LOG_ERROR("server.loading", "Table `characters_npcbot_gear_set_item` contains invalid slot {} for item set {} (player {}). Removing!",
+                    uint32(slot), uint32(set_id), player_guidlow);
+                invalid_sets.insert(set_guid);
+                continue;
+            }
+
+            if (!sObjectMgr->GetItemTemplate(item_id))
+            {
+                BOT_LOG_ERROR("server.loading", "Table `characters_npcbot_gear_set_item` contains invalid item id {} in slot {} for item set {} (player {}). Removing!",
+                    item_id, uint32(slot), uint32(set_id), player_guidlow);
+                invalid_sets.insert(set_guid);
+                continue;
+            }
+
+            ObjectGuid player_guid = ObjectGuid::Create<HighGuid::Player>(player_guidlow);
+
+            UpdateBotItemSet(player_guid, set_id, slot, item_id);
+
+        } while (result->NextRow());
+    }
+
+    if (!invalid_sets.empty())
+    {
+        CharacterDatabaseTransaction ctrans = CharacterDatabase.BeginTransaction();
+        for (uint64 set_guid : invalid_sets)
+        {
+            set_guids.erase(set_guid);
+            auto [player_guidlow, set_id] = unpack_set_guid(set_guid);
+            ObjectGuid player_guid = ObjectGuid::Create<HighGuid::Player>(player_guidlow);
+            _botStoredGearSetMap[player_guid][set_id].clear();
+            ctrans->Append("DELETE FROM characters_npcbot_gear_set_item WHERE owner = {} and set_id = {}", player_guidlow, uint32(set_id));
+        }
+
+        std::set<uint32> invalid_players;
+        for (auto const& p : _botStoredGearSetMap)
+        {
+            if (std::ranges::all_of(p.second, [](NpcBotItemSet const& arr) { return arr.empty(); }))
+            {
+                invalid_players.insert(p.first.GetCounter());
+                ctrans->Append("DELETE FROM characters_npcbot_gear_set WHERE owner = {}", p.first.GetCounter());
+                ctrans->Append("DELETE FROM characters_npcbot_gear_set_item WHERE owner = {}", p.first.GetCounter());
+            }
+        }
+        CharacterDatabase.CommitTransaction(ctrans);
+
+        for (uint32 player_guidlow : invalid_players)
+        {
+            player_guids.erase(player_guidlow);
+            _botStoredGearSetMap.erase(ObjectGuid::Create<HighGuid::Player>(player_guidlow));
+        }
+    }
+
+    BOT_LOG_INFO("server.loading", ">> Loaded {} NPCBot item sets for {} bot owners in {} ms", uint32(set_guids.size()), uint32(player_guids.size()), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void BotDataMgr::LoadNpcBotMgrData()
@@ -1346,7 +1549,7 @@ void BotDataMgr::LoadWanderMap(bool reload, bool force_all_maps)
                     (k == 1 && !wp->HasFlag(BotWPFlags::BOTWP_FLAG_ALLIANCE_ONLY)) ||
                     (k == 2 && !wp->HasFlag(BotWPFlags::BOTWP_FLAG_ALLIANCE_OR_HORDE_ONLY)))
                 {
-                    for (uint8 i = minLevel; i <= maxLevel; ++i)
+                    for (size_t i = minLevel; i <= maxLevel; ++i)
                         spawn_node_levels[k][i - 1] = true;
                 }
             }
@@ -1355,7 +1558,7 @@ void BotDataMgr::LoadWanderMap(bool reload, bool force_all_maps)
     for (uint8 k = 0; k < TEAMS_COUNT; ++k)
     {
         auto const& vec = spawn_node_levels[k];
-        for (uint32 i = min_spawn_level; i <= max_spawn_level; ++i)
+        for (size_t i = min_spawn_level; i <= max_spawn_level; ++i)
         {
             if (vec[i - 1] == false && k == uint8(TEAM_NEUTRAL) && spawn_node_levels[uint8(TEAM_ALLIANCE)][i - 1] == true && spawn_node_levels[uint8(TEAM_HORDE)][i - 1] == true)
                 continue;
@@ -1562,7 +1765,14 @@ bool BotDataMgr::GenerateBattlegroundBots(Player const* groupLeader, [[maybe_unu
     uint32 minteamplayers = bg_template->GetMinPlayersPerTeam();
     uint32 maxteamplayers = bg_template->GetMaxPlayersPerTeam();
 
-    RoundToInterval(tarteamplayers, minteamplayers, maxteamplayers);
+    uint32 normalCount = tarteamplayers;
+    RoundToInterval(normalCount, minteamplayers, maxteamplayers);
+    if (tarteamplayers != normalCount)
+    {
+        BOT_LOG_ERROR("npcbots", "NpcBot.WanderingBots.BG.TargetTeamPlayersCount value {} for BG {} '{}' is out of bounds ({}-{})! Normalized to {}!",
+            tarteamplayers, uint32(bgTypeId), bg_template->GetName(), minteamplayers, maxteamplayers, normalCount);
+        tarteamplayers = normalCount;
+    }
 
     uint32 queued_players_a = 0;
     uint32 queued_players_h = 0;
@@ -2528,6 +2738,20 @@ void BotDataMgr::UpdateNpcBotData(uint32 entry, NpcBotDataUpdateType updateType,
             CharacterDatabase.Execute(bstmt);
             break;
         }
+        case NPCBOT_UPDATE_MISCVALUES:
+        {
+            NpcBotData::MiscValuesContainer const* miscvals = (NpcBotData::MiscValuesContainer const*)(data);
+            std::ostringstream ss;
+            for (NpcBotData::MiscValuesContainer::const_iterator citr = miscvals->cbegin(); citr != miscvals->cend(); ++citr)
+                ss << citr->first << ':' << citr->second << ' ';
+
+            bstmt = CharacterDatabase.GetPreparedStatement(CHAR_UPD_NPCBOT_MISCVALUES);
+            //"UPDATE characters_npcbot SET miscvalues = ? WHERE entry = ?", CONNECTION_ASYNCH
+            bstmt->SetData(0, ss.str());
+            bstmt->SetData(1, entry);
+            CharacterDatabase.Execute(bstmt);
+            break;
+        }
         case NPCBOT_UPDATE_EQUIPS:
         {
             Item** items = (Item**)(data);
@@ -3034,10 +3258,28 @@ uint32 BotDataMgr::GetTeamForFaction(uint32 factionTemplateId)
     }
 }
 
+bool BotDataMgr::CanDepositBotBankItemsCount(ObjectGuid playerGuid, uint32 items_count)
+{
+    if (uint32 capacity = BotMgr::GetGearBankCapacity())
+    {
+        uint32 stored_count = GetBotBankItemsCount(playerGuid);
+        if (stored_count + items_count > capacity)
+            return false;
+    }
+    return true;
+}
+
 BotBankItemContainer const* BotDataMgr::GetBotBankItems(ObjectGuid playerGuid)
 {
     decltype(_botStoredGearMap)::iterator mci = _botStoredGearMap.find(playerGuid);
     return mci == _botStoredGearMap.cend() ? nullptr : &mci->second;
+}
+
+uint32 BotDataMgr::GetBotBankItemsCount(ObjectGuid playerGuid)
+{
+    if (BotBankItemContainer const* botBankItems = GetBotBankItems(playerGuid))
+        return static_cast<uint32>(botBankItems->size());
+    return 0;
 }
 
 Item* BotDataMgr::WithdrawBotBankItem(ObjectGuid playerGuid, ObjectGuid::LowType itemGuidLow)
@@ -3045,9 +3287,7 @@ Item* BotDataMgr::WithdrawBotBankItem(ObjectGuid playerGuid, ObjectGuid::LowType
     decltype(_botStoredGearMap)::iterator mci = _botStoredGearMap.find(playerGuid);
     if (mci != _botStoredGearMap.cend())
     {
-        auto ici = std::find_if(std::cbegin(mci->second), std::cend(mci->second), [guidLow = itemGuidLow](Item const* item) {
-            return item->GetGUID().GetCounter() == guidLow;
-        });
+        auto ici = std::ranges::find_if(mci->second, [=](Item const* item) { return item->GetGUID().GetCounter() == itemGuidLow; });
         if (ici != mci->second.cend())
         {
             Item* item = *ici;
@@ -3079,6 +3319,81 @@ void BotDataMgr::SaveNpcBotStoredGear(ObjectGuid playerGuid, CharacterDatabaseTr
         item->SaveToDB(trans);
         item->DeleteFromInventoryDB(trans);
         trans->Append("INSERT INTO characters_npcbot_gear_storage (guid, item_guid) VALUES ({}, {})", mci->first.GetCounter(), item->GetGUID().GetCounter());
+    }
+}
+
+uint32 BotDataMgr::GetBotItemSetsCount(ObjectGuid playerGuid)
+{
+    if (BotItemSetsArray const* item_sets = GetBotItemSets(playerGuid))
+        return std::ranges::count_if(NPCBots::index_array<uint8, MAX_BOT_EQUIPMENT_SETS>, [=](uint8 i) { return !!item_sets->at(i); });
+    return 0;
+}
+
+BotItemSetsArray const* BotDataMgr::GetBotItemSets(ObjectGuid playerGuid)
+{
+    decltype(_botStoredGearSetMap)::const_iterator sci = _botStoredGearSetMap.find(playerGuid);
+    return sci == _botStoredGearSetMap.cend() ? nullptr : &sci->second;
+}
+
+NpcBotItemSet const* BotDataMgr::GetBotItemSet(ObjectGuid playerGuid, uint8 set_id)
+{
+    if (BotItemSetsArray const* item_sets = GetBotItemSets(playerGuid))
+        return &item_sets->at(set_id);
+    return nullptr;
+}
+
+NpcBotItemSet& BotDataMgr::CreateNewBotItemSet(ObjectGuid playerGuid)
+{
+    for (uint8 i : NPCBots::index_array<uint8, MAX_BOT_EQUIPMENT_SETS>)
+    {
+        if (!_botStoredGearSetMap[playerGuid][i])
+            return _botStoredGearSetMap[playerGuid][i];
+    }
+
+    //should not happen
+    size_t max_offset = size_t(MAX_BOT_EQUIPMENT_SETS) - 1;
+    _botStoredGearSetMap[playerGuid][max_offset].clear();
+    return _botStoredGearSetMap[playerGuid][max_offset];
+}
+
+void BotDataMgr::UpdateBotItemSet(ObjectGuid playerGuid, uint8 set_id, std::string const& set_name)
+{
+    _botStoredGearSetMap[playerGuid][set_id].name = set_name;
+}
+
+void BotDataMgr::UpdateBotItemSet(ObjectGuid playerGuid, uint8 set_id, uint8 slot, uint32 item_id)
+{
+    _botStoredGearSetMap[playerGuid][set_id].items[slot] = item_id;
+}
+
+void BotDataMgr::DeleteBotItemSet(ObjectGuid playerGuid, uint8 set_id)
+{
+    _botStoredGearSetMap[playerGuid][set_id].clear();
+}
+
+void BotDataMgr::SaveNpcBotItemSets(ObjectGuid playerGuid, CharacterDatabaseTransaction trans)
+{
+    decltype(_botStoredGearSetMap)::const_iterator sci = _botStoredGearSetMap.find(playerGuid);
+    if (sci == _botStoredGearSetMap.cend())
+        return;
+
+    trans->Append("DELETE FROM characters_npcbot_gear_set WHERE owner = {}", sci->first.GetCounter());
+    trans->Append("DELETE FROM characters_npcbot_gear_set_item WHERE owner = {}", sci->first.GetCounter());
+    for (uint8 i : NPCBots::index_array<uint8, MAX_BOT_EQUIPMENT_SETS>)
+    {
+        NpcBotItemSet const& item_set = sci->second[i];
+        if (!!item_set)
+        {
+            trans->Append("INSERT INTO characters_npcbot_gear_set (owner, set_id, set_name) VALUES ({}, {}, '{}')", sci->first.GetCounter(), uint32(i), item_set.name);
+            for (uint8 j : NPCBots::index_array<uint8, BOT_INVENTORY_SIZE>)
+            {
+                if (item_set.items[j])
+                {
+                    trans->Append("INSERT INTO characters_npcbot_gear_set_item (owner, set_id, slot, item_id) VALUES ({}, {}, {}, {})",
+                        sci->first.GetCounter(), uint32(i), uint32(j), item_set.items[j]);
+                }
+            }
+        }
     }
 }
 

@@ -16,6 +16,8 @@ Original patch from: LordPsyan https://bitbucket.org/lordpsyan/trinitycore-patch
 
 constexpr std::size_t MAX_BOT_LOG_PARAMS = 5;
 constexpr std::size_t MAX_BOT_LOG_PARAM_LENGTH = 50;
+constexpr std::size_t MAX_BOT_ITEM_SET_NAME_LENGTH = 30;
+constexpr uint8 BOT_GOSSIP_MAX_ITEMS = 32; // Client limitation 3.3.5 code confirmed
 
 struct Position;
 
@@ -131,23 +133,38 @@ enum BotCommonValues
     GAME_EVENT_WINTER_VEIL              = 2,
 //COMMON FACTIONS
     FACTION_TEMPLATE_HATES_EVERYTHING_1 = 2150, //faction 966 - Monster spar buddy
-//COMMON AI MISC VALUES
-    BOTAI_MISC_COMBO_POINTS             = 1,
-    BOTAI_MISC_DAGGER_MAINHAND,
-    BOTAI_MISC_DAGGER_OFFHAND,
-    BOTAI_MISC_ENCHANT_IS_AUTO_MH,
-    BOTAI_MISC_ENCHANT_IS_AUTO_OH,
-    BOTAI_MISC_ENCHANT_CAN_EXPIRE_MH,
-    BOTAI_MISC_ENCHANT_CAN_EXPIRE_OH,
-    BOTAI_MISC_ENCHANT_CURRENT_MH,
-    BOTAI_MISC_ENCHANT_CURRENT_OH,
+  //SOUNDS
+    SOUND_FREEZE_IMPACT_WINDWALK        = 29,
+    SOUND_AXE_2H_IMPACT_FLESH_CRIT      = 158,
+    SOUND_ABSORB_GET_HIT                = 3334,
+    SOUND_MISS_WHOOSH_2H                = 7081,
+
+//UNUSED
+
+    //MAX_LOOT_ITEMS                      = 18 // Client limitation 3.3.5 code confirmed
+};
+
+enum BotMiscValues : uint32
+{
+//SAVED
+    BOTAI_MISC_ENCHANT_IS_AUTO_MH       = 1,
+    BOTAI_MISC_ENCHANT_IS_AUTO_OH       = 2,
+    BOTAI_MISC_ENCHANT_TIMER_MH         = 3,
+    BOTAI_MISC_ENCHANT_TIMER_OH         = 4,
+    BOTAI_MISC_ENCHANT_CURRENT_MH       = 5,
+    BOTAI_MISC_ENCHANT_CURRENT_OH       = 6,
+    BOTAI_MISC_PET_TYPE                 = 7,
+    BOTAI_MISC_AURA_TYPE                = 8,
+//INTERNAL
     BOTAI_MISC_ENCHANT_AVAILABLE_1,
     BOTAI_MISC_ENCHANT_AVAILABLE_2,
     BOTAI_MISC_ENCHANT_AVAILABLE_3,
     BOTAI_MISC_ENCHANT_AVAILABLE_4,
     BOTAI_MISC_ENCHANT_AVAILABLE_5,
     BOTAI_MISC_ENCHANT_AVAILABLE_6,
-    BOTAI_MISC_PET_TYPE,
+    BOTAI_MISC_COMBO_POINTS,
+    BOTAI_MISC_DAGGER_MAINHAND,
+    BOTAI_MISC_DAGGER_OFFHAND,
     BOTAI_MISC_PET_AVAILABLE_1,
     BOTAI_MISC_PET_AVAILABLE_2,
     BOTAI_MISC_PET_AVAILABLE_3,
@@ -167,15 +184,9 @@ enum BotCommonValues
     BOTPETAI_MISC_CARRY,
     BOTPETAI_MISC_CAPACITY,
     BOTPETAI_MISC_MAX_ATTACKERS,
-  //SOUNDS
-    SOUND_FREEZE_IMPACT_WINDWALK        = 29,
-    SOUND_AXE_2H_IMPACT_FLESH_CRIT      = 158,
-    SOUND_ABSORB_GET_HIT                = 3334,
-    SOUND_MISS_WHOOSH_2H                = 7081,
 
-//UNUSED
-
-    //MAX_LOOT_ITEMS                      = 18 // Client limitation 3.3.5 code confirmed
+    BOT_MISCVALUE_SAVED_FIRST = BOTAI_MISC_ENCHANT_IS_AUTO_MH,
+    BOT_MISCVALUE_SAVED_LAST = BOTAI_MISC_AURA_TYPE
 };
 
 enum BotClasses : uint8
@@ -374,9 +385,10 @@ enum BotPetTypes
 
     //DK
     BOT_PET_GHOUL                       = 70538,
-    BOT_PET_GARGOYLE                    = 70539,//NYI
-    BOT_PET_DANCING_RUNE_WEAPON         = 70540,//NYI
-    BOT_PET_AOD_GHOUL                   = 70541,//NYI
+
+    BOT_PET_REUSE_1                     = 70539,//REUSE, was BOT_PET_GARGOYLE
+    BOT_PET_REUSE_2                     = 70540,//REUSE, was BOT_PET_DANCING_RUNE_WEAPON
+    BOT_PET_REUSE_3                     = 70541,//REUSE, was BOT_PET_AOD_GHOUL
 
     //Priest
     BOT_PET_SHADOWFIEND                 = 70542,
@@ -454,6 +466,24 @@ enum BotEquipSlot : uint8
 };
 
 constexpr uint8 BOT_TRANSMOG_INVENTORY_SIZE = 13; // BOT_SLOT_BODY + 1
+constexpr uint8 MAX_BOT_EQUIPMENT_SETS = BOT_GOSSIP_MAX_ITEMS - 2;
+
+enum class BotEquipResult : uint8
+{
+    BOT_EQUIP_RESULT_OK                         = 0,
+
+    BOT_EQUIP_RESULT_FAIL_NO_BAG_SPACE          = 1, //unused
+    BOT_EQUIP_RESULT_FAIL_NO_BANK_SPACE         = 2,
+    BOT_EQUIP_RESULT_FAIL_NO_RECEIVER           = 3,
+    BOT_EQUIP_RESULT_FAIL_INVALID_RECEIVER      = 4,
+    BOT_EQUIP_RESULT_FAIL_NO_ITEM               = 5,
+    BOT_EQUIP_RESULT_FAIL_SAME_ID               = 6,
+    BOT_EQUIP_RESULT_FAIL_WANDERER              = 7,
+    BOT_EQUIP_RESULT_FAIL_LINKED_UNEQUIP_FAILED = 8,
+    BOT_EQUIP_RESULT_FAIL_LINKED_RESET_FAILED   = 9,
+    BOT_EQUIP_RESULT_FAIL_CANT_EQUIP            = 10,
+    BOT_EQUIP_RESULT_FAIL_ITEM_CONFLICT         = 11,
+};
 
 enum BotStatMods: uint8
 {
@@ -528,7 +558,8 @@ enum BotAIResetType
     BOTAI_RESET_FORCERECALL             = 0x10,
     BOTAI_RESET_FORCE                   = 0x16,
 
-    BOTAI_RESET_MASK_ABANDON_MASTER     = (BOTAI_RESET_INIT | BOTAI_RESET_DISMISS)
+    BOTAI_RESET_MASK_ABANDON_MASTER     = (BOTAI_RESET_INIT | BOTAI_RESET_DISMISS),
+    BOTAI_RESET_MASK_RESET_MASTER       = (BOTAI_RESET_INIT | BOTAI_RESET_DISMISS | BOTAI_RESET_UNBIND | BOTAI_RESET_LOGOUT)
 };
 
 enum BotMovementType
