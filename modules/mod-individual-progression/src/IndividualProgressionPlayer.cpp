@@ -396,7 +396,7 @@ public:
             case AREA_VUL_GOL_OGRE_MOUND:
                 if (sIndividualProgression->hasPassedProgression(player, PROGRESSION_WOTLK_TIER_4))
                 {
-                    player->GetMap()->SetZoneMusic(player->GetZoneId(), MUSIC_RAGEFIRE_CHASM_HEROIC_LIGHT);
+                    player->PlayDirectMusic(MUSIC_RAGEFIRE_CHASM_HEROIC_LIGHT, player);
                     player->GetMap()->SetZoneWeather(player->GetZoneId(), WEATHER_STATE_MEDIUM_RAIN, 0.5f);
                 }
                 break;
