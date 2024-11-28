@@ -4252,6 +4252,12 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                             }
                             break;
                         }
+                    case 98619: // Gale Crash  
+                            if (!unitTarget)
+                                return;
+
+                            if (roll_chance_i(50) && unitTarget->IsMounted())
+                                unitTarget->Dismount();
                 }
                 break;
             }
