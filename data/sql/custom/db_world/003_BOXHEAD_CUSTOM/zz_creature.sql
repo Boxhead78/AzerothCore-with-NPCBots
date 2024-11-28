@@ -1,10 +1,3 @@
-DELETE FROM `creature` 
-WHERE `guid` IN (
-    2648, 2650, 2654, 2716, 2742, 2790, 2800, 2839, 2841, 2843, 2844, 
-    2879, 2881, 2882, 2884, 2989, 2994, 3089, 3090, 3098, 3659, 3661, 
-    3856, 16000
-);
-
 DELETE FROM `creature` WHERE `guid`=3111565;
 INSERT INTO `creature` (`guid`, `id1`, `id2`, `id3`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `wander_distance`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`, `ScriptName`, `VerifiedBuild`, `CreateObject`, `Comment`) VALUES (3111565, 68, 0, 0, 0, 0, 0, 1, 1, 1, -8484.44, 735.955, 98.6637, 4.46991, 300, 0, 0, 12096, 0, 0, 0, 0, 0, '', 16000, 0, NULL);
 DELETE FROM `creature` WHERE `guid`=3111569;
