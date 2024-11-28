@@ -789,6 +789,8 @@ uint32 Player::EnvironmentalDamage(EnviromentalDamage type, uint32 damage)
             damage = dmgInfo.GetDamage();
             if (GetMapId() == 389 && GetMap()->IsHeroic()) //RF Special Case
                 damage *= 5;
+            if (GetAreaId() == 1537) //IronForge kill player if he falls into lava. Damage scaled to lvl90
+                damage *= 20;
         }
         default:
             break;
