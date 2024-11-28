@@ -388,6 +388,8 @@ private:
         sIndividualProgression->disableDefaultProgression = sConfigMgr->GetOption<bool>("IndividualProgression.DisableDefaultProgression", false);
         sIndividualProgression->tbcRacesProgressionLevel = sConfigMgr->GetOption<uint8>("IndividualProgression.TbcRacesUnlockProgression", 0);
         sIndividualProgression->tbcRacesStartingProgression = sConfigMgr->GetOption<uint8>("IndividualProgression.TbcRacesStartingProgression", 6);
+        sIndividualProgression->cataRacesProgressionLevel = sConfigMgr->GetOption<uint8>("IndividualProgression.CataRacesUnlockProgression", 0);
+        sIndividualProgression->cataRacesStartingProgression = sConfigMgr->GetOption<uint8>("IndividualProgression.CataRacesStartingProgression", 6);
         sIndividualProgression->deathKnightProgressionLevel = sConfigMgr->GetOption<uint8>("IndividualProgression.DeathKnightUnlockProgression", 11);
         sIndividualProgression->deathKnightStartingProgression = sConfigMgr->GetOption<uint8>("IndividualProgression.DeathKnightStartingProgression", 11);
         sIndividualProgression->LoadCustomProgressionEntries(sConfigMgr->GetOption<std::string>("IndividualProgression.CustomProgression", ""));

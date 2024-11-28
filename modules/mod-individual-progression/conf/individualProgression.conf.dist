@@ -289,6 +289,30 @@ IndividualProgression.TbcRacesUnlockProgression = 6
 
 IndividualProgression.TbcRacesStartingProgression = 6
 #
+#    IndividualProgression.CataRacesUnlockProgression
+#        Description: The progression level at which Cata races will be unlocked.
+#                     Races will be unlocked when the player reaches this level with any character on the account.
+#                     Disable to have Cata races available by default.
+#                     Please refer to IndividualProgression.h/ProgressionState enum for progression stage values.
+#
+#        Default:   0 - Cata Races always available
+#                   6 - Classic must be complete to create Cata Races
+#                   1-16 - Required progression level to create Cata Race characters
+#
+#
+
+IndividualProgression.CataRacesUnlockProgression = 16
+#
+#    IndividualProgression.CataRacesStartingProgression
+#        Description: The progression level at which Cata races characters will begin.
+#
+#        Default:   6 - Cata Races start at the beginning of Cata
+#                   0-16 - Progression level
+#
+#
+
+IndividualProgression.CataRacesStartingProgression = 16
+#
 #    IndividualProgression.DeathKnightUnlockProgression
 #        Description: The progression level at which Death Knight characters can be created.
 #                     Death Knights will be available when the player reaches this levl with any character on the account.

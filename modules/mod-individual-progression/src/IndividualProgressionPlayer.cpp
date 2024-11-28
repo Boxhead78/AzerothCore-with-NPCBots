@@ -26,6 +26,10 @@ public:
         {
             sIndividualProgression->UpdateProgressionState(player, static_cast<ProgressionState>(sIndividualProgression->tbcRacesStartingProgression));
         }
+        else if (sIndividualProgression->cataRacesStartingProgression && (player->getRace() == RACE_GOBLIN || player->getRace() == RACE_WORGEN) && (int32)player->GetLevel() == sConfigMgr->GetOption<int32>("StartPlayerLevel", 1) && !sIndividualProgression->hasPassedProgression(player, static_cast<ProgressionState>(sIndividualProgression->cataRacesStartingProgression)))
+        {
+            sIndividualProgression->UpdateProgressionState(player, static_cast<ProgressionState>(sIndividualProgression->cataRacesStartingProgression));
+        }
         else if (sIndividualProgression->startingProgression && !sIndividualProgression->hasPassedProgression(player, static_cast<ProgressionState>(sIndividualProgression->startingProgression)))
         {
             sIndividualProgression->UpdateProgressionState(player, static_cast<ProgressionState>(sIndividualProgression->startingProgression));
@@ -515,7 +519,7 @@ public:
             return false; // Disabled until finished
         }
         if ((!sIndividualProgression->enabled) ||
-            (charRace != RACE_DRAENEI && charRace != RACE_BLOODELF && charClass != CLASS_DEATH_KNIGHT) ||
+            (charRace != RACE_DRAENEI && charRace != RACE_BLOODELF && charRace != RACE_GOBLIN && charRace != RACE_WORGEN && charClass != CLASS_DEATH_KNIGHT) ||
             (!sIndividualProgression->tbcRacesProgressionLevel && !sIndividualProgression->deathKnightProgressionLevel))
         {
             return true;
@@ -526,6 +530,16 @@ public:
             if (sIndividualProgression->tbcRacesProgressionLevel)
             {
                 if (highestProgression < sIndividualProgression->tbcRacesProgressionLevel)
+                {
+                    return false;
+                }
+            }
+        }
+        if (charRace == RACE_GOBLIN || charRace == RACE_WORGEN)
+        {
+            if (sIndividualProgression->cataRacesProgressionLevel)
+            {
+                if (highestProgression < sIndividualProgression->cataRacesProgressionLevel)
                 {
                     return false;
                 }
