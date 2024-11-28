@@ -1208,7 +1208,7 @@ void Creature::CalculateMinMaxDamage(WeaponAttackType attType, bool normalized, 
         {
             Map* creatureMap = GetMap();
             MapEntry const* mapEntry = sMapStore.LookupEntry(GetMapId());
-            if (GetTypeId() == TYPEID_UNIT && (!ToCreature()->IsPet() || !ToCreature()->IsGuardian() || !ToCreature()->IsControlledByPlayer() || !IsNPCBotOrPet()))
+            if (GetTypeId() == TYPEID_UNIT && ToCreature()->IsAlive() && !ToCreature()->IsControlledByPlayer() && !ToCreature()->IsNPCBotOrPet())
             {
                 //Classic Early Level Nerf
                 if (mapEntry->Expansion() == CONTENT_1_60 && GetLevel() <= 40)
