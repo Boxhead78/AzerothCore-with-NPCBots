@@ -224,6 +224,10 @@ void KillRewarder::_RewardXP(Player* player, float rate)
         }
         //end npcbot
 
+        // Give less xp in dungeons
+        if (player->GetMap()->IsDungeon())
+            xp *= 0.5;
+
         // Boxhead Custom | Add more xp for rares
         if (Creature* victim = _victim->ToCreature())
         {
