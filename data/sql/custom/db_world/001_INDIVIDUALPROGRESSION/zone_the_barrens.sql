@@ -1,3 +1,5 @@
+SET @maxLevel = 80;
+
 -- Traugh <Expert Blacksmith>
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=15 AND `SourceGroup`=2783 AND `SourceEntry`=0 AND `ConditionTypeOrReference`=7;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `ConditionTypeOrReference`, `ConditionValue1`, `ConditionValue2`, `Comment`) VALUES (15, 2783, 0, 7, 164, 50, 'Show menu if blacksmithing is 50 or higher');
@@ -62,7 +64,7 @@ UPDATE `creature_template` SET `subname`='Engineering Goods' WHERE `entry`=3495;
 UPDATE `creature_template` SET `faction`=16 WHERE `entry`=3503;
 
 -- Devrak <Wind Rider Master>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=3615;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=3615;
 
 -- Deviate Coiler
 UPDATE `creature_template` SET `rank`=1 WHERE `entry`=3630;
@@ -137,16 +139,16 @@ UPDATE `creature_template` SET `minlevel`=15, `maxlevel`=15 WHERE `entry`=8236;
 UPDATE `creature_template` SET `subname`='Master Goblin Engineer' WHERE `entry`=8738;
 
 -- Omusa Thunderhorn <Wind Rider Master>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=10378;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=10378;
 
 -- Ambassador Malcin
 UPDATE `creature_template` SET `rank`=1 WHERE `entry`=12865;
 
 -- Horde Elite
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=14717;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=14717;
 
 -- Bragok <Flight Master>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=16227;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=16227;
 
 -- Traugh <Expert Blacksmith>
 DELETE FROM `npc_trainer` WHERE `ID`=3478;

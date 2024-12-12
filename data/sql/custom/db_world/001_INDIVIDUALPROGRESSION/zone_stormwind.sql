@@ -1,3 +1,5 @@
+SET @maxLevel = 80;
+
 -- Dane Lindgren <Apprentice Blacksmith>
 UPDATE `creature_template` SET `subname`='Journeyman Blacksmith', `npcflag`=81, `trainer_type`=2 WHERE `entry`=957;
 
@@ -199,13 +201,13 @@ DELETE FROM `creature_queststarter` WHERE `id`=461 AND `quest`=4488;
 INSERT INTO `creature_queststarter` (`id`, `quest`) VALUES (461, 4488);
 
 -- Stormwind City Guard
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=68;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=68;
 
 -- Dungar Longdrink <Gryphon Master>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=352;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=352;
 
 -- General Marcus Jonathan <High Commander of Stormwind Defense>
-UPDATE `creature_template` SET `minlevel`=62, `maxlevel`=62 WHERE `entry`=466;
+UPDATE `creature_template` SET `minlevel`=@maxLevel + 2, `maxlevel`=@maxLevel + 2 WHERE `entry`=466;
 
 -- Keldric Boucher <Alchemy Supplies & Reagents>
 UPDATE `creature_template` SET `subname`='Arcane Goods Vendor' WHERE `entry`=1257;
@@ -226,22 +228,22 @@ UPDATE `creature_template` SET `subname`='Poison Supplier' WHERE `entry`=1326;
 UPDATE `creature_template` SET `subname`='Reagent Vendor' WHERE `entry`=1351;
 
 -- Stormwind Royal Guard
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60, `rank`=0 WHERE `entry`=1756;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel, `rank`=0 WHERE `entry`=1756;
 
 -- Stormwind City Patroller
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=1976;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=1976;
 
 -- Borgus Steelhand <Weapon Crafter>
 UPDATE `creature_template` SET `subname`='Weapon Crafter' WHERE `entry`=7232;
 
 -- Lieutenant Rachel Vaccar <Outland Armor Quartermaster>
-UPDATE `creature_template` SET `subname`=NULL, `minlevel`=55, `maxlevel`=55, `npcflag`=0 WHERE `entry`=12778;
+UPDATE `creature_template` SET `subname`=NULL, `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5, `npcflag`=0 WHERE `entry`=12778;
 
 -- Master Sergeant Biggins <Accessories Quartermaster>
 UPDATE `creature_template` SET `subname`='Officer Accessories Quartermaster' WHERE `entry`=12781;
 
 -- Captain O'Neal <Weapons Quartermaster>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=12782;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=12782;
 
 -- Lieutenant Karter <War Mount Quartermaster>
 UPDATE `creature_template` SET `subname`='Mount Vendor' WHERE `entry`=12783;
@@ -250,19 +252,19 @@ UPDATE `creature_template` SET `subname`='Mount Vendor' WHERE `entry`=12783;
 UPDATE `creature_template` SET `subname`='Food and Drink' WHERE `entry`=12785;
 
 -- Officer Jaxon
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14423;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14423;
 
 -- Officer Pomeroy
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14438;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14438;
 
 -- Officer Brady
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14439;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14439;
 
 -- Alliance Brigadier General
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60, `rank`=0 WHERE `entry`=15351;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel, `rank`=0 WHERE `entry`=15351;
 
 -- King Varian Wrynn
-UPDATE `creature_template` SET `minlevel`=63, `maxlevel`=63 WHERE `entry`=29611;
+UPDATE `creature_template` SET `minlevel`=@maxLevel + 3, `maxlevel`=@maxLevel + 3 WHERE `entry`=29611;
 
 -- Lieutenant Karter <Mount Vendor>
 UPDATE `creature_template_addon` SET `mount`=0 WHERE `entry`=12783;

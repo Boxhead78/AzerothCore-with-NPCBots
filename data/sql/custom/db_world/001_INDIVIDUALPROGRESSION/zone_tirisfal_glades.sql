@@ -1,3 +1,4 @@
+SET @maxLevel = 80;
 
 -- Undertaker Mordo
 DELETE FROM `creature` WHERE `id1`=1568;
@@ -33,16 +34,16 @@ UPDATE `creature_template` SET `faction`=67 WHERE `entry`=1667;
 UPDATE `creature_template` SET `faction`=22 WHERE `entry`=1688;
 
 -- Deathguard Randolph
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=1736;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=1736;
 
 -- Deathguard Oliver
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=1737;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=1737;
 
 -- Deathguard Phillip
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=1739;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=1739;
 
 -- Deathguard Bartrand
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=1741;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=1741;
 
 -- Faruza <Apprentice Herbalist>
 UPDATE `creature_template` SET `subname`='Apprentice Herbalist' WHERE `entry`=2114;
@@ -90,7 +91,7 @@ UPDATE `creature_template` SET `subname`='Demon Trainer' WHERE `entry`=5750;
 UPDATE `creature_template` SET `subname`='Skinner' WHERE `entry`=6289;
 
 -- Deathguard Elite
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=7980;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=7980;
 
 -- Zapetta <Zeppelin Master>
 UPDATE `creature_template` SET `subname`='Zeppelin Master' WHERE `entry`=9566;

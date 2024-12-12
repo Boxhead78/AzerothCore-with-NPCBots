@@ -1,3 +1,5 @@
+SET @maxLevel = 80;
+
 -- Karn Stonehoof <Expert Blacksmith>
 UPDATE `creature_template` SET `subname`='Expert Blacksmith' WHERE `entry`=2998;
 
@@ -175,10 +177,10 @@ DELETE FROM `creature` WHERE `id1`=34978;
 DELETE FROM `creature` WHERE `id1`=34976;
 
 -- Hunter Sagewind
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14440;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14440;
 
 -- Hunter Ragetotem
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14441;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14441;
 
 -- Kard Ragetotem <Sword and Dagger Merchant>
 UPDATE `creature_template` SET `subname`='Sword and Dagger Merchant' WHERE `entry`=3021;
@@ -190,13 +192,13 @@ UPDATE `creature_template` SET `subname`='Cooking Supplier' WHERE `entry`=3027;
 UPDATE `creature_template` SET `subname`='Fishing Supplier' WHERE `entry`=3029;
 
 -- Cairne Bloodhoof <High Chieftain>
-UPDATE `creature_template` SET `minlevel`=63, `maxlevel`=63 WHERE `entry`=3057;
+UPDATE `creature_template` SET `minlevel`=@maxLevel + 3, `maxlevel`=@maxLevel + 3 WHERE `entry`=3057;
 
 -- Honor Guard
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60, `rank`=0 WHERE `entry`=3083;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel, `rank`=0 WHERE `entry`=3083;
 
 -- Bluffwatcher
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55, `faction`=105 WHERE `entry`=3084;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5, `faction`=105 WHERE `entry`=3084;
 
 -- Chepi <Reagent Vendor>
 UPDATE `creature_template` SET `subname`='Reagent Vendor' WHERE `entry`=8361;

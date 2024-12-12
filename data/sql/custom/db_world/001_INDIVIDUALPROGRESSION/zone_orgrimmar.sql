@@ -1,3 +1,5 @@
+SET @maxLevel = 80;
+
 -- Whuut <Journeyman Alchemist>
 UPDATE `creature_template` SET `subname`='Journeyman Alchemist', `npcflag`=81, `trainer_type`=2 WHERE `entry`=11046;
 
@@ -264,10 +266,10 @@ UPDATE `creature_template` SET `subname`='King of Darkspear Trolls', `minlevel`=
 UPDATE `creature_template` SET `scale`=0.7, `npcflag`=2, `faction`=29, `gossip_menu_id`=0 WHERE `entry`=3230;
 
 -- Orgrimmar Grunt
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=3296;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=3296;
 
 -- Doras <Wind Rider Master>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=3310;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=3310;
 
 -- Trak'gen <General Goods Merchant>
 UPDATE `creature_template` SET `subname`='General Goods Merchant' WHERE `entry`=3313;
@@ -303,7 +305,7 @@ UPDATE `creature_template` SET `subname`='General Trade Goods Merchant' WHERE `e
 UPDATE `creature_template` SET `subname`='Cooking Supplier' WHERE `entry`=3400;
 
 -- Thrall <Warchief>
-UPDATE `creature_template` SET `minlevel`=63, `maxlevel`=63 WHERE `entry`=4949;
+UPDATE `creature_template` SET `minlevel`=@maxLevel + 3, `maxlevel`=@maxLevel + 3 WHERE `entry`=4949;
 
 -- Shimra <General Trade Goods Merchant>
 UPDATE `creature_template` SET `subname`='General Trade Goods Merchant' WHERE `entry`=5817;
@@ -315,7 +317,7 @@ UPDATE `creature_template` SET `subname`='Zeppelin Master' WHERE `entry`=12136;
 UPDATE `creature_template` SET `subname`=NULL, `npcflag`=0, `faction`=85 WHERE `entry`=12788;
 
 -- Lady Palanseer <Armor Quartermaster>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=12792;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=12792;
 
 -- Brave Stonehide <Officer Accessories Quartermaster>
 UPDATE `creature_template` SET `subname`='Officer Accessories Quartermaster' WHERE `entry`=12793;
@@ -330,25 +332,25 @@ UPDATE `creature_template` SET `subname`='Food and Drink' WHERE `entry`=12794;
 UPDATE `creature_template` SET `subname`='Mount Quartermaster' WHERE `entry`=12796;
 
 -- Kor'kron Elite
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60, `rank`=0 WHERE `entry`=14304;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel, `rank`=0 WHERE `entry`=14304;
 
 -- Scout Stronghand
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14375;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14375;
 
 -- Scout Manslayer
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14376;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14376;
 
 -- Scout Tharr
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60 WHERE `entry`=14377;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel WHERE `entry`=14377;
 
 -- Sergeant Thunderhorn <Weapons Quartermaster>
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=14581;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=14581;
 
 -- High Overlord Saurfang
-UPDATE `creature_template` SET `minlevel`=62, `maxlevel`=62 WHERE `entry`=14720;
+UPDATE `creature_template` SET `minlevel`=@maxLevel + 2, `maxlevel`=@maxLevel + 2 WHERE `entry`=14720;
 
 -- Horde Warbringer
-UPDATE `creature_template` SET `minlevel`=60, `maxlevel`=60, `rank`=0 WHERE `entry`=15350;
+UPDATE `creature_template` SET `minlevel`=@maxLevel, `maxlevel`=@maxLevel, `rank`=0 WHERE `entry`=15350;
 
 -- Raider Bork <Mount Quartermaster>
 UPDATE `creature_template_addon` SET `mount`=0 WHERE `entry`=12796;

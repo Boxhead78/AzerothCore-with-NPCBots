@@ -1,3 +1,5 @@
+SET @maxLevel = 80;
+
 -- Kitta Firewind <Enchanting Trainer>
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=15 AND `SourceGroup`=4169 AND `SourceEntry`=0 AND `ConditionTypeOrReference`=7;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `ConditionTypeOrReference`, `ConditionValue1`, `ConditionValue2`, `Comment`) VALUES (15, 4169, 0, 7, 333, 125, 'Show menu if enchanting is 125 or higher');
@@ -43,7 +45,7 @@ UPDATE `creature_template` SET `subname`='Journeyman Alchemist' WHERE `entry`=12
 UPDATE `creature_template` SET `subname`='Journeyman Leatherworker' WHERE `entry`=1632;
 
 -- Northshire Guard
-UPDATE `creature_template` SET `minlevel`=55, `maxlevel`=55 WHERE `entry`=1642;
+UPDATE `creature_template` SET `minlevel`=@maxLevel - 5, `maxlevel`=@maxLevel - 5 WHERE `entry`=1642;
 
 -- Lee Brown <Fisherman>
 UPDATE `creature_template` SET `subname`='Fisherman' WHERE `entry`=1651;
