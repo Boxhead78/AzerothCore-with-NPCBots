@@ -32,11 +32,14 @@ UPDATE `gameobject_template` SET `ScriptName` = 'gobject_ipp_tbc' WHERE `entry` 
 -- Drop source for 2.3 Jewelcrafting Recipe
 UPDATE `creature_template` SET `ScriptName` = 'npc_ipp_tbc_t4' WHERE `entry` IN (19768, 19227, 23761);
 
--- Phasing for General Tiras'alan and Dathris Sunstriker - prevent early access to Isle of Quel'Danas
-UPDATE `creature_template` SET `ScriptName` = 'npc_ipp_tbc_t5' WHERE `entry` IN (25167, 18594);
+-- Phasing Zul'Aman quest npcs until TBC T4.
+UPDATE `creature_template` SET `ScriptName` = 'npc_ipp_tbc_t4' WHERE `entry` IN (19227, 23761);
 
 -- Phasing TBC vendors and trainers - Copies are added to replace them until TBC T4.
 UPDATE `creature_template` SET `ScriptName` = 'npc_ipp_tbc_t4' WHERE `entry` IN (17585, 17657, 18754, 18771, 19187, 21087, 21655);
+
+-- Phasing for General Tiras'alan and Dathris Sunstriker - prevent early access to Isle of Quel'Danas
+UPDATE `creature_template` SET `ScriptName` = 'npc_ipp_tbc_t5' WHERE `entry` IN (25167, 18594);
 
 
 -- Argent Tournament
