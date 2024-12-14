@@ -789,7 +789,7 @@ INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `Q
 DELETE FROM `creature_loot_template` WHERE `Entry`=500011 AND `Item`=45912 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500011, 45912, 0, 0.1, 0, 1, 0, 1, 1, 'Trash');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500012 AND `Item`=1 AND `Reference`=35056 AND `GroupId`=1;
-INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500012, 1, 35056, 100, 0, 1, 1, 1, 2, 'Giant Earthborer');
+INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500012, 1, 35056, 100, 0, 1, 1, 2, 2, 'Giant Earthborer');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500012 AND `Item`=40752 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500012, 40752, 0, 100, 0, 1, 0, 2, 2, 'Giant Earthborer');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500012 AND `Item`=43228 AND `Reference`=0 AND `GroupId`=0;
@@ -831,7 +831,7 @@ INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `Q
 DELETE FROM `creature_loot_template` WHERE `Entry`=500013 AND `Item`=45912 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500013, 45912, 0, 0.1, 0, 1, 0, 1, 1, 'Trash');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500014 AND `Item`=1 AND `Reference`=35062 AND `GroupId`=1;
-INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500014, 1, 35062, 100, 0, 1, 1, 1, 2, 'Emberfury');
+INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500014, 1, 35062, 100, 0, 1, 1, 2, 2, 'Emberfury');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500014 AND `Item`=40752 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500014, 40752, 0, 100, 0, 1, 0, 2, 2, 'Emberfury');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500014 AND `Item`=43102 AND `Reference`=0 AND `GroupId`=0;
@@ -955,13 +955,13 @@ INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `Q
 DELETE FROM `creature_loot_template` WHERE `Entry`=500015 AND `Item`=45912 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500015, 45912, 0, 0.1, 0, 1, 0, 1, 1, 'Trash');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500018 AND `Item`=1 AND `Reference`=35055 AND `GroupId`=1;
-INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500018, 1, 35055, 100, 0, 1, 1, 1, 2, 'Baron Ignatius');
+INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500018, 1, 35055, 100, 0, 1, 1, 2, 2, 'Baron Ignatius');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500018 AND `Item`=40752 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500018, 40752, 0, 100, 0, 1, 0, 2, 2, 'Baron Ignatius');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500018 AND `Item`=43228 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500018, 43228, 0, 100, 0, 1, 0, 4, 4, 'Baron Ignatius');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500019 AND `Item`=1 AND `Reference`=35052 AND `GroupId`=1;
-INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500019, 1, 35052, 100, 0, 1, 1, 1, 2, 'Commander Vorthalax');
+INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500019, 1, 35052, 100, 0, 1, 1, 2, 2, 'Commander Vorthalax');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500019 AND `Item`=13584 AND `Reference`=0 AND `GroupId`=0;
 INSERT INTO `creature_loot_template` (`Entry`, `Item`, `Reference`, `Chance`, `QuestRequired`, `LootMode`, `GroupId`, `MinCount`, `MaxCount`, `Comment`) VALUES (500019, 13584, 0, 5, 0, 1, 0, 1, 1, 'Commander Vorthalax');
 DELETE FROM `creature_loot_template` WHERE `Entry`=500019 AND `Item`=40752 AND `Reference`=0 AND `GroupId`=0;
