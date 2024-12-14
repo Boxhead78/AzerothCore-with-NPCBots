@@ -111,6 +111,7 @@ struct boss_ingvar_the_plunderer : public ScriptedAI
     SummonList summons;
     ObjectGuid ValkyrGUID;
     ObjectGuid ThrowGUID;
+    bool resurrectionStarted;
 
     void Reset() override
     {
