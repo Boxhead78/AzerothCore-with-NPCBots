@@ -10,3 +10,5 @@ DELETE FROM `spell_script_names` WHERE `spell_id`=98568 AND `ScriptName`='spell_
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (98568, 'spell_call_of_the_dragonkin');
 DELETE FROM `spell_script_names` WHERE `spell_id`=98588 AND `ScriptName`='spell_rocket_barrage';
 INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (98588, 'spell_rocket_barrage');
+DELETE FROM `spell_script_names` WHERE `spell_id`=98620 AND `ScriptName`='spell_poison_extraction_totem';
+INSERT INTO `spell_script_names` (`spell_id`, `ScriptName`) VALUES (98620, 'spell_poison_extraction_totem');

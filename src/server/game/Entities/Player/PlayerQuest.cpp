@@ -1911,19 +1911,19 @@ void Player::ItemRemovedQuestCheck(uint32 entry, uint32 count)
     UpdateForQuestWorldObjects();
 }
 
-void Player::KilledMonster(CreatureTemplate const* cInfo, ObjectGuid guid)
+void Player::KilledMonster(CreatureTemplate const* cInfo, ObjectGuid guid, bool ignoreFlags)
 {
     ASSERT(cInfo);
 
     if (cInfo->Entry)
-        KilledMonsterCredit(cInfo->Entry, guid);
+        KilledMonsterCredit(cInfo->Entry, guid, ignoreFlags);
 
     for (uint8 i = 0; i < MAX_KILL_CREDIT; ++i)
         if (cInfo->KillCredit[i])
-            KilledMonsterCredit(cInfo->KillCredit[i]);
+            KilledMonsterCredit(cInfo->KillCredit[i], guid, ignoreFlags);
 }
 
-void Player::KilledMonsterCredit(uint32 entry, ObjectGuid guid)
+void Player::KilledMonsterCredit(uint32 entry, ObjectGuid guid, bool ignoreFlags)
 {
     uint16 addkillcount = 1;
     uint32 real_entry = entry;
@@ -1953,6 +1953,9 @@ void Player::KilledMonsterCredit(uint32 entry, ObjectGuid guid)
                                                            (qInfo->IsPVPQuest() && (GetGroup()->isBFGroup() || GetGroup()->isBGGroup()))))
         {
             if (!sScriptMgr->PassedQuestKilledMonsterCredit(this, qInfo, entry, real_entry, guid))
+                continue;
+
+            if (!ignoreFlags && qInfo->HasSpecialFlag(QUEST_SPECIAL_FLAGS_NO_KILL_CREDIT))
                 continue;
 
             if (qInfo->HasSpecialFlag(QUEST_SPECIAL_FLAGS_KILL) /*&& !qInfo->HasSpecialFlag(QUEST_SPECIAL_FLAGS_CAST)*/)

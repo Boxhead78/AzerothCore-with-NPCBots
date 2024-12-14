@@ -278,7 +278,7 @@ public:
                     {
                         for (uint16 z = 0; z < creatureCount; ++z)
                         {
-                            player->KilledMonster(creatureInfo, ObjectGuid::Empty);
+                            player->KilledMonster(creatureInfo, ObjectGuid::Empty, true);
                         }
                     }
                 }

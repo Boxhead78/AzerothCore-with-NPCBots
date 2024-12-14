@@ -469,12 +469,69 @@ class spell_voodoo : public SpellScript
     }
 };
 
+enum PoisonExtractionTotem
+{
+    NPC_VENOMOUS_SCORPID = 500065,
+    NPC_POISON_EXTRACTION_TOTEM = 500066,
+    SPELL_CORROSIVE_STING = 98620,
+    SPELL_POISON_EXTRACTION_TOTEM_EFFECT = 98623,
+};
+
+class spell_poison_extraction_totem : public SpellScript
+{
+    PrepareSpellScript(spell_poison_extraction_totem);
+
+    bool Validate(SpellInfo const* spellInfo) override
+    {
+        return ValidateSpellInfo({ SPELL_CORROSIVE_STING, SPELL_POISON_EXTRACTION_TOTEM_EFFECT });
+    }
+
+    void HandleDummy(SpellEffIndex /*effIndex*/)
+    {
+        Unit* target = GetHitUnit();
+        if (!target || !target->IsPlayer())
+            return;
+
+        Player* player = target->ToPlayer();
+
+        if (Creature* totem = player->FindNearestCreature(NPC_POISON_EXTRACTION_TOTEM, 25.0f, true))
+        {
+            if (GetSpellInfo()->Id == SPELL_CORROSIVE_STING)
+            {
+                PreventHitDamage();
+                PreventHitAura();
+                totem->AI()->DoCastSelf(SPELL_POISON_EXTRACTION_TOTEM_EFFECT);
+                if (Group* group = player->GetGroup())
+                {
+                    for (GroupReference* itr = group->GetFirstMember(); itr != nullptr; itr = itr->next())
+                    {
+                        if (Player* groupMember = itr->GetSource())
+                        {
+                            groupMember->KilledMonsterCredit(NPC_VENOMOUS_SCORPID, ObjectGuid::Empty, true);
+                        }
+                    }
+                }
+                else
+                {
+                    player->KilledMonsterCredit(NPC_VENOMOUS_SCORPID, ObjectGuid::Empty, true);
+                }
+            }
+        }
+    }
+
+    void Register() override
+    {
+        OnEffectHitTarget += SpellEffectFn(spell_poison_extraction_totem::HandleDummy, EFFECT_2, SPELL_EFFECT_DUMMY);
+    }
+};
+
 void AddSC_durotar()
 {
     new npc_tiger_matriarch_credit();
     new npc_tiger_matriarch();
     new npc_troll_volunteer();
     RegisterSpellScript(spell_mount_check_aura);
+    RegisterSpellScript(spell_poison_extraction_totem);
     RegisterSpellScript(spell_voljin_war_drums);
     RegisterSpellScript(spell_voodoo);
 }

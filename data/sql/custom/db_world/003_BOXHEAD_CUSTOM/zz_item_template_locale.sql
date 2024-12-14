@@ -1,6 +1,3 @@
-DELETE FROM `item_template_locale` WHERE `ID`=90000 AND `locale`='deDE';
-INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (90000, 'deDE', 'Foliant des Fliegens', 'Lehrt Euch das Fliegen, wodurch Ihr in der Scherbenwelt fliegen könnt. Der Foliant wird nach dem Lesen verbraucht.', 15050);
-
 DELETE FROM `item_template_locale` WHERE `ID`=44830 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (44830, 'deDE', 'Relikt der Hochgeborenen', NULL, 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=44850 AND `locale`='deDE';
@@ -32313,6 +32310,12 @@ DELETE FROM `item_template_locale` WHERE `ID`=79771 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (79771, 'deDE', '', NULL, 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=83086 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (83086, 'deDE', '', NULL, 16000);
+DELETE FROM `item_template_locale` WHERE `ID`=90000 AND `locale`='deDE';
+INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (90000, 'deDE', 'Foliant des Fliegens', 'Lehrt Euch das Fliegen, wodurch Ihr in der Scherbenwelt fliegen könnt. Der Foliant wird nach dem Lesen verbraucht.', 16000);
+DELETE FROM `item_template_locale` WHERE `ID`=90001 AND `locale`='deDE';
+INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (90001, 'deDE', 'Makelloser Hammerhaizahn', '', 16000);
+DELETE FROM `item_template_locale` WHERE `ID`=90002 AND `locale`='deDE';
+INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (90002, 'deDE', 'Worgenschädel', '', 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=93009 AND `locale`='deDE';
 INSERT INTO `item_template_locale` (`ID`, `locale`, `Name`, `Description`, `VerifiedBuild`) VALUES (93009, 'deDE', '', NULL, 16000);
 DELETE FROM `item_template_locale` WHERE `ID`=100100 AND `locale`='deDE';

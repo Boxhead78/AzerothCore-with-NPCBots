@@ -1516,8 +1516,8 @@ public:
     void GroupEventHappens(uint32 questId, WorldObject const* pEventObject);
     void ItemAddedQuestCheck(uint32 entry, uint32 count);
     void ItemRemovedQuestCheck(uint32 entry, uint32 count);
-    void KilledMonster(CreatureTemplate const* cInfo, ObjectGuid guid);
-    void KilledMonsterCredit(uint32 entry, ObjectGuid guid = ObjectGuid::Empty);
+    void KilledMonster(CreatureTemplate const* cInfo, ObjectGuid guid, bool ignoreFlags = false);
+    void KilledMonsterCredit(uint32 entry, ObjectGuid guid = ObjectGuid::Empty, bool ignoreFlags = false);
     void KilledPlayerCredit(uint16 count = 1);
     void KilledPlayerCreditForQuest(uint16 count, Quest const* quest);
     void KillCreditGO(uint32 entry, ObjectGuid guid = ObjectGuid::Empty);

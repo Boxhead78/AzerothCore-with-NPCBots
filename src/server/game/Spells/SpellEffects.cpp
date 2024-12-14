@@ -4252,12 +4252,36 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                             }
                             break;
                         }
-                    case 98619: // Gale Crash  
+                    case 98619: // Gale Crash
+                        {
                             if (!unitTarget)
                                 return;
 
                             if (roll_chance_i(50) && unitTarget->IsMounted())
                                 unitTarget->Dismount();
+                            break;
+                        }
+                    case 98629: // Leaping Bite
+                        {
+                            if (!unitTarget)
+                                return;
+
+                            Player* player = unitTarget->ToPlayer();
+                            if (!player)
+                            {
+                                return;
+                            }
+
+                            if (roll_chance_i(15) && unitTarget->IsAlive())
+                            {
+                                // Stealth sound
+                                player->PlayDirectSound(3325, player);
+                                //Spawn Worgen
+                                TempSummon* worgenInfiltrator = unitTarget->SummonCreature(500071, unitTarget->GetPositionX(), unitTarget->GetPositionY(), unitTarget->GetPositionZ(), unitTarget->GetOrientation(), TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 120000); // 120000 ms = 2 Minute Despawn Timer
+                                worgenInfiltrator->AI()->AttackStart(unitTarget);
+                            }
+                            break;
+                        }
                 }
                 break;
             }
