@@ -28,6 +28,9 @@
 
 !.gitkeep
 
+# default build directory if not specified by CMAKE configuration
+/out/*
+
 #
 #Generic
 #
@@ -62,6 +65,7 @@ nbproject/
 .idea
 cmake-build-*/*
 coverage-report/
+.vs
 
 #
 # Eclipse

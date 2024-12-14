@@ -1064,6 +1064,18 @@ struct EntryPointData
     [[nodiscard]] bool HasTaxiPath() const { return taxiPath[0] && taxiPath[1]; }
 };
 
+struct PendingSpellCastRequest
+{
+    uint32 spellId;
+    uint32 category;
+    WorldPacket requestPacket;
+    bool isItem = false;
+    bool cancelInProgress = false;
+
+    PendingSpellCastRequest(uint32 spellId, uint32 category, WorldPacket&& packet, bool item = false, bool cancel = false)
+        : spellId(spellId), category(category), requestPacket(std::move(packet)), isItem(item) , cancelInProgress(cancel) {}
+};
+
 class Player : public Unit, public GridObject<Player>
 {
     friend class WorldSession;
@@ -2619,6 +2631,8 @@ public:
 
     std::string GetDebugInfo() const override;
 
+    uint32 CalculateModulesXpExtras(uint32 questXp) const;
+
     /*****************************************************************/
     /***                        NPCBOT SYSTEM                      ***/
     /*****************************************************************/
@@ -2630,10 +2644,21 @@ public:
     /*****************************************************************/
     /***                      END NPCBOT SYSTEM                    ***/
     /*****************************************************************/
+    /*********************************************************/
+    /***               SPELL QUEUE SYSTEM                  ***/
+    /*********************************************************/
+protected:
+    uint32 GetSpellQueueWindow() const;
+    void ProcessSpellQueue();
 
-    uint32 CalculateModulesXpExtras(uint32 questXp) const;
+public:
+    std::deque<PendingSpellCastRequest> SpellQueue;
+    const PendingSpellCastRequest* GetCastRequest(uint32 category) const;
+    bool CanExecutePendingSpellCastRequest(SpellInfo const* spellInfo);
+    void ExecuteOrCancelSpellCastRequest(PendingSpellCastRequest* castRequest, bool isCancel = false);
+    bool CanRequestSpellCast(SpellInfo const* spellInfo);
 
- protected:
+protected:
     // Gamemaster whisper whitelist
     WhisperListContainer WhisperList;
 

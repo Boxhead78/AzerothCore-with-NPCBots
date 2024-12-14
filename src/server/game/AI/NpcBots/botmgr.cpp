@@ -68,7 +68,8 @@ uint8 _npcBotOwnerExpireMode;
 int32 _botInfoPacketsLimit;
 uint32 _gearBankCapacity;
 uint32 _gearBankEquipmentSetsCount;
-uint32 _npcBotsCost;
+uint32 _npcBotsCostHire;
+uint32 _npcBotsCostRent;
 uint32 _npcBotUpdateDelayBase;
 uint32 _npcBotEngageDelayDPS_default;
 uint32 _npcBotEngageDelayHeal_default;
@@ -294,6 +295,7 @@ void AddNpcBotScripts()
 BotMgr::BotMgr(Player* const master) : _owner(master), _dpstracker(new DPSTracker())
 {
     _quickrecall = false;
+    _update_lock = false;
     _data = nullptr;
 }
 BotMgr::~BotMgr()
@@ -400,7 +402,8 @@ void BotMgr::LoadConfig(bool reload)
     _fillNpcBotsDungeons            = sConfigMgr->GetBoolDefault("NpcBot.Fill.Dungeon", false);
     _hideSpawns                     = sConfigMgr->GetBoolDefault("NpcBot.HideSpawns", false);
     _botInfoPacketsLimit            = sConfigMgr->GetIntDefault("NpcBot.InfoPacketsLimit", -1);
-    _npcBotsCost                    = sConfigMgr->GetIntDefault("NpcBot.Cost", 1000000);
+    _npcBotsCostHire                = sConfigMgr->GetIntDefault("NpcBot.Cost.Hire", 1000000);
+    _npcBotsCostRent                = sConfigMgr->GetIntDefault("NpcBot.Cost.Rent", 0);
     _npcBotUpdateDelayBase          = sConfigMgr->GetIntDefault("NpcBot.UpdateDelay.Base", 0);
     _npcBotEngageDelayDPS_default   = sConfigMgr->GetIntDefault("NpcBot.EngageDelay.DPS", 0);
     _npcBotEngageDelayHeal_default  = sConfigMgr->GetIntDefault("NpcBot.EngageDelay.Heal", 0);
@@ -1250,6 +1253,12 @@ bool BotMgr::IsWanderingWorldBot(Creature const* bot)
 
 void BotMgr::Update(uint32 diff)
 {
+    while (!_delayedRemoveList.empty())
+    {
+        decltype(_delayedRemoveList)::iterator itr = _delayedRemoveList.begin();
+        RemoveBot(itr->first, itr->second);
+    }
+
     //remove temp bots from bot map before updating it
     while (!_removeList.empty())
     {
@@ -1276,6 +1285,8 @@ void BotMgr::Update(uint32 diff)
     _aoespots.clear();
     if (partyCombat)
         bot_ai::CalculateAoeSpots(_owner, _aoespots);
+
+    _update_lock = true;
 
     //Despawn all Dungeon bots if conditions met
     NpcBotRegistry _alldungeonbots = sLFGMgr->GetDungeonFinderBots();
@@ -1412,6 +1423,8 @@ void BotMgr::Update(uint32 diff)
         }
     }
 
+    _update_lock = false;
+
     if (_quickrecall)
     {
         _quickrecall = false;
@@ -1516,16 +1529,12 @@ bool BotMgr::RestrictBots(Creature const* bot, bool add) const
 
 bool BotMgr::IsPartyInCombat(bool is_pvp) const
 {
-    std::vector<Unit*> members = GetAllGroupMembers(_owner);
-    if (members.empty())
-    {
-        members.reserve(_bots.size() + std::size_t(1));
-        members.push_back(_owner);
-        for (BotMap::const_iterator itr = _bots.begin(); itr != _bots.end(); ++itr)
-            members.push_back(itr->second);
-    }
-
-    return std::ranges::any_of(members, [=](Unit const* unit) { return unit->IsInCombat() && (!is_pvp || unit->GetCombatTimer() > 0); });
+    if (_owner->IsInCombat() && (!is_pvp || _owner->GetCombatTimer() > 0))
+        return true;
+    for (BotMap::const_iterator citr = _bots.cbegin(); citr != _bots.cend(); ++citr)
+        if (citr->second->IsInCombat() && (!is_pvp || citr->second->GetCombatTimer() > 0))
+            return true;
+    return false;
 }
 
 bool BotMgr::HasBotClass(uint8 botclass) const
@@ -1845,7 +1854,8 @@ void BotMgr::_teleportBot(Creature* bot, Map* newMap, float x, float y, float z,
                 if (newMap != mymap)
                 {
                     //we teleport from base non-instanced map which normally doesn't exist
-                    ASSERT(mymap->GetPlayersCountExceptGMs() == 0);
+                    if (mymap)
+                        ASSERT(mymap->GetPlayersCountExceptGMs() == 0);
 
                     bg->AddBot(bot);
                 }
@@ -1956,6 +1966,14 @@ void BotMgr::RemoveAllBots(uint8 removetype)
 //Bot is being abandoned by player
 void BotMgr::RemoveBot(ObjectGuid guid, uint8 removetype)
 {
+    if (_update_lock)
+    {
+        _delayedRemoveList.emplace_back(guid, BotRemoveType(removetype));
+        return;
+    }
+    else if (!_delayedRemoveList.empty())
+        _delayedRemoveList.remove_if([=](decltype(_delayedRemoveList)::value_type const& p) { return p.first == guid; });
+
     BotMap::const_iterator itr = _bots.find(guid);
     ASSERT(itr != _bots.end(), "Trying to remove bot which does not belong to this botmgr(a)!!");
     //ASSERT(_owner->IsInWorld(), "Trying to remove bot while not in world(a)!!");
@@ -1977,6 +1995,9 @@ void BotMgr::RemoveBot(ObjectGuid guid, uint8 removetype)
         BotEquipResult unequip_all_result = bot->GetBotAI()->UnEquipAll(_owner->GetGUID(), false);
     CleanupsBeforeBotDelete(guid, removetype);
 
+    if (_owner->GetSession()->PlayerLogout() && bot->IsInGrid() && bot->FindMap() && bot->FindMap()->GetEntry()->Instanceable())
+        bot->FindMap()->RemoveFromMap(bot, false);
+
     ////remove control bar
     //if (GetNpcBotsCount() <= 1 && !_owner->GetPetGUID() && _owner->m_Controlled.empty())
     //    _owner->SendRemoveControlBar();
@@ -1993,16 +2014,16 @@ void BotMgr::RemoveBot(ObjectGuid guid, uint8 removetype)
     BotAIResetType resetType;
     switch (removetype)
     {
-        case BOT_REMOVE_DISMISS: resetType = BOTAI_RESET_DISMISS; break;
-        case BOT_REMOVE_UNBIND:  resetType = BOTAI_RESET_UNBIND;    break;
-        default:                 resetType = BOTAI_RESET_LOGOUT;  break;
+        case BOT_REMOVE_DISMISS: case BOT_REMOVE_UNAFFORD: resetType = BOTAI_RESET_DISMISS; break;
+        case BOT_REMOVE_UNBIND:                            resetType = BOTAI_RESET_UNBIND;  break;
+        default:                                           resetType = BOTAI_RESET_LOGOUT;  break;
     }
     bot->GetBotAI()->ResetBotAI(resetType);
 
     bot->SetFaction(bot->GetCreatureTemplate()->faction);
     bot->SetLevel(bot->GetCreatureTemplate()->minlevel);
 
-    if (removetype == BOT_REMOVE_DISMISS)
+    if (resetType == BOTAI_RESET_DISMISS)
     {
         BotDataMgr::ResetNpcBotTransmogData(bot->GetEntry(), false);
         uint32 newOwner = 0;
@@ -2075,7 +2096,7 @@ BotAddResult BotMgr::AddBot(Creature* bot, bool costMoney)
     //}
     if (!owned && costMoney)
     {
-        uint32 cost = GetNpcBotCost(_owner->GetLevel(), bot->GetBotClass(), _owner);
+        uint32 cost = GetNpcBotCostHire(_owner->GetLevel(), bot->GetBotClass(), _owner);
         if (!_owner->HasEnoughMoney(cost))
         {
             ChatHandler ch(_owner->GetSession());
@@ -2217,7 +2238,12 @@ bool BotMgr::RemoveAllBotsFromGroup()
     return true;
 }
 
-uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass, Player* player)
+uint32 BotMgr::GetNpcBotCostRent()
+{
+    return _npcBotsCostRent;
+}
+
+uint32 BotMgr::GetNpcBotCostHire(uint8 level, uint8 botclass, Player* player)
 {
     //assuming default 1000000
     //level 1: 500  //5  silver
@@ -2228,16 +2254,16 @@ uint32 BotMgr::GetNpcBotCost(uint8 level, uint8 botclass, Player* player)
     //rest is linear
     //rare / rareelite bots have their cost adjusted
     uint32 cost =
-        level < 10 ? _npcBotsCost / 5000 :
-        level < 20 ? _npcBotsCost / 4000 :
-        level < 30 ? _npcBotsCost / 3000 :
-        level < 40 ? _npcBotsCost / 2000 :
-        level < 50 ? _npcBotsCost / 1000 :
-        level < 60 ? _npcBotsCost / 500 :
-        level < 70 ? _npcBotsCost / 150 :
-        level < 80 ? _npcBotsCost / 100 :
-        level < 90 ? _npcBotsCost / 10 :
-        (_npcBotsCost * (level - (level % 10))) / DEFAULT_MAX_LEVEL; //50 - 100 gold
+        level < 10 ? _npcBotsCostHire / 5000 :
+        level < 20 ? _npcBotsCostHire / 4000 :
+        level < 30 ? _npcBotsCostHire / 3000 :
+        level < 40 ? _npcBotsCostHire / 2000 :
+        level < 50 ? _npcBotsCostHire / 1000 :
+        level < 60 ? _npcBotsCostHire / 500 :
+        level < 70 ? _npcBotsCostHire / 150 :
+        level < 80 ? _npcBotsCostHire / 100 :
+        level < 90 ? _npcBotsCostHire / 10 :
+        (_npcBotsCostHire * (level - (level % 10))) / DEFAULT_MAX_LEVEL; //50 - 100 gold
 
     if (player->HasAura(98593)) // Best Deals anywhere
         cost *= 0.9;
@@ -2268,7 +2294,7 @@ std::string BotMgr::GetNpcBotCostStr(uint8 level, uint8 botclass, Player* player
 {
     std::ostringstream money;
 
-    if (uint32 cost = GetNpcBotCost(level, botclass, player))
+    if (uint32 cost = GetNpcBotCostHire(level, botclass, player))
     {
         uint32 gold = uint32(cost / GOLD);
         cost -= (gold * GOLD);
@@ -2281,6 +2307,23 @@ std::string BotMgr::GetNpcBotCostStr(uint8 level, uint8 botclass, Player* player
             money << silver << " |TInterface\\Icons\\INV_Misc_Coin_03:8|t";
         if (cost)
             money << cost << " |TInterface\\Icons\\INV_Misc_Coin_05:8|t";
+    }
+
+    if (uint32 rcost = GetNpcBotCostRent())
+    {
+        uint32 gold = uint32(rcost / GOLD);
+        rcost -= (gold * GOLD);
+        uint32 silver = uint32(rcost / SILVER);
+        rcost -= (silver * SILVER);
+
+        money << " + |TInterface\\Icons\\INV_Misc_PocketWatch_01:16|t";
+
+        if (gold != 0)
+            money << gold << " |TInterface\\Icons\\INV_Misc_Coin_01:8|t";
+        if (silver != 0)
+            money << silver << " |TInterface\\Icons\\INV_Misc_Coin_03:8|t";
+        if (rcost)
+            money << rcost << " |TInterface\\Icons\\INV_Misc_Coin_05:8|t";
     }
 
     return money.str();
@@ -2933,6 +2976,10 @@ void BotMgr::SetBotAllowCombatPositioning(bool allow)
     allow ? _data->RemoveFlag(NPCBOT_MGR_FLAG_DISABLE_COMBAT_POSITIONING) : _data->SetFlag(NPCBOT_MGR_FLAG_DISABLE_COMBAT_POSITIONING);
 }
 
+bool BotMgr::GetBotsHidden() const
+{
+    return _data->HasFlag(NPCBOT_MGR_FLAG_HIDE_BOTS);
+}
 void BotMgr::SetBotsHidden(bool hidden)
 {
     hidden ? _data->SetFlag(NPCBOT_MGR_FLAG_HIDE_BOTS) : _data->RemoveFlag(NPCBOT_MGR_FLAG_HIDE_BOTS);

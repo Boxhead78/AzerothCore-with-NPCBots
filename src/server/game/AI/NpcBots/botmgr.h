@@ -68,6 +68,7 @@ enum BotRemoveType
     BOT_REMOVE_DISMISS                  = 1,
     BOT_REMOVE_UNSUMMON                 = 2,
     BOT_REMOVE_UNBIND                   = 3,
+    BOT_REMOVE_UNAFFORD                 = 4,
     BOT_REMOVE_BY_DEFAULT               = BOT_REMOVE_LOGOUT
 };
 
@@ -274,7 +275,8 @@ class AC_GAME_API BotMgr
         bool HasBotPetType(uint32 petType) const;
         bool IsBeingResurrected(WorldObject const* corpse) const;
 
-        static uint32 GetNpcBotCost(uint8 level, uint8 botclass, Player* player);
+        static uint32 GetNpcBotCostRent();
+        static uint32 GetNpcBotCostHire(uint8 level, uint8 botclass, Player* player);
         static std::string GetNpcBotCostStr(uint8 level, uint8 botclass, Player* player);
         static uint8 BotClassByClassName(std::string const& className);
         static uint8 GetBotPlayerClass(uint8 bot_class);
@@ -323,6 +325,7 @@ class AC_GAME_API BotMgr
         bool GetBotAllowCombatPositioning() const;
         void SetBotAllowCombatPositioning(bool allow);
 
+        bool GetBotsHidden() const;
         void SetBotsHidden(bool hidden);
 
         uint32 GetEngageDelayDPS() const;
@@ -384,10 +387,12 @@ class AC_GAME_API BotMgr
         Player* const _owner;
         BotMap _bots;
         std::list<ObjectGuid> _removeList;
+        std::list<std::pair<ObjectGuid, BotRemoveType>> _delayedRemoveList;
         DPSTracker* const _dpstracker;
         NpcBotMgrData* _data;
 
         bool _quickrecall;
+        bool _update_lock;
 
         AoeSpotsVec _aoespots;
 
