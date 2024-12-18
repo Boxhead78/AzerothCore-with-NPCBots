@@ -224,15 +224,25 @@ void KillRewarder::_RewardXP(Player* player, float rate)
         }
         //end npcbot
 
+        // Give less xp during low level
+        if (player->GetLevel() <= 40)
+            xp *= (0.5 + (0.0125 * player->GetLevel()));
+
         // Give less xp in dungeons
         if (player->GetMap()->IsDungeon())
             xp *= 0.5;
+
+        //Boxhead: Show correct xp
+        xp = player->CalculateModulesXpExtras(xp);
 
         // Boxhead Custom | Add more xp for rares
         if (Creature* victim = _victim->ToCreature())
         {
             if (victim->GetCreatureTemplate()->rank == CREATURE_ELITE_RARE || victim->GetCreatureTemplate()->rank == CREATURE_ELITE_RAREELITE)
                 xp *= 12.5;
+
+            if (victim->GetMap()->IsDungeon() || victim->GetMap()->IsRaid())
+                xp /= 5;
         }
 
         // Don't give XP outside of dungeons if in LFG Group now

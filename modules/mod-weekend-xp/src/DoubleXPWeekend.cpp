@@ -61,8 +61,9 @@ public:
         }
     }
 
-
-    void OnGiveXP(Player* player, uint32& amount, Unit* victim, uint8 /*xpSource*/) override
+    /* Additional xp in core */
+    /*
+    void OnGiveXP(Player* player, uint32& amount, Unit* victim, uint8 xpSource) override
     {
         if (!sXPWeekend->IsXPWeekendEventActive())
         {
@@ -81,6 +82,7 @@ public:
 
         amount *= sXPWeekend->GetXPWeekendExperienceRate(player);
     }
+    */
 };
 
 void AddScripts_WeekendXP()

@@ -63,7 +63,9 @@ public:
     }
 
 
-    void OnGiveXP(Player* player, uint32& amount, Unit* victim, uint8 /*xpSource*/) override
+    /* Additional xp in core */
+    /*
+    void OnGiveXP(Player* player, uint32& amount, Unit* victim, uint8 xpSource) override
     {
         if (!sXPEvent->IsXPEventActive())
         {
@@ -82,6 +84,7 @@ public:
 
         amount *= sXPEvent->GetXPEventExperienceRate(player);
     }
+    */
 };
 
 void AddScripts_EventXP()

@@ -154,7 +154,6 @@ public:
             {
                 uint32 originalXpValue = quest->XPValue(quest->GetQuestLevel() == -1 ? player->GetLevel() : quest->GetQuestLevel());
                 xpValue *= vanillaXpValue * 1.0 / originalXpValue;
-                xpValue = player->CalculateModulesXpExtras(xpValue);
             }
         }
     }
@@ -165,8 +164,6 @@ public:
         {
             return;
         }
-
-        amount = player->CalculateModulesXpExtras(amount);
 
         // Player is still in Vanilla content - do not give XP past level 60
         if (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_NAXX40) && player->GetLevel() >= 60)
