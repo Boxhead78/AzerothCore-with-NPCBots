@@ -913,9 +913,7 @@ DELETE FROM creature WHERE `id1` IN (33676,
                                      33621,
                                      33623,
                                      33630,
-                                     33639,
-                                     35099,
-                                     35101);
+                                     33639);
 
 -- TBC Recipes moved to trainers in 2.4.0
 DELETE FROM `npc_trainer` WHERE `SpellID` IN (28905, 34590, 28903, 28914, 28925, 28910, 28917, 28916, 28950, 28903);
@@ -944,8 +942,10 @@ INSERT INTO npc_vendor (entry, slot, item) VALUES
 
 
 -- Delete added riding trainers
+/*
 DELETE FROM creature WHERE `id1` IN (35093, 35100);
 DELETE FROM creature_addon WHERE `guid` IN (88165, 88166);
+*/
 
 -- Remove TBC Gems from Prospecting Vanilla ore
 DELETE FROM `prospecting_loot_template` WHERE `Entry`=10620 AND `Item`=1;
