@@ -133,4 +133,16 @@ INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `b
 DELETE FROM `creature_template_addon` WHERE `entry`=500070;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500070, 0, 0, 0, 2, 0, 0, '');
 DELETE FROM `creature_template_addon` WHERE `entry`=500072;
-INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500072, 0, 29681, 0, 2, 0, 0, '');
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500072, 0, 29681, 0, 2, 0, 3, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500075;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500075, 0, 0, 0, 2, 0, 3, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500087;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500087, 0, 0, 0, 2, 0, 0, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500088;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500088, 0, 0, 0, 2, 0, 0, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500089;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500089, 0, 0, 0, 1, 0, 0, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500091;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500091, 0, 0, 0, 1, 0, 0, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500092;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500092, 0, 0, 0, 1, 0, 0, '');

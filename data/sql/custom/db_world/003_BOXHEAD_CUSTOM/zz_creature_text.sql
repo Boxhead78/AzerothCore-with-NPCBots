@@ -169,3 +169,12 @@ DELETE FROM `creature_text` WHERE `CreatureID`=500019 AND `GroupID`=8 AND `ID`=0
 INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES (500019, 8, 0, 'My allies have fallen, but I am far from defeated!', 14, 0, 100, 0, 0, 0, 90044, 0, '');
 DELETE FROM `creature_text` WHERE `CreatureID`=500019 AND `GroupID`=8 AND `ID`=1;
 INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES (500019, 8, 1, 'Even alone, I am more than a match for you!', 14, 0, 100, 0, 0, 0, 90045, 0, '');
+DELETE FROM `creature_text` WHERE `CreatureID`=500090 AND `GroupID`=0 AND `ID`=0;
+INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES (500090, 0, 0, 'Hey, hey! Hands off my shiny treasure!', 12, 0, 33, 0, 0, 0, 90047, 0, '');
+DELETE FROM `creature_text` WHERE `CreatureID`=500090 AND `GroupID`=0 AND `ID`=1;
+INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES (500090, 0, 1, 'You want this treasure? Over my dead body!', 12, 0, 33, 0, 0, 0, 90048, 0, '');
+DELETE FROM `creature_text` WHERE `CreatureID`=500090 AND `GroupID`=0 AND `ID`=2;
+INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES (500090, 0, 2, 'Finders keepers, losers weepers!', 12, 0, 34, 0, 0, 0, 90049, 0, '');
+DELETE FROM `creature_text` WHERE `CreatureID`=500090 AND `GroupID`=1 AND `ID`=0;
+INSERT INTO `creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES (500090, 1, 0, 'You’ll regret this someday…!', 12, 0, 100, 0, 0, 0, 90050, 0, '');
+

@@ -1,5 +1,9 @@
 DELETE FROM `gameobject` WHERE `guid`=5330510;
 
+DELETE FROM `gameobject` WHERE `guid`=6788;
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (6788, 177015, 1, 0, 0, 1, 1, 1726.95, -4113.66, 40.0913, 0.881392, -0, -0, -0.426569, -0.904455, 120, 255, 1, '', 16000, NULL);
+DELETE FROM `gameobject` WHERE `guid`=11794;
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (11794, 177014, 1, 0, 0, 1, 1, 1596.57, -4198.89, 42.7304, 0.881392, -0, -0, -0.426569, -0.904455, 120, 255, 1, '', 16000, NULL);
 DELETE FROM `gameobject` WHERE `guid`=5330569;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (5330569, 450000, 389, 0, 0, 2, 1, -102.964, -27.3015, -20.9714, 3.05571, 0, 0, -0.999078, -0.0429281, 0, 0, 1, '', 16000, NULL);
 DELETE FROM `gameobject` WHERE `guid`=5330594;
@@ -84,3 +88,7 @@ DELETE FROM `gameobject` WHERE `guid`=5330759;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (5330759, 450004, 389, 0, 0, 2, 1, 2.22339, -6.5333, -15.5633, 1.6461, 0, 0, -0.733222, -0.679989, 300, 0, 1, '', NULL, NULL);
 DELETE FROM `gameobject` WHERE `guid`=5330784;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (5330784, 193166, 0, 0, 0, 1, 1, 3133.31, -3378.09, 297.031, 0.269541, 0, 0, -0.134363, -0.990932, 300, 0, 1, '', NULL, NULL);
+DELETE FROM `gameobject` WHERE `guid`=5330809;
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (5330809, 195607, 0, 0, 0, 1, 1, -8196.05, 767.772, 72.8838, 1.15342, -0, -0, -0.545269, -0.838261, 300, 0, 1, '', NULL, NULL);
+DELETE FROM `gameobject` WHERE `guid`=5330810;
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`, `Comment`) VALUES (5330810, 195555, 1, 0, 0, 1, 1, 1751.4, -3997.15, 48.266, 0.0490538, -0, -0, -0.0245241, -0.999699, 300, 0, 1, '', NULL, NULL);
