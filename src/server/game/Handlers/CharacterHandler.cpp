@@ -57,6 +57,8 @@
 #include "World.h"
 #include "WorldPacket.h"
 #include "WorldSession.h"
+#include "../../../../modules/mod-event-xp/src/DoubleXPEvent.h"
+#include "../../../../modules/mod-individual-progression/src/IndividualProgression.h"
 
 class LoginQueryHolder : public CharacterDatabaseQueryHolder
 {
@@ -1124,6 +1126,35 @@ void WorldSession::HandlePlayerLoginFromDB(LoginQueryHolder const& holder)
     {
         pCurrChar->RemoveAtLoginFlag(AT_LOGIN_FIRST);
         sScriptMgr->OnFirstLogin(pCurrChar);
+    }
+
+    if (sXPEvent->IsXPEventActive() && !pCurrChar->HasAura(98635))
+        pCurrChar->CastSpell(pCurrChar, 98635, true);
+
+    if (sIndividualProgression->enabled)
+    {
+        constexpr uint32 BASE_PROGRESSION_SPELL_ID = 98636; // Molten Core
+
+        uint8 playerProgression = pCurrChar->GetPlayerSetting("mod-individual-progression", SETTING_PROGRESSION_STATE).value;
+
+        for (uint32 spellId = 98636; spellId <= 98655; ++spellId)
+        {
+            if (pCurrChar->HasAura(spellId))
+                pCurrChar->RemoveAurasDueToSpell(spellId);
+        }
+
+        if (playerProgression <= PROGRESSION_CATA_TIER_4) // Validation step for safety
+        {
+            if (playerProgression > 0)
+                pCurrChar->CastSpell(pCurrChar, 98636 + playerProgression - 1, true);
+            else
+                pCurrChar->CastSpell(pCurrChar, 98636, true);
+        }
+        else
+        {
+            // Handle invalid progression state if needed
+            LOG_ERROR("module", "Invalid player progression state: {}", playerProgression);
+        }
     }
 
     METRIC_EVENT("player_events", "Login", pCurrChar->GetName());

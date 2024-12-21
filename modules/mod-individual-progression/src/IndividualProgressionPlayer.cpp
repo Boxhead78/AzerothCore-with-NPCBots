@@ -184,7 +184,7 @@ public:
             amount = 0;
         }
             // Player is in WotLK content - do not give XP past level 80
-        else if (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_CUSTOM_TIER_1) && player->GetLevel() >= 80)
+        else if (!sIndividualProgression->hasPassedProgression(player, PROGRESSION_CATA_TIER_1) && player->GetLevel() >= 80)
         {
             // Still award XP to pets - they won't be able to pass the player's level
             Pet* pet = player->GetPet();

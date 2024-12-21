@@ -32,11 +32,15 @@ void IndividualProgression::UpdateProgressionState(Player* player, ProgressionSt
     {
         player->UpdatePlayerSetting("mod-individual-progression", SETTING_PROGRESSION_STATE, newState);
     }
+    sIndividualProgression->removeAllProgressionSpells(player);
+    sIndividualProgression->setProgressionSpell(player, newState);
 }
 
 void IndividualProgression::ForceUpdateProgressionState(Player* player, ProgressionState newState)
 {
     player->UpdatePlayerSetting("mod-individual-progression", SETTING_PROGRESSION_STATE, newState);
+    sIndividualProgression->removeAllProgressionSpells(player);
+    sIndividualProgression->setProgressionSpell(player, newState);
 }
 
 void IndividualProgression::CheckAdjustments(Player* player) const
@@ -286,6 +290,31 @@ void IndividualProgression::checkKillProgression(Player* killer, Creature* kille
                 UpdateProgressionState(killer, PROGRESSION_WOTLK_TIER_5);
                 break;
         }
+}
+
+
+void IndividualProgression::setProgressionSpell(Player* player, ProgressionState newState)
+{
+    if (progressionLimit && newState >= progressionLimit)
+    {
+        if (newState > 0)
+            player->CastSpell(player, 98636 + newState - 1, true);
+        else
+            player->CastSpell(player, 98636, true);
+        return;
+    }
+
+    player->CastSpell(player, 98636 + newState);
+}
+
+
+void IndividualProgression::removeAllProgressionSpells(Player* player)
+{
+    for (uint32 spellId = 98636; spellId <= 98655; ++spellId)
+    {
+        if (player->HasAura(spellId))
+            player->RemoveAurasDueToSpell(spellId);
+    }
 }
 
 

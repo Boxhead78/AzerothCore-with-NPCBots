@@ -575,7 +575,7 @@ public:
             }
             Player* target = ObjectAccessor::FindConnectedPlayer(player->GetGUID());
             uint8 highestProgression = sIndividualProgression->GetAccountProgression(target->GetSession()->GetAccountId());
-            if (sIndividualProgression->hasPassedProgression(target, PROGRESSION_CUSTOM_TIER_1) || (sIndividualProgression->progressionLimit && highestProgression >= sIndividualProgression->progressionLimit))
+            if (sIndividualProgression->hasPassedProgression(target, PROGRESSION_CATA_TIER_1) || (sIndividualProgression->progressionLimit && highestProgression >= sIndividualProgression->progressionLimit))
                 return true;
             else
                 return false;

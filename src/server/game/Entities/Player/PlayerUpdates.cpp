@@ -49,6 +49,7 @@
 
 //npcbot
 #include "botmgr.h"
+#include "../../../../../modules/mod-event-xp/src/DoubleXPEvent.h"
 //end npcbot
 
 // Zone Interval should be 1 second
@@ -1184,6 +1185,10 @@ void Player::UpdateArea(uint32 newArea)
         instance->OnPlayerAreaUpdate(this, m_areaUpdateId, newArea);
 
     sScriptMgr->OnPlayerUpdateArea(this, m_areaUpdateId, newArea);
+
+    // Boxhead: Remove XP Buff when event is no longer active and player still has aura
+    if (!sXPEvent->IsXPEventActive() && HasAura(98635))
+        RemoveAurasDueToSpell(98635);
 
     // FFA_PVP flags are area and not zone id dependent
     // so apply them accordingly

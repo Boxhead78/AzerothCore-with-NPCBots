@@ -16606,7 +16606,7 @@ uint32 Player::CalculateModulesXpExtras(uint32 xp) const
         xp *= 1.8;
 
     // > WotLK xp boost
-    if (sIndividualProgression->enabled && sIndividualProgression->hasPassedProgression(player, PROGRESSION_CUSTOM_TIER_1) && player->GetLevel() < 80)
+    if (sIndividualProgression->enabled && sIndividualProgression->hasPassedProgression(player, PROGRESSION_CATA_TIER_1) && player->GetLevel() < 80)
         xp *= 2.2;
 
     return xp;

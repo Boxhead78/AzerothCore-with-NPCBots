@@ -157,7 +157,10 @@ enum ProgressionState : uint8
     PROGRESSION_WOTLK_TIER_3    = 14, // TotC
     PROGRESSION_WOTLK_TIER_4    = 15, // ICC
     PROGRESSION_WOTLK_TIER_5    = 16, // Ruby Sanctum
-    PROGRESSION_CUSTOM_TIER_1   = 17  // Custom Content 1
+    PROGRESSION_CATA_TIER_1     = 17, // Baradin Hold, Blackwing Descent
+    PROGRESSION_CATA_TIER_2     = 18, // The Bastion of Twilight, Throne of the Four Winds
+    PROGRESSION_CATA_TIER_3     = 19, // Firelands
+    PROGRESSION_CATA_TIER_4     = 20, // Dragonsoul
 };
 
 enum RandomDungeonIds : uint16
@@ -235,6 +238,8 @@ public:
     bool hasCustomProgressionValue(uint32 creatureEntry);
     void checkKillProgression(Player* player, Creature* killed);
     void checkAchievementProgression(Player* player, AchievementEntry const* achievement);
+    void setProgressionSpell(Player* player, ProgressionState newState);
+    void removeAllProgressionSpells(Player* player);
     static void LoadCustomProgressionEntries(const std::string& customProgressionString);
     static void AdjustStats(Player* player, float computedAdjustment, float computedHealingAdjustment);
     static float ComputeVanillaAdjustment(uint8 playerLevel, float configAdjustmentValue);
