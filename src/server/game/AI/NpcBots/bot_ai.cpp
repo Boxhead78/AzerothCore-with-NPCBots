@@ -223,6 +223,7 @@ bot_ai::bot_ai(Creature* creature) : CreatureAI(creature),
     lastdiff = 0;
     _energyFraction = 0.f;
     _updateTimerMedium = 0;
+    _updateTimerLong = urand(15000, 25000);
     _updateTimerEx1 = urand(12000, 15000);
     _updateTimerEx2 = urand(8000, 12000);
     checkAurasTimer = 0;
@@ -3837,7 +3838,7 @@ bool bot_ai::CanBotAttack(Unit const* target, int8 byspell, bool secondary) cons
         //do not attack friendly targets in FFAPvP mode
         if (me->IsFFAPvP() && me->GetFaction() == FACTION_TEMPLATE_NEUTRAL_HOSTILE)
         {
-            uint32 base_faction = BotDataMgr::GetDefaultFactionForBotRace(me->GetRace());
+            uint32 base_faction = BotDataMgr::GetDefaultFactionForBotRaceClass(GetBotClass(), me->GetRace());
             if (me->GetFaction() != base_faction && me->GetFactionReactionTo(sFactionTemplateStore.LookupEntry(base_faction), target) >= REP_FRIENDLY)
                 return false;
         }
@@ -18115,6 +18116,16 @@ bool bot_ai::GlobalUpdate(uint32 diff)
     if (IsDuringTeleport())
         return false;
 
+    if (_updateTimerLong <= diff)
+    {
+        _updateTimerLong = urand(15000, 25000);
+
+        //Long-timed updates
+
+        if (me->IsInWorld() && me->IsAlive() && me->IsInCombat() && !me->GetMap()->IsDungeon() && (IAmFree() || !master->IsInCombat()))
+            me->getHostileRefMgr().deleteReferencesOutOfRange(me->GetMap()->GetVisibilityRange());
+    }
+
     if (_updateTimerMedium <= diff)
     {
         _updateTimerMedium = 500;
@@ -18870,6 +18881,7 @@ void bot_ai::CommonTimers(uint32 diff)
     else if (_groupUpdateTimer)     _groupUpdateTimer = 0;
 
     if (_updateTimerMedium > diff)  _updateTimerMedium -= diff;
+    if (_updateTimerLong > diff)    _updateTimerLong -= diff;
     if (_updateTimerEx1 > diff)     _updateTimerEx1 -= diff;
     if (_updateTimerEx2 > diff)     _updateTimerEx2 -= diff;
 
