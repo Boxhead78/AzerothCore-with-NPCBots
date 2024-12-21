@@ -139,7 +139,7 @@ void AuctionHouseBot::addNewAuctions(Player* AHBplayer, AHBConfig* config)
         return;
     }
 
-    AuctionHouseEntry const* ahEntry = sAuctionMgr->GetAuctionHouseEntry(config->GetAHFID());
+    AuctionHouseEntry const* ahEntry = sAuctionMgr->GetAuctionHouseEntryFromFactionTemplate(config->GetAHFID());
     if (!ahEntry)
     {
         return;
@@ -405,7 +405,7 @@ void AuctionHouseBot::addNewAuctions(Player* AHBplayer, AHBConfig* config)
 
             auto* auctionEntry = new AuctionEntry();
             auctionEntry->Id = sObjectMgr->GenerateAuctionID();
-            auctionEntry->houseId = config->GetAHID();
+            auctionEntry->houseId = AuctionHouseId(config->GetAHID());
             auctionEntry->item_guid = item->GetGUID();
             auctionEntry->item_template = item->GetEntry();
             auctionEntry->itemCount = item->GetCount();
@@ -623,7 +623,7 @@ void AuctionHouseBot::addNewAuctionBuyerBotBid(Player* AHBplayer, AHBConfig* con
         {
             LOG_INFO("module", "-------------------------------------------------");
             LOG_INFO("module", "AHBuyer: Info for Auction #{}:", auction->Id);
-            LOG_INFO("module", "AHBuyer: AuctionHouse: {}", auction->GetHouseId());
+            LOG_INFO("module", "AHBuyer: AuctionHouse: {}", (uint32)auction->GetHouseId());
             LOG_INFO("module", "AHBuyer: Owner: {}", auction->owner.ToString());
             LOG_INFO("module", "AHBuyer: Bidder: {}", auction->bidder.ToString());
             LOG_INFO("module", "AHBuyer: Starting Bid: {}", auction->startbid);
@@ -1556,18 +1556,18 @@ void AuctionHouseBot::IncrementItemCounts(AuctionEntry* ah)
 
     AHBConfig* config;
 
-    AuctionHouseEntry const* ahEntry = sAuctionHouseStore.LookupEntry(ah->GetHouseId());
+    AuctionHouseEntry const* ahEntry = sAuctionMgr->GetAuctionHouseEntryFromHouse(ah->GetHouseId());
     if (!ahEntry)
     {
         if (debug_Out)
             LOG_ERROR("module", "AHBot: {} returned as House Faction. Neutral", ah->GetHouseId());
         config = &NeutralConfig;
-    } else if (ahEntry->houseId == AUCTIONHOUSE_ALLIANCE)
+    } else if (AuctionHouseId(ahEntry->houseId) == AuctionHouseId::Alliance)
     {
         if (debug_Out)
             LOG_ERROR("module", "AHBot: {} returned as House Faction. Alliance", ah->GetHouseId());
         config = &AllianceConfig;
-    } else if (ahEntry->houseId == AUCTIONHOUSE_HORDE)
+    } else if (AuctionHouseId(ahEntry->houseId) == AuctionHouseId::Horde)
     {
         if (debug_Out)
             LOG_ERROR("module", "AHBot: {} returned as House Faction. Horde", ah->GetHouseId());
@@ -1589,18 +1589,18 @@ void AuctionHouseBot::DecrementItemCounts(AuctionEntry* ah, uint32 itemEntry)
 
     AHBConfig* config;
 
-    AuctionHouseEntry const* ahEntry = sAuctionHouseStore.LookupEntry(ah->GetHouseId());
+    AuctionHouseEntry const* ahEntry = sAuctionMgr->GetAuctionHouseEntryFromHouse(ah->GetHouseId());
     if (!ahEntry)
     {
         if (debug_Out)
             LOG_ERROR("module", "AHBot: {} returned as House Faction. Neutral", ah->GetHouseId());
         config = &NeutralConfig;
-    } else if (ahEntry->houseId == AUCTIONHOUSE_ALLIANCE)
+    } else if (AuctionHouseId(ahEntry->houseId) == AuctionHouseId::Alliance)
     {
         if (debug_Out)
             LOG_ERROR("module", "AHBot: {} returned as House Faction. Alliance", ah->GetHouseId());
         config = &AllianceConfig;
-    } else if (ahEntry->houseId == AUCTIONHOUSE_HORDE)
+    } else if (AuctionHouseId(ahEntry->houseId) == AuctionHouseId::Horde)
     {
         if (debug_Out)
             LOG_ERROR("module", "AHBot: {} returned as House Faction. Horde", ah->GetHouseId());
@@ -1987,7 +1987,7 @@ void AuctionHouseBot::LoadValues(AHBConfig* config)
             LOG_ERROR("module", "maxStackYellow          = {}", config->GetMaxStack(AHB_YELLOW));
         }
 
-        //AuctionHouseEntry const* ahEntry =  sAuctionMgr->GetAuctionHouseEntry(config->GetAHFID());
+        //AuctionHouseEntry const* ahEntry =  AuctionHouseMgr::GetAuctionHouseEntry(config->GetAHFID());
         AuctionHouseObject* auctionHouse = sAuctionMgr->GetAuctionsMap(config->GetAHFID());
 
         config->ResetItemCounts();
