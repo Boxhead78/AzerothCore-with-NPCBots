@@ -543,7 +543,7 @@ void AuctionHouseBot::addNewAuctionBuyerBotBid(Player* AHBplayer, AHBConfig* con
 
         // Choose random auction from possible auctions
         uint32 vectorPos = urand(0, possibleBids.size() - 1);
-        auto iter = possibleBids.begin();
+        std::vector<uint32>::iterator iter = possibleBids.begin();
         advance(iter, vectorPos);
 
         // from auctionhousehandler.cpp, creates auction pointer & player pointer
