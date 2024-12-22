@@ -19,6 +19,7 @@
 
 #include "ObjectMgr.h"
 #include "AuctionHouseMgr.h"
+#include "AuctionHouseSearcher.h"
 #include "AuctionHouseBot.h"
 #include "Config.h"
 #include "Player.h"
@@ -670,8 +671,8 @@ void AuctionHouseBot::addNewAuctionBuyerBotBid(Player* AHBplayer, AHBConfig* con
             auction->bid = bidprice;
 
             // Saving auction into database
-            CharacterDatabase.Execute("UPDATE auctionhouse SET buyguid = '{}',lastbid = '{}' WHERE id = '{}'", auction->bidder.GetCounter(), auction->bid,
-                                      auction->Id);
+            CharacterDatabase.Execute("UPDATE auctionhouse SET buyguid = '{}',lastbid = '{}' WHERE id = '{}'", auction->bidder.GetCounter(), auction->bid,auction->Id);
+            sAuctionMgr->GetAuctionHouseSearcher()->UpdateBid(auction);
         } else
         {
             auto trans = CharacterDatabase.BeginTransaction();
