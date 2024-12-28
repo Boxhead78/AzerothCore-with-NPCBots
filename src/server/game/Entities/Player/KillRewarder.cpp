@@ -229,10 +229,6 @@ void KillRewarder::_RewardXP(Player* player, float rate)
         if (player->GetLevel() <= 40)
             xp *= (0.5 + (0.0125 * player->GetLevel()));
 
-        // Give less xp in dungeons
-        if (player->GetMap()->IsDungeon())
-            xp *= 0.5;
-
         //Boxhead: Show correct xp
         xp = player->CalculateModulesXpExtras(xp);
 
