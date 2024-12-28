@@ -248,3 +248,7 @@ DELETE FROM `creature_addon` WHERE `guid`=3112179;
 INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (3112179, 3112179, 0, 0, 0, 0, 0, NULL);
 DELETE FROM `creature_addon` WHERE `guid`=3112202;
 INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (3112202, 3112202, 0, 0, 0, 0, 0, NULL);
+DELETE FROM `creature_addon` WHERE `guid`=3112244;
+INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (3112244, 3112244, 0, 0, 0, 0, 0, NULL);
+DELETE FROM `creature_addon` WHERE `guid`=3112346;
+INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (3112346, 3112346, 0, 0, 0, 0, 0, NULL);

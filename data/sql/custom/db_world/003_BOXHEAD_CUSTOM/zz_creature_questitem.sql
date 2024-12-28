@@ -10,3 +10,5 @@ DELETE FROM `creature_questitem` WHERE `CreatureEntry`=500090 AND `Idx`=0;
 INSERT INTO `creature_questitem` (`CreatureEntry`, `Idx`, `ItemId`, `VerifiedBuild`) VALUES (500090, 0, 90007, 16000);
 DELETE FROM `creature_questitem` WHERE `CreatureEntry`=500092 AND `Idx`=0;
 INSERT INTO `creature_questitem` (`CreatureEntry`, `Idx`, `ItemId`, `VerifiedBuild`) VALUES (500092, 0, 90006, 16000);
+DELETE FROM `creature_questitem` WHERE `CreatureEntry`=500098 AND `Idx`=0;
+INSERT INTO `creature_questitem` (`CreatureEntry`, `Idx`, `ItemId`, `VerifiedBuild`) VALUES (500098, 0, 90008, 16000);

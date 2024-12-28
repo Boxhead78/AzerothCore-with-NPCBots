@@ -146,3 +146,7 @@ DELETE FROM `creature_template_addon` WHERE `entry`=500091;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500091, 0, 0, 0, 1, 0, 0, '');
 DELETE FROM `creature_template_addon` WHERE `entry`=500092;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500092, 0, 0, 0, 1, 0, 0, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500093;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500093, 0, 0, 0, 2, 0, 0, '');
+DELETE FROM `creature_template_addon` WHERE `entry`=500094;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `visibilityDistanceType`, `auras`) VALUES (500094, 0, 0, 0, 2, 0, 0, '');

@@ -1,0 +1,1 @@
+DELETE FROM `quest_poi_points` WHERE `QuestID`=11 AND `Idx1`=1;
