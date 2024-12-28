@@ -1638,7 +1638,7 @@ void Creature::SelectLevel(bool changelevel)
         else
             healthmod = _GetHealthMod(rank);
 
-        if (sWorld->getBoolConfig(CONFIG_NEW_BALANCE_FOR_CREATURES) && IsAlive() && !IsControlledByPlayer() && !IsNPCBotOrPet())
+        if (sWorld->getBoolConfig(CONFIG_NEW_BALANCE_FOR_CREATURES) && !IsControlledByPlayer() && !IsNPCBotOrPet())
         {
             MapEntry const* mapEntry = sMapStore.LookupEntry(GetMapId());
             //Classic Content
@@ -1989,7 +1989,7 @@ bool Creature::LoadCreatureFromDB(ObjectGuid::LowType spawnId, Map* map, bool ad
             else
                 curhealth = uint32(curhealth * _GetHealthMod(GetCreatureTemplate()->rank));
 
-            if (sWorld->getBoolConfig(CONFIG_NEW_BALANCE_FOR_CREATURES) && IsAlive() && !IsControlledByPlayer() && !IsNPCBotOrPet())
+            if (sWorld->getBoolConfig(CONFIG_NEW_BALANCE_FOR_CREATURES) && !IsControlledByPlayer() && !IsNPCBotOrPet())
             {
                 MapEntry const* mapEntry = sMapStore.LookupEntry(map->GetId());
                 //Classic Content
@@ -4351,7 +4351,7 @@ bool Creature::LoadBotCreatureFromDB(ObjectGuid::LowType spawnId, Map* map, bool
             else
                 curhealth = uint32(curhealth * _GetHealthMod(GetCreatureTemplate()->rank));
 
-            if (sWorld->getBoolConfig(CONFIG_NEW_BALANCE_FOR_CREATURES) && IsAlive() && !IsControlledByPlayer() && !IsNPCBotOrPet())
+            if (sWorld->getBoolConfig(CONFIG_NEW_BALANCE_FOR_CREATURES) && !IsControlledByPlayer() && !IsNPCBotOrPet())
             {
                 MapEntry const* mapEntry = sMapStore.LookupEntry(map->GetId());
                 //Classic Content
