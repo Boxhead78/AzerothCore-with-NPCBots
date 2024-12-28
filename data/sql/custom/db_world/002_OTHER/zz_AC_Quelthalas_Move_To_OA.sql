@@ -183,3 +183,13 @@ WHERE entry=4409;
 
 DELETE FROM acore_world.areatrigger_teleport
 WHERE ID=4409;
+
+UPDATE acore_world.creature_template_npcbot_wander_nodes
+SET 
+    mapid = @map_id_new,
+    x = x + (@adt_xshift * @adtdimensions),
+    y = y + (@adt_yshift * @adtdimensions)
+WHERE 
+    mapid = @map_id AND
+    x BETWEEN @positionx_min AND @positionx_max AND
+    y BETWEEN @positiony_min AND @positiony_max;
