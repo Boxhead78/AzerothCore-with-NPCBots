@@ -91,6 +91,11 @@ public:
                     flames_enabled = (bool) (value);
                     events.ScheduleEvent(SPELL_GOUT_OF_FLAMES, urand(1, IRONHAND_N_GROUPS) * IRONHAND_FLAMES_TIMER / IRONHAND_N_GROUPS);
                 }
+                if (value == 3)
+                {
+                    flames_enabled = false;
+                    events.ScheduleEvent(SPELL_GOUT_OF_FLAMES, urand(1, IRONHAND_N_GROUPS) * IRONHAND_FLAMES_TIMER / IRONHAND_N_GROUPS);
+                }
             }
         }
 

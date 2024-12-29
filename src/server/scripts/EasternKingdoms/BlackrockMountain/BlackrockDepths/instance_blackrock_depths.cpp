@@ -531,11 +531,18 @@ public:
                         {
                             if (Creature* ironhand = instance->GetCreature(IronhandGUID[i]))
                             {
-                                ironhand->AI()->SetData(0, data == IN_PROGRESS);
+                                ironhand->AI()->SetData(0, data);
                             }
                         }
                         break;
                     case DONE:
+                        for (int i = 0; i < 6; i++)
+                        {
+                            if (Creature* ironhand = instance->GetCreature(IronhandGUID[i]))
+                            {
+                                ironhand->AI()->SetData(0, data);
+                            }
+                        }
                         HandleGameObject(GetGuidData(DATA_THRONE_DOOR), true);
                         break;
                     default:

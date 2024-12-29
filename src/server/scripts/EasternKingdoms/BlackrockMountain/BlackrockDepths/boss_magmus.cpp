@@ -53,6 +53,12 @@ public:
             events.ScheduleEvent(SPELL_FIERYBURST, 4s, 8s);
         }
 
+        void JustDied(Unit* /*who*/) override
+        {
+            _JustDied();
+            instance->SetData(TYPE_IRON_HALL, DONE);
+        }
+
         void UpdateAI(uint32 diff) override
         {
             //Return since we have no target
