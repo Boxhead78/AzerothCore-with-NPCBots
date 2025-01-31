@@ -1133,8 +1133,11 @@ bool SpellArea::IsFitToRequirements(Player const* player, uint32 newZone, uint32
         case 55164:
         case 55173:
             {
+                if (!player)
+                    return false;
+
                 Battlefield* Bf = sBattlefieldMgr->GetBattlefieldToZoneId(player->GetZoneId());
-                return !Bf || Bf->CanFlyIn();
+                return (player->GetLevel() >= 70 && (!Bf || Bf->CanFlyIn()));
             }
         case 57940: // Essence of Wintergrasp OUTSIDE
         case 58045: // Essence of Wintergrasp INSIDE
