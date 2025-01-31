@@ -146,6 +146,7 @@ void AddSC_zulgurub();
 // void AddSC_alterac_mountains();
 void AddSC_arathi_highlands();
 void AddSC_blasted_lands();
+void AddSC_dun_morogh();
 void AddSC_duskwood();
 void AddSC_eastern_plaguelands();
 void AddSC_elwynn_forest();
@@ -297,6 +298,7 @@ void AddEasternKingdomsScripts()
     //AddSC_alterac_mountains();
     AddSC_arathi_highlands();
     AddSC_blasted_lands();
+    AddSC_dun_morogh();
     AddSC_duskwood();
     AddSC_eastern_plaguelands();
     AddSC_elwynn_forest();
