@@ -56,3 +56,5 @@ DELETE FROM `gossip_menu` WHERE `MenuID`=200014 AND `TextID`=500023;
 INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200014, 500023);
 DELETE FROM `gossip_menu` WHERE `MenuID`=200015 AND `TextID`=500024;
 INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200015, 500024);
+DELETE FROM `gossip_menu` WHERE `MenuID`=200016 AND `TextID`=500025;
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200016, 500025);

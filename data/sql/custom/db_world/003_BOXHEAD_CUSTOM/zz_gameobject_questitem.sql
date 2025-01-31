@@ -4,3 +4,5 @@ DELETE FROM `gameobject_questitem` WHERE `GameObjectEntry`=450003 AND `Idx`=0;
 INSERT INTO `gameobject_questitem` (`GameObjectEntry`, `Idx`, `ItemId`, `VerifiedBuild`) VALUES (450003, 0, 22735, 16000);
 DELETE FROM `gameobject_questitem` WHERE `GameObjectEntry`=450005 AND `Idx`=0;
 INSERT INTO `gameobject_questitem` (`GameObjectEntry`, `Idx`, `ItemId`, `VerifiedBuild`) VALUES (450005, 0, 90008, 16000);
+DELETE FROM `gameobject_questitem` WHERE `GameObjectEntry`=450006 AND `Idx`=0;
+INSERT INTO `gameobject_questitem` (`GameObjectEntry`, `Idx`, `ItemId`, `VerifiedBuild`) VALUES (450006, 0, 90013, 16000);
