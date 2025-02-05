@@ -17,7 +17,6 @@
 
 /*
 Dun_Morogh
-Quest support: 3628. Teleporter to Rise of the Defiler.
 */
 
 #include "ScriptedCreature.h"
