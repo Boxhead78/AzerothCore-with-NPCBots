@@ -166,11 +166,11 @@ struct boss_commander_vorthalax : public BossAI
                     }
                 }).Schedule(20s, [this](TaskContext context)
                 {
+                    Talk(SAY_THUNDERSTRIKE);
                     context.SetGroup(PHASE_1);
                     DoCastSelf(SPELL_THUNDERSTRIKE);
                 }).Schedule(40s, [this](TaskContext context)
                 {
-                    Talk(SAY_UNSTOPPABLE_MARCH);
                     context.SetGroup(PHASE_1);
                     ScheduleUnstoppableMarchSequence();
                 });
@@ -182,12 +182,12 @@ struct boss_commander_vorthalax : public BossAI
         ScheduleHealthCheckEvent(30, [&] {
             Talk(SAY_PHASE_2);
             scheduler.CancelGroup(PHASE_1);
-            scheduler.Schedule(0s, [this](TaskContext context)
+            scheduler.Schedule(10s, [this](TaskContext context)
             {
                 Talk(SAY_CALL_OF_THE_DRAGONKIN);
                 context.SetGroup(PHASE_2);
                 DoCastSelf(SPELL_CALL_OF_THE_DRAGONKIN);
-                context.Repeat(45s, 60s);
+                context.Repeat(55s, 70s);
             }).Schedule(0s, [this](TaskContext context)
             {
                 context.SetGroup(PHASE_2);
@@ -196,7 +196,7 @@ struct boss_commander_vorthalax : public BossAI
                     DoCastSelf(SPELL_DRAGONS_RAGE);
                 }
                 context.Repeat(3s);
-            }).Schedule(20s, [this](TaskContext context)
+            }).Schedule(30s, [this](TaskContext context)
             {
                 context.SetGroup(PHASE_2);
                 if (!me->HasAura(SPELL_SPELL_REFLECTION))
