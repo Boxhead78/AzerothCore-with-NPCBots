@@ -151,11 +151,10 @@ struct boss_baron_ignatius : public BossAI
                 context.SetGroup(PHASE_2);
                 scheduler.DelayGroup(PHASE_0, 18s);
                 scheduler.DelayGroup(PHASE_1, 18s);
-                Talk(SAY_SUMMON_FLAME_WAVES);
                 moveToHome = true; // Markierung, dass Boss zur Home-Position zurückkehren soll
                 me->SetReactState(REACT_PASSIVE);
                 me->GetMotionMaster()->MovePoint(POINT_HOME, me->GetHomePosition().GetPositionX(), me->GetHomePosition().GetPositionY(), me->GetHomePosition().GetPositionZ(), true, true);
-                context.Repeat(60s, 75s);
+                context.Repeat(45s, 60s);
             });
         });
     }
@@ -166,6 +165,7 @@ struct boss_baron_ignatius : public BossAI
         {
             moveToHome = false; // Markierung zurücksetzen
             // Führt den Zauber erst aus, wenn der Boss die Home-Position erreicht hat
+            Talk(SAY_SUMMON_FLAME_WAVES);
             DoCastSelf(SPELL_SUMMON_FLAME_WAVES);
             if (me->GetHealthPct() >= 50)
             {
@@ -178,6 +178,7 @@ struct boss_baron_ignatius : public BossAI
             me->GetMotionMaster()->Clear(); // Bewegungsliste zurücksetzen
             me->SetReactState(REACT_AGGRESSIVE);
             me->AI()->AttackStart(me->GetVictim());
+            me->GetMotionMaster()->MoveChase(me->GetVictim());
         }
     }
 
