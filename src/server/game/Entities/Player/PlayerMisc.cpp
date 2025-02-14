@@ -374,7 +374,7 @@ void Player::UpdatePvPFlag(time_t currTime)
     if (!IsPvP())
         return;
 
-    if (pvpInfo.EndTimer == 0)
+    if (pvpInfo.EndTimer == 0 || pvpInfo.IsHostile)
         return;
 
     if (currTime < (pvpInfo.EndTimer + 300 + 5))
