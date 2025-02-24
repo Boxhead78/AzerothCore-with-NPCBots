@@ -20,11 +20,15 @@ Dun_Morogh
 */
 
 #include "ScriptedCreature.h"
-#include <VMapMgr2.h>
+#include "VMapMgr2.h"
 
 /*#####
 # npc_aqualon
 #####*/
+
+/* ContentData
+npc_aqualon
+EndContentData */
 
 enum AqualonSpells
 {
@@ -81,11 +85,21 @@ private:
             for (int j = 0; j < 5; ++j)
             {
                 float currentDistance = increment * j;
-                float x = me->GetPositionX() + currentDistance * cos(angle);
-                float y = me->GetPositionY() + currentDistance * sin(angle);
-                float z = me->GetMap()->GetGridHeight(x, y);
+                float x, y, z;
+                uint8 attempts = 9;
+
+                while (attempts--)
+                {
+                    x = me->GetPositionX() + currentDistance * cos(angle);
+                    y = me->GetPositionY() + currentDistance * sin(angle);
+                    z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
+
+                    if (z != VMAP_INVALID_HEIGHT_VALUE)
+                        break;
+                }
+
                 if (z == VMAP_INVALID_HEIGHT_VALUE)
-                    z = me->GetPositionZ();
+                    continue;
 
                 me->CastSpell(x, y, z, SPELL_AQUA_NOVA, true);
             }
