@@ -1145,10 +1145,7 @@ void WorldSession::HandlePlayerLoginFromDB(LoginQueryHolder const& holder)
 
         if (playerProgression <= PROGRESSION_CATA_TIER_4) // Validation step for safety
         {
-            if (playerProgression > 0)
-                pCurrChar->CastSpell(pCurrChar, 98636 + playerProgression - 1, true);
-            else
-                pCurrChar->CastSpell(pCurrChar, 98636, true);
+            pCurrChar->CastSpell(pCurrChar, 98636 + playerProgression, true);
         }
         else
         {
