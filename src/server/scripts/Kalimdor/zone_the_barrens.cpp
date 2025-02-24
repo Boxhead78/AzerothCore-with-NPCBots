@@ -23,8 +23,10 @@ SDCategory: Barrens
 EndScriptData */
 
 /* ContentData
+npc_ahuna
 npc_beaten_corpse
 npc_gilthares
+npc_head_caravan_kodo
 npc_sputtervalve
 npc_taskmaster_fizzule
 npc_twiggy_flathead
@@ -35,7 +37,141 @@ EndContentData */
 #include "Player.h"
 #include "ScriptedCreature.h"
 #include "ScriptedEscortAI.h"
+#include "SmartAI.h"
 #include "SpellInfo.h"
+#include "VMapMgr2.h"
+
+/*######
+# npc_ahuna
+######*/
+
+enum Ahuna
+{
+    SAY_AHU_AGGRO = 0,
+    SAY_AHU_START = 1,
+    SAY_AHU_ALMOST = 2,
+    SAY_AHU_FREED = 3,
+
+    GO_BLACK_CAGE = 450007,
+
+    NPC_AHUNA = 500143,
+    NPC_GRIMTOTEM_INVADER = 500138,
+    NPC_GRIMTOTEM_GEOMANCER = 500139,
+
+    QUEST_RETURN_TO_HUNTER_HILL = 50077,
+};
+
+class npc_ahuna : public CreatureScript
+{
+public:
+    npc_ahuna() : CreatureScript("npc_ahuna") { }
+
+    bool OnQuestAccept(Player* player, Creature* creature, const Quest* quest) override
+    {
+        if (quest->GetQuestId() == QUEST_RETURN_TO_HUNTER_HILL)
+        {
+            GameObject* object = GetClosestGameObjectWithEntry(creature, GO_BLACK_CAGE, 10.0f);
+            object->UseDoorOrButton(0, false);
+
+            creature->SetFaction(FACTION_ESCORTEE_H_NEUTRAL_ACTIVE);
+            creature->AI()->Talk(SAY_AHU_START, player);
+            creature->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE | UNIT_FLAG_PACIFIED);
+
+            if (npc_ahunaAI* pEscortAI = CAST_AI(npc_ahuna::npc_ahunaAI, creature->AI()))
+                pEscortAI->Start(false, false, player->GetGUID(), quest);
+        }
+        return true;
+    }
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_ahunaAI(creature);
+    }
+
+    struct npc_ahunaAI : public npc_escortAI
+    {
+        npc_ahunaAI(Creature* creature) : npc_escortAI(creature) { }
+
+        void Reset() override { }
+
+        void WaypointReached(uint32 waypointId) override
+        {
+            Player* player = GetPlayerForEscort();
+            if (!player)
+                return;
+
+            switch (waypointId)
+            {
+            case 10:
+                SpawnEnemies(me);
+                break;
+            case 17:
+                Talk(SAY_AHU_ALMOST, player);
+                break;
+            case 23:
+                Talk(SAY_AHU_FREED, player);
+                player->GroupEventHappens(QUEST_RETURN_TO_HUNTER_HILL, me);
+                break;
+            }
+        }
+
+        void JustEngagedWith(Unit* who) override
+        {
+            //not always use
+            if (urand(1,100) < 66)
+                return;
+
+            //only aggro text if not player
+            if (!who->IsPlayer())
+            {
+                //appears to be pretty much random (possible only if escorter not in combat with who yet?)
+                Talk(SAY_AHU_AGGRO, who);
+            }
+        }
+
+        void JustRespawned() override
+        {
+            npc_escortAI::JustRespawned();
+            GameObject* object = GetClosestGameObjectWithEntry(me, GO_BLACK_CAGE, 10.0f);
+            object->ResetDoorOrButton();
+        }
+
+        void SpawnEnemies(Creature* me)
+        {
+            uint8 spawnCount = 3;
+            float angleOffset = 45.0f / (spawnCount - 1);
+            float baseAngle = me->GetOrientation() - (45.0f / 2 * M_PI / 180.0f);
+
+            for (uint8 i = 0; i < spawnCount; ++i)
+            {
+                float angle = baseAngle + (angleOffset * i * M_PI / 180.0f);
+                float distance = 15.0f;
+                float x, y, z;
+                uint8 attempts = 9;
+
+                while (attempts--)
+                {
+                    me->GetNearPoint2D(x, y, distance, angle);
+                    z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
+
+                    if (z != VMAP_INVALID_HEIGHT_VALUE)
+                        break;
+                }
+
+                if (z == VMAP_INVALID_HEIGHT_VALUE)
+                    continue;
+
+                Creature* enemy = me->SummonCreature(urand(NPC_GRIMTOTEM_INVADER, NPC_GRIMTOTEM_GEOMANCER), x, y, z, angle, TEMPSUMMON_TIMED_DESPAWN, 90000);
+                if (enemy)
+                {
+                    enemy->GetMotionMaster()->Clear();
+                    enemy->Attack(me, true);
+                    enemy->SetReactState(REACT_AGGRESSIVE);
+                }
+            }
+        }
+    };
+};
 
 /*######
 # npc_gilthares
@@ -131,6 +267,150 @@ public:
             }
         }
     };
+};
+
+/*#####
+# npc_head_caravan_kodo
+#####*/
+
+enum HeadCaravanKodo
+{
+    /* Kodo Quest 50071 */
+    NPC_QUESTENDER_50071 = 3429,
+    NPC_KOLKAR_RAIDER_50071 = 500130,
+    NPC_HEAD_CARAVAN_KODO_50071 = 500131,
+    /* Kodo Quest 50080 */
+    NPC_QUESTENDER_50080 = 3387,
+    NPC_KOLKAR_RAIDER_50080 = 500148,
+    NPC_HEAD_CARAVAN_KODO_50080 = 500147,
+};
+
+struct npc_head_caravan_kodo : public SmartAI
+{
+    npc_head_caravan_kodo(Creature* creature) : SmartAI(creature) { }
+
+    void PassengerBoarded(Unit* who, int8 seatId, bool apply) override
+    {
+        SmartAI::PassengerBoarded(who, seatId, apply);
+
+        me->SetInCombatState(false, nullptr, 500000);
+
+        _scheduler.Schedule(0s, [this](TaskContext context)
+        { // Spawn Enemies
+            SpawnEnemies();
+            context.Repeat(Seconds(spawnTimer / 1000));
+        }).Schedule(5s, [this](TaskContext context)
+        { // Dismount if not in barrens
+            if (me->GetZoneId() != 17)
+            {
+                if (Player* player = me->GetAffectingPlayer())
+                {
+                    player->ExitVehicle();
+                }
+            }
+            context.Repeat(Seconds(5s));
+        }).Schedule(10s, [this](TaskContext context)
+        { // Give kill credit and dismount
+            if (me->GetEntry() == NPC_HEAD_CARAVAN_KODO_50071)
+            { /* Quest 50071 */
+                Creature* targetNPC = me->FindNearestCreature(NPC_QUESTENDER_50071, 5.0f, true);
+                if (targetNPC)
+                {
+                    if (Player* player = me->GetAffectingPlayer())
+                    {
+                        player->KilledMonsterCredit(NPC_HEAD_CARAVAN_KODO_50071);
+                        player->ExitVehicle();
+                    }
+                }
+            }
+            if (me->GetEntry() == NPC_HEAD_CARAVAN_KODO_50080)
+            { /* Quest 50080 */
+                Creature* targetNPC = me->FindNearestCreature(NPC_QUESTENDER_50080, 5.0f, true);
+                if (targetNPC)
+                {
+                    if (Player* player = me->GetAffectingPlayer())
+                    {
+                        player->KilledMonsterCredit(NPC_HEAD_CARAVAN_KODO_50080);
+                        player->ExitVehicle();
+                    }
+                }
+            }
+
+            context.Repeat(Seconds(1s));
+        });
+    }
+
+    void UpdateAI(uint32 diff) override
+    {
+        SmartAI::UpdateAI(diff);
+
+        if (!introPath)
+        {
+            introPath = true;
+            me->GetMotionMaster()->Clear();
+            if (me->GetEntry() == NPC_HEAD_CARAVAN_KODO_50071)
+                me->GetMotionMaster()->MovePath(3112878, false);
+
+            if (me->GetEntry() == NPC_HEAD_CARAVAN_KODO_50080)
+                me->GetMotionMaster()->MovePath(3112982, false);
+        }
+
+        _scheduler.Update(diff);
+
+        DoMeleeAttackIfReady();
+    }
+
+private:
+    TaskScheduler _scheduler;
+    uint32 spawnTimer = 15000; // 15 Seconds
+    bool introPath = false;
+
+    bool IsInRestrictedArea(Creature* mount)
+    {
+        uint32 areaId = mount->GetAreaId();
+        return (areaId == 378 || areaId == 379 || areaId == 380 || areaId == 392 || areaId == 1703 || areaId == 4844);
+    }
+
+    void SpawnEnemies()
+    {
+        if (IsInRestrictedArea(me))
+        {
+            spawnTimer = 20000;
+            return;
+        }
+
+        uint8 spawnCount = urand(1, 6);
+        float angleOffset = 145.0f / spawnCount;
+        float baseAngle = me->GetOrientation() - (145.0f / 2 * M_PI / 180.0f);
+
+        for (uint8 i = 0; i < spawnCount; ++i)
+        {
+            float angle = baseAngle + (angleOffset * i * M_PI / 180.0f);
+            float distance = frand(30.0f, 75.0f);
+            float x, y, z;
+            me->GetNearPoint2D(x, y, distance, angle);
+            z = me->GetMap()->GetGridHeight(x, y);;
+
+            Creature* enemy = new Creature();
+            if (me->GetEntry() == NPC_HEAD_CARAVAN_KODO_50071)
+                enemy = me->SummonCreature(NPC_KOLKAR_RAIDER_50071, x, y, z, angle, TEMPSUMMON_TIMED_DESPAWN_OOC_ALIVE, 5000);
+            else if (me->GetEntry() == NPC_HEAD_CARAVAN_KODO_50080)
+                enemy = me->SummonCreature(NPC_KOLKAR_RAIDER_50080, x, y, z, angle, TEMPSUMMON_TIMED_DESPAWN_OOC_ALIVE, 5000);
+            else
+                LOG_ERROR("scripts", "ERROR: NPC_HEAD_CARAVAN_KODO incorrect entry.");
+
+            if (enemy)
+            {
+                enemy->GetMotionMaster()->Clear();
+                enemy->Attack(me, true);
+                enemy->SetReactState(REACT_AGGRESSIVE);
+                enemy->SetNoCallAssistance(true);
+                enemy->SetNoSearchAssistance(true);
+            }
+        }
+
+        spawnTimer = 2000 + (spawnCount * 4000); // 2s + 4s*spawnCount
+    }
 };
 
 /*######
@@ -623,7 +903,9 @@ public:
 
 void AddSC_the_barrens()
 {
+    new npc_ahuna();
     new npc_gilthares();
+    RegisterCreatureAI(npc_head_caravan_kodo);
     new npc_taskmaster_fizzule();
     new npc_twiggy_flathead();
     new npc_wizzlecrank_shredder();
