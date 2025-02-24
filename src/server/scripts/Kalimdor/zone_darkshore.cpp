@@ -23,6 +23,8 @@ SDCategory: Darkshore
 EndScriptData */
 
 /* ContentData
+npc_auberdine_survivor
+npc_guardian_of_the_flame
 npc_kerlonian
 npc_prospector_remtravel
 EndContentData */
@@ -34,6 +36,212 @@ EndContentData */
 #include "ScriptedFollowerAI.h"
 #include "ScriptedGossip.h"
 #include "SpellInfo.h"
+#include "VMapMgr2.h"
+
+/*######
+## npc_auberdine_survivor
+######*/
+
+enum auberdineSurvivor
+{
+    SAY_HEAL              = 0,
+    SAY_HELP              = 1,
+    SPELL_IRRIDATION      = 35046,
+    SPELL_STUNNED         = 28630,
+    SPELL_SEED_OF_RENEWAL = 98768,
+};
+
+class npc_auberdine_survivor : public CreatureScript
+{
+public:
+    npc_auberdine_survivor() : CreatureScript("npc_auberdine_survivor") { }
+
+    struct npc_auberdine_survivorAI : public ScriptedAI
+    {
+        npc_auberdine_survivorAI(Creature* creature) : ScriptedAI(creature) { }
+
+        ObjectGuid pCaster;
+
+        uint32 SayThanksTimer;
+        uint32 StartRunTimer;
+        uint32 DespawnTimer;
+        uint32 SayHelpTimer;
+
+        bool CanSayHelp;
+
+        void Reset() override
+        {
+            pCaster.Clear();
+
+            SayThanksTimer = 0;
+            StartRunTimer = 0;
+            DespawnTimer = 0;
+            SayHelpTimer = 10000;
+
+            CanSayHelp = true;
+
+            DoCast(me, SPELL_IRRIDATION, true);
+
+            me->SetPvP(true);
+            me->SetUnitFlag(UNIT_FLAG_IN_COMBAT);
+            me->SetHealth(me->CountPctFromMaxHealth(10));
+            me->SetStandState(UNIT_STAND_STATE_SLEEP);
+        }
+
+        void JustEngagedWith(Unit* /*who*/) override { }
+
+        void MoveInLineOfSight(Unit* who) override
+        {
+            if (CanSayHelp && who->IsPlayer() && me->IsFriendlyTo(who) && me->IsWithinDistInMap(who, 25.0f))
+            {
+                //Random switch between 4 texts
+                Talk(SAY_HELP, who);
+
+                SayHelpTimer = 20000;
+                CanSayHelp = false;
+            }
+        }
+
+        void SpellHit(Unit* Caster, SpellInfo const* Spell) override
+        {
+            if (Spell->Id == SPELL_SEED_OF_RENEWAL)
+            {
+                me->RemoveUnitFlag(UNIT_FLAG_PLAYER_CONTROLLED);
+                me->SetStandState(UNIT_STAND_STATE_STAND);
+
+                DoCast(me, SPELL_STUNNED, true);
+
+                pCaster = Caster->GetGUID();
+
+                SayThanksTimer = 5000;
+            }
+        }
+
+        void UpdateAI(uint32 diff) override
+        {
+            if (SayThanksTimer)
+            {
+                if (SayThanksTimer <= diff)
+                {
+                    me->RemoveAurasDueToSpell(SPELL_IRRIDATION);
+
+                    if (Player* player = ObjectAccessor::GetPlayer(*me, pCaster))
+                    {
+                        Talk(SAY_HEAL, player);
+
+                        player->TalkedToCreature(me->GetEntry(), me->GetGUID());
+                    }
+
+                    StartRunTimer = 5000;
+                    SayThanksTimer = 0;
+                }
+                else SayThanksTimer -= diff;
+
+                return;
+            }
+
+            if (StartRunTimer)
+            {
+                if (StartRunTimer <= diff)
+                {
+                    me->GetMotionMaster()->Clear();
+                    me->GetMotionMaster()->MovePoint(0, 7031.5566f, 9.2738f, 17.1619f);
+                    DespawnTimer = 2500;
+                    StartRunTimer = 0;
+                }
+                else StartRunTimer -= diff;
+
+                return;
+            }
+
+            if (DespawnTimer)
+            {
+                if (DespawnTimer <= diff)
+                    me->DespawnOrUnsummon();
+                else DespawnTimer -= diff;
+
+                return;
+            }
+
+            if (SayHelpTimer <= diff)
+            {
+                CanSayHelp = true;
+                SayHelpTimer = 20000;
+            }
+            else SayHelpTimer -= diff;
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_auberdine_survivorAI(creature);
+    }
+};
+
+/*#####
+# npc_guardian_of_the_flame
+#####*/
+
+enum GuardianOfFlameEnum
+{
+    SAY_AGGRO = 0,
+    SAY_SLAY = 1,
+    SAY_DEATH = 2,
+
+    GO_FINAL_FLAME_OF_AMETH_ARAN = 450011,
+
+    SPELL_ECHOES_OF_DARKNESS = 98786,
+    SPELL_SHADOW_BOLT_VOLLEY = 98787,
+
+    PHASE_0 = 0,
+    PHASE_1 = 1,
+};
+
+struct npc_guardian_of_the_flame : public ScriptedAI
+{
+    npc_guardian_of_the_flame(Creature* creature) : ScriptedAI(creature) { }
+
+    void JustDied(Unit* killer) override
+    {
+        Talk(SAY_DEATH);
+        me->GetMap()->SummonGameObject(GO_FINAL_FLAME_OF_AMETH_ARAN, 5683.2f, 76.4058f, 30.4674f, 3.85686f, 0, 0, -0.936727f, 0.350061f, 0);
+    }
+
+    void KilledUnit(Unit* /*victim*/) override
+    {
+        Talk(SAY_SLAY);
+    }
+
+    void JustEngagedWith(Unit* who) override
+    {
+        Talk(SAY_AGGRO);
+        _scheduler.Schedule(5s, [this](TaskContext context)
+        {
+            context.SetGroup(PHASE_0);
+            DoCastAOE(SPELL_SHADOW_BOLT_VOLLEY);
+            context.Repeat(12s, 15s);
+        }).Schedule(12s, [this](TaskContext context)
+        {
+            context.SetGroup(PHASE_1);
+            scheduler.DelayGroup(PHASE_0, 4s);
+            DoCastSelf(SPELL_ECHOES_OF_DARKNESS);
+            context.Repeat(20s);
+        });
+    }
+
+    void UpdateAI(uint32 diff) override
+    {
+        if (!UpdateVictim())
+            return;
+
+        _scheduler.Update(diff);
+
+        DoMeleeAttackIfReady();
+    }
+
+private:
+    TaskScheduler _scheduler;
+};
 
 // Ours
 enum murkdeep
@@ -643,6 +851,8 @@ public:
 
 void AddSC_darkshore()
 {
+    new npc_auberdine_survivor();
+    RegisterCreatureAI(npc_guardian_of_the_flame);
     // Ours
     new npc_murkdeep();
     new npc_rabid_thistle_bear();
