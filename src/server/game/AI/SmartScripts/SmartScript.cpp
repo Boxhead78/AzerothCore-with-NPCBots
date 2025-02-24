@@ -4654,7 +4654,13 @@ void SmartScript::ProcessEvent(SmartScriptHolder& e, Unit* unit, uint32 var0, ui
                 for (WorldObject* target : targets)
                 {
                     if (IsPlayer(target))
+                    {
                         playerCount++;
+                        // Filter Alliance for specifc Smart Script
+                        if (go && go->GetEntry() == 450013 && target->ToPlayer()->GetTeamId() == TEAM_ALLIANCE)
+                            playerCount--;
+                    }
+
                 }
                     if (playerCount >= e.event.nearPlayer.minCount)
                         ProcessAction(e, unit);
