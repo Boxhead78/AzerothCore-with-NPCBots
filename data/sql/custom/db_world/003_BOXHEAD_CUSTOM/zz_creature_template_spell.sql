@@ -1,0 +1,14 @@
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500131 AND `Index`=0;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500131, 0, 98747, 16000);
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500131 AND `Index`=1;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500131, 1, 98749, 16000);
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500131 AND `Index`=2;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500131, 2, 98748, 16000);
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500147 AND `Index`=0;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500147, 0, 98747, 16000);
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500147 AND `Index`=1;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500147, 1, 98749, 16000);
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500147 AND `Index`=2;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500147, 2, 98748, 16000);
+DELETE FROM `creature_template_spell` WHERE `CreatureID`=500147 AND `Index`=3;
+INSERT INTO `creature_template_spell` (`CreatureID`, `Index`, `Spell`, `VerifiedBuild`) VALUES (500147, 3, 98765, 16000);

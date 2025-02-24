@@ -1,3 +1,5 @@
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=2883 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (2883, 0, 'deDE', 'Ich habe meinen Kodo verloren. Ich brauche einen neuen.', '');
 DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=12439 AND `OptionID`=0 AND `Locale`='deDE';
 INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (12439, 0, 'deDE', 'Ich möchte etwas von Euch kaufen.', '');
 DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=25000 AND `OptionID`=0 AND `Locale`='deDE';
@@ -64,3 +66,5 @@ DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200013 AND `OptionID`=0 A
 INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200013, 0, 'deDE', 'Ich suche eine Ausbildung, um ein Bergpferd zu reiten.', '');
 DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200015 AND `OptionID`=0 AND `Locale`='deDE';
 INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200015, 0, 'deDE', 'Ich möchte etwas von Euch kaufen.', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200017 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200017, 0, 'deDE', 'Ich habe meinen Kodo verloren. Ich brauche einen neuen.', '');

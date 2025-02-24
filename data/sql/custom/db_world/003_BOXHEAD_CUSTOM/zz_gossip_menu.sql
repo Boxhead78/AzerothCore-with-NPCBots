@@ -1,3 +1,5 @@
+DELETE FROM `gossip_menu` WHERE `MenuID`=2883 AND `TextID`=3559;
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (2883, 3559);
 DELETE FROM `gossip_menu` WHERE `MenuID`=12439 AND `TextID`=17494;
 INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (12439, 17494);
 DELETE FROM `gossip_menu` WHERE `MenuID`=12439 AND `TextID`=17495;
@@ -58,3 +60,7 @@ DELETE FROM `gossip_menu` WHERE `MenuID`=200015 AND `TextID`=500024;
 INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200015, 500024);
 DELETE FROM `gossip_menu` WHERE `MenuID`=200016 AND `TextID`=500025;
 INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200016, 500025);
+DELETE FROM `gossip_menu` WHERE `MenuID`=200017 AND `TextID`=500026;
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200017, 500026);
+DELETE FROM `gossip_menu` WHERE `MenuID`=200018 AND `TextID`=500027;
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (200018, 500027);

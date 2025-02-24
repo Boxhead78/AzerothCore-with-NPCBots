@@ -1,0 +1,10 @@
+DELETE FROM `gameobject_queststarter` WHERE `id`=450009 AND `quest`=50085;
+INSERT INTO `gameobject_queststarter` (`id`, `quest`) VALUES (450009, 50085);
+DELETE FROM `gameobject_queststarter` WHERE `id`=450010 AND `quest`=50088;
+INSERT INTO `gameobject_queststarter` (`id`, `quest`) VALUES (450010, 50088);
+DELETE FROM `gameobject_queststarter` WHERE `id`=450019 AND `quest`=50116;
+INSERT INTO `gameobject_queststarter` (`id`, `quest`) VALUES (450019, 50116);
+DELETE FROM `gameobject_queststarter` WHERE `id`=450019 AND `quest`=50117;
+INSERT INTO `gameobject_queststarter` (`id`, `quest`) VALUES (450019, 50117);
+DELETE FROM `gameobject_queststarter` WHERE `id`=450019 AND `quest`=50118;
+INSERT INTO `gameobject_queststarter` (`id`, `quest`) VALUES (450019, 50118);
