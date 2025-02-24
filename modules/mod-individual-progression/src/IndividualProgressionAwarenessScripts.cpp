@@ -588,6 +588,43 @@ public:
     }
 };
 
+class npc_ipp_westfall_riot : public CreatureScript
+{
+public:
+    npc_ipp_westfall_riot() : CreatureScript("npc_ipp_westfall_riot") { }
+
+    struct npc_ipp_westfall_riotAI: SmartAI
+    {
+        explicit npc_ipp_westfall_riotAI(Creature* creature) : SmartAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            SmartAI::AttackStart(target);
+        }
+
+        bool CanBeSeen(Player const* player) override
+        {
+            if (player->IsGameMaster())
+            {
+                return true;
+            }
+            Player* target = ObjectAccessor::FindConnectedPlayer(player->GetGUID());
+            return target->GetQuestRewardStatus(50109);
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_ipp_westfall_riotAI(creature);
+    }
+};
+
 // Add all scripts in one
 void AddSC_mod_individual_progression_awareness()
 {
@@ -607,4 +644,5 @@ void AddSC_mod_individual_progression_awareness()
     new npc_ipp_individual_progression_setter();
     new npc_ipp_ragefire_chasm();
     new npc_ipp_ragefire_chasm_remove();
+    new npc_ipp_westfall_riot();
 }

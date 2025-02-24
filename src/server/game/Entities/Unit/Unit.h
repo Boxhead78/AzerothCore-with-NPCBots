@@ -1935,7 +1935,7 @@ public:
 
     // Unit models
     virtual float GetNativeObjectScale() const { return 1.0f; }
-    virtual void RecalculateObjectScale();
+    virtual void RecalculateObjectScale(uint32 auraId);
     [[nodiscard]] uint32 GetDisplayId() const { return GetUInt32Value(UNIT_FIELD_DISPLAYID); }
     virtual void SetDisplayId(uint32 modelId, float displayScale = 1.f);
     [[nodiscard]] uint32 GetNativeDisplayId() const { return GetUInt32Value(UNIT_FIELD_NATIVEDISPLAYID); }

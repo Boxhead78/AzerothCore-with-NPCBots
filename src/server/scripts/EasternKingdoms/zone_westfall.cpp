@@ -196,7 +196,168 @@ public:
     };
 };
 
+/*#####
+# npc_westfall_rebels_defias_conversation
+#####*/
+
+enum WestfallRebellsConversation
+{
+    NPC_REBEL_LEADER_1 = 500205,
+    NPC_REBEL_LEADER_2 = 500206,
+    NPC_DEFIAS_COLLABORATOR = 500207,
+
+    SAY_LEADER1_TALK_1 = 0,
+    SAY_LEADER1_TALK_2 = 1,
+
+    SAY_LEADER2_TALK_1 = 0,
+    SAY_LEADER2_TALK_2 = 1,
+
+    SAY_DEFIAS_COLLAB_TALK_1 = 0,
+    SAY_DEFIAS_COLLAB_TALK_2 = 1,
+    SAY_DEFIAS_COLLAB_TALK_3 = 2,
+};
+
+class npc_westfall_rebels_defias_conversation : public CreatureScript
+{
+public:
+    npc_westfall_rebels_defias_conversation() : CreatureScript("npc_westfall_rebels_defias_conversation") { }
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_westfall_rebels_defias_conversationAI(creature);
+    }
+
+    struct npc_westfall_rebels_defias_conversationAI : public ScriptedAI
+    {
+        npc_westfall_rebels_defias_conversationAI(Creature* creature) : ScriptedAI(creature)
+        {
+            me->SetReactState(REACT_PASSIVE);
+        }
+
+        void UpdateAI(uint32 diff) override
+        {
+            _scheduler.Update(diff);
+            if (!scheduledTasks)
+            {
+                scheduledTasks = true;
+                _scheduler.Schedule(800ms, [this](TaskContext context)
+                { // Intro Paths
+                    if (me->GetEntry() == NPC_REBEL_LEADER_1)
+                    {
+                        me->GetMotionMaster()->MovePath(3113826, false);
+                    }
+                    else if (me->GetEntry() == NPC_REBEL_LEADER_2)
+                    {
+                        me->GetMotionMaster()->MovePath(3113827, false);
+                    }
+                    else if (me->GetEntry() == NPC_DEFIAS_COLLABORATOR)
+                    {
+                        me->GetMotionMaster()->MovePath(3113828, false);
+                    }
+                    
+                }).Schedule(8300ms, [this](TaskContext context)
+                { // Talk 1
+                    if (me->GetEntry() == NPC_REBEL_LEADER_1)
+                        me->AI()->Talk(SAY_LEADER1_TALK_1);
+
+                }).Schedule(18800ms, [this](TaskContext context)
+                { // Talk 2
+                    if (me->GetEntry() == NPC_DEFIAS_COLLABORATOR)
+                        me->AI()->Talk(SAY_DEFIAS_COLLAB_TALK_1);
+
+                }).Schedule(29300ms, [this](TaskContext context)
+                { // Talk 3
+                    if (me->GetEntry() == NPC_REBEL_LEADER_2)
+                        me->AI()->Talk(SAY_LEADER2_TALK_1);
+
+                }).Schedule(40800ms, [this](TaskContext context)
+                { // Talk 4
+                    if (me->GetEntry() == NPC_DEFIAS_COLLABORATOR)
+                        me->AI()->Talk(SAY_DEFIAS_COLLAB_TALK_2);
+
+                }).Schedule(50800ms, [this](TaskContext context)
+                { // Talk 5
+                    if (me->GetEntry() == NPC_REBEL_LEADER_1)
+                        me->AI()->Talk(SAY_LEADER1_TALK_2);
+
+                }).Schedule(60800ms, [this](TaskContext context)
+                { // Talk 6
+                    if (me->GetEntry() == NPC_REBEL_LEADER_2)
+                        me->AI()->Talk(SAY_LEADER2_TALK_2);
+
+                }).Schedule(70800ms, [this](TaskContext context)
+                { // Talk 7
+                    if (me->GetEntry() == NPC_DEFIAS_COLLABORATOR)
+                        me->AI()->Talk(SAY_DEFIAS_COLLAB_TALK_3);
+
+                }).Schedule(75800ms, [this](TaskContext context)
+                { // Outro Paths
+                    if (me->GetEntry() == NPC_REBEL_LEADER_1)
+                    {
+                        me->GetMotionMaster()->MovePath(3113829, false);
+                    }
+                    else if (me->GetEntry() == NPC_REBEL_LEADER_2)
+                    {
+                        me->GetMotionMaster()->MovePath(3113830, false);
+                    }
+                    else if (me->GetEntry() == NPC_DEFIAS_COLLABORATOR)
+                    {
+                        me->GetMotionMaster()->MovePath(3113831, false);
+                    }
+
+                }).Schedule(81200ms, [this](TaskContext context)
+                { // Despawn & Kill Credit
+                    std::list<Player*> nearbyPlayers;
+                    Acore::AnyPlayerInObjectRangeCheck check(me, 30.0f);
+                    Acore::PlayerListSearcher<Acore::AnyPlayerInObjectRangeCheck> searcher(me, nearbyPlayers, check);
+                    Cell::VisitWorldObjects(me, searcher, 30.0f);
+                    for (Player* player : nearbyPlayers)
+                    {
+                        if (player && player->IsAlive())
+                        {
+                            player->KilledMonsterCredit(NPC_REBEL_LEADER_1);
+                            player->RemoveAura(98819);
+                            player->RemoveAura(98820);
+                        }
+                    }
+
+                    me->DespawnOrUnsummon();
+                });
+            }
+        }
+    private:
+        TaskScheduler _scheduler;
+        bool scheduledTasks = false;
+    };
+};
+
+class go_inconspicuous_crate_westfall : public GameObjectScript
+{
+public:
+    go_inconspicuous_crate_westfall() : GameObjectScript("go_inconspicuous_crate_westfall") { }
+
+    bool OnGossipHello(Player* player, GameObject* go) override
+    {
+        player->CastSpell(player, 98819, true);
+        if (player->GetQuestStatus(50113) == QUEST_STATUS_INCOMPLETE)
+        {
+            if (!player->FindNearestCreature(NPC_REBEL_LEADER_1, 40.0f, true) &&
+                !player->FindNearestCreature(NPC_REBEL_LEADER_2, 40.0f, true) &&
+                !player->FindNearestCreature(NPC_DEFIAS_COLLABORATOR, 40.0f, true))
+            {
+                Creature* rebelLeader1 = player->SummonCreature(NPC_REBEL_LEADER_1, -10492.35f, 1578.92f, 53.00f, 3.758f, TEMPSUMMON_DEAD_DESPAWN, 1);
+                Creature* rebelLeader2 = player->SummonCreature(NPC_REBEL_LEADER_2, -10495.80f, 1580.19f, 51.72f, 4.091f, TEMPSUMMON_DEAD_DESPAWN, 1);
+                Creature* defiasCollaborator = player->SummonCreature(NPC_DEFIAS_COLLABORATOR, -10526.52f, 1558.50f, 49.87f, 0.614f, TEMPSUMMON_DEAD_DESPAWN, 1);
+            }
+        }
+
+        return true;
+    }
+};
+
 void AddSC_westfall()
 {
     new npc_daphne_stilwell();
+    new npc_westfall_rebels_defias_conversation();
+    new go_inconspicuous_crate_westfall();
 }

@@ -4286,6 +4286,23 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                             }
                             break;
                         }
+                    case 98822: // Water Bucket
+                    {
+                        if (!m_caster)
+                            return;
+
+                        Player* player = m_caster->ToPlayer();
+                        if (!player)
+                        {
+                            return;
+                        }
+
+                        Item* item = player->GetItemByEntry(90023);
+                        if (item)
+                            player->DestroyItem(item->GetBagSlot(), item->GetSlot(), true);
+
+                        break;
+                    }
                 }
                 break;
             }

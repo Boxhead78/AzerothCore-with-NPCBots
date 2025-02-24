@@ -18014,11 +18014,14 @@ bool Unit::IsPolymorphed() const
     return spellInfo->GetSpellSpecific() == SPELL_SPECIFIC_MAGE_POLYMORPH;
 }
 
-void Unit::RecalculateObjectScale()
+void Unit::RecalculateObjectScale(uint32 auraId)
 {
     int32 scaleAuras = GetTotalAuraModifier(SPELL_AURA_MOD_SCALE) + GetTotalAuraModifier(SPELL_AURA_MOD_SCALE_2);
     float scale = GetNativeObjectScale() + CalculatePct(1.0f, scaleAuras);
     float scaleMin = IsPlayer() ? 0.1f : 0.01f;
+    if (auraId == 98820)
+        scaleMin = 0;
+
     SetObjectScale(std::max(scale, scaleMin));
 }
 
