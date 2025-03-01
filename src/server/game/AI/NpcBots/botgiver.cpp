@@ -381,7 +381,7 @@ public:
                             }
 
                             //Bot is busy, don't Add it
-                            if (bot->IsInCombat() || !bot->IsAlive() || bot_ai::CCed(bot) || ai->IsDuringTeleport() ||
+                            if (bot->IsInCombat() || !bot->IsAlive() || bot_ai::CCed(bot) ||
                                 bot->HasUnitState(UNIT_STATE_CASTING) || ai->GetBotOwnerGuid() || bot->HasAura(BERSERK) || ai->IsWanderer())
                             {
                                 allBots.erase(bot);
