@@ -52,9 +52,14 @@ struct npc_aqualon : public ScriptedAI
             context.Repeat(8s, 10s);
         }).Schedule(7s, [this](TaskContext context)
         {
-            CastInFourDirections();
+            me->CastInDirections(me, SPELL_AQUA_NOVA, 4, 5, 5.0f);
             context.Repeat(15s);
         });
+    }
+
+    void Reset() override
+    {
+        _scheduler.CancelAll();
     }
 
     void UpdateAI(uint32 diff) override
@@ -72,39 +77,6 @@ struct npc_aqualon : public ScriptedAI
 
 private:
     TaskScheduler _scheduler;
-
-    void CastInFourDirections()
-    {
-        float baseAngle = me->GetOrientation();
-        float increment = 5.0f;
-
-        for (int i = 0; i < 4; ++i)
-        {
-            float angle = baseAngle + (M_PI / 2) * i;
-
-            for (int j = 0; j < 5; ++j)
-            {
-                float currentDistance = increment * j;
-                float x, y, z;
-                uint8 attempts = 9;
-
-                while (attempts--)
-                {
-                    x = me->GetPositionX() + currentDistance * cos(angle);
-                    y = me->GetPositionY() + currentDistance * sin(angle);
-                    z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
-
-                    if (z != VMAP_INVALID_HEIGHT_VALUE)
-                        break;
-                }
-
-                if (z == VMAP_INVALID_HEIGHT_VALUE)
-                    continue;
-
-                me->CastSpell(x, y, z, SPELL_AQUA_NOVA, true);
-            }
-        }
-    }
 };
 
 void AddSC_dun_morogh()

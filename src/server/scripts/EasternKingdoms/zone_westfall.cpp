@@ -234,6 +234,11 @@ public:
             me->SetReactState(REACT_PASSIVE);
         }
 
+        void Reset() override
+        {
+            _scheduler.CancelAll();
+        }
+
         void UpdateAI(uint32 diff) override
         {
             _scheduler.Update(diff);
@@ -308,9 +313,9 @@ public:
                 }).Schedule(81200ms, [this](TaskContext context)
                 { // Despawn & Kill Credit
                     std::list<Player*> nearbyPlayers;
-                    Acore::AnyPlayerInObjectRangeCheck check(me, 30.0f);
+                    Acore::AnyPlayerInObjectRangeCheck check(me, 40.0f);
                     Acore::PlayerListSearcher<Acore::AnyPlayerInObjectRangeCheck> searcher(me, nearbyPlayers, check);
-                    Cell::VisitWorldObjects(me, searcher, 30.0f);
+                    Cell::VisitWorldObjects(me, searcher, 40.0f);
                     for (Player* player : nearbyPlayers)
                     {
                         if (player && player->IsAlive())

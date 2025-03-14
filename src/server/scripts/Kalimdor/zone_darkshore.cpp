@@ -229,6 +229,11 @@ struct npc_guardian_of_the_flame : public ScriptedAI
         });
     }
 
+    void Reset() override
+    {
+        _scheduler.CancelAll();
+    }
+
     void UpdateAI(uint32 diff) override
     {
         if (!UpdateVictim())

@@ -27,7 +27,6 @@ EndContentData */
 #include "Player.h"
 #include "ScriptedCreature.h"
 #include "ScriptedEscortAI.h"
-#include "VMapMgr2.h"
 
 /*######
 # npc_edrin
@@ -107,6 +106,7 @@ public:
                 break;
             case 40:
                 Talk(SAY_EDR_FREED, player);
+                me->HandleEmoteCommand(4);
                 player->GroupEventHappens(QUEST_A_HUNTER_IN_CHAINS, me);
                 break;
             }
@@ -128,31 +128,22 @@ public:
     private:
         void SpawnEnemies(Creature* me, uint8 amount)
         {
-            uint8 spawnCount = amount;
-            float angleOffset = 45.0f / (spawnCount - 1);
-            float baseAngle = me->GetOrientation() - (45.0f / 2 * M_PI / 180.0f);
+            if (!me || amount == 0)
+                return;
 
-            for (uint8 i = 0; i < spawnCount; ++i)
+            float baseDistance = 6.0f;
+            float maxDistance = 12.0f;
+            float spreadAngle =  M_PI / 6;
+
+            for (uint8 i = 0; i < amount; ++i)
             {
-                float angle = baseAngle + (angleOffset * i * M_PI / 180.0f);
-                float distance = 8.0f;
                 float x, y, z;
-                uint8 attempts = 9;
+                float spawnAngle = frand(-spreadAngle, spreadAngle); ;
 
-                while (attempts--)
-                {
-                    me->GetNearPoint2D(x, y, distance, angle);
-                    z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
-
-                    if (z != VMAP_INVALID_HEIGHT_VALUE)
-                        break;
-                }
-
-                if (z == VMAP_INVALID_HEIGHT_VALUE)
+                if (!me->GetClosePoint(x, y, z, 0.5f, frand(baseDistance, maxDistance), spawnAngle, nullptr, true))
                     continue;
 
-                Creature* enemy = me->SummonCreature(NPC_STONESPLINTER_DEEPMAW, x, y, z, angle, TEMPSUMMON_TIMED_DESPAWN, 90000);
-                if (enemy)
+                if (Creature* enemy = me->SummonCreature(NPC_STONESPLINTER_DEEPMAW, x, y, z, me->GetOrientation(), TEMPSUMMON_TIMED_DESPAWN, 90000))
                 {
                     enemy->GetMotionMaster()->Clear();
                     enemy->Attack(me, true);
@@ -202,6 +193,11 @@ struct npc_gorlog : public ScriptedAI
         });
     }
 
+    void Reset() override
+    {
+        _scheduler.CancelAll();
+    }
+
     void UpdateAI(uint32 diff) override
     {
         if (!UpdateVictim())
@@ -218,42 +214,29 @@ private:
     void CastRandomStoneShatter()
     {
         const uint8 numSpawns = urand(5, 7);
-        float baseX = me->GetPositionX();
-        float baseY = me->GetPositionY();
-        float baseZ = me->GetPositionZ();
 
+        // Falls ein Spieler in der Nähe ist, wirke den ersten Zauber auf ihn
         if (Unit* target = me->SelectNearestPlayer(30.0f))
         {
-            float x = target->GetPositionX();
-            float y = target->GetPositionY();
-            float z = target->GetPositionZ();
-            me->CastSpell(x, y, z, SPELL_STONE_SHATTER, true);
+            float x, y, z;
+            if (target->GetClosePoint(x, y, z, 0.5f, 1.0f, 0.0f, me, true))
+                me->CastSpell(x, y, z, SPELL_STONE_SHATTER, true);
         }
 
-        for (uint8 i = 0; i < numSpawns - 1; ++i)
+        // Erzeuge zufällige Spawns um den NPC herum
+        for (uint8 i = 1; i < numSpawns; ++i)
         {
-            float angle = frand(0, 2 * M_PI);
-            float distance = 3.0f + urand(0, 8);
             float x, y, z;
-            uint8 attempts = 9;
+            float angle = frand(0, 2 * M_PI);
+            float distance = frand(3.0f, 11.0f); // 3.0f + urand(0, 8) entspricht frand(3.0f, 11.0f)
 
-            while (attempts--)
+            // GetClosePoint sorgt für eine sichere Position in der Nähe des NPCs
+            if (me->GetClosePoint(x, y, z, 0.5f, distance, angle, me, true))
             {
-                x = baseX + distance * cos(angle);
-                y = baseY + distance * sin(angle);
-                z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, baseZ);
-
-                if (z != VMAP_INVALID_HEIGHT_VALUE)
-                    break;
+                me->CastSpell(x, y, z, SPELL_STONE_SHATTER, true);
             }
-
-            if (z == VMAP_INVALID_HEIGHT_VALUE)
-                continue;
-
-            me->CastSpell(x, y, z, SPELL_STONE_SHATTER, true);
         }
     }
-
 
 };
 

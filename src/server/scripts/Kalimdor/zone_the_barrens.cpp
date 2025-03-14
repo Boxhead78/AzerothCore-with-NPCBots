@@ -103,13 +103,14 @@ public:
             switch (waypointId)
             {
             case 10:
-                SpawnEnemies(me);
+                SpawnEnemies(me, 3);
                 break;
             case 17:
                 Talk(SAY_AHU_ALMOST, player);
                 break;
             case 23:
                 Talk(SAY_AHU_FREED, player);
+                me->HandleEmoteCommand(4);
                 player->GroupEventHappens(QUEST_RETURN_TO_HUNTER_HILL, me);
                 break;
             }
@@ -136,33 +137,24 @@ public:
             object->ResetDoorOrButton();
         }
 
-        void SpawnEnemies(Creature* me)
+        void SpawnEnemies(Creature* me, uint8 amount)
         {
-            uint8 spawnCount = 3;
-            float angleOffset = 45.0f / (spawnCount - 1);
-            float baseAngle = me->GetOrientation() - (45.0f / 2 * M_PI / 180.0f);
+            if (!me || amount == 0)
+                return;
 
-            for (uint8 i = 0; i < spawnCount; ++i)
+            float baseDistance = 12.0f;
+            float maxDistance = 15.0f;
+            float spreadAngle =  M_PI / 6;
+
+            for (uint8 i = 0; i < amount; ++i)
             {
-                float angle = baseAngle + (angleOffset * i * M_PI / 180.0f);
-                float distance = 15.0f;
                 float x, y, z;
-                uint8 attempts = 9;
+                float spawnAngle = frand(-spreadAngle, spreadAngle); ;
 
-                while (attempts--)
-                {
-                    me->GetNearPoint2D(x, y, distance, angle);
-                    z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
-
-                    if (z != VMAP_INVALID_HEIGHT_VALUE)
-                        break;
-                }
-
-                if (z == VMAP_INVALID_HEIGHT_VALUE)
+                if (!me->GetClosePoint(x, y, z, 0.5f, frand(baseDistance, maxDistance), spawnAngle, nullptr, true))
                     continue;
 
-                Creature* enemy = me->SummonCreature(urand(NPC_GRIMTOTEM_INVADER, NPC_GRIMTOTEM_GEOMANCER), x, y, z, angle, TEMPSUMMON_TIMED_DESPAWN, 90000);
-                if (enemy)
+                if (Creature* enemy = me->SummonCreature(urand(NPC_GRIMTOTEM_INVADER, NPC_GRIMTOTEM_GEOMANCER), x, y, z, me->GetOrientation(), TEMPSUMMON_TIMED_DESPAWN, 90000))
                 {
                     enemy->GetMotionMaster()->Clear();
                     enemy->Attack(me, true);
@@ -338,6 +330,11 @@ struct npc_head_caravan_kodo : public SmartAI
 
             context.Repeat(Seconds(1s));
         });
+    }
+
+    void Reset() override
+    {
+        _scheduler.CancelAll();
     }
 
     void UpdateAI(uint32 diff) override
