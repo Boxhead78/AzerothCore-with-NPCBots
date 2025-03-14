@@ -81,6 +81,7 @@ struct npc_elendilad : public ScriptedAI
             {
                 me->SetImmuneToNPC(false);
                 me->SetImmuneToPC(false);
+                me->SetHomePosition(1495.84f, -2089.55f, 90.42f, 2.1519f);
                 DoCastSelf(SPELL_JUMP, true);
                 jumped = true;
             }
@@ -171,7 +172,7 @@ public:
                 }, EVENT_DIALOGUE_3);
                 ScheduleUniqueTimedEvent(9s, [&]
                 {
-                    me->SummonCreature(NPC_ELENDILAD, ElendiladSpawnPos, TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT, 90000);
+                    me->SummonCreature(NPC_ELENDILAD, ElendiladSpawnPos, TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT, 15000);
                 }, EVENT_ELE);
                 break;
             }
