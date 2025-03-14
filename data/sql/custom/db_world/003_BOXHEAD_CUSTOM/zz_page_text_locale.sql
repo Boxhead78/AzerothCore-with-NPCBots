@@ -59,11 +59,11 @@ INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES 
 DELETE FROM `page_text_locale` WHERE `ID`=3647 AND `locale`='deDE';
 INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3647, 'deDE', 'TRANSLATE_ME', 16000);
 DELETE FROM `page_text_locale` WHERE `ID`=3648 AND `locale`='deDE';
-INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3648, 'deDE', 'TRANSLATE_ME', 16000);
+INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3648, 'deDE', 'Schritt 1: TÖTEN$BSchritt 4: Schlafen?$BSchritt 2: ESSEN$BSchritt 1: Kacken', 16000);
 DELETE FROM `page_text_locale` WHERE `ID`=3649 AND `locale`='deDE';
-INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3649, 'deDE', 'TRANSLATE_ME', 16000);
+INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3649, 'deDE', 'Ihr greift von da unten an!$BWir greifen von hier oben an!$BTreffen uns in der Mitte bei der Menschensiedlung.$B$B-Knurrzahn, Sohn von Jauler', 16000);
 DELETE FROM `page_text_locale` WHERE `ID`=3650 AND `locale`='deDE';
-INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3650, 'deDE', 'TRANSLATE_ME', 16000);
+INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3650, 'deDE', '<Dieses Dokument ist leer.>$B$B<Korrektur. Dieses Dokument wurde kürzlich als Toilettenpapier benutzt.>', 16000);
 DELETE FROM `page_text_locale` WHERE `ID`=3651 AND `locale`='deDE';
 INSERT INTO `page_text_locale` (`ID`, `locale`, `Text`, `VerifiedBuild`) VALUES (3651, 'deDE', 'TRANSLATE_ME', 16000);
 DELETE FROM `page_text_locale` WHERE `ID`=3652 AND `locale`='deDE';

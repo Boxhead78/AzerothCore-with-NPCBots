@@ -68,3 +68,15 @@ DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200015 AND `OptionID`=0 A
 INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200015, 0, 'deDE', 'Ich möchte etwas von Euch kaufen.', '');
 DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200017 AND `OptionID`=0 AND `Locale`='deDE';
 INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200017, 0, 'deDE', 'Ich habe meinen Kodo verloren. Ich brauche einen neuen.', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200020 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200020, 0, 'deDE', 'Looks like I lost Mr. Rosie... I need a new one!  ', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200021 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200021, 0, 'deDE', 'Berührt die Säule, um die Ebene von Aph\'lass zu betreten.', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200022 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200022, 0, 'deDE', 'Sende mich nach Astranaar. Die Nachtelfen werden bald den Zorn der Horde spüren!', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200023 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200023, 0, 'deDE', 'Astranaar wird angegriffen! Helft mir, es zu verteidigen!', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200024 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200024, 0, 'deDE', 'Oliver Harris hat mich geschickt. Ich bin hier, um Euch zu helfen zu entkommen.', '');
+DELETE FROM `gossip_menu_option_locale` WHERE `MenuID`=200025 AND `OptionID`=0 AND `Locale`='deDE';
+INSERT INTO `gossip_menu_option_locale` (`MenuID`, `OptionID`, `Locale`, `OptionText`, `BoxText`) VALUES (200025, 0, 'deDE', 'Ich habe das letzte Fläschchen verloren. Ich brauche eine weitere Dosis deines Tranks.', '');
