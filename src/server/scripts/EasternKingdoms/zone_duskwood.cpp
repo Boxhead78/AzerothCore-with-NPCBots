@@ -295,7 +295,7 @@ public:
     };
 };
 
-static const std::array<Position, 5> RandomPositions = {
+static const std::array<Position, 5> HatchlingRandomEscapes = {
     Position{-10376.38f, -290.20f, 46.19f, 0.0f},
     Position{-10371.48f, -304.18f, 48.12f, 0.0f},
     Position{-10384.11f, -319.58f, 50.13f, 0.0f},
@@ -337,7 +337,7 @@ struct npc_silithian_hatchling : public ScriptedAI
     {
         if (!_evadeStarted)
         {
-            const Position& targetPos = Acore::Containers::SelectRandomContainerElement(RandomPositions);
+            const Position& targetPos = Acore::Containers::SelectRandomContainerElement(HatchlingRandomEscapes);
             me->GetMotionMaster()->Clear();
             me->GetMotionMaster()->MovePoint(1, targetPos);
 
