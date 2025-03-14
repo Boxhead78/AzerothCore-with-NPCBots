@@ -25,6 +25,7 @@ Script Data End */
 #include "Player.h"
 #include "ScriptedCreature.h"
 #include "ScriptedEscortAI.h"
+#include "SmartAI.h"
 
 enum CorporalKeeshan
 {
@@ -172,7 +173,180 @@ public:
     }
 };
 
+enum HugeBoulder
+{
+    ACTION_DESTROY_BOULDER = 0,
+
+    SPELL_DESTROY_HUGE_BOULDER = 98924,
+};
+
+enum ForemanHannen 
+{
+    NPC_HUGE_BOULDER = 500267,
+    NPC_BRIDGEWORKER = 500266,
+    NPC_FOREMAN_HANNEN = 500265,
+
+    SAY_FOREMAN_HANNEN = 0
+};
+
+const Position BridgeworkerPositions[] =
+{
+    { -9289.83f, -2279.07f, 67.54f, 5.5229f },
+    { -9291.36f, -2283.60f, 67.54f, 5.8658f },
+    { -9290.22f, -2286.69f, 67.54f, 6.2517f },
+    { -9289.61f, -2289.30f, 67.54f, 0.2344f },
+    { -9293.68f, -2292.71f, 67.81f, 0.0462f },
+};
+
+const Position HannenFinalPos = { -9281.91f, -2286.68f, 67.54f, 3.0739f };
+
+class npc_foreman_hannen : public CreatureScript
+{
+public:
+    npc_foreman_hannen() : CreatureScript("npc_foreman_hannen") { }
+
+    struct npc_foreman_hannenAI : public ScriptedAI
+    {
+        npc_foreman_hannenAI(Creature* creature) : ScriptedAI(creature) { }
+
+        TaskScheduler _scheduler;
+        bool eventStarted = false;
+
+        void StartEvent()
+        {
+            if (eventStarted)
+                return;
+
+            eventStarted = true;
+
+            std::list<Creature*> bridgeworkers;
+            GetCreatureListWithEntryInGrid(bridgeworkers, me, NPC_BRIDGEWORKER, 50.0f);
+
+            // Set bridge workers data and init despawn
+            uint8 index = 0;
+            for (Creature* worker : bridgeworkers)
+            {
+                if (index >= 5)
+                    break;
+
+                worker->SetUInt32Value(UNIT_NPC_EMOTESTATE, 0);
+                worker->HandleEmoteCommand(EMOTE_STATE_NONE);
+                worker->GetMotionMaster()->MovePoint(1, BridgeworkerPositions[index]);
+
+                worker->DespawnOrUnsummon(45000);
+                me->DespawnOrUnsummon(45000);
+
+                ++index;
+            }
+
+            // Do cheers
+            _scheduler.Schedule(4s, [this, bridgeworkers](TaskContext context) // bridgeworkers wird hier hinzugefügt
+            {
+                for (Creature* worker : bridgeworkers)
+                {
+                    if (worker && worker->IsInWorld() && !worker->isDead())
+                    {
+                        uint8 emote = urand(0, 2);
+                        switch (emote)
+                        {
+                            case 0: { worker->HandleEmoteCommand(EMOTE_ONESHOT_APPLAUD); } break;
+                            case 1: { worker->HandleEmoteCommand(EMOTE_ONESHOT_CHEER); if (urand(0, 2) == 0) worker->PlayDistanceSound(2677); } break;
+                            case 2: { worker->HandleEmoteCommand(EMOTE_ONESHOT_BOW); } break;
+                        }
+                    }
+                }
+                context.Repeat(4s, 6s);
+            });
+
+            // Hannen Talk
+            _scheduler.Schedule(4s, [this](TaskContext context)
+            {
+                me->SetUInt32Value(UNIT_FIELD_BYTES_1, 0);
+                me->SetUInt32Value(UNIT_NPC_EMOTESTATE, 0);
+                me->HandleEmoteCommand(EMOTE_STATE_NONE);
+
+                if (Player* player = me->SelectNearestPlayer(30.0f))
+                {
+                    me->SetFacingToObject(player);
+                }
+
+                me->AI()->Talk(SAY_FOREMAN_HANNEN);
+            });
+
+            // Hannen GoTo Pos
+            _scheduler.Schedule(13s, [this](TaskContext context)
+            {
+                me->SetUInt32Value(UNIT_NPC_EMOTESTATE, 4);
+                me->GetMotionMaster()->MovePoint(1, HannenFinalPos);
+            });
+        }
+
+        void Reset() override
+        {
+            eventStarted = false;
+            _scheduler.CancelAll();
+        }
+
+        void UpdateAI(uint32 diff) override
+        {
+            _scheduler.Update(diff);
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_foreman_hannenAI(creature);
+    }
+};
+
+class npc_huge_boulder : public CreatureScript
+{
+public:
+    npc_huge_boulder() : CreatureScript("npc_huge_boulder") { }
+
+    struct npc_huge_boulderAI : public ScriptedAI
+    {
+        npc_huge_boulderAI(Creature* creature) : ScriptedAI(creature) { }
+
+        void SpellHit(Unit* caster, SpellInfo const* spell) override
+        {
+            if (!caster || !spell || !caster->ToPlayer())
+                return;
+
+            if (spell->Id == SPELL_DESTROY_HUGE_BOULDER)
+            {
+                DoAction(ACTION_DESTROY_BOULDER);
+                caster->ToPlayer()->RewardPlayerAndGroupAtEvent(NPC_HUGE_BOULDER, caster);
+            }
+        }
+
+        void DoAction(int32 actionId) override
+        {
+            if (actionId == ACTION_DESTROY_BOULDER)
+            {
+                if (Creature* foreman = me->FindNearestCreature(NPC_FOREMAN_HANNEN, 50.0f))
+                {
+                    npc_foreman_hannen::npc_foreman_hannenAI* foremanAI = CAST_AI(npc_foreman_hannen::npc_foreman_hannenAI, foreman->AI());
+                    if (foremanAI)
+                    {
+                        foremanAI->StartEvent();
+                    }
+                }
+
+                me->DespawnOrUnsummon(250);
+            }
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_huge_boulderAI(creature);
+    }
+};
+
 void AddSC_redridge_mountains()
 {
     new npc_corporal_keeshan();
+    new npc_huge_boulder;
+    new npc_foreman_hannen();
 }
