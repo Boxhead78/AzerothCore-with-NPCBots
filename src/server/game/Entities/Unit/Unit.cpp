@@ -66,6 +66,7 @@
 #include "UpdateFieldFlags.h"
 #include "Util.h"
 #include "Vehicle.h"
+#include "VMapMgr2.h"
 #include "World.h"
 #include "WorldPacket.h"
 #include <cmath>
@@ -23054,6 +23055,138 @@ bool Unit::IsHighestExclusiveAuraEffect(SpellInfo const* spellInfo, AuraType aur
     return true;
 }
 //end npcbot
+
+void Unit::CastInCircle(Unit* me, uint32 spellId, uint8 numSpells, float radius) const
+{
+    if (!me || numSpells == 0 || radius <= 0.0f)
+        return;
+
+    float baseAngle = me->GetOrientation();
+    float angleStep = 2 * M_PI / numSpells;
+
+    for (uint8 i = 0; i < numSpells; ++i)
+    {
+        float spellAngle = baseAngle + (angleStep * i);
+        Position nearPosition = me->GetNearPosition(radius, spellAngle);
+        me->CastSpell(nearPosition.GetPositionX(), nearPosition.GetPositionY(), nearPosition.GetPositionZ(), spellId, true);
+    }
+}
+
+void Unit::CastInArc(Unit* me, uint32 spellId, uint8 numRings, uint8 maxSpellsPerRing, float maxRadius, float arcAngle) const
+{
+    if (!me || numRings == 0 || maxSpellsPerRing == 0 || maxRadius <= 0.0f || arcAngle <= 0.0f)
+        return;
+
+    float baseAngle = me->GetOrientation();
+    float startAngle = baseAngle - (arcAngle / 2);
+    float distanceStep = maxRadius / numRings;
+
+    for (uint8 ring = 1; ring <= numRings; ++ring)
+    {
+        float currentDistance = ring * distanceStep;
+        uint8 spellsInThisRing = std::max<uint8>(2, static_cast<uint8>(maxSpellsPerRing * (static_cast<float>(ring) / numRings)));
+        float angleStep = arcAngle / std::max(1.0f, static_cast<float>(spellsInThisRing - 1));
+
+        for (uint8 spell = 0; spell < spellsInThisRing; ++spell)
+        {
+            float spellAngle = startAngle + (spell * angleStep);
+            float x = me->GetPositionX() + currentDistance * cos(spellAngle);
+            float y = me->GetPositionY() + currentDistance * sin(spellAngle);
+            float z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
+
+            if (z == VMAP_INVALID_HEIGHT_VALUE)
+            {
+                float ground = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, MAX_HEIGHT);
+                me->UpdateGroundPositionZ(x, y, z);
+                if (z == VMAP_INVALID_HEIGHT_VALUE)
+                {
+                    z = me->GetPositionZ();
+                }
+            }
+
+            me->CastSpell(x, y, z, spellId, true);
+        }
+    }
+}
+
+
+void Unit::CastInCone(Unit* me, uint32 spellId, uint8 numRings, uint8 maxSpellsPerRing, float maxDistance, float coneAngle) const
+{
+    if (!me || numRings == 0 || maxSpellsPerRing == 0 || maxDistance <= 0.0f || coneAngle <= 0.0f)
+        return;
+
+    float baseAngle = me->GetOrientation();
+    float distanceStep = maxDistance / numRings;
+
+    for (uint8 ring = 1; ring <= numRings; ++ring)
+    {
+        float currentDistance = ring * distanceStep;
+        uint8 spellsInThisRing = std::max<uint8>(2, static_cast<uint8>(maxSpellsPerRing * (static_cast<float>(ring) / numRings)));
+        float angleStep = coneAngle / std::max(1.0f, static_cast<float>(spellsInThisRing - 1));
+
+        for (uint8 spell = 0; spell < spellsInThisRing; ++spell)
+        {
+            float spellAngle = baseAngle - (coneAngle / 2) + (spell * angleStep);
+            float x = me->GetPositionX() + currentDistance * cos(spellAngle);
+            float y = me->GetPositionY() + currentDistance * sin(spellAngle);
+            float z = me->GetMap()->GetHeight(me->GetPhaseMask(), x, y, me->GetPositionZ());
+
+            if (z == VMAP_INVALID_HEIGHT_VALUE)
+            {
+                float ground = GetMapHeight(x, y, MAX_HEIGHT);
+                UpdateGroundPositionZ(x, y, z);
+                if (z == VMAP_INVALID_HEIGHT_VALUE)
+                {
+                    z = me->GetPositionZ() + 7.5f;
+                }
+            }
+
+            me->CastSpell(x, y, z, spellId, true);
+        }
+    }
+}
+
+
+void Unit::CastInSpiral(Unit* me, uint32 spellId, uint8 numSpells, float maxRadius, float rotations) const
+{
+    if (!me || numSpells == 0 || maxRadius <= 0.0f || rotations <= 0.0f)
+        return;
+
+    float baseAngle = me->GetOrientation();
+    float angleStep = (2 * M_PI * rotations) / numSpells;
+    float radiusStep = maxRadius / numSpells;
+
+    for (uint8 i = 0; i < numSpells; ++i)
+    {
+        float spellAngle = baseAngle + (angleStep * i);
+        float spellRadius = radiusStep * i;
+        Position nearPosition = me->GetNearPosition(spellRadius, spellAngle);
+        me->CastSpell(nearPosition.GetPositionX(), nearPosition.GetPositionY(), nearPosition.GetPositionZ(), spellId, true);
+    }
+}
+
+
+void Unit::CastInDirections(Unit* me, uint32 spellId, uint8 numDirections, uint8 numSpellsPerDirection, float distanceBetweenSpells) const
+{
+    if (!me || numDirections == 0 || numSpellsPerDirection == 0 || distanceBetweenSpells <= 0.0f)
+        return;
+
+    float baseAngle = me->GetOrientation();
+    float directionStep = 2 * M_PI / numDirections;
+
+    for (uint8 d = 0; d < numDirections; ++d)
+    {
+        float dirAngle = baseAngle + (directionStep * d);
+
+        for (uint8 s = 1; s <= numSpellsPerDirection; ++s)
+        {
+            float distance = s * distanceBetweenSpells;
+            Position nearPosition = me->GetNearPosition(distance, dirAngle);
+            me->CastSpell(nearPosition.GetPositionX(), nearPosition.GetPositionY(), nearPosition.GetPositionZ(), spellId, true);
+        }
+    }
+}
+
 
 std::string Unit::GetDebugInfo() const
 {

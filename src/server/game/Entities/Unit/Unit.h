@@ -2045,6 +2045,12 @@ public:
     void ClearReactive(ReactiveType reactive);
     //end npcbot
 
+    void CastInCircle(Unit* me, uint32 spellId, uint8 numSpells, float radius) const;
+    void CastInArc(Unit* me, uint32 spellId, uint8 numRings, uint8 spellsPerRing, float maxRadius, float arcAngle) const;
+    void CastInCone(Unit* me, uint32 spellId, uint8 numRings, uint8 spellsPerRing, float maxDistance, float coneAngle) const;
+    void CastInSpiral(Unit* me, uint32 spellId, uint8 numSpells, float maxRadius, float rotations) const;
+    void CastInDirections(Unit* me, uint32 spellId, uint8 numDirections, uint8 numSpellsPerDirection, float distanceBetweenSpells) const;
+
     //----------- Public variables ----------//
     uint32 m_extraAttacks;
     bool m_canDualWield;
