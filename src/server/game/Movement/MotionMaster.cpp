@@ -795,7 +795,14 @@ void MotionMaster::MoveTaxiFlight(uint32 path, uint32 pathnode)
         if (path < sTaxiPathNodesByPath.size())
         {
             LOG_DEBUG("movement.motionmaster", "{} taxi to (Path {} node {})", _owner->GetName(), path, pathnode);
-            FlightPathMovementGenerator* mgen = new FlightPathMovementGenerator(pathnode);
+
+            float flightSpeed = 32.0f; // Default Speed
+            if (path == 1993)
+            {
+                flightSpeed = 22.0f; // Quest Blastranaar!
+            }
+
+            FlightPathMovementGenerator* mgen = new FlightPathMovementGenerator(pathnode, flightSpeed);
             mgen->LoadPath(_owner->ToPlayer());
             Mutate(mgen, MOTION_SLOT_CONTROLLED);
         }

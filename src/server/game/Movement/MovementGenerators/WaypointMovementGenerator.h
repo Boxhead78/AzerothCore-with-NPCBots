@@ -105,14 +105,16 @@ class FlightPathMovementGenerator : public MovementGeneratorMedium< Player, Flig
     public PathMovementBase<Player, TaxiPathNodeList>
 {
     public:
-        explicit FlightPathMovementGenerator(uint32 startNode = 0)
+        explicit FlightPathMovementGenerator(uint32 startNode = 0, float flightSpeed = 32.0f)
         {
             i_currentNode = startNode;
             _endGridX = 0.0f;
             _endGridY = 0.0f;
             _endMapId = 0;
             _preloadTargetNode = 0;
+            _flightSpeed = flightSpeed;
         }
+
         void LoadPath(Player* player);
         void DoInitialize(Player*);
         void DoReset(Player*);
@@ -138,6 +140,7 @@ class FlightPathMovementGenerator : public MovementGeneratorMedium< Player, Flig
         float _endGridY;                            //! Y coord of last node location
         uint32 _endMapId;                           //! map Id of last node location
         uint32 _preloadTargetNode;                  //! node index where preloading starts
+        float _flightSpeed;
 
         struct TaxiNodeChangeInfo
         {
