@@ -4278,8 +4278,6 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
 
                             if (roll_chance_i(15) && unitTarget->IsAlive())
                             {
-                                // Stealth sound
-                                player->PlayDirectSound(3325, player);
                                 //Spawn Worgen
                                 float x, y, z, o;
                                 player->GetClosePoint(x, y, z, 2, 5, 5);
