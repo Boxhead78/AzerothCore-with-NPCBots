@@ -24,6 +24,7 @@ EndScriptData */
 
 /* ContentData
 npc_braug_dimspirit
+npc_grizznik_geargrind
 npc_kaya_flathoof
 EndContentData */
 
@@ -81,6 +82,57 @@ public:
         }
         else
             SendGossipMenuFor(player, 5819, creature->GetGUID());
+
+        return true;
+    }
+};
+
+/*######
+## npc_grizznik_geargrind
+######*/
+
+enum Grizznik
+{
+    NPC_ROSIE = 500223,
+
+    QUEST_MR_ROSIE = 50121,
+};
+
+class npc_grizznik_geargrind : public CreatureScript
+{
+public:
+    npc_grizznik_geargrind() : CreatureScript("npc_grizznik_geargrind") { }
+
+    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
+    {
+        ClearGossipMenuFor(player);
+
+        if (action == 1)
+        {
+            CloseGossipMenuFor(player);
+
+            // Spawn NPC_ROSIE (Despawned via Smart_Scripts)
+            if (Creature* vehicle = creature->SummonCreature(NPC_ROSIE, player->GetPosition(), TEMPSUMMON_MANUAL_DESPAWN))
+            {
+                // Force the player to enter the vehicle
+                player->EnterVehicle(vehicle);
+            }
+        }
+
+        return true;
+    }
+
+    bool OnQuestAccept(Player* player, Creature* creature, Quest const* quest) override
+    {
+        if (quest->GetQuestId() == QUEST_MR_ROSIE)
+        {
+            // Spawn NPC_ROSIE when the quest "Mr. Rosie" is accepted
+            if (Creature* vehicle = creature->SummonCreature(NPC_ROSIE, player->GetPosition(), TEMPSUMMON_MANUAL_DESPAWN))
+            {
+                // Force the player to enter the vehicle
+                player->EnterVehicle(vehicle);
+            }
+        }
 
         return true;
     }
@@ -171,5 +223,6 @@ public:
 void AddSC_stonetalon_mountains()
 {
     new npc_braug_dimspirit();
+    new npc_grizznik_geargrind();
     new npc_kaya_flathoof();
 }

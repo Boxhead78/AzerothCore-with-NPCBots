@@ -4313,6 +4313,19 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
 
                         break;
                     }
+                    case 98865: // Mimic
+                    {
+                        if (!m_caster)
+                            return;
+
+                        if (!unitTarget)
+                            return;
+
+                        unitTarget->CastSpell(m_caster, 98852, true);
+                        unitTarget->RemoveAura(98852);
+
+                        break;
+                    }
                     case 98928: // Examine
                     {
                         if (!m_caster)
