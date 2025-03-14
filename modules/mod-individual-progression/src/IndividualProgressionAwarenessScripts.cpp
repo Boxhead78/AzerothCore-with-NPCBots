@@ -70,13 +70,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -108,13 +107,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -146,13 +144,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -184,13 +181,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -222,13 +218,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -260,13 +255,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -298,13 +292,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -336,13 +329,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -374,13 +366,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -412,13 +403,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -454,13 +444,12 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster() || !sIndividualProgression->enabled)
+            if (player->IsGameMaster() || !sIndividualProgression->enabled || me->IsInCombat())
             {
                 return true;
             }
@@ -492,14 +481,11 @@ public:
                     return;
             }
 
-            // Überprüfen, ob das Ziel die bestimmte NPC-ID hat
             if (target->GetTypeId() == TYPEID_UNIT && target->GetEntry() == 3986)
             {
-                // Falls das Ziel die IGNORE_NPC_ID hat, verlässt die Methode ohne anzugreifen
                 return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
@@ -537,7 +523,6 @@ public:
                     return;
             }
 
-            // Standardmäßiges Angriffverhalten ausführen
             SmartAI::AttackStart(target);
         }
 
@@ -610,7 +595,7 @@ public:
 
         bool CanBeSeen(Player const* player) override
         {
-            if (player->IsGameMaster())
+            if (player->IsGameMaster() || me->IsInCombat())
             {
                 return true;
             }
