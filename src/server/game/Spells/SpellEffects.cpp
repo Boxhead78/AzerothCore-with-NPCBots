@@ -6428,6 +6428,10 @@ void Spell::SummonGuardian(uint32 i, uint32 entry, SummonPropertiesEntry const* 
         if (properties && properties->Category == SUMMON_CATEGORY_ALLY)
             summon->SetFaction(caster->GetFaction());
 
+        // Summons hp adjustment
+        uint32 maxHealth = summon->GetMaxHealth() * 0.4;
+        summon->SetMaxHealth(maxHealth);
+
         ExecuteLogEffectSummonObject(i, summon);
     }
 }
