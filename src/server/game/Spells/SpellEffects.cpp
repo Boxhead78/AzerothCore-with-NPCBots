@@ -4305,6 +4305,36 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                         Item* item = player->GetItemByEntry(90023);
                         if (item)
                             player->DestroyItem(item->GetBagSlot(), item->GetSlot(), true);
+                    case 98928: // Examine
+                    {
+                        if (!m_caster)
+                            return;
+
+                        Player* player = unitTarget->ToPlayer();
+                        if (!player)
+                            return;
+
+                        QuestStatusMap& questStatusMap = player->getQuestStatusMap();
+                        QuestStatusMap::iterator questStatus = questStatusMap.find(50177);
+                        if (questStatus == questStatusMap.end())
+                            return;
+
+                        uint16 killCount = questStatus->second.CreatureOrGOCount[0];
+                        if (killCount == 5)
+                        {
+                            float x, y, z, o;
+                            player->GetClosePoint(x, y, z, 2,5, 5);
+                            if (TempSummon* lurkingWorgen = player->SummonCreature(500289, x, y, z, 0, TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 120000))
+                            {
+                                player->PlayDirectSound(3325, player);
+                                player->PlayDirectSound(59345, player);
+                                lurkingWorgen->AI()->AttackStart(player);
+                            }
+                        }
+                        else
+                        {
+                            player->Whisper(urand(90177, 90181), player, true);
+                        }
 
                         break;
                     }

@@ -610,6 +610,43 @@ public:
     }
 };
 
+class npc_ipp_duskwood_worgen : public CreatureScript
+{
+public:
+    npc_ipp_duskwood_worgen() : CreatureScript("npc_ipp_duskwood_worgen") { }
+
+    struct npc_ipp_duskwood_worgenAI: SmartAI
+    {
+        explicit npc_ipp_duskwood_worgenAI(Creature* creature) : SmartAI(creature) { };
+
+        void AttackStart(Unit* target) override
+        {
+            if (target->IsPlayer())
+            {
+                if (!CanBeSeen(target->ToPlayer()))
+                    return;
+            }
+
+            SmartAI::AttackStart(target);
+        }
+
+        bool CanBeSeen(Player const* player) override
+        {
+            if (player->IsGameMaster() || me->IsInCombat())
+            {
+                return true;
+            }
+            Player* target = ObjectAccessor::FindConnectedPlayer(player->GetGUID());
+            return target->HasAura(98927);
+        }
+    };
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_ipp_duskwood_worgenAI(creature);
+    }
+};
+
 // Add all scripts in one
 void AddSC_mod_individual_progression_awareness()
 {
@@ -630,4 +667,5 @@ void AddSC_mod_individual_progression_awareness()
     new npc_ipp_ragefire_chasm();
     new npc_ipp_ragefire_chasm_remove();
     new npc_ipp_westfall_riot();
+    new npc_ipp_duskwood_worgen();
 }
