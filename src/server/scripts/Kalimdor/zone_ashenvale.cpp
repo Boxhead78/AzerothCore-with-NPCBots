@@ -23,9 +23,189 @@ SDCategory: Ashenvale Forest
 EndScriptData */
 
 #include "CreatureScript.h"
+#include "GameEventMgr.h"
 #include "Player.h"
 #include "ScriptedCreature.h"
 #include "ScriptedEscortAI.h"
+
+enum ElendiladEnum
+{
+    SAY_AGGRO = 0,
+    SAY_DEATH = 1,
+
+    SPELL_JUMP = 98875,
+    SPELL_BLADESTORM = 98897,
+    SPELL_COMMANDING_SHOUT = 98891,
+};
+
+struct npc_elendilad : public ScriptedAI
+{
+    npc_elendilad(Creature* creature) : ScriptedAI(creature) { }
+
+    void JustDied(Unit* killer) override
+    {
+        Talk(SAY_DEATH);
+    }
+
+    void JustEngagedWith(Unit* /*who*/) override
+    {
+        _scheduler.Schedule(0s, [this](TaskContext context)
+        {
+            if (Unit* target = SelectTarget(SelectTargetMethod::MaxThreat, 0, 40.0f))
+            {
+                DoCast(target, SPELL_BLADESTORM);
+            }
+            context.Repeat(20s, 20s);
+        }).Schedule(6s, [this](TaskContext context)
+        {
+            DoCastSelf(SPELL_COMMANDING_SHOUT);
+        });
+    }
+
+    void Reset() override
+    {
+        _scheduler.CancelAll();
+    }
+
+    void UpdateAI(uint32 diff) override
+    {
+        if (!intro)
+        {
+            Talk(SAY_AGGRO);
+            intro = true;
+        }
+
+        if (!jumped)
+        {
+            if (jumpTimer <= diff)
+            {
+                me->SetImmuneToNPC(false);
+                me->SetImmuneToPC(false);
+                DoCastSelf(SPELL_JUMP, true);
+                jumped = true;
+            }
+            else
+            {
+                jumpTimer -= diff;
+            }
+        }
+
+        if (!UpdateVictim())
+            return;
+
+        _scheduler.Update(diff);
+
+        DoMeleeAttackIfReady();
+    }
+
+
+private:
+    bool intro = false;
+    bool jumped = false;
+    uint32 jumpTimer = 4000;
+    TaskScheduler _scheduler;
+};
+
+/*######
+# npc_gorat_ghost
+######*/
+
+enum GoratGhost
+{
+    EVENT_DIALOGUE_1 = 1,
+    EVENT_DIALOGUE_2 = 2,
+    EVENT_DIALOGUE_3 = 3,
+    EVENT_ELE = 4,
+
+    SAY_GOR_START = 0,
+    SAY_GOR_START_1 = 1,
+    SAY_GOR_START_2 = 2,
+    SAY_GOR_START_3 = 3,
+    SAY_GOR_SHOW_YOURSELF = 4,
+
+    SAY_ELE_SPAWN = 0,
+
+    NPC_ELENDILAD = 500234,
+    NPC_GORAT = 500252,
+};
+
+Position const ElendiladSpawnPos = { 1516.69f, -2142.63f,  88.72f, 1.8668f};
+
+class npc_gorat_ghost : public CreatureScript
+{
+public:
+    npc_gorat_ghost() : CreatureScript("npc_gorat_ghost") { }
+
+    CreatureAI* GetAI(Creature* creature) const override
+    {
+        return new npc_gorat_ghostAI(creature);
+    }
+
+    struct npc_gorat_ghostAI : public npc_escortAI
+    {
+        npc_gorat_ghostAI(Creature* creature) : npc_escortAI(creature) { }
+
+        void Reset() override { }
+
+        void WaypointReached(uint32 waypointId) override
+        {
+            switch (waypointId)
+            {
+            case 2:
+                Talk(SAY_GOR_START_1);
+                ScheduleUniqueTimedEvent(10s, [&]
+                {
+                    Talk(SAY_GOR_START_2);
+                }, EVENT_DIALOGUE_1);
+                ScheduleUniqueTimedEvent(20s, [&]
+                {
+                    Talk(SAY_GOR_START_3);
+                }, EVENT_DIALOGUE_2);
+                break;
+            case 16:
+                me->SetFacingTo(5.0045f);
+                ScheduleUniqueTimedEvent(2s, [&]
+                {
+                    Talk(SAY_GOR_SHOW_YOURSELF);
+                    me->HandleEmoteCommand(15);
+                }, EVENT_DIALOGUE_3);
+                ScheduleUniqueTimedEvent(9s, [&]
+                {
+                    me->SummonCreature(NPC_ELENDILAD, ElendiladSpawnPos, TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT, 90000);
+                }, EVENT_ELE);
+                break;
+            }
+        }
+
+        void AttackStart(Unit* who) override
+        {
+            if (!intro)
+                return;
+
+            npc_escortAI::AttackStart(who);
+        }
+
+        void UpdateAI(uint32 diff) override
+        {
+            if (!intro)
+            {
+                if (npc_gorat_ghostAI* pEscortAI = CAST_AI(npc_gorat_ghost::npc_gorat_ghostAI, me->AI()))
+                    pEscortAI->Start(false, false);
+
+                me->SetFaction(FACTION_ESCORTEE_H_NEUTRAL_PASSIVE);
+                me->AI()->Talk(SAY_GOR_START);
+                me->RemoveUnitFlag(UNIT_FLAG_NON_ATTACKABLE | UNIT_FLAG_PACIFIED);
+                intro = true;
+            }
+
+            npc_escortAI::UpdateAI(diff);
+            scheduler.Update(diff);
+        }
+
+    private:
+        bool intro = false;
+    };
+};
 
 enum Muglash
 {
@@ -222,7 +402,102 @@ public:
     }
 };
 
+enum SentinelThenysil
+{
+    PHASE_NORMAL = 1,
+    PHASE_BLASTRANAAR = 2,
+
+    QUEST_ASTRANAARS_BURNING = 50145,
+    QUEST_RETURN_FIRE = 50146,
+};
+
+class npc_sentinel_thenysil : public CreatureScript
+{
+public:
+    npc_sentinel_thenysil() : CreatureScript("npc_sentinel_thenysil") { }
+
+    bool OnQuestReward(Player* player, Creature* creature, Quest const* quest, uint32 opt) override
+    {
+        if (!player)
+            return false;
+
+        if (player->GetQuestRewardStatus(QUEST_ASTRANAARS_BURNING) &&
+            quest->GetQuestId() == QUEST_RETURN_FIRE)
+        {
+            player->SetPhaseMask(PHASE_NORMAL, true);
+        }
+
+        return true;
+    }
+
+};
+
+enum Twidel
+{ 
+    TAXI_ROUTE = 1993,
+
+    QUEST_BLASTRANAAR = 50142,
+};
+
+class npc_twidel : public CreatureScript
+{
+public:
+    npc_twidel() : CreatureScript("npc_twidel") { }
+
+    void CheckAndResetPhase(Player* player)
+    {
+        if (!player || !player->IsInWorld())
+            return;
+
+        if (!player->IsInFlight())
+        {
+            player->SetPhaseMask(PHASE_NORMAL, true);
+        }
+        else
+        {
+            player->m_Events.AddEventAtOffset([this, player]() { this->CheckAndResetPhase(player); }, 1s);
+        }
+    }
+
+    void StartTaxiFlight(Player* player)
+    {
+        if (player->GetPhaseMask() != PHASE_BLASTRANAAR)
+        {
+            player->SetPhaseMask(PHASE_BLASTRANAAR, true);
+        }
+
+        player->ActivateTaxiPathTo(TAXI_ROUTE);
+
+        CheckAndResetPhase(player);
+    }
+
+    bool OnGossipSelect(Player* player, Creature* creature, uint32 /*sender*/, uint32 action) override
+    {
+        ClearGossipMenuFor(player);
+
+        if (action == 1)
+        {
+            CloseGossipMenuFor(player);
+            StartTaxiFlight(player);
+        }
+
+        return true;
+    }
+
+    bool OnQuestAccept(Player* player, Creature* creature, Quest const* quest) override
+    {
+        if (quest->GetQuestId() == QUEST_BLASTRANAAR)
+            StartTaxiFlight(player);
+
+        return true;
+    }
+};
+
 void AddSC_ashenvale()
 {
     new npc_muglash();
+    new npc_gorat_ghost();
+    new npc_twidel();
+    new npc_sentinel_thenysil();
+    RegisterCreatureAI(npc_elendilad);
 }

@@ -4292,6 +4292,7 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                             break;
                         }
                     case 98822: // Water Bucket
+                    case 98878:
                     {
                         if (!m_caster)
                             return;
@@ -4302,9 +4303,16 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                             return;
                         }
 
-                        Item* item = player->GetItemByEntry(90023);
-                        if (item)
-                            player->DestroyItem(item->GetBagSlot(), item->GetSlot(), true);
+                        std::array<uint32, 2> itemEntries = { 90023, 90025 };
+                        for (uint32 itemId : itemEntries)
+                        {
+                            if (Item* item = player->GetItemByEntry(itemId))
+                                player->DestroyItem(item->GetBagSlot(), item->GetSlot(), true);
+                        }
+
+
+                        break;
+                    }
                     case 98928: // Examine
                     {
                         if (!m_caster)
