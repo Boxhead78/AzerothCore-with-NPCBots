@@ -4281,8 +4281,13 @@ void Spell::EffectScriptEffect(SpellEffIndex effIndex)
                                 // Stealth sound
                                 player->PlayDirectSound(3325, player);
                                 //Spawn Worgen
-                                TempSummon* worgenInfiltrator = unitTarget->SummonCreature(500071, unitTarget->GetPositionX(), unitTarget->GetPositionY(), unitTarget->GetPositionZ(), unitTarget->GetOrientation(), TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 120000); // 120000 ms = 2 Minute Despawn Timer
-                                worgenInfiltrator->AI()->AttackStart(unitTarget);
+                                float x, y, z, o;
+                                player->GetClosePoint(x, y, z, 2, 5, 5);
+                                if (TempSummon* lurkingWorgen = player->SummonCreature(500071, x, y, z, 0, TEMPSUMMON_TIMED_OR_DEAD_DESPAWN, 120000))
+                                {
+                                    player->PlayDirectSound(3325, player);
+                                    lurkingWorgen->AI()->AttackStart(player);
+                                }
                             }
                             break;
                         }
