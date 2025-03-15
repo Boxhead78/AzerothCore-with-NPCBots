@@ -1,0 +1,1 @@
+DELETE FROM `item_template` WHERE `VerifiedBuild`=16000;
